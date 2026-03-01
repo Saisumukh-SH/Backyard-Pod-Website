@@ -1,7 +1,6 @@
 
   # Backyard Pod Website
-
-  This is a code bundle for Backyard Pod Website. The original project is available at https://www.figma.com/design/UrzDgbso5UaFjYWV80PRZz/Backyard-Pod-Website.
+  link: https://designmybackyard.netlify.app/
 
   ## Running the code
 
