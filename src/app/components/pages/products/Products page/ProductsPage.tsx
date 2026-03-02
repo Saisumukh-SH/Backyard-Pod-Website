@@ -7,7 +7,7 @@ export default function ProductsPage() {
 
   return (
     <div className="p-16">
-      <h1 className="text-5xl mb-12">Our Products</h1>
+      <h1 className="text-5xl mb-12">Our </h1>
 
       {products.map(product => (
         <div
