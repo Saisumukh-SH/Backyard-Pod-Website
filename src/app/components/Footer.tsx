@@ -10,7 +10,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-white rounded-sm"></div>
-              <span className="font-semibold text-xl text-white">PodLiving</span>
+              <span className="font-semibold text-xl text-white">Design | MyBackyard</span>
             </div>
             <p className="text-sm text-gray-400">
               Creating beautiful, sustainable backyard spaces for modern living.
