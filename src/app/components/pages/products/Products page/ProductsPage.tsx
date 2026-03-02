@@ -1,43 +1,44 @@
-export interface Product {
-  id: number;
-  number: string;
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-  features: string[];
-}
+import { useNavigate } from "react-router-dom";
+import { products } from "../../Products";
 
-export const products: Product[] = [
-  {
-    id: 1,
-    number: "01 — Studio Pod",
-    name: "Studio Pod",
-    slug: "studio-pod",
-    description:
-      "Perfect for home offices or creative studios.",
-    image:
-      "https://images.unsplash.com/photo-1765810655582-97eae3a801bb?w=1080&q=80",
-    features: [
-      "15–25 sqm",
-      "Insulated walls",
-      "Electrical setup",
-      "Internet ready",
-    ],
-  },
-  {
-    id: 2,
-    number: "02 — Granny Flat",
-    name: "One Bedroom Granny Flat",
-    slug: "one-bedroom-flat",
-    description:
-      "Complete living solution.",
-    image:
-      "https://images.unsplash.com/photo-1692911470070-c10cd6c89938?w=1080&q=80",
-    features: [
-      "35–50 sqm",
-      "Full kitchen",
-      "Modern bathroom",
-    ],
-  },
-];
+
+export default function ProductsPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="p-16">
+      <h1 className="text-5xl mb-12">Our Products</h1>
+
+      {products.map(product => (
+        <div
+          key={product.slug}
+          className="grid md:grid-cols-2 gap-10 mb-20"
+        >
+          <img
+            src={product.image}
+            className="h-96 w-full object-cover"
+          />
+
+          <div>
+            <h2 className="text-3xl mb-4">
+              {product.name}
+            </h2>
+
+            <p className="mb-6">
+              {product.description}
+            </p>
+
+            <button
+              onClick={() =>
+                navigate(`/products/${product.slug}`)
+              }
+              className="px-6 py-3 bg-black text-white"
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
