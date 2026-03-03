@@ -1,5 +1,5 @@
 import { CheckCircle, ArrowLeft, Ruler, Zap, Wifi, ThermometerSnowflake } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export function StudioPod() {
   const specifications = [

@@ -1,5 +1,5 @@
 import { CheckCircle, ArrowLeft, Ruler, Bed, Bath, ChefHat } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export function OneBedroomFlat() {
   const specifications = [

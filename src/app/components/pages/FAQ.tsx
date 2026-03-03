@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
