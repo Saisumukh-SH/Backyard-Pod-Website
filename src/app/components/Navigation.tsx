@@ -8,7 +8,9 @@ export function Navigation() {
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/products", label: "Products" },
-    { path: "/pricing", label: "Pricing" },
+
+    /*{ path: "/pricing", label: "Pricing" },*/
+
     { path: "/about", label: "About" },
     { path: "/faq", label: "FAQ" },
     { path: "/blog", label: "Blog" },

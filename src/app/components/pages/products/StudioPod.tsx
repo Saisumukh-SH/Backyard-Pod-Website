@@ -9,66 +9,66 @@ export default function StudioCategory() {
   const navigate = useNavigate();
 
   const sizes = [
-  {
-    id: 15,
-    label: "15 M²",
-    image: "https://images.unsplash.com/photo-1486946255434-2466348c2166?w=1400&q=80",
-    description:
-      "Our most compact pod — perfect as a single-desk office, meditation space, or reading retreat.",
-    footprint: "3 × 5 m",
-    height: "2.7 m",
-    glazing: "Single wall",
-    capacity: "1 person",
-  },
-  {
-    id: 22,
-    label: "22 M²",
-    image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1400&q=80",
-    description:
-      "A balanced workspace with extra depth for storage and client seating.",
-    footprint: "4 × 5.5 m",
-    height: "2.7 m",
-    glazing: "Double wall",
-    capacity: "2 people",
-  },
-  {
-    id: 30,
-    label: "30 M²",
-    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1400&q=80",
-    description:
-      "Light-filled studio layout with flexible configuration.",
-    footprint: "5 × 6 m",
-    height: "2.7 m",
-    glazing: "Clerestory",
-    capacity: "2–3 people",
-  },
-  {
-    id: 37,
-    label: "37 M²",
-    image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=1400&q=80",
-    description:
-      "Premium creative suite with architectural detailing.",
-    footprint: "6 × 6 m",
-    height: "2.7 m",
-    glazing: "Panoramic",
-    capacity: "3 people",
-  },
-  {
-    id: 45,
-    label: "45 M²",
-    image: "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=1400&q=80",
-    description:
-      "Our largest pod — adaptable for studio, wellness or multi-desk workspace.",
-    footprint: "7 × 6.5 m",
-    height: "2.7 m",
-    glazing: "Full glass",
-    capacity: "4 people",
-  },
-];
+    {
+      id: 15,
+      label: "15 M²",
+      route: "/products/compact-retreat",
+      image: "...",
+      description: "...",
+      footprint: "3 × 5 m",
+      height: "2.7 m",
+      glazing: "Single wall",
+      capacity: "1 person",
+    },
+    {
+      id: 22,
+      label: "22 M²",
+      route: "/products/zenwork",
+      image: "...",
+      description: "...",
+      footprint: "4 × 5.5 m",
+      height: "2.7 m",
+      glazing: "Double wall",
+      capacity: "2 people",
+    },
+    {
+      id: 30,
+      label: "30 M²",
+      route: "/products/loft-studio",
+      image: "...",
+      description: "...",
+      footprint: "5 × 6 m",
+      height: "2.7 m",
+      glazing: "Clerestory",
+      capacity: "2–3 people",
+    },
+    {
+      id: 37,
+      label: "37 M²",
+      route: "/products/premium-workspace",
+      image: "...",
+      description: "...",
+      footprint: "6 × 6 m",
+      height: "2.7 m",
+      glazing: "Panoramic",
+      capacity: "3 people",
+    },
+    {
+      id: 45,
+      label: "45 M²",
+      route: "/products/creative-suite",
+      image: "...",
+      description: "...",
+      footprint: "7 × 6.5 m",
+      height: "2.7 m",
+      glazing: "Full glass",
+      capacity: "4 people",
+    },
+  ];
 
-const [activeSize, setActiveSize] = useState(15);
+  const [activeSize, setActiveSize] = useState(15);
 
-const current = sizes.find(s => s.id === activeSize)!;
+  const current = sizes.find((s) => s.id === activeSize)!;
 
   return (
     <div>
@@ -103,7 +103,7 @@ const current = sizes.find(s => s.id === activeSize)!;
         <div className="grid md:grid-cols-3 border-t border-[rgba(42,42,42,0.12)]">
           {/* CARD 1 */}
           <div
-            onClick={() => navigate("/products/zenwork")}
+            onClick={() => navigate("/products/StudioProduct1")}
             className="border-r border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
           >
             <img
@@ -128,7 +128,7 @@ const current = sizes.find(s => s.id === activeSize)!;
 
           {/* CARD 2 */}
           <div
-            onClick={() => navigate("/products/loft-studio")}
+            onClick={() => navigate("/products/StudioProduct2")}
             className="border-r border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
           >
             <img
@@ -153,7 +153,7 @@ const current = sizes.find(s => s.id === activeSize)!;
 
           {/* CARD 3 */}
           <div
-            onClick={() => navigate("/products/compact-retreat")}
+            onClick={() => navigate("/products/StudioProduct3")}
             className="border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
           >
             <img
@@ -177,7 +177,7 @@ const current = sizes.find(s => s.id === activeSize)!;
 
           {/* CARD 4 */}
           <div
-            onClick={() => navigate("/products/premium-workspace")}
+            onClick={() => navigate("/products/StudioProduct4")}
             className="border-r border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
           >
             <img
@@ -201,7 +201,7 @@ const current = sizes.find(s => s.id === activeSize)!;
 
           {/* CARD 5 */}
           <div
-            onClick={() => navigate("/products/creative-suite")}
+            onClick={() => navigate("/products/StudioProduct5")}
             className="border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
           >
             <img
@@ -225,6 +225,7 @@ const current = sizes.find(s => s.id === activeSize)!;
           </div>
         </div>
       </section>
+
       {/* size section */}
       <section className="bg-[#1E1E1C] text-white px-8 py-28">
         <div className="grid md:grid-cols-2 gap-20 mb-16">
@@ -263,45 +264,83 @@ const current = sizes.find(s => s.id === activeSize)!;
         </div>
 
         {/* CONTENT */}
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <img src={current.image} className="w-full h-[420px] object-cover" />
-
+        <div className="grid md:grid-cols-2 gap-20 items-start">
+          {/* LEFT IMAGE */}
           <div>
-            <div className="font-serif text-6xl mb-6">
+            <img
+              src={current.image}
+              className="w-full h-[480px] object-cover"
+            />
+          </div>
+
+          {/* RIGHT CONTENT */}
+          <div>
+            {/* BIG SIZE */}
+            <div className="font-serif text-[clamp(4rem,6vw,6rem)] leading-none mb-6">
               {current.id}
-              <span className="text-lg ml-2 align-top opacity-60">m²</span>
+              <span className="text-2xl ml-2 align-top opacity-60">m²</span>
             </div>
 
-            <p className="opacity-70 mb-10 leading-relaxed max-w-md">
+            {/* DESCRIPTION */}
+            <p className="opacity-70 leading-relaxed mb-10 max-w-lg">
               {current.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-6 text-sm bg-white/5 p-8">
-              <div>
-                <div className="uppercase opacity-40 text-xs mb-1">
+            {/* SPEC GRID */}
+            <div className="grid grid-cols-2 bg-white/5 border border-white/10 mb-8">
+              <div className="p-6 border-b border-r border-white/10">
+                <div className="uppercase text-xs opacity-40 mb-2">
                   Footprint
                 </div>
                 {current.footprint}
               </div>
 
-              <div>
-                <div className="uppercase opacity-40 text-xs mb-1">
+              <div className="p-6 border-b border-white/10">
+                <div className="uppercase text-xs opacity-40 mb-2">
                   Ceiling Height
                 </div>
                 {current.height}
               </div>
 
-              <div>
-                <div className="uppercase opacity-40 text-xs mb-1">Glazing</div>
+              <div className="p-6 border-r border-white/10">
+                <div className="uppercase text-xs opacity-40 mb-2">Glazing</div>
                 {current.glazing}
               </div>
 
-              <div>
-                <div className="uppercase opacity-40 text-xs mb-1">
+              <div className="p-6">
+                <div className="uppercase text-xs opacity-40 mb-2">
                   Capacity
                 </div>
                 {current.capacity}
               </div>
+            </div>
+
+            {/* HIGHLIGHT BAR */}
+            <div className="border border-white/10 p-6 mb-10 flex items-center gap-4">
+              <div className="w-5 h-5 border border-white/40"></div>
+              <div>
+                <div className="uppercase text-xs opacity-40 mb-1">
+                  Footprint
+                </div>
+                {current.footprint}
+              </div>
+            </div>
+
+            {/* BUTTONS */}
+            <div className="flex gap-6">
+              <button
+                onClick={() => navigate("/booking")}
+                className="px-8 py-4 bg-[#E8E5DE] text-black text-xs tracking-[0.2em] uppercase"
+              >
+                Get a Quote
+              </button>
+
+              <button
+                onClick={() => navigate(current.route)}
+                className="px-8 py-4 border border-white/30 text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-colors"
+              >
+                Download Floorplan
+              </button>
             </div>
           </div>
         </div>
