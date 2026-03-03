@@ -124,3 +124,6 @@ a {
     min-height: 70vh;
   }
 }
+.grid > div:last-child {
+  border-right: none;
+}
