@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Root } from "./components/Root";
 
 import { Home } from "./components/pages/Home";
-import { Products } from "./components/pages/products/Products";
+import  Products  from "./components/pages/products/Products";
 
 import { StudioPod } from "./components/pages/products/StudioPod";
 import { OneBedroomFlat } from "./components/pages/products/OneBedroomFlat";
