@@ -29,6 +29,7 @@ export const router = createBrowserRouter([
       { path: "about", Component: About },
       { path: "blog", Component: Blog },
       { path: "products/studio", Component: StudioPod },
+      { path: "products/granny", Component: GrannyFlats },
 
       { path: "*", Component: NotFound },
     ],
