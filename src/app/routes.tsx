@@ -3,12 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Root } from "./components/Root";
 
 import { Home } from "./components/pages/Home";
-import  Products  from "./components/pages/products/Products";
-
-import { StudioPod } from "./components/pages/products/StudioPod";
-import { OneBedroomFlat } from "./components/pages/products/OneBedroomFlat";
-import { TwoBedroomFlat } from "./components/pages/products/TwoBedroomFlat";
-import { CustomDesign } from "./components/pages/products/CustomDesign";
+import Products from "./components/pages/products/Products";
 
 import { Pricing } from "./components/pages/Pricing";
 import { FAQ } from "./components/pages/FAQ";
@@ -25,10 +20,6 @@ export const router = createBrowserRouter([
       { index: true, Component: Home },
 
       { path: "products", Component: Products },
-      { path: "products/studio-pod", Component: StudioPod },
-      { path: "products/one-bedroom-flat", Component: OneBedroomFlat },
-      { path: "products/two-bedroom-flat", Component: TwoBedroomFlat },
-      { path: "products/custom-design", Component: CustomDesign },
 
       { path: "pricing", Component: Pricing },
       { path: "faq", Component: FAQ },

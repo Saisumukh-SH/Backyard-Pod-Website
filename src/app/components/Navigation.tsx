@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export function Navigation() {
@@ -16,69 +15,62 @@ export function Navigation() {
     { path: "/contact", label: "Contact" },
   ];
 
-  const isActive = (path: string) => {
-    if (path === "/") {
-      return location.pathname === "/";
-    }
-    return location.pathname.startsWith(path);
-  };
+  const isActive = (path: string) =>
+    path === "/"
+      ? location.pathname === "/"
+      : location.pathname.startsWith(path);
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gray-900 rounded-sm"></div>
-            <span className="font-semibold text-xl text-gray-900">Design | MyBackyard</span>
-          </Link>
+    <nav className="sticky top-0 z-50 backdrop-blur-md border-b border-[rgba(42,42,42,0.12)] bg-[#F0EDE6]/90">
+      <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm transition-colors ${
-                  isActive(link.path)
-                    ? "text-gray-900"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        {/* Logo */}
+        <Link to="/" className="text-[18px] tracking-wide">
+          <span className="font-serif">Design</span>{" "}
+          <span className="opacity-40">|</span>{" "}
+          <span className="font-serif italic">MyBackyard.</span>
+        </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex gap-10 text-[11px] uppercase tracking-[0.18em]">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`transition-opacity ${
+                isActive(link.path)
+                  ? "opacity-100"
+                  : "opacity-50 hover:opacity-100"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-3 border-t border-gray-200">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block text-sm py-2 transition-colors ${
-                  isActive(link.path)
-                    ? "text-gray-900"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden text-sm"
+        >
+          Menu
+        </button>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-[rgba(42,42,42,0.12)] px-8 py-6 space-y-4 text-sm uppercase tracking-wide">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block opacity-70 hover:opacity-100"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

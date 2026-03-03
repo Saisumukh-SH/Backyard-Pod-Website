@@ -1,30 +1,61 @@
-import { Link } from "react-router-dom";
-import { products } from "./productsData";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+const categories = [
+  {
+    id: "studio",
+    tag: "Work · Create · Retreat",
+    name: "Studio",
+    nameLine2: "Pods",
+    desc: "Purpose-built backyard spaces for focused work, creative pursuits, or mindful retreat.",
+    img: "https://images.unsplash.com/photo-1596395147635-9c2e84c80b0c?w=1400&q=85",
+    from: "From $24,900",
+  },
+  {
+    id: "granny",
+    tag: "Live · Host · Earn",
+    name: "Granny",
+    nameLine2: "Flats",
+    desc: "Fully self-contained living spaces — perfect for extended family or rental income.",
+    img: "https://images.unsplash.com/photo-1692911470070-c10cd6c89938?w=1400&q=85",
+    from: "From $68,000",
+  },
+];
 
 export default function Products() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <section className="products-list">
-      {products.map((product) => (
-        <div key={product.id} className="product-row">
+    <section className="products-split">
+      {categories.map((cat) => (
+        <div
+          key={cat.id}
+          className="split-card"
+          onClick={() => navigate(`/products/${cat.id}`)}
+        >
+          <img src={cat.img} alt={cat.name} className="split-img" />
+          <div className="split-overlay" />
 
-          <img src={product.image} alt={product.name} />
+          <div className="split-content">
+            <span className="split-tag">{cat.tag}</span>
 
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
+            <h2 className="split-title">
+              {cat.name}
+              <br />
+              {cat.nameLine2}
+            </h2>
 
-          <ul>
-            {product.features.map((f, i) => (
-              <li key={i}>{f}</li>
-            ))}
-          </ul>
+            <p className="split-desc">{cat.desc}</p>
 
-          <Link
-            to={`/products/${product.slug}`}
-            className="btn-primary"
-          >
-            Learn More
-          </Link>
-
+            <div className="split-cta">
+              <span>Explore Designs</span>
+              <span className="split-from">{cat.from}</span>
+            </div>
+          </div>
         </div>
       ))}
     </section>
