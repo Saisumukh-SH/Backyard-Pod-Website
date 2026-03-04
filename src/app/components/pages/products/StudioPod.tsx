@@ -12,7 +12,7 @@ export default function StudioCategory() {
     {
       id: 15,
       label: "15 M²",
-      route: "/products/compact-retreat",
+      route: "/products/StudioProduct1",
       image: "...",
       description: "...",
       footprint: "3 × 5 m",
@@ -23,7 +23,7 @@ export default function StudioCategory() {
     {
       id: 22,
       label: "22 M²",
-      route: "/products/zenwork",
+      route: "/products/StudioProduct2",
       image: "...",
       description: "...",
       footprint: "4 × 5.5 m",
@@ -34,7 +34,7 @@ export default function StudioCategory() {
     {
       id: 30,
       label: "30 M²",
-      route: "/products/loft-studio",
+      route: "/products/StudioProduct3",
       image: "...",
       description: "...",
       footprint: "5 × 6 m",
@@ -45,7 +45,7 @@ export default function StudioCategory() {
     {
       id: 37,
       label: "37 M²",
-      route: "/products/premium-workspace",
+      route: "/products/StudioProduct4",
       image: "...",
       description: "...",
       footprint: "6 × 6 m",
@@ -56,7 +56,7 @@ export default function StudioCategory() {
     {
       id: 45,
       label: "45 M²",
-      route: "/products/creative-suite",
+      route: "/products/StudioProduct5",
       image: "...",
       description: "...",
       footprint: "7 × 6.5 m",

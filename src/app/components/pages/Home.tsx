@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
 
 export function Home() {
   const navigate = useNavigate();
+    
 
   return (
     <div className="bg-white">
@@ -413,82 +415,128 @@ export function Home() {
 </section>
 
 
-      {/* FINAL CTA */}
-      {/* CTA + BOOKING FORM */}
-<section className="bg-[#1E1E1C] text-white px-10 py-32">
 
-  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+{/* CTA SECTION */}
+<section className="bg-[#1E1E1C] text-white px-10 py-32 text-center">
 
-    {/* LEFT SIDE TEXT */}
-    <div>
+  <h2 className="font-serif text-[clamp(3rem,6vw,5rem)] leading-[1] mb-10">
+    Ready to build your
+    <br />
+    <span className="italic text-[#93A87C]">
+      backyard space?
+    </span>
+  </h2>
 
-      <h2 className="font-serif text-[clamp(3rem,6vw,5rem)] leading-[1] mb-8">
-        Ready to build your
-        <br />
-        <span className="italic text-[#93A87C]">
-          backyard space?
-        </span>
-      </h2>
-
-      <p className="text-white/70 max-w-md leading-relaxed">
-        Tell us a little about your project and our team will
-        get back to you with design ideas, pricing, and
-        next steps to bring your backyard vision to life.
-      </p>
-
-    </div>
-
-
-    {/* BOOKING FORM */}
-    <form
-  name="booking"
-  method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  action="/thank-you"
-  className="space-y-6"
->
-
-  {/* Netlify hidden inputs */}
-  <input type="hidden" name="form-name" value="booking" />
-  <input type="hidden" name="bot-field" />
-
-  <input
-    type="text"
-    name="name"
-    placeholder="Full Name"
-    required
-    className="w-full bg-white/10 border border-white/20 px-6 py-4 rounded-lg"
-  />
-
-  <input
-    type="email"
-    name="email"
-    placeholder="Email Address"
-    required
-    className="w-full bg-white/10 border border-white/20 px-6 py-4 rounded-lg"
-  />
-
-  <input
-    type="tel"
-    name="phone"
-    placeholder="Phone Number"
-    className="w-full bg-white/10 border border-white/20 px-6 py-4 rounded-lg"
-  />
+  <p className="text-white/60 max-w-xl mx-auto mb-12">
+    Speak with our team to explore designs, pricing, and the best solution
+    for your backyard project.
+  </p>
 
   <button
-    type="submit"
-    className="px-10 py-4 bg-white text-black uppercase text-xs tracking-[0.2em]"
+    onClick={() => navigate("/booking")}
+    className="px-10 py-4 bg-white text-black uppercase text-xs tracking-[0.2em]
+    hover:bg-[#93A87C] hover:text-white transition-all duration-300 hover:-translate-y-1"
   >
-    Request Quote
+    Request a Quote
   </button>
-
-</form>
-
-  </div>
 
 </section>
 
+{/* HOME FOOTER */}
+<footer className="bg-[#1E1E1C] text-white px-10 py-24 border-t border-white/10">
+
+  <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-16">
+
+    {/* BRAND */}
+    <div>
+      <h3 className="font-serif text-xl mb-6">
+        Design <span className="opacity-40">|</span> MyBackyard.
+      </h3>
+
+      <p className="text-white/60 mb-6 leading-relaxed max-w-sm">
+        Beautifully designed backyard pods and granny flats for modern
+        Australian living. Built with precision, delivered with care.
+      </p>
+
+      <div className="text-white/60 space-y-2">
+        <p>hello@designmybackyard.com.au</p>
+        <p>07 3000 0000</p>
+      </div>
     </div>
+
+
+    {/* PRODUCTS */}
+    <div>
+      <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
+        Products
+      </h4>
+
+      <ul className="space-y-3 text-white/70">
+        <li className="hover:text-white transition cursor-pointer">Studio Pods</li>
+        <li className="hover:text-white transition cursor-pointer">Granny Flats</li>
+      </ul>
+    </div>
+
+
+    {/* COMPANY */}
+    <div>
+      <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
+        Company
+      </h4>
+
+      <ul className="space-y-3 text-white/70">
+        <li className="hover:text-white transition cursor-pointer">About Us</li>
+        <li className="hover:text-white transition cursor-pointer">Awards</li>
+      </ul>
+    </div>
+
+
+    {/* RESOURCES */}
+    <div>
+      <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
+        Resources
+      </h4>
+
+      <ul className="space-y-3 text-white/70">
+        <li className="hover:text-white transition cursor-pointer">Insights</li>
+        <li className="hover:text-white transition cursor-pointer">FAQs</li>
+        <li className="hover:text-white transition cursor-pointer">Contact Us</li>
+        <li className="hover:text-white transition cursor-pointer">Privacy Policy</li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  {/* BOTTOM BAR */}
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-white/10">
+
+    <p className="text-white/40 text-sm">
+      © 2025 Design My Backyard. All rights reserved.
+    </p>
+
+    {/* SOCIAL ICONS */}
+    <div className="flex gap-4 mt-6 md:mt-0">
+
+      <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+        <Instagram size={16} />
+      </button>
+
+      <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+        <Facebook size={16} />
+      </button>
+
+      <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+        <Linkedin size={16} />
+      </button>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</div>
+
   );
 }

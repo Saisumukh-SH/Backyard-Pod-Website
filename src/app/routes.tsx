@@ -46,6 +46,7 @@ export const router = createBrowserRouter([
       { path: "products/studio", Component: StudioPod },
       { path: "products/granny", Component: GrannyFlats },
       { path: "booking", Component: Booking },
+      
       { path: "products/StudioProduct1", Component: StudioProduct1 },
       { path: "products/StudioProduct2", Component: StudioProduct2 },
       { path: "products/StudioProduct3", Component: StudioProduct3 },
@@ -57,6 +58,7 @@ export const router = createBrowserRouter([
       { path: "products/GrannyflatProduct3", Component: GrannyflatProduct3 },
       { path: "products/GrannyflatProduct4", Component: GrannyflatProduct4 },
       { path: "products/GrannyflatProduct5", Component: GrannyflatProduct5 },
+      
 
       { path: "*", Component: NotFound },
     ],
