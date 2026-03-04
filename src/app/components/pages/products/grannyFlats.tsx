@@ -8,16 +8,13 @@ export default function GrannyFlats() {
     window.scrollTo(0, 0);
   }, []);
 
-  /* ===============================
-     SIZE CONFIGURATIONS
-  =============================== */
-
   const sizes = [
     {
       id: 45,
       label: "45 M²",
-      route: "/products/one-bedroom-flat",
-      image: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1400&q=80",
+      route: "/products/GrannyflatProduct1",
+      image:
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1400&q=80",
       description:
         "Compact one-bedroom flat with open-plan living, full kitchen and modern bathroom.",
       footprint: "7 × 6.5 m",
@@ -28,8 +25,9 @@ export default function GrannyFlats() {
     {
       id: 55,
       label: "55 M²",
-      route: "/products/one-bedroom-plus",
-      image: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=1400&q=80",
+      route: "/products/GrannyflatProduct2",
+      image:
+        "https://images.unsplash.com/photo-1494526585095-c41746248156?w=1400&q=80",
       description:
         "Expanded one-bedroom layout with larger living space and additional storage.",
       footprint: "8 × 7 m",
@@ -40,8 +38,9 @@ export default function GrannyFlats() {
     {
       id: 68,
       label: "68 M²",
-      route: "/products/two-bedroom-flat",
-      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1400&q=80",
+      route: "/products/GrannyflatProduct3",
+      image:
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1400&q=80",
       description:
         "Spacious two-bedroom flat with open-plan living and dining.",
       footprint: "7 × 9.7 m",
@@ -52,8 +51,9 @@ export default function GrannyFlats() {
     {
       id: 75,
       label: "75 M²",
-      route: "/products/two-bedroom-plus",
-      image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1400&q=80",
+      route: "/products/GrannyflatProduct4",
+      image:
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1400&q=80",
       description:
         "Premium two-bedroom configuration with generous living zones.",
       footprint: "8 × 9.5 m",
@@ -69,10 +69,9 @@ export default function GrannyFlats() {
   return (
     <div>
 
-      {/* =====================================
-         HERO
-      ===================================== */}
-      <section className="border-b border-black/10 px-8 py-24 grid md:grid-cols-2 gap-16">
+      {/* HERO */}
+      <section className="border-b border-black/10 px-8 py-24 grid md:grid-cols-2 gap-16 animate-fadeUp">
+
         <div>
           <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
             Live · Host · Earn
@@ -93,25 +92,36 @@ export default function GrannyFlats() {
             4 designs available · From $68,000
           </span>
         </div>
+
       </section>
 
-      {/* =====================================
-         PRODUCT GRID (SUMMARY CARDS)
-      ===================================== */}
-      <section className="px-8 py-20">
+      {/* PRODUCT GRID */}
+      <section className="px-8 py-20 animate-fadeUp">
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 border-t border-black/10">
 
           {sizes.map((flat, index) => (
+
             <div
               key={flat.id}
-              onClick={() => navigate("/products/GrannyflatProduct1")}
-              >
-              <img
-                src={flat.image}
-                className="w-full h-64 object-cover"
-              />
+              onClick={() => navigate(flat.route)}
+              className="group relative border-r border-b border-black/10 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:z-10"
+            >
 
+              {/* IMAGE */}
+              <div className="overflow-hidden">
+                <img
+                  src={flat.image}
+                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+
+              {/* OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* CONTENT */}
               <div className="p-8">
+
                 <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
                   GF — 0{index + 1}
                 </span>
@@ -129,22 +139,43 @@ export default function GrannyFlats() {
                 </div>
 
                 <div className="font-serif text-lg">
-                  From ${flat.id === 45 ? "68,000" : flat.id === 55 ? "74,000" : flat.id === 68 ? "92,000" : "105,000"}
+                  From $
+                  {flat.id === 45
+                    ? "68,000"
+                    : flat.id === 55
+                    ? "74,000"
+                    : flat.id === 68
+                    ? "92,000"
+                    : "105,000"}
                 </div>
+
+                <div className="flex items-center justify-between mt-6">
+
+                  <span className="text-sm opacity-60 group-hover:opacity-100 transition">
+                    Explore Design
+                  </span>
+
+                  <span className="text-lg transform transition-all duration-300 group-hover:translate-x-2">
+                    →
+                  </span>
+
+                </div>
+
               </div>
+
             </div>
+
           ))}
 
         </div>
+
       </section>
 
-      {/* =====================================
-         SIZE SELECTOR SECTION (DARK PREMIUM)
-      ===================================== */}
-      <section className="bg-[#1E1E1C] text-white px-8 py-28">
+      {/* SIZE SELECTOR */}
+      <section className="bg-[#1E1E1C] text-white px-8 py-28 animate-fadeUp">
 
-        {/* Header */}
         <div className="grid md:grid-cols-2 gap-20 mb-16">
+
           <div>
             <span className="uppercase tracking-[0.25em] text-[11px] opacity-40 block mb-6">
               Find Your Fit
@@ -160,11 +191,14 @@ export default function GrannyFlats() {
             Four configurations from 45 to 75 m² — designed for
             long-term living and flexible family use.
           </div>
+
         </div>
 
-        {/* Size Tabs */}
+        {/* SIZE TABS */}
         <div className="flex gap-8 mb-10 border-b border-white/10 pb-4">
+
           {sizes.map((size) => (
+
             <button
               key={size.id}
               onClick={() => setActiveSize(size.id)}
@@ -176,13 +210,14 @@ export default function GrannyFlats() {
             >
               {size.label}
             </button>
+
           ))}
+
         </div>
 
-        {/* Content */}
+        {/* CONTENT */}
         <div className="grid md:grid-cols-2 gap-20 items-start">
 
-          {/* Image */}
           <div>
             <img
               src={current.image}
@@ -190,7 +225,6 @@ export default function GrannyFlats() {
             />
           </div>
 
-          {/* Info */}
           <div>
 
             <div className="font-serif text-[clamp(4rem,6vw,6rem)] leading-none mb-6">
@@ -202,33 +236,42 @@ export default function GrannyFlats() {
               {current.description}
             </p>
 
-            {/* Spec Grid */}
+            {/* SPEC GRID */}
             <div className="grid grid-cols-2 bg-white/5 border border-white/10 mb-8">
 
               <div className="p-6 border-b border-r border-white/10">
-                <div className="uppercase text-xs opacity-40 mb-2">Footprint</div>
+                <div className="uppercase text-xs opacity-40 mb-2">
+                  Footprint
+                </div>
                 {current.footprint}
               </div>
 
               <div className="p-6 border-b border-white/10">
-                <div className="uppercase text-xs opacity-40 mb-2">Bedrooms</div>
+                <div className="uppercase text-xs opacity-40 mb-2">
+                  Bedrooms
+                </div>
                 {current.bedrooms}
               </div>
 
               <div className="p-6 border-r border-white/10">
-                <div className="uppercase text-xs opacity-40 mb-2">Bathrooms</div>
+                <div className="uppercase text-xs opacity-40 mb-2">
+                  Bathrooms
+                </div>
                 {current.bathrooms}
               </div>
 
               <div className="p-6">
-                <div className="uppercase text-xs opacity-40 mb-2">Occupants</div>
+                <div className="uppercase text-xs opacity-40 mb-2">
+                  Occupants
+                </div>
                 {current.occupants}
               </div>
 
             </div>
 
-            {/* Buttons */}
+            {/* BUTTONS */}
             <div className="flex gap-6">
+
               <button
                 onClick={() => navigate("/booking")}
                 className="px-8 py-4 bg-[#E8E5DE] text-black text-xs tracking-[0.2em] uppercase"
@@ -242,10 +285,13 @@ export default function GrannyFlats() {
               >
                 View Details
               </button>
+
             </div>
 
           </div>
+
         </div>
+
       </section>
 
     </div>

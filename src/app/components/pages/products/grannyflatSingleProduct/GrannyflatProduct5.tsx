@@ -4,8 +4,8 @@ export default function GrannyflatProduct5() {
   return (
     <SingleProduct
       category="Granny Flats — Studio Series"
-      title="Studio"
-      highlight="Flat"
+      title="Granny"
+      highlight="Flat 5"
       description="An open-plan studio with kitchenette and full bathroom — ideal for single occupants or weekend guests."
       size="28 m²"
       beds="Studio"

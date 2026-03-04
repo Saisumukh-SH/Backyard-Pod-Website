@@ -3,9 +3,9 @@ import SingleStudioPage from "../singleStudioPage";
 export default function StudioProduct5() {
   return (
     <SingleStudioPage
-      category="Granny Flats — Studio Series"
+      category="Studio Flats"
       title="Studio"
-      highlight="Flat"
+      highlight="Flat 5"
       description="An open-plan studio with kitchenette and full bathroom — ideal for single occupants or weekend guests."
       size="28 m²"
       beds="Studio"

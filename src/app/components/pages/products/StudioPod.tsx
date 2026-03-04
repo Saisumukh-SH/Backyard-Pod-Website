@@ -73,7 +73,7 @@ export default function StudioCategory() {
   return (
     <div>
       {/* HERO */}
-      <section className="border-b border-[rgba(42,42,42,0.12)] px-8 py-24 grid md:grid-cols-2 gap-16">
+      <section className="border-b border-[rgba(42,42,42,0.12)] px-8 py-24 grid md:grid-cols-2 gap-16 animate-fadeUp">
         {/* Left */}
         <div>
           <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
@@ -99,17 +99,20 @@ export default function StudioCategory() {
       </section>
 
       {/* PRODUCT GRID */}
-      <section className="px-8 py-20">
+      <section className="px-8 py-20 animate-fadeUp">
         <div className="grid md:grid-cols-3 border-t border-[rgba(42,42,42,0.12)]">
           {/* CARD 1 */}
           <div
             onClick={() => navigate("/products/StudioProduct1")}
-            className="border-r border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
+            className="group relative border-r border-b border-black/10 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:z-10"
           >
-            <img
-              src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=1200&q=80"
-              className="w-full h-64 object-cover"
-            />
+            <div className="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=1200&q=80"
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="p-8">
               <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
                 SP — 01
@@ -123,18 +126,30 @@ export default function StudioCategory() {
                 22 m² · 4 × 5.5 m · 6 wks
               </div>
               <div className="font-serif text-lg">From $38,500</div>
+              <div className="flex items-center justify-between mt-6">
+                <span className="text-sm opacity-60 group-hover:opacity-100 transition">
+                  Explore Design
+                </span>
+
+                <span className="text-lg transform transition-all duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+              </div>
             </div>
           </div>
 
           {/* CARD 2 */}
           <div
             onClick={() => navigate("/products/StudioProduct2")}
-            className="border-r border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
+            className="group relative border-r border-b border-black/10 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:z-10"
           >
-            <img
-              src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=80"
-              className="w-full h-64 object-cover"
-            />
+            <div className="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=80"
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="p-8">
               <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
                 SP — 02
@@ -148,18 +163,30 @@ export default function StudioCategory() {
                 30 m² · 5 × 6 m · 7 wks
               </div>
               <div className="font-serif text-lg">From $52,000</div>
+              <div className="flex items-center justify-between mt-6">
+                <span className="text-sm opacity-60 group-hover:opacity-100 transition">
+                  Explore Design
+                </span>
+
+                <span className="text-lg transform transition-all duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+              </div>
             </div>
           </div>
 
           {/* CARD 3 */}
           <div
             onClick={() => navigate("/products/StudioProduct3")}
-            className="border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
+            className="group relative border-r border-b border-black/10 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:z-10"
           >
-            <img
-              src="https://images.unsplash.com/photo-1486946255434-2466348c2166?w=1200&q=80"
-              className="w-full h-64 object-cover"
-            />
+            <div className="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1486946255434-2466348c2166?w=1200&q=80"
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="p-8">
               <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
                 SP — 03
@@ -172,18 +199,30 @@ export default function StudioCategory() {
                 15 m² · 3 × 5 m · 5 wks
               </div>
               <div className="font-serif text-lg">From $24,900</div>
+              <div className="flex items-center justify-between mt-6">
+                <span className="text-sm opacity-60 group-hover:opacity-100 transition">
+                  Explore Design
+                </span>
+
+                <span className="text-lg transform transition-all duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+              </div>
             </div>
           </div>
 
           {/* CARD 4 */}
           <div
             onClick={() => navigate("/products/StudioProduct4")}
-            className="border-r border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
+            className="group relative border-r border-b border-black/10 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:z-10"
           >
-            <img
-              src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80"
-              className="w-full h-64 object-cover"
-            />
+            <div className="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80"
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="p-8">
               <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
                 SP — 04
@@ -196,18 +235,30 @@ export default function StudioCategory() {
                 37 m² · 6 × 6 m · 8 wks
               </div>
               <div className="font-serif text-lg">From $68,000</div>
+              <div className="flex items-center justify-between mt-6">
+                <span className="text-sm opacity-60 group-hover:opacity-100 transition">
+                  Explore Design
+                </span>
+
+                <span className="text-lg transform transition-all duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+              </div>
             </div>
           </div>
 
           {/* CARD 5 */}
           <div
             onClick={() => navigate("/products/StudioProduct5")}
-            className="border-b border-[rgba(42,42,42,0.12)] cursor-pointer hover:bg-[#E8E5DE] transition-colors"
+            className="group relative border-b border-black/10 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:z-10"
           >
-            <img
-              src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=1200&q=80"
-              className="w-full h-64 object-cover"
-            />
+            <div className="overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=1200&q=80"
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="p-8">
               <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
                 SP — 05
@@ -221,13 +272,22 @@ export default function StudioCategory() {
                 45 m² · 7 × 6.5 m · 9 wks
               </div>
               <div className="font-serif text-lg">From $84,000</div>
+              <div className="flex items-center justify-between mt-6">
+                <span className="text-sm opacity-60 group-hover:opacity-100 transition">
+                  Explore Design
+                </span>
+
+                <span className="text-lg transform transition-all duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* size section */}
-      <section className="bg-[#1E1E1C] text-white px-8 py-28">
+      <section className="bg-[#1E1E1C] text-white px-8 py-28 animate-fadeUp">
         <div className="grid md:grid-cols-2 gap-20 mb-16">
           <div>
             <span className="uppercase tracking-[0.25em] text-[11px] opacity-40 block mb-6">
