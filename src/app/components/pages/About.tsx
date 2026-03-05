@@ -1,194 +1,245 @@
-import { Target, Award, Users, Heart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 export function About() {
-  const team = [
-    {
-      name: "Sarah Mitchell",
-      role: "Founder & CEO",
-      description: "15+ years in sustainable construction and design",
-    },
-    {
-      name: "James Chen",
-      role: "Lead Architect",
-      description: "Award-winning designer specializing in modular spaces",
-    },
-    {
-      name: "Emma Rodriguez",
-      role: "Construction Manager",
-      description: "Expert in efficient project delivery and quality control",
-    },
-    {
-      name: "David Park",
-      role: "Client Relations",
-      description: "Dedicated to ensuring exceptional customer experiences",
-    },
-  ];
 
-  const values = [
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+
+    window.scrollTo(0, 0);
+
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scroll = window.scrollY;
+        heroRef.current.style.transform = `translateY(${scroll * 0.3}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+
+  }, []);
+
+  const timeline = [
     {
-      icon: Target,
-      title: "Quality First",
-      description:
-        "We never compromise on materials or craftsmanship. Every project reflects our commitment to excellence.",
+      year: "2022",
+      text: "Design MyBackyard was founded with a mission to reimagine backyard living."
     },
     {
-      icon: Heart,
-      title: "Customer Focused",
-      description:
-        "Your vision drives our work. We listen, adapt, and deliver spaces that exceed expectations.",
+      year: "2023",
+      text: "First collection of studio pods launched across Melbourne."
     },
     {
-      icon: Award,
-      title: "Innovation",
-      description:
-        "We embrace new technologies and sustainable practices to create smarter, better living spaces.",
+      year: "2024",
+      text: "Granny flat range introduced for modern multi-generational living."
     },
     {
-      icon: Users,
-      title: "Collaboration",
-      description:
-        "Success comes from working together. We partner with you every step of the way.",
-    },
+      year: "2025",
+      text: "100+ backyard spaces designed and delivered across Australia."
+    }
   ];
 
   return (
-    <div className="bg-white">
-      {/* Hero */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl text-gray-900 mb-6">
-            About PodLiving
+
+    <div>
+
+      {/* HERO */}
+
+      <section className="relative h-[85vh] overflow-hidden">
+
+        <div
+          ref={heroRef}
+          className="absolute inset-0"
+        >
+
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=80"
+            className="w-full h-full object-cover"
+          />
+
+        </div>
+
+        <div className="absolute inset-0 bg-black/30" />
+
+        <div className="absolute bottom-20 left-12 text-white">
+
+          <h1 className="font-serif text-[clamp(3rem,6vw,6rem)]">
+            About
           </h1>
-          <p className="text-xl text-gray-600">
-            Creating exceptional backyard spaces that enhance how you live, work, and connect
+
+        </div>
+
+      </section>
+
+
+
+      {/* INTRODUCTION */}
+
+      <section className="px-12 py-32 grid md:grid-cols-2 gap-20">
+
+        <div className="uppercase tracking-[0.25em] text-xs opacity-50">
+          Introduction
+        </div>
+
+        <div className="text-lg leading-relaxed text-black/70 space-y-6">
+
+          <p>
+            Design MyBackyard creates beautifully crafted backyard studios and
+            granny flats designed for modern Australian living.
           </p>
+
+          <p>
+            Our philosophy blends architecture, efficiency and timeless design —
+            transforming unused backyard space into purposeful environments for
+            work, living and relaxation.
+          </p>
+
+          <p>
+            Every design is carefully considered to maximise space, natural
+            light and long-term value.
+          </p>
+
         </div>
+
       </section>
 
-      {/* Our Story */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl text-gray-900 mb-6">Our Story</h2>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Founded in 2018, PodLiving was born from a simple observation: homeowners needed more space, but traditional extensions were expensive, time-consuming, and disruptive.
-              </p>
-              <p>
-                We saw an opportunity to revolutionize backyard construction with a focus on minimalist design, sustainable materials, and streamlined processes. What started as a small team with big ideas has grown into a trusted name in backyard living solutions.
-              </p>
-              <p>
-                Today, we've completed over 500 projects across Australia, helping families create spaces for work, guests, aging parents, and everything in between. Each project reinforces our belief that great design should be accessible, sustainable, and tailored to how people actually live.
-              </p>
-            </div>
-          </div>
 
-          <div className="relative h-[500px]">
-            <img
-              src="https://images.unsplash.com/photo-1692166567037-4009225486ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjB3b3JrZXIlMjBidWlsZGluZ3xlbnwxfHx8fDE3NzI0MDA3Nzh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Construction"
-              className="w-full h-full object-cover"
-            />
-          </div>
+
+      {/* OUR COMPANY */}
+
+      <section className="px-12 py-32 grid md:grid-cols-2 gap-20 items-center">
+
+        <div>
+
+          <span className="uppercase tracking-[0.25em] text-xs opacity-50 block mb-6">
+            Our Company
+          </span>
+
+          <p className="text-lg text-black/70 leading-relaxed mb-6">
+            Design MyBackyard was founded with the belief that outdoor space
+            should be as thoughtfully designed as the homes we live in.
+          </p>
+
+          <p className="text-lg text-black/70 leading-relaxed mb-6">
+            Our team combines architectural thinking with practical construction
+            methods to deliver backyard studios and granny flats that are
+            efficient, elegant and built to last.
+          </p>
+
+          <p className="text-lg text-black/70 leading-relaxed">
+            Today we continue to focus on creating spaces that improve how
+            people work, live and connect.
+          </p>
+
         </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=1400&q=80"
+          className="w-full h-[520px] object-cover"
+        />
+
       </section>
 
-      {/* Values */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl text-gray-900 mb-4">
-              Our Values
-            </h2>
-            <p className="text-xl text-gray-600">
-              The principles that guide everything we do
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="text-white" size={32} />
-                  </div>
-                  <h3 className="text-xl text-gray-900 mb-3">{value.title}</h3>
-                  <p className="text-gray-600">{value.description}</p>
+
+      {/* HISTORY TIMELINE */}
+
+      <section className="px-12 py-32">
+
+        <span className="uppercase tracking-[0.25em] text-xs opacity-50 block mb-20">
+          History
+        </span>
+
+        <div className="overflow-x-auto">
+
+          <div className="flex gap-40 min-w-[1000px]">
+
+            {timeline.map((item, index) => (
+
+              <div key={index} className="w-[260px]">
+
+                <div className="text-xl font-semibold mb-6">
+                  {item.year}
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Team */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl text-gray-900 mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-gray-600">
-              Passionate professionals dedicated to your project
-            </p>
-          </div>
+                <div className="relative h-[2px] bg-black/30 mb-6">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="w-48 h-48 bg-gray-200 rounded-full mx-auto mb-4"></div>
-                <h3 className="text-xl text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-sm text-gray-600 mb-2">{member.role}</p>
-                <p className="text-sm text-gray-500">{member.description}</p>
+                  <div className="w-5 h-5 rounded-full border border-black bg-white absolute -top-[9px]" />
+
+                </div>
+
+                <p className="text-black/70 leading-relaxed">
+                  {item.text}
+                </p>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
-      {/* Stats */}
-      <section className="py-20 px-4 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-5xl mb-2">500+</div>
-              <div className="text-gray-400">Projects Completed</div>
-            </div>
-            <div>
-              <div className="text-5xl mb-2">98%</div>
-              <div className="text-gray-400">Client Satisfaction</div>
-            </div>
-            <div>
-              <div className="text-5xl mb-2">8+</div>
-              <div className="text-gray-400">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-5xl mb-2">50+</div>
-              <div className="text-gray-400">Team Members</div>
-            </div>
-          </div>
+
+
+      {/* LEADERSHIP QUOTE */}
+
+      <section className="px-12 py-32 grid md:grid-cols-2 gap-20 items-center">
+
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80"
+          className="w-full h-[420px] object-cover grayscale"
+        />
+
+        <div>
+
+          <h3 className="font-serif text-4xl leading-relaxed mb-8">
+
+            "Our reputation for innovation comes from the creative approach
+            we take to every project."
+
+          </h3>
+
+          <p className="text-black/50">
+            Founder — Design MyBackyard
+          </p>
+
         </div>
+
       </section>
+
+
 
       {/* CTA */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl text-gray-900 mb-4">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Let's work together to create your perfect backyard space
-          </p>
-          <Link
-            to="/contact"
-            className="inline-block px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors"
-          >
-            Get In Touch
-          </Link>
-        </div>
+
+      <section className="px-12 py-32 text-center">
+
+        <h2 className="font-serif text-[clamp(3rem,5vw,4rem)] mb-12">
+
+          Let's design your
+          <br />
+
+          <span className="italic text-[#6F8A5E]">
+            backyard space
+          </span>
+
+        </h2>
+
+        <a
+          href="/booking"
+          className="px-10 py-4 border border-black uppercase text-xs tracking-[0.2em] hover:bg-black hover:text-white transition"
+        >
+          Request a Quote
+        </a>
+
       </section>
+
+
     </div>
+
   );
+
 }

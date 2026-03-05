@@ -1,238 +1,234 @@
-import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useEffect } from "react";
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    projectType: "",
-    message: "",
-  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real application, this would send the form data to a backend
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We'll get back to you within 24 hours.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      projectType: "",
-      message: "",
-    });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="bg-white">
-      {/* Hero */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl text-gray-900 mb-6">
-            Get In Touch
+    <div>
+
+      {/* HERO */}
+
+      <section className="px-12 py-32 border-b border-black/10 grid md:grid-cols-2 gap-20">
+
+        <div>
+
+          <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
+            Get in Touch
+          </span>
+
+          <h1 className="font-serif text-[clamp(3rem,5vw,5rem)] leading-[0.95]">
+
+            Contact
+            <br/>
+
+            <span className="italic text-[#6F8A5E]">
+              Our Team
+            </span>
+
           </h1>
-          <p className="text-xl text-gray-600">
-            Ready to transform your backyard? Let's discuss your project
+
+        </div>
+
+        <div className="max-w-md ml-auto text-black/70 text-lg leading-relaxed">
+
+          Whether you're exploring a studio pod, planning a granny flat,
+          or simply have questions, our team is here to help.
+
+        </div>
+
+      </section>
+
+
+
+{/* CONTACT SECTION */}
+
+<section className="bg-[#1E1E1C] py-32 px-10 text-white">
+
+  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-start">
+
+    {/* LEFT INFO */}
+
+    <div>
+
+      <span className="uppercase tracking-[0.25em] text-xs opacity-50 block mb-6">
+        Studio Information
+      </span>
+
+      <h2 className="font-serif text-5xl mb-10">
+        Let's start your project
+      </h2>
+
+      <p className="text-white/70 leading-relaxed mb-14 max-w-md">
+        Have a question about studio pods or granny flats? Send us a message
+        and our team will get back to you shortly.
+      </p>
+
+      <div className="space-y-10 text-white/80">
+
+        <div>
+          <p className="uppercase text-xs tracking-[0.2em] opacity-40 mb-2">
+            Email
           </p>
+          hello@designmybackyard.com.au
         </div>
+
+        <div>
+          <p className="uppercase text-xs tracking-[0.2em] opacity-40 mb-2">
+            Phone
+          </p>
+          03 9000 0000
+        </div>
+
+        <div>
+          <p className="uppercase text-xs tracking-[0.2em] opacity-40 mb-2">
+            Location
+          </p>
+          Melbourne, Victoria
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    {/* FORM CARD */}
+
+    <div className="bg-white text-black p-12 shadow-2xl rounded-xl border border-black/10">
+
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        action="/thank-you"
+        className="space-y-10"
+      >
+
+        <input type="hidden" name="form-name" value="contact" />
+
+        {/* NAME */}
+
+        <div>
+          <label className="text-xs uppercase tracking-[0.2em] text-black/40">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            name="name"
+            required
+            className="w-full border-b border-black/20 py-3 outline-none focus:border-[#6F8A5E] transition"
+          />
+        </div>
+
+        {/* EMAIL */}
+
+        <div>
+          <label className="text-xs uppercase tracking-[0.2em] text-black/40">
+            Email
+          </label>
+
+          <input
+            type="email"
+            name="email"
+            required
+            className="w-full border-b border-black/20 py-3 outline-none focus:border-[#6F8A5E] transition"
+          />
+        </div>
+
+        {/* PHONE */}
+
+        <div>
+          <label className="text-xs uppercase tracking-[0.2em] text-black/40">
+            Phone
+          </label>
+
+          <input
+            type="tel"
+            name="phone"
+            className="w-full border-b border-black/20 py-3 outline-none focus:border-[#6F8A5E] transition"
+          />
+        </div>
+
+        {/* MESSAGE */}
+
+        <div>
+          <label className="text-xs uppercase tracking-[0.2em] text-black/40">
+            Message
+          </label>
+
+          <textarea
+            name="message"
+            rows={4}
+            required
+            className="w-full border-b border-black/20 py-3 outline-none focus:border-[#6F8A5E] transition"
+          />
+        </div>
+
+        {/* BUTTON */}
+
+        <button
+          type="submit"
+          className="w-full py-4 bg-[#1E1E1C] text-white uppercase text-xs tracking-[0.25em] hover:bg-[#6F8A5E] transition"
+        >
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+      {/* MAP */}
+
+      <section className="px-12 py-28">
+
+        <div className="border border-black/10 overflow-hidden">
+
+          <iframe
+            title="map"
+            src="https://maps.google.com/maps?q=melbourne&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            className="w-full h-[420px]"
+          />
+
+        </div>
+
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl text-gray-900 mb-6">
-                Contact Information
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Our team is ready to answer your questions and help you get started with your backyard transformation.
-              </p>
 
-              <div className="space-y-6 mb-12">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-white" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">1800 POD LIVE</p>
-                    <p className="text-gray-600">Mon-Fri: 8am - 6pm</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-white" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@podliving.com</p>
-                    <p className="text-gray-600">We respond within 24 hours</p>
-                  </div>
-                </div>
+      {/* CTA */}
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-white" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg text-gray-900 mb-1">Office</h3>
-                    <p className="text-gray-600">123 Design Street</p>
-                    <p className="text-gray-600">Sydney NSW 2000</p>
-                  </div>
-                </div>
-              </div>
+      <section className="px-12 py-32 text-center">
 
-              <div className="bg-gray-50 p-8">
-                <h3 className="text-xl text-gray-900 mb-4">
-                  What Happens Next?
-                </h3>
-                <ol className="space-y-3 text-gray-600">
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-gray-900">1.</span>
-                    <span>We'll review your inquiry and contact you within 24 hours</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-gray-900">2.</span>
-                    <span>Schedule a free consultation to discuss your project</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-gray-900">3.</span>
-                    <span>Receive a detailed quote and design proposal</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-gray-900">4.</span>
-                    <span>Begin your backyard transformation!</span>
-                  </li>
-                </ol>
-              </div>
-            </div>
+        <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-12">
 
-            {/* Contact Form */}
-            <div className="bg-white border border-gray-200 p-8">
-              <h2 className="text-3xl text-gray-900 mb-6">
-                Send Us a Message
-              </h2>
+          Start your
+          <br/>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gray-900"
-                    placeholder="John Smith"
-                  />
-                </div>
+          <span className="italic text-[#6F8A5E]">
+            backyard project
+          </span>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gray-900"
-                    placeholder="john@example.com"
-                  />
-                </div>
+        </h2>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gray-900"
-                    placeholder="0400 000 000"
-                  />
-                </div>
+        <a
+          href="/booking"
+          className="px-10 py-4 border border-black uppercase text-xs tracking-[0.2em] hover:bg-black hover:text-white transition"
+        >
+          Request a Quote
+        </a>
 
-                <div>
-                  <label htmlFor="projectType" className="block text-sm text-gray-700 mb-2">
-                    Project Type *
-                  </label>
-                  <select
-                    id="projectType"
-                    name="projectType"
-                    required
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gray-900 bg-white"
-                  >
-                    <option value="">Select a project type</option>
-                    <option value="studio-pod">Studio Pod</option>
-                    <option value="one-bedroom">One Bedroom Granny Flat</option>
-                    <option value="two-bedroom">Two Bedroom Granny Flat</option>
-                    <option value="custom">Custom Design</option>
-                    <option value="general">General Inquiry</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gray-900 resize-none"
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
-                >
-                  Send Message
-                  <Send size={20} />
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* Map Section (Placeholder) */}
-      <section className="h-96 bg-gray-200">
-        <div className="w-full h-full flex items-center justify-center text-gray-500">
-          <div className="text-center">
-            <MapPin size={48} className="mx-auto mb-4" />
-            <p className="text-lg">Map Location</p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
