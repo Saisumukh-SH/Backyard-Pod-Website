@@ -1,17 +1,17 @@
-import SingleProduct from "../singleStudioPage";
+import SingleGrannyFlat from "../SingleGrannyFlatPage";
 
-export default function GrannyflatProduct4() {
+export default function GrannyFlatProduct1() {
   return (
-    <SingleProduct
+    <SingleGrannyFlat
       category="Granny Flats — Studio Series"
-      title="Granny"
-      highlight="Flat 4"
-      description="An open-plan studio with kitchenette and full bathroom — ideal for single occupants or weekend guests."
-      size="28 m²"
-      beds="Studio"
+      title="Garden"
+      highlight="Suite 45"
+      description="A fully self-contained backyard granny flat designed for extended family living, guest accommodation, or rental income. Spacious, modern and built for Australian backyards."
+      size="45 m²"
+      beds="1 Bedroom"
       baths="1"
-      warranty="10 yr"
-      heroImage="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=1400&q=80"
+      occupants="2–3"
+      heroImage="/images/grannyflats/granny_flat_hero.webp"
     />
   );
 }

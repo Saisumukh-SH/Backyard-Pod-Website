@@ -12,9 +12,10 @@ export default function StudioCategory() {
     {
       id: 15,
       label: "15 M²",
-      route: "/products/StudioProduct1",
-      image: "...",
-      description: "...",
+      route: "/products/StudioProduct3",
+      image: "/images/studio/officeStudio/office_studio_hero.webp",
+      description:
+        "A modern backyard studio with clean horizontal cladding and wide glass doors. Designed to maximise natural light, it provides a bright and practical space ideal for a home office, studio, or quiet workspace.",
       footprint: "3 × 5 m",
       height: "2.7 m",
       glazing: "Single wall",
@@ -23,9 +24,10 @@ export default function StudioCategory() {
     {
       id: 22,
       label: "22 M²",
-      route: "/products/StudioProduct2",
-      image: "...",
-      description: "...",
+      route: "/products/StudioProduct1",
+      image: "/images/studio/studyNook/study_nook_hero.webp",
+      description:
+        "A compact modern backyard studio with clean cladding and large glass doors framed in black aluminum. Designed to bring in natural light, it creates a bright, functional space ideal for a home office, studio, or private retreat.",
       footprint: "4 × 5.5 m",
       height: "2.7 m",
       glazing: "Double wall",
@@ -34,8 +36,8 @@ export default function StudioCategory() {
     {
       id: 30,
       label: "30 M²",
-      route: "/products/StudioProduct3",
-      image: "...",
+      route: "/products/StudioProduct2",
+      image: "",
       description: "...",
       footprint: "5 × 6 m",
       height: "2.7 m",
@@ -108,7 +110,7 @@ export default function StudioCategory() {
           >
             <div className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=1200&q=80"
+                src="/images/studio/studyNook/study_nook_hero.webp"
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
@@ -117,7 +119,7 @@ export default function StudioCategory() {
               <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
                 SP — 01
               </span>
-              <h3 className="font-serif text-2xl mb-4">ZenWork Pod</h3>
+              <h3 className="font-serif text-2xl mb-4"> Hokkori 28</h3>
               <p className="text-sm opacity-60 mb-6">
                 Floor-to-ceiling glass and clean lines create the definitive
                 backyard office.
@@ -182,7 +184,7 @@ export default function StudioCategory() {
           >
             <div className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1486946255434-2466348c2166?w=1200&q=80"
+                src="/images/studio/officeStudio/office_studio_hero.webp"
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
@@ -375,31 +377,28 @@ export default function StudioCategory() {
               </div>
             </div>
 
-            {/* HIGHLIGHT BAR */}
-            <div className="border border-white/10 p-6 mb-10 flex items-center gap-4">
-              <div className="w-5 h-5 border border-white/40"></div>
-              <div>
-                <div className="uppercase text-xs opacity-40 mb-1">
-                  Footprint
-                </div>
-                {current.footprint}
-              </div>
-            </div>
-
             {/* BUTTONS */}
             <div className="flex gap-6">
               <button
-                onClick={() => navigate("/booking")}
-                className="px-8 py-4 bg-[#E8E5DE] text-black text-xs tracking-[0.2em] uppercase"
+                onClick={() => navigate(current.route)}
+                className="px-8 py-4 border border-white/30 text-xs tracking-[0.2em] uppercase
+  cursor-pointer
+  transition-all duration-300 ease-out
+  hover:bg-white/10 hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
+  active:translate-y-[1px] active:scale-[0.98]"
               >
-                Get a Quote
+                View Design
               </button>
 
               <button
-                onClick={() => navigate(current.route)}
-                className="px-8 py-4 border border-white/30 text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-colors"
+                onClick={() => navigate("/booking")}
+                className="px-8 py-4 bg-[#E8E5DE] text-black text-xs tracking-[0.2em] uppercase
+    cursor-pointer
+    transition-all duration-300 ease-out
+    hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
+    active:translate-y-[1px] active:scale-[0.98]"
               >
-                Download Floorplan
+                Get a Quote
               </button>
             </div>
           </div>

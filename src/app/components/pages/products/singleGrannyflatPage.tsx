@@ -109,51 +109,126 @@ export default function SingleGrannyFlat({
           </div>
         </div>
       </section>
-
-      {/* FEATURES */}
+      {/* FEATURES SECTION */}{" "}
       <section className="border-t border-black/10 px-8 py-32 bg-[#F7F5F0]">
-        <div className="grid md:grid-cols-3 border border-black/10">
-          {[
+        {" "}
+        {/* HEADER */}{" "}
+        <div className="grid md:grid-cols-2 gap-16 mb-20">
+          {" "}
+          <div>
+            {" "}
+            <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
+              {" "}
+              What's Included{" "}
+            </span>{" "}
+            <h2 className="font-serif text-[clamp(3rem,5vw,4.5rem)] leading-[1]">
+              {" "}
+              The Best of <br /> Our Features{" "}
+            </h2>{" "}
+          </div>{" "}
+          <div className="max-w-md ml-auto text-sm leading-relaxed opacity-60">
+            {" "}
+            Every element engineered for how you live, work, and rest — without
+            compromise.{" "}
+          </div>{" "}
+        </div>{" "}
+        {/* FEATURES DATA */}{" "}
+        {(() => {
+          const features = [
             {
-              title: "Fully Self-Contained",
-              desc: "Complete kitchen, bathroom, and private entry — independent living.",
+              title: "Full Customization",
+              desc: "Tailor cladding, finishes, layout, and dimensions to match your vision exactly.",
+              icon: (
+                <path d="M3 21l3-3m0 0l11-11a2.5 2.5 0 013.5 3.5L9.5 21H3z" />
+              ),
             },
             {
-              title: "Council Compliant",
-              desc: "Designed to meet Australian building regulations.",
+              title: "Fast Installation",
+              desc: "Prefabricated and assembled on-site in 1–2 days with minimal disruption.",
+              icon: (
+                <>
+                  {" "}
+                  <circle cx="12" cy="12" r="9" /> <path d="M12 7v5l3 3" />{" "}
+                </>
+              ),
             },
             {
-              title: "Energy Efficient",
-              desc: "Insulated walls, double glazing, and smart ventilation.",
+              title: "Fast Lead Times",
+              desc: "Deposit to delivery in as little as 6 weeks — industry-leading turnaround.",
+              icon: <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" />,
             },
             {
-              title: "Fast Build Time",
-              desc: "Delivered and installed in as little as 8–10 weeks.",
+              title: "Regulation Compliant",
+              desc: "All documentation meets local planning and building regulation requirements.",
+              icon: (
+                <>
+                  {" "}
+                  <path d="M3 10l9-7 9 7" /> <path d="M9 21V12h6v9" />{" "}
+                </>
+              ),
             },
             {
-              title: "Premium Finishes",
-              desc: "High-quality cabinetry, flooring, and fixtures.",
+              title: "10-Year Warranty",
+              desc: "A decade of structural warranty and dedicated ongoing support.",
+              icon: (
+                <>
+                  {" "}
+                  <circle cx="12" cy="8" r="4" />{" "}
+                  <path d="M8 14h8l-1 7H9l-1-7z" />{" "}
+                </>
+              ),
             },
             {
-              title: "Fixed Cost Contract",
-              desc: "Transparent pricing from start to finish.",
+              title: "Fixed Price Contract",
+              desc: "The price you see is the price you pay — fully transparent, no surprises.",
+              icon: (
+                <>
+                  {" "}
+                  <rect x="4" y="7" width="16" height="12" rx="2" />{" "}
+                  <path d="M9 7V5h6v2" />{" "}
+                </>
+              ),
             },
-          ].map((feature, i) => (
-            <div
-              key={i}
-              className="group border-r border-b border-black/10 p-12 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-white"
-            >
-              <h3 className="font-serif text-2xl mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-sm opacity-60 leading-relaxed">
-                {feature.desc}
-              </p>
+          ];
+          return (
+            <div className="grid md:grid-cols-3 border border-black/10">
+              {" "}
+              {features.map((feature, i) => (
+                <div
+                  key={i}
+                  className="group border-r border-b border-black/10 p-12 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-white hover:border-black/20"
+                >
+                  {" "}
+                  {/* ICON */}{" "}
+                  <div className="w-14 h-14 rounded-full border border-black/20 flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 group-hover:border-[#6F8A5E]">
+                    {" "}
+                    <svg
+                      className="w-6 h-6 text-[#6F8A5E] transition-all duration-500 group-hover:rotate-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                    >
+                      {" "}
+                      {feature.icon}{" "}
+                    </svg>{" "}
+                  </div>{" "}
+                  {/* TITLE */}{" "}
+                  <h3 className="font-serif text-2xl mb-4 transition-all duration-300 group-hover:tracking-wide">
+                    {" "}
+                    {feature.title}{" "}
+                  </h3>{" "}
+                  {/* DESCRIPTION */}{" "}
+                  <p className="text-sm opacity-60 leading-relaxed transition-all duration-300 group-hover:opacity-80">
+                    {" "}
+                    {feature.desc}{" "}
+                  </p>{" "}
+                </div>
+              ))}{" "}
             </div>
-          ))}
-        </div>
+          );
+        })()}{" "}
       </section>
-
       {/* FINISH SELECTION */}
       <section className="border-t border-black/10 px-8 py-32 bg-[#F7F5F0]">
         <div className="grid md:grid-cols-2 gap-20 items-start">
@@ -175,9 +250,7 @@ export default function SingleGrannyFlat({
                   />
                   <div>
                     <div>{finish.name}</div>
-                    <div className="text-sm opacity-50">
-                      {finish.subtitle}
-                    </div>
+                    <div className="text-sm opacity-50">{finish.subtitle}</div>
                   </div>
                 </div>
                 →
@@ -193,7 +266,6 @@ export default function SingleGrannyFlat({
           </div>
         </div>
       </section>
-
       {/* CTA */}
       <section className="border-t border-black/10 px-8 py-32">
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -217,11 +289,11 @@ export default function SingleGrannyFlat({
               Get a Quote
             </button>
             <button
-                onClick={() => navigate("/products")}
-                className="px-10 py-4 border border-black/20 uppercase text-xs tracking-[0.2em] hover:bg-black/5 transition"
-              >
-                ← Back to Range
-              </button>
+              onClick={() => navigate("/products")}
+              className="px-10 py-4 border border-black/20 uppercase text-xs tracking-[0.2em] hover:bg-black/5 transition"
+            >
+              ← Back to Range
+            </button>
           </div>
         </div>
       </section>
