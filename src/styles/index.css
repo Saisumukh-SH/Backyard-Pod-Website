@@ -171,3 +171,7 @@ a {
 .animate-scaleIn {
   animation: scaleIn .6s ease forwards;
 }
+
+.btn-primary {
+  @apply inline-flex items-center justify-center px-10 py-4 border border-black uppercase text-xs tracking-[0.2em] transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 active:scale-95;
+}

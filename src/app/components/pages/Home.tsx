@@ -1,25 +1,53 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function Home() {
   const navigate = useNavigate();
 
+  /* HERO GALLERY IMAGES */
+  const images = [
+    "/images/studio/studyNook/study_nook_timber.webp",
+    "/images/grannyflat/grannyflatexmp/granny_flats_hero.webp",
+    "/images/studio/officeStudio/office_studio_navy.webp",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="bg-white">
+
       {/* HERO */}
       <section className="relative h-[95vh] flex items-end overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+
+        {/* IMAGE GALLERY */}
+        {images.map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out ${
+              i === index ? "opacity-100 scale-105" : "opacity-0 scale-100"
+            }`}
+          />
+        ))}
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
         {/* Content */}
         <div className="relative w-full px-10 pb-20">
           <div className="max-w-7xl mx-auto">
+
             <span className="uppercase tracking-[0.25em] text-white/70 text-xs mb-6 block">
               Backyard Living Redefined
             </span>
@@ -32,13 +60,11 @@ export function Home() {
             </h1>
 
             <div className="flex gap-6 mt-10">
+
               <button
                 onClick={() => navigate("/products")}
                 className="px-8 py-4 bg-white text-black uppercase text-xs tracking-[0.2em]
-  cursor-pointer
-  transition-all duration-300 ease-out
-  hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-  active:translate-y-[1px] active:scale-[0.98]"
+                transition-all duration-300 hover:-translate-y-[3px] hover:shadow-xl hover:scale-[1.04]"
               >
                 Explore Designs
               </button>
@@ -46,13 +72,11 @@ export function Home() {
               <button
                 onClick={() => navigate("/booking")}
                 className="px-8 py-4 border border-white text-white uppercase text-xs tracking-[0.2em]
-  cursor-pointer
-  transition-all duration-300 ease-out
-  hover:bg-white hover:text-black hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-  active:translate-y-[1px] active:scale-[0.98]"
+                transition-all duration-300 hover:bg-white hover:text-black hover:-translate-y-[3px] hover:shadow-xl hover:scale-[1.04]"
               >
                 Get Quote
               </button>
+
             </div>
           </div>
         </div>
@@ -60,19 +84,22 @@ export function Home() {
 
       {/* CATEGORY SPLIT */}
       <section className="grid md:grid-cols-2">
+
         {/* STUDIO PODS */}
         <button
           onClick={() => navigate("/products/studio")}
           className="group relative h-[70vh] cursor-pointer overflow-hidden text-left"
         >
+
           <img
             src="/images/study_nook_hero.webp"
-            className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover transition duration-[1200ms] group-hover:scale-110"
           />
 
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition"></div>
 
           <div className="relative p-14 text-white max-w-md">
+
             <h2 className="font-serif text-5xl mb-6">Studio Pods</h2>
 
             <p className="opacity-80 mb-8">
@@ -82,27 +109,29 @@ export function Home() {
               extension. Smart, compact, and built for Australian backyards.
             </p>
 
-            <span className="flex items-center gap-2 text-sm uppercase tracking-[0.15em]">
+            <span className="flex items-center gap-2 text-sm uppercase tracking-[0.15em] group-hover:gap-4 transition-all">
               Explore Range
               <ArrowRight size={18} />
             </span>
+
           </div>
         </button>
 
         {/* GRANNY FLATS */}
         <button
           onClick={() => navigate("/products/granny")}
-          onKeyDown={(e) => e.key === "Enter" && navigate("/products/granny")}
           className="group relative h-[70vh] cursor-pointer overflow-hidden text-left"
         >
+
           <img
-            src="https://images.unsplash.com/photo-1692911470070-c10cd6c89938?w=1400&q=85"
-            className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            src="/images/granny_flats_hero.webp"
+            className="absolute inset-0 w-full h-full object-cover transition duration-[1200ms] group-hover:scale-110"
           />
 
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition"></div>
 
           <div className="relative p-14 text-white max-w-md">
+
             <h2 className="font-serif text-5xl mb-6">Granny Flats</h2>
 
             <p className="opacity-80 mb-8">
@@ -112,10 +141,11 @@ export function Home() {
               suit modern Australian homes and backyards.
             </p>
 
-            <span className="flex items-center gap-2 text-sm uppercase tracking-[0.15em]">
+            <span className="flex items-center gap-2 text-sm uppercase tracking-[0.15em] group-hover:gap-4 transition-all">
               Explore Range
               <ArrowRight size={18} />
             </span>
+
           </div>
         </button>
       </section>
@@ -123,26 +153,29 @@ export function Home() {
       {/* FEATURED DESIGNS */}
       <section className="px-10 py-32">
         <div className="max-w-7xl mx-auto">
+
           <h2 className="font-serif text-[clamp(3rem,5vw,4.5rem)] mb-20">
             Featured Designs
           </h2>
 
           <div className="grid md:grid-cols-3 gap-12">
+
             {/* CARD 1 */}
             <div
               onClick={() => navigate("/products/StudioProduct1")}
               className="group cursor-pointer"
             >
-              <div className="relative overflow-hidden">
-                {/* TAG */}
+              <div className="relative overflow-hidden shadow-sm group-hover:shadow-xl transition">
+
                 <span className="absolute top-4 left-4 bg-black text-white text-[10px] uppercase tracking-[0.2em] px-3 py-1 z-10">
                   Popular
                 </span>
 
                 <img
                   src="/images/studio/studyNook/study_nook_hero.webp"
-                  className="h-80 w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="h-80 w-full object-cover transition duration-[900ms] group-hover:scale-110"
                 />
+
               </div>
 
               <div className="mt-6">
@@ -153,24 +186,25 @@ export function Home() {
 
             {/* CARD 2 */}
             <div
-              onClick={() => navigate("/products/StudioProduct2")}
+              onClick={() => navigate("/products/GrannyflatProduct1")}
               className="group cursor-pointer"
             >
-              <div className="relative overflow-hidden">
-                {/* TAG */}
+              <div className="relative overflow-hidden shadow-sm group-hover:shadow-xl transition">
+
                 <span className="absolute top-4 left-4 bg-[#6F8A5E] text-white text-[10px] uppercase tracking-[0.2em] px-3 py-1 z-10">
                   Premium
                 </span>
 
                 <img
-                  src="https://images.unsplash.com/photo-1493809842364-78817add7ffb"
-                  className="h-80 w-full object-cover transition duration-700 group-hover:scale-105"
+                  src="/images/grannyflat/grannyflatexmp/granny_flats_hero.webp"
+                  className="h-80 w-full object-cover transition duration-[900ms] group-hover:scale-110"
                 />
+
               </div>
 
               <div className="mt-6">
-                <h3 className="font-serif text-2xl mb-2">Loft Studio</h3>
-                <p className="text-sm opacity-60">30 m² · Creative workspace</p>
+                <h3 className="font-serif text-2xl mb-2">Granny Flat 1</h3>
+                <p className="text-sm opacity-60">45 m² · Creative workspace</p>
               </div>
             </div>
 
@@ -179,16 +213,17 @@ export function Home() {
               onClick={() => navigate("/products/two-bedroom-flat")}
               className="group cursor-pointer"
             >
-              <div className="relative overflow-hidden">
-                {/* TAG */}
+              <div className="relative overflow-hidden shadow-sm group-hover:shadow-xl transition">
+
                 <span className="absolute top-4 left-4 bg-white text-black text-[10px] uppercase tracking-[0.2em] px-3 py-1 z-10 border">
                   New
                 </span>
 
                 <img
                   src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
-                  className="h-80 w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="h-80 w-full object-cover transition duration-[900ms] group-hover:scale-110"
                 />
+
               </div>
 
               <div className="mt-6">
@@ -196,6 +231,7 @@ export function Home() {
                 <p className="text-sm opacity-60">68 m² · Family living</p>
               </div>
             </div>
+
           </div>
         </div>
       </section>

@@ -17,7 +17,7 @@ const categories = [
     name: "Granny",
     nameLine2: "Flats",
     desc: "Fully self-contained living spaces — perfect for extended family or rental income. Designed for modern Australian living, our granny flats provide a practical way to add extra living space, a secondary dwelling, or an investment opportunity right in your backyard. Each unit is thoughtfully designed with a private bedroom, bathroom, kitchen, and living area, creating a comfortable and independent home. Ideal for multi-generational living, long-term rental income, guest accommodation, or Airbnb, granny flats are a smart way to maximise your property’s potential. Built to meet Australian building standards, they offer a cost-effective alternative to traditional home extensions while increasing property value.",
-    img: "https://images.unsplash.com/photo-1692911470070-c10cd6c89938?w=1400&q=85",
+    img: "/images/granny_flats_hero.webp",
     from: "From $68,000",
   },
 ];

@@ -14,56 +14,49 @@ export function About() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const timeline = [
-    {
-      year: "2022",
-      text: "Design MyBackyard was founded with a mission to reimagine backyard living.",
-    },
-    {
-      year: "2023",
-      text: "First collection of studio pods launched across Melbourne.",
-    },
-    {
-      year: "2024",
-      text: "Granny flat range introduced for modern multi-generational living.",
-    },
-    {
-      year: "2025",
-      text: "100+ backyard spaces designed and delivered across Australia.",
-    },
+    { year: "2022", text: "Design MyBackyard was founded with a mission to reimagine backyard living." },
+    { year: "2023", text: "First collection of studio pods launched across Melbourne." },
+    { year: "2024", text: "Granny flat range introduced for modern multi-generational living." },
+    { year: "2025", text: "100+ backyard spaces designed and delivered across Australia." },
   ];
 
   return (
-    <div>
+    <div className="bg-white text-black">
+
       {/* HERO */}
 
       <section className="relative h-[85vh] overflow-hidden">
-        <div ref={heroRef} className="absolute inset-0">
+
+        <div ref={heroRef} className="absolute inset-0 scale-105">
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=80"
             className="w-full h-full object-cover"
           />
         </div>
 
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/40" />
 
-        <div className="absolute bottom-20 left-12 text-white">
+        <div className="absolute bottom-24 left-10 md:left-20 text-white">
           <h1 className="font-serif text-[clamp(3rem,6vw,6rem)]">About</h1>
         </div>
+
       </section>
+
+
 
       {/* INTRODUCTION */}
 
-      <section className="px-12 py-32 grid md:grid-cols-2 gap-20">
-        <div className="uppercase tracking-[0.25em] text-xs opacity-50">
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-32 grid md:grid-cols-2 gap-24">
+
+        <div className="uppercase tracking-[0.3em] text-xs opacity-50">
           Introduction
         </div>
 
-        <div className="text-lg leading-relaxed text-black/70 space-y-6">
+        <div className="text-lg leading-relaxed text-black/70 space-y-6 max-w-xl">
           <p>
             Design MyBackyard creates well-designed backyard studios and granny
             flats for modern Australian homes.
@@ -92,148 +85,186 @@ export function About() {
             gives their property greater flexibility and long-term value.
           </p>
         </div>
+
       </section>
+
+
 
       {/* OUR COMPANY */}
 
-      <section className="px-12 py-32 grid md:grid-cols-2 gap-20 items-center">
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-32 grid md:grid-cols-2 gap-24 items-center">
+
         <div>
-          <span className="uppercase tracking-[0.25em] text-xs opacity-50 block mb-6">
+
+          <span className="uppercase tracking-[0.3em] text-xs opacity-50 block mb-8">
             Our Company
           </span>
 
-          <p className="text-lg text-black/70 leading-relaxed mb-6">
-            Design MyBackyard started with a simple idea. Outdoor spaces deserve
-            the same level of design attention as the homes we live in. Our team
-            combines architectural thinking with practical building experience
-            to create backyard studios, garden offices and granny flats that are
-            functional, efficient and built to last.
-          </p>
+          <div className="space-y-6 text-lg text-black/70 leading-relaxed max-w-xl">
 
-          <p className="text-lg text-black/70 leading-relaxed mb-6">
-            We focus on smart layouts, durable materials and clean design that
-            feels comfortable and easy to use. Every project is approached with
-            the goal of creating a space that works well today and continues to
-            add value over time.
-          </p>
+            <p>
+              Design MyBackyard started with a simple idea. Outdoor spaces deserve
+              the same level of design attention as the homes we live in. Our team
+              combines architectural thinking with practical building experience
+              to create backyard studios, garden offices and granny flats that are
+              functional, efficient and built to last.
+            </p>
 
-          <p className="text-lg text-black/70 leading-relaxed">
-            Today we work with homeowners who want to create secondary
-            dwellings, backyard offices and private retreats that fit naturally
-            within their property.
-          </p>
+            <p>
+              We focus on smart layouts, durable materials and clean design that
+              feels comfortable and easy to use. Every project is approached with
+              the goal of creating a space that works well today and continues to
+              add value over time.
+            </p>
+
+            <p>
+              Today we work with homeowners who want to create secondary
+              dwellings, backyard offices and private retreats that fit naturally
+              within their property.
+            </p>
+
+          </div>
+
         </div>
 
         <img
           src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=1400&q=80"
-          className="w-full h-[520px] object-cover"
+          className="w-full h-[520px] object-cover rounded-xl shadow-xl"
         />
+
       </section>
 
-      {/* Why Homeowners Choose Design MyBackyard */}
 
-       <section className="bg-[#F7F5F0] px-10 py-32">
-        <div className="max-w-7xl mx-auto">
+
+      {/* WHY CHOOSE */}
+
+      <section className="bg-[#F7F5F0] py-32">
+
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+
           <h2 className="font-serif text-[clamp(3rem,5vw,4rem)] mb-20">
             Why Homeowners Choose Design MyBackyard
           </h2>
 
           <div className="grid md:grid-cols-4 gap-12">
-            <div>
-              <h3 className="font-serif text-2xl mb-4">Thoughtful design</h3>
-              <p className="opacity-60 text-sm text-justify">
-                Every backyard studio and granny flat is designed to maximise usable space, natural light and comfort.
-              </p>
-            </div>
 
-            <div>
-              <h3 className="font-serif text-2xl mb-4">Built for Australian living</h3>
-              <p className="opacity-60 text-sm text-justify">
-                Our spaces are designed to suit the Australian climate and everyday lifestyle.
-              </p>
-            </div>
+            {[
+              {
+                title: "Thoughtful design",
+                text: "Every backyard studio and granny flat is designed to maximise usable space, natural light and comfort."
+              },
+              {
+                title: "Built for Australian living",
+                text: "Our spaces are designed to suit the Australian climate and everyday lifestyle."
+              },
+              {
+                title: "A practical way to expand your home",
+                text: "Backyard studios and granny flats provide extra space for working from home, hosting family, or generating rental income."
+              },
+              {
+                title: "Built to last",
+                text: "We prioritise quality materials and practical construction methods so every space remains useful for many years."
+              }
+            ].map((item, i) => (
 
-            <div>
-              <h3 className="font-serif text-2xl mb-4">A practical way to expand your home</h3>
-              <p className="opacity-60 text-sm text-justify">
-                Backyard studios and granny flats provide extra space for working from home, hosting family, or generating rental income.
-              </p>
-            </div>
+              <div key={i} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
 
-            <div>
-              <h3 className="font-serif text-2xl mb-4">Built to last</h3>
-              <p className="opacity-60 text-sm text-justify">
-                We prioritise quality materials and practical construction methods so every space remains useful for many years.
-              </p>
-            </div>
+                <h3 className="font-serif text-2xl mb-4">{item.title}</h3>
+
+                <p className="opacity-60 text-sm leading-relaxed">
+                  {item.text}
+                </p>
+
+              </div>
+
+            ))}
+
           </div>
-          <div className="max-w-7xl mx-auto mt-20">
-          <h2 className="font-serif text-[clamp(1rem,5vw,2rem)] mb-20">
-            Design MyBackyard works with homeowners across Melbourne and surrounding areas to create backyard studios, garden offices, and granny flats that make better use of outdoor space.
-          </h2>
+
+          <div className="max-w-4xl mt-20">
+            <h2 className="font-serif text-[clamp(1.3rem,3vw,2rem)]">
+              Design MyBackyard works with homeowners across Melbourne and surrounding areas to create backyard studios, garden offices, and granny flats that make better use of outdoor space.
+            </h2>
           </div>
+
         </div>
+
       </section>
 
 
-      {/* HISTORY TIMELINE */}
 
-      <section className="px-12 py-32">
-        <span className="uppercase tracking-[0.25em] text-xs opacity-50 block mb-20">
+      {/* TIMELINE */}
+
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-32">
+
+        <span className="uppercase tracking-[0.3em] text-xs opacity-50 block mb-20">
           History
         </span>
 
-        <div className="overflow-x-auto">
-          <div className="flex gap-40 min-w-[1000px]">
-            {timeline.map((item, index) => (
-              <div key={index} className="w-[260px]">
-                <div className="text-xl font-semibold mb-6">{item.year}</div>
+        <div className="grid md:grid-cols-4 gap-16">
 
-                <div className="relative h-[2px] bg-black/30 mb-6">
-                  <div className="w-5 h-5 rounded-full border border-black bg-white absolute -top-[9px]" />
-                </div>
+          {timeline.map((item, index) => (
 
-                <p className="text-black/70 leading-relaxed">{item.text}</p>
+            <div key={index}>
+
+              <div className="text-xl font-semibold mb-6">{item.year}</div>
+
+              <div className="relative h-[2px] bg-black/20 mb-6">
+                <div className="w-4 h-4 rounded-full bg-[#6F8A5E] absolute -top-[6px]" />
               </div>
-            ))}
-          </div>
+
+              <p className="text-black/70 leading-relaxed">{item.text}</p>
+
+            </div>
+
+          ))}
+
         </div>
+
       </section>
 
-      {/* LEADERSHIP QUOTE */}
 
-      <section className="px-12 py-32 grid md:grid-cols-2 gap-20 items-center">
+
+      {/* QUOTE */}
+
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-32 grid md:grid-cols-2 gap-24 items-center">
+
         <img
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80"
-          className="w-full h-[420px] object-cover grayscale"
+          className="w-full h-[420px] object-cover grayscale rounded-xl"
         />
 
         <div>
+
           <h3 className="font-serif text-4xl leading-relaxed mb-8">
             "Our reputation for innovation comes from the creative approach we
             take to every project."
           </h3>
 
           <p className="text-black/50">Founder — Design MyBackyard</p>
+
         </div>
+
       </section>
+
+
 
       {/* CTA */}
 
-      <section className="px-12 py-32 text-center">
+      <section className="px-8 md:px-16 py-32 text-center border-t border-black/10">
+
         <h2 className="font-serif text-[clamp(3rem,5vw,4rem)] mb-12">
           Let's design your
           <br />
           <span className="italic text-[#6F8A5E]">backyard space</span>
         </h2>
 
-        <a
-          href="/booking"
-          className="px-10 py-4 border border-black uppercase text-xs tracking-[0.2em] hover:bg-black hover:text-white transition"
-        >
-          Request a Quote
-        </a>
+        <a href="/booking" className="btn-primary">
+  Request a Quote
+</a>
+
       </section>
+
     </div>
   );
 }

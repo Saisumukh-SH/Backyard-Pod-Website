@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 export function FAQ() {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -36,11 +35,11 @@ export function FAQ() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <div>
+    <div className="bg-white text-black">
 
       {/* HERO */}
 
-      <section className="px-12 py-32 border-b border-black/10 grid md:grid-cols-2 gap-20">
+      <section className="px-8 md:px-16 py-32 border-b border-black/10 grid md:grid-cols-2 gap-20 max-w-7xl mx-auto">
 
         <div>
 
@@ -71,43 +70,53 @@ export function FAQ() {
 
       {/* FAQ ACCORDION */}
 
-      <section className="px-12 py-28 max-w-4xl mx-auto">
+      <section className="px-8 md:px-16 py-28 max-w-4xl mx-auto">
 
         {faqs.map((item, i) => (
 
           <div
             key={i}
-            className="border-b border-black/10 py-8 cursor-pointer group"
+            className="border-b border-black/10 py-8 cursor-pointer group relative"
             onClick={() => setActive(active === i ? null : i)}
           >
 
+            {/* hover accent line */}
+            <span className="absolute -left-4 top-0 h-full w-[2px] bg-[#6F8A5E] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
             <div className="flex justify-between items-center">
 
-              <h3 className="font-serif text-xl group-hover:text-[#6F8A5E] transition-colors">
+              <h3 className="font-serif text-xl md:text-2xl group-hover:text-[#6F8A5E] transition-colors">
 
                 {item.q}
 
               </h3>
 
-              <span className="text-2xl opacity-40 group-hover:opacity-100 transition">
+              {/* rotating icon */}
 
-                {active === i ? "−" : "+"}
-
+              <span
+                className={`text-2xl transition-transform duration-300 ${
+                  active === i ? "rotate-45 text-[#6F8A5E]" : ""
+                }`}
+              >
+                +
               </span>
 
             </div>
 
             <div
-              className={`overflow-hidden transition-all duration-500 ${
-                active === i ? "max-h-40 mt-4" : "max-h-0"
+              className={`grid transition-all duration-500 ${
+                active === i ? "grid-rows-[1fr] mt-6" : "grid-rows-[0fr]"
               }`}
             >
 
-              <p className="text-black/70 leading-relaxed">
+              <div className="overflow-hidden">
 
-                {item.a}
+                <p className="text-black/70 leading-relaxed pr-6">
 
-              </p>
+                  {item.a}
+
+                </p>
+
+              </div>
 
             </div>
 
@@ -121,9 +130,9 @@ export function FAQ() {
 
       {/* CTA SECTION */}
 
-      <section className="px-12 py-32 text-center">
+      <section className="px-8 md:px-16 py-32 text-center border-t border-black/10">
 
-        <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-10">
+        <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-8">
 
           Still have
           <br />
@@ -134,21 +143,16 @@ export function FAQ() {
 
         </h2>
 
-        <p className="text-black/60 mb-12 max-w-xl mx-auto">
+        <p className="text-black/60 mb-12 max-w-xl mx-auto text-lg">
 
           Our team is happy to help. Reach out and we will guide you
           through design options, pricing and installation.
 
         </p>
 
-        <a
-          href="/contact"
-          className="px-10 py-4 border border-black uppercase text-xs tracking-[0.2em] hover:bg-black hover:text-white transition"
-        >
-
-          Contact Us
-
-        </a>
+        <a href="/booking" className="btn-primary">
+  Contact us
+</a>
 
       </section>
 

@@ -1,63 +1,64 @@
-import { useNavigate } from "react-router-dom";
-import { Check } from "lucide-react";
+import { useEffect } from "react";
 
 export default function ThankYou() {
-
-  const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#1E1E1C] text-white px-6 relative overflow-hidden">
+    <div className="bg-white">
 
-      {/* subtle background glow */}
-      <div className="absolute w-[600px] h-[600px] bg-[#93A87C]/10 blur-[160px] rounded-full top-[-200px] left-[-200px]" />
+      <section className="px-8 py-32 max-w-3xl mx-auto text-center">
 
-      <div className="relative text-center max-w-xl animate-fadeUp">
+        <span className="uppercase tracking-[0.25em] text-xs opacity-50 block mb-6">
+          Booking Received
+        </span>
 
-        {/* Animated success icon */}
-        <div className="flex justify-center mb-10">
-
-          <div className="w-20 h-20 rounded-full border border-[#93A87C] flex items-center justify-center animate-scaleIn">
-
-            <Check className="text-[#93A87C]" size={36} />
-
-          </div>
-
-        </div>
-
-        {/* Title */}
-        <h1 className="font-serif text-[clamp(3rem,5vw,4rem)] mb-6 leading-tight">
+        <h1 className="font-serif text-[clamp(3rem,5vw,4rem)] leading-[1.05] mb-8">
           Thank You
         </h1>
 
-        {/* Description */}
-        <p className="text-white/70 text-lg leading-relaxed mb-12">
-          Your request has been successfully received.  
-          Our team will review your enquiry and contact you shortly
-          to discuss your backyard project.
+        <p className="text-lg text-black/70 leading-relaxed mb-10">
+          Your consultation request has been received successfully.
+          Our team will review your details and contact you within
+          the next 24 hours.
         </p>
 
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <p className="text-black/60 mb-16">
+          If your enquiry is urgent, feel free to reach out directly.
+        </p>
 
-          <button
-            onClick={() => navigate("/")}
-            className="px-10 py-4 bg-white text-black uppercase text-xs tracking-[0.2em] 
-            hover:bg-[#93A87C] hover:text-white transition-all duration-300 hover:-translate-y-1"
-          >
-            Back to Home
-          </button>
 
-          <button
-            onClick={() => navigate("/products")}
-            className="px-10 py-4 border border-white/20 uppercase text-xs tracking-[0.2em] 
-            hover:border-[#93A87C] hover:text-[#93A87C] transition-all duration-300 hover:-translate-y-1"
+
+        {/* ACTION BUTTONS */}
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+
+          <a
+            href="/"
+            className="group inline-flex items-center justify-center px-10 py-4
+            border border-black uppercase text-xs tracking-[0.2em]
+            transition-all duration-300 hover:bg-black hover:scale-105"
           >
-            Explore Designs
-          </button>
+            <span className="text-black group-hover:text-white transition-colors duration-300">
+              Back to Home
+            </span>
+          </a>
+
+          <a
+            href="/contact"
+            className="group inline-flex items-center justify-center px-10 py-4
+            border border-black uppercase text-xs tracking-[0.2em]
+            transition-all duration-300 hover:bg-black hover:scale-105"
+          >
+            <span className="text-black group-hover:text-white transition-colors duration-300">
+              Contact Us
+            </span>
+          </a>
 
         </div>
 
-      </div>
+      </section>
 
     </div>
   );

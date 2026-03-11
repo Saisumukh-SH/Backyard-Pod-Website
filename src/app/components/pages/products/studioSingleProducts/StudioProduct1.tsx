@@ -5,7 +5,7 @@ export default function StudioProduct1() {
     {
       id: "default",
       name: "Classic",
-      subtitle: "Clean plaster finish — crisp & minimal",
+      subtitle: "Spotted Gum - A timeless Australian hardwood",
       color: "#fcefd6",
       image: "/images/studio/studyNook/study_nook_hero.webp",
     },

@@ -14,7 +14,7 @@ export default function GrannyFlats() {
       label: "45 M²",
       route: "/products/GrannyflatProduct1",
       image:
-        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1400&q=80",
+        "/images/granny_flats_hero.webp",
       description:
         "Compact one-bedroom flat with open-plan living, full kitchen and modern bathroom.",
       footprint: "7 × 6.5 m",
@@ -273,17 +273,25 @@ export default function GrannyFlats() {
             <div className="flex gap-6">
 
               <button
-                onClick={() => navigate("/booking")}
-                className="px-8 py-4 bg-[#E8E5DE] text-black text-xs tracking-[0.2em] uppercase"
+                onClick={() => navigate(current.route)}
+                className="px-8 py-4 border border-white/30 text-xs tracking-[0.2em] uppercase
+  cursor-pointer
+  transition-all duration-300 ease-out
+  hover:bg-white/10 hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
+  active:translate-y-[1px] active:scale-[0.98]"
               >
-                Get a Quote
+                View Design
               </button>
 
               <button
-                onClick={() => navigate(current.route)}
-                className="px-8 py-4 border border-white/30 text-xs tracking-[0.2em] uppercase hover:bg-white/10 transition-colors"
+                onClick={() => navigate("/booking")}
+                className="px-8 py-4 bg-[#E8E5DE] text-black text-xs tracking-[0.2em] uppercase
+    cursor-pointer
+    transition-all duration-300 ease-out
+    hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
+    active:translate-y-[1px] active:scale-[0.98]s"
               >
-                View Details
+                Get a Quote
               </button>
 
             </div>
