@@ -1,4 +1,4 @@
-import SingleGrannyFlatPage from "../singleGrannyFlatPage";
+import SingleGrannyFlatPage from "../singleGrannyflatPage";
 
 export default function GrannyProduct1() {
 
