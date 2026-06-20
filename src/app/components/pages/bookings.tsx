@@ -10,196 +10,286 @@ export default function Booking() {
   return (
     <div className="bg-white">
 
-      {/* HEADER */}
+{/* HERO */}
 
-      <section className="max-w-5xl mx-auto px-8 pt-28 pb-16 text-center">
+<section className="bg-[#F5F0EB] py-36">
 
-        <h1 className="font-serif text-[clamp(3rem,5vw,4rem)] mb-6">
-          Book a Consultation
-        </h1>
+  <div className="max-w-5xl mx-auto px-8 text-center">
 
-        <p className="text-black/60 max-w-xl mx-auto">
-          Fill in your details and our team will contact you within 24 hours.
-        </p>
+    <span className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs">
+      Book A Consultation
+    </span>
 
-      </section>
+    <h1 className="editorial-heading text-[#2E2A26] text-[clamp(3rem,6vw,6rem)] mt-8 leading-[0.95]">
+      Let's Discuss
+      <br />
+      Your Project
+    </h1>
 
+    <p className="text-[#5F5A55] max-w-2xl mx-auto mt-8 text-lg leading-relaxed">
+      Tell us a little about your vision and we'll arrange a consultation
+      to explore the possibilities for your backyard space.
+    </p>
 
+  </div>
 
-      {/* FORM */}
-
-      <section className="px-8 pb-32">
-
-        <div className="max-w-4xl mx-auto bg-white border border-black/10 p-10 md:p-14 rounded-xl shadow-sm">
-
-          <form
-            name="booking"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            className="grid md:grid-cols-2 gap-8"
-          >
-
-            {/* NETLIFY REQUIRED HIDDEN FIELDS */}
-
-            <input type="hidden" name="form-name" value="booking" />
-            <input type="hidden" name="bot-field" />
-            <input type="hidden" name="redirect" value="/thank-you" />
+</section>
 
 
 
-            {/* NAME */}
+{/* FORM */}
 
-            <div>
-              <label className="block text-xs uppercase tracking-[0.25em] mb-3 text-black/50">
-                Full Name
-              </label>
+<section className="px-8 pb-32 bg-[#F5F0EB]">
 
-              <input
-                type="text"
-                name="name"
-                required
-                className="w-full border border-black/20 px-4 py-3 focus:outline-none focus:border-black transition"
-              />
-            </div>
+  <div className="max-w-5xl mx-auto bg-white rounded-[32px] p-10 md:p-14 border border-[rgba(46,42,38,0.08)] shadow-sm">
 
+    <h3 className="text-2xl text-[#2E2A26] mb-2">
+      Tell Us About Your Project
+    </h3>
 
+    <p className="text-[#5F5A55] mb-10">
+      Share a few details and our team will contact you within 24 hours.
+    </p>
 
-            {/* EMAIL */}
+    <form
+      name="booking"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/thank-you"
+      className="space-y-8"
+    >
 
-            <div>
-              <label className="block text-xs uppercase tracking-[0.25em] mb-3 text-black/50">
-                Email
-              </label>
+      {/* NETLIFY */}
 
-              <input
-                type="email"
-                name="email"
-                required
-                className="w-full border border-black/20 px-4 py-3 focus:outline-none focus:border-black transition"
-              />
-            </div>
+      <input type="hidden" name="form-name" value="booking" />
 
+      <p hidden>
+        <label>
+          Don't fill this out:
+          <input name="bot-field" />
+        </label>
+      </p>
 
+      {/* PROJECT TYPE */}
 
-            {/* PHONE */}
+      <div>
 
-            <div>
-              <label className="block text-xs uppercase tracking-[0.25em] mb-3 text-black/50">
-                Phone
-              </label>
+        <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-4">
+          Project Type
+        </label>
 
-              <input
-                type="tel"
-                name="phone"
-                className="w-full border border-black/20 px-4 py-3 focus:outline-none focus:border-black transition"
-              />
-            </div>
+        <div className="flex flex-wrap gap-3">
 
+          {["Studio Pod", "Granny Flat"].map((type) => (
 
+            <button
+              key={type}
+              type="button"
+              onClick={() => setProjectType(type)}
+              className={`
+                px-6 py-3 rounded-full transition-all duration-300 border
+                ${
+                  projectType === type
+                    ? "bg-[#C7A77A] border-[#C7A77A] text-[#2E2A26]"
+                    : "bg-[#F5F0EB] border-[rgba(46,42,38,0.08)] text-[#5F5A55]"
+                }
+              `}
+            >
+              {type}
+            </button>
 
-            {/* PROJECT TYPE */}
-
-            <div>
-              <label className="block text-xs uppercase tracking-[0.25em] mb-3 text-black/50">
-                Project Type
-              </label>
-
-              <select
-                name="project"
-                value={projectType}
-                onChange={(e) => setProjectType(e.target.value)}
-                className="w-full border border-black/20 px-4 py-3 focus:outline-none focus:border-black transition"
-              >
-                <option value="">Select Project</option>
-                <option value="Studio Pod">Studio Pod</option>
-                <option value="Granny Flat">Granny Flat</option>
-              </select>
-            </div>
-
-
-
-            {/* STUDIO MODELS (CONDITIONAL) */}
-
-            {projectType === "Studio Pod" && (
-              <div>
-                <label className="block text-xs uppercase tracking-[0.25em] mb-3 text-black/50">
-                  Studio Model
-                </label>
-
-                <select
-                  name="studio-model"
-                  className="w-full border border-black/20 px-4 py-3 focus:outline-none focus:border-black transition"
-                >
-                  <option>Hokkori</option>
-                  <option>Arbor</option>
-                  <option>Vista</option>
-                  <option>Luma</option>
-                </select>
-              </div>
-            )}
-
-
-
-            {/* GRANNY FLAT MODELS (CONDITIONAL) */}
-
-            {projectType === "Granny Flat" && (
-              <div>
-                <label className="block text-xs uppercase tracking-[0.25em] mb-3 text-black/50">
-                  Granny Flat Model
-                </label>
-
-                <select
-                  name="granny-model"
-                  className="w-full border border-black/20 px-4 py-3 focus:outline-none focus:border-black transition"
-                >
-                  <option>1 Bedroom Granny Flat</option>
-                  <option>2 Bedroom Granny Flat</option>
-                  <option>Custom Granny Flat</option>
-                </select>
-              </div>
-            )}
-
-
-
-            {/* MESSAGE */}
-
-            <div className="md:col-span-2">
-              <label className="block text-xs uppercase tracking-[0.25em] mb-3 text-black/50">
-                Message
-              </label>
-
-              <textarea
-                name="message"
-                rows={5}
-                className="w-full border border-black/20 px-4 py-3 focus:outline-none focus:border-black transition"
-              ></textarea>
-            </div>
-
-
-
-            {/* SUBMIT BUTTON */}
-
-            <div className="md:col-span-2 pt-6">
-
-              <button
-                type="submit"
-                className="group inline-flex items-center justify-center px-10 py-4
-                border border-black uppercase text-xs tracking-[0.2em]
-                transition-all duration-300 hover:bg-black hover:scale-105 active:scale-95"
-              >
-                <span className="text-black group-hover:text-white transition-colors duration-300">
-                  Submit Booking
-                </span>
-              </button>
-
-            </div>
-
-          </form>
+          ))}
 
         </div>
 
-      </section>
+        <input
+          type="hidden"
+          name="project"
+          value={projectType}
+        />
+
+      </div>
+
+      {/* DETAILS */}
+
+      <div className="grid md:grid-cols-2 gap-6">
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          required
+          className="
+            w-full
+            px-5 py-4
+            rounded-2xl
+            border border-[rgba(46,42,38,0.08)]
+            bg-[#FAF8F5]
+            text-[#2E2A26]
+            focus:border-[#C7A77A]
+            focus:bg-white
+            outline-none
+            transition-all
+          "
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          required
+          className="
+            w-full
+            px-5 py-4
+            rounded-2xl
+            border border-[rgba(46,42,38,0.08)]
+            bg-[#FAF8F5]
+            text-[#2E2A26]
+            focus:border-[#C7A77A]
+            focus:bg-white
+            outline-none
+            transition-all
+          "
+        />
+
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Phone Number"
+          className="
+            w-full
+            px-5 py-4
+            rounded-2xl
+            border border-[rgba(46,42,38,0.08)]
+            bg-[#FAF8F5]
+            text-[#2E2A26]
+            focus:border-[#C7A77A]
+            focus:bg-white
+            outline-none
+            transition-all
+          "
+        />
+
+        <input
+          type="text"
+          name="location"
+          placeholder="Project Location"
+          className="
+            w-full
+            px-5 py-4
+            rounded-2xl
+            border border-[rgba(46,42,38,0.08)]
+            bg-[#FAF8F5]
+            text-[#2E2A26]
+            focus:border-[#C7A77A]
+            focus:bg-white
+            outline-none
+            transition-all
+          "
+        />
+
+      </div>
+
+      {/* STUDIO MODEL */}
+
+      {projectType === "Studio Pod" && (
+
+        <select
+          name="studio-model"
+          className="
+            w-full
+            px-5 py-4
+            rounded-2xl
+            border border-[rgba(46,42,38,0.08)]
+            bg-[#FAF8F5]
+            text-[#2E2A26]
+            focus:border-[#C7A77A]
+            outline-none
+          "
+        >
+          <option>Select Studio Model</option>
+          <option>Hokkori</option>
+          <option>Arbor</option>
+          <option>Vista</option>
+          <option>Luma</option>
+        </select>
+
+      )}
+
+      {/* GRANNY FLAT MODEL */}
+
+      {projectType === "Granny Flat" && (
+
+        <select
+          name="granny-model"
+          className="
+            w-full
+            px-5 py-4
+            rounded-2xl
+            border border-[rgba(46,42,38,0.08)]
+            bg-[#FAF8F5]
+            text-[#2E2A26]
+            focus:border-[#C7A77A]
+            outline-none
+          "
+        >
+          <option>Select Granny Flat Model</option>
+          <option>1 Bedroom Granny Flat</option>
+          <option>2 Bedroom Granny Flat</option>
+          <option>Custom Granny Flat</option>
+        </select>
+
+      )}
+
+      {/* MESSAGE */}
+
+      <textarea
+        name="message"
+        rows={6}
+        placeholder="Tell us about your project, ideas, timeline or any questions you may have..."
+        className="
+          w-full
+          px-5 py-4
+          rounded-2xl
+          border border-[rgba(46,42,38,0.08)]
+          bg-[#FAF8F5]
+          text-[#2E2A26]
+          resize-none
+          focus:border-[#C7A77A]
+          focus:bg-white
+          outline-none
+          transition-all
+        "
+      />
+
+      {/* BUTTON */}
+
+      <div className="flex justify-end">
+
+        <button
+          type="submit"
+          className="
+            px-10 py-4
+            bg-[#2E2A26]
+            text-[#F5F0EB]
+            rounded-full
+            transition-all duration-300
+            hover:bg-[#C7A77A]
+            hover:text-[#2E2A26]
+            hover:-translate-y-1
+          "
+        >
+          Book Consultation
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
 
     </div>
   );

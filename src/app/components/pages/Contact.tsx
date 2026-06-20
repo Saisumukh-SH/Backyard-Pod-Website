@@ -122,98 +122,231 @@ export function Contact() {
 
       </div>
 
-      {/* FORM CARD */}
+{/* FORM CARD */}
 
-      <div className="bg-[#F5F0EB] rounded-[32px] p-10 border border-[rgba(46,42,38,0.08)]">
+<div className="bg-white rounded-[32px] p-10 md:p-12 border border-[rgba(46,42,38,0.08)] shadow-sm">
 
-        {/* PROJECT TYPE */}
+  <h3 className="text-2xl text-[#2E2A26] mb-2">
+    Tell Us About Your Project
+  </h3>
 
-        <div className="mb-10">
-
-          <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-5">
-            Project Type
-          </label>
-
-          <div className="grid md:grid-cols-2 gap-4">
-
-            {[
-              "Backyard Studio",
-              "Granny Flat",
-              "Not Sure Yet"
-            ].map((item) => (
-
-              <button
-                key={item}
-                type="button"
-                className="
-                  p-4
-                  bg-white
-                  rounded-2xl
-                  border border-[rgba(46,42,38,0.08)]
-                  text-[#2E2A26]
-                  transition-all duration-300
-                  hover:border-[#C7A77A]
-                  hover:bg-[#EFE8DF]
-                "
-              >
-                {item}
-              </button>
-
-            ))}
-
-          </div>
-
-        </div>
-
-<form
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  action="/thank-you"
-  className="space-y-6"
->
-  <input type="hidden" name="form-name" value="contact" />
-
-  <p hidden>
-    <label>
-      Don't fill this out:
-      <input name="bot-field" />
-    </label>
+  <p className="text-[#5F5A55] mb-10">
+    Share a few details and we'll get back to you within 24 hours.
   </p>
 
-  <input
-    type="text"
-    name="name"
-    placeholder="Full Name"
-    required
-  />
+  <form
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action="/thank-you"
+    className="space-y-8"
+  >
+    <input type="hidden" name="form-name" value="contact" />
 
-  <input
-    type="email"
-    name="email"
-    placeholder="Email Address"
-    required
-  />
+    <p hidden>
+      <label>
+        Don't fill this out:
+        <input name="bot-field" />
+      </label>
+    </p>
 
-  <input
-    type="tel"
-    name="phone"
-    placeholder="Phone Number"
-  />
+    {/* PROJECT TYPE */}
 
-  <textarea
-    name="message"
-    placeholder="Tell us about your project..."
-  />
+    <div>
 
-  <button type="submit">
-    Send Enquiry
-  </button>
+      <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-4">
+        Project Type
+      </label>
 
-</form>
+      <div className="flex flex-wrap gap-3">
+
+        {[
+          "Backyard Studio",
+          "Granny Flat",
+          "Home Office",
+          "Not Sure Yet"
+        ].map((item) => (
+
+          <label
+            key={item}
+            className="
+              cursor-pointer
+            "
+          >
+
+            <input
+              type="radio"
+              name="projectType"
+              value={item}
+              className="peer hidden"
+            />
+
+            <div
+              className="
+                px-6 py-3
+                rounded-full
+                border
+                border-[rgba(46,42,38,0.08)]
+                bg-[#F5F0EB]
+                text-[#5F5A55]
+                transition-all
+                duration-300
+                peer-checked:bg-[#C7A77A]
+                peer-checked:text-[#2E2A26]
+                peer-checked:border-[#C7A77A]
+                hover:border-[#C7A77A]
+              "
+            >
+              {item}
+            </div>
+
+          </label>
+
+        ))}
 
       </div>
+
+    </div>
+
+    {/* DETAILS */}
+
+    <div className="grid md:grid-cols-2 gap-6">
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Full Name"
+        required
+        className="
+          w-full
+          px-5
+          py-4
+          rounded-2xl
+          border
+          border-[rgba(46,42,38,0.08)]
+          bg-[#FAF8F5]
+          text-[#2E2A26]
+          focus:border-[#C7A77A]
+          focus:bg-white
+          outline-none
+          transition-all
+        "
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        required
+        className="
+          w-full
+          px-5
+          py-4
+          rounded-2xl
+          border
+          border-[rgba(46,42,38,0.08)]
+          bg-[#FAF8F5]
+          text-[#2E2A26]
+          focus:border-[#C7A77A]
+          focus:bg-white
+          outline-none
+          transition-all
+        "
+      />
+
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        className="
+          w-full
+          px-5
+          py-4
+          rounded-2xl
+          border
+          border-[rgba(46,42,38,0.08)]
+          bg-[#FAF8F5]
+          text-[#2E2A26]
+          focus:border-[#C7A77A]
+          focus:bg-white
+          outline-none
+          transition-all
+        "
+      />
+
+      <input
+        type="text"
+        name="location"
+        placeholder="Project Location"
+        className="
+          w-full
+          px-5
+          py-4
+          rounded-2xl
+          border
+          border-[rgba(46,42,38,0.08)]
+          bg-[#FAF8F5]
+          text-[#2E2A26]
+          focus:border-[#C7A77A]
+          focus:bg-white
+          outline-none
+          transition-all
+        "
+      />
+
+    </div>
+
+    {/* MESSAGE */}
+
+    <textarea
+      name="message"
+      rows={5}
+      required
+      placeholder="Tell us about your project..."
+      className="
+        w-full
+        px-5
+        py-4
+        rounded-2xl
+        border
+        border-[rgba(46,42,38,0.08)]
+        bg-[#FAF8F5]
+        text-[#2E2A26]
+        resize-none
+        focus:border-[#C7A77A]
+        focus:bg-white
+        outline-none
+        transition-all
+      "
+    />
+
+    {/* BUTTON */}
+
+    <div className="flex justify-end">
+
+      <button
+        type="submit"
+        className="
+          px-8 py-4
+          bg-[#2E2A26]
+          text-[#F5F0EB]
+          rounded-full
+          transition-all
+          duration-300
+          hover:bg-[#C7A77A]
+          hover:text-[#2E2A26]
+          hover:-translate-y-1
+        "
+      >
+        Send Enquiry
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
 
     </div>
 
