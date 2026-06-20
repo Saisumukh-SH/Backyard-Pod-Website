@@ -1,7 +1,36 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Booking() {
   const [projectType, setProjectType] = useState("");
+  const navigate = useNavigate();
+
+ const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  try {
+    const encodedData = new URLSearchParams(
+      Object.fromEntries(formData.entries()) as Record<string, string>
+    ).toString();
+
+    await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: encodedData,
+    });
+
+    navigate("/thank-you");
+  } catch (error) {
+    console.error("Submission failed:", error);
+  }
+};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,13 +81,13 @@ export default function Booking() {
     </p>
 
     <form
-      name="booking"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      action="/thank-you"
-      className="space-y-8"
-    >
+  name="booking"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  onSubmit={handleSubmit}
+  className="space-y-8"
+>
 
       {/* NETLIFY */}
 
