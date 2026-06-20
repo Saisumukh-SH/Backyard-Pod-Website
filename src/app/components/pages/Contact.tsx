@@ -1,10 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function Contact() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+  setSubmitted(true);
+};
 
   return (
     <div>

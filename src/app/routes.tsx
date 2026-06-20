@@ -5,6 +5,7 @@ import { Root } from "./components/Root";
 import { Home } from "./components/pages/Home";
 import Products from "./components/pages/Products";
 
+
 /*import { Pricing } from "./components/pages/Pricing";*/
 
 import { FAQ } from "./components/pages/FAQ";
@@ -15,6 +16,7 @@ import { NotFound } from "./components/pages/NotFound";
 import StudioPod from "./components/pages/products/StudioPod";
 import GrannyFlats from "./components/pages/products/grannyFlats";
 import Booking from "./components/pages/bookings";
+
 
 import StudioProduct1 from "./components/pages/products/studioSingleProducts/StudioProduct1";
 import StudioProduct2 from "./components/pages/products/studioSingleProducts/StudioProduct2";
@@ -27,6 +29,7 @@ import GrannyflatProduct2 from "./components/pages/products/grannyflatSingleProd
 import GrannyflatProduct3 from "./components/pages/products/grannyflatSingleProduct/GrannyflatProduct3";
 import GrannyflatProduct4 from "./components/pages/products/grannyflatSingleProduct/GrannyflatProduct4";
 import GrannyflatProduct5 from "./components/pages/products/grannyflatSingleProduct/GrannyflatProduct5";
+import ThankyouPage from "./components/pages/ThankyouPage";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +49,7 @@ export const router = createBrowserRouter([
       { path: "products/studio", Component: StudioPod },
       { path: "products/granny", Component: GrannyFlats },
       { path: "booking", Component: Booking },
+      { path: "thank-you", Component: ThankyouPage },
       
       { path: "products/StudioProduct1", Component: StudioProduct1 },
       { path: "products/StudioProduct2", Component: StudioProduct2 },
