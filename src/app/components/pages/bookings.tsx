@@ -5,13 +5,15 @@ export default function Booking() {
   const [projectType, setProjectType] = useState("");
   const navigate = useNavigate();
 
- const handleSubmit = async (
+const handleSubmit = async (
   e: React.FormEvent<HTMLFormElement>
 ) => {
   e.preventDefault();
 
   const form = e.currentTarget;
   const formData = new FormData(form);
+
+  formData.set("form-name", "booking");
 
   try {
     const encodedData = new URLSearchParams(
