@@ -41,14 +41,14 @@ export default function StudioProduct1() {
 
   return (
     <SingleStudioPage
-      category="Studio Flats"
+         category="Studio Pods"
       title="Hokkori"
       highlight="28"
-      description="An open-plan studio with kitchenette and full bathroom."
+      description="A thoughtfully designed backyard retreat featuring an open-plan layout, integrated kitchenette and private bathroom. Perfect as a home office, creative studio, guest accommodation or quiet escape."
       size="28 m²"
       beds="Studio"
       baths="1"
-      warranty="10 yr"
+      warranty="10 Year"
       heroImage="/images/studio/studyNook/study_nook_hero.webp"
       finishes={finishes}
     />

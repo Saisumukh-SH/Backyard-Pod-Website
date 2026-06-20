@@ -179,3 +179,13 @@
     line-height: 1.5;
   }
 }
+.editorial-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+}

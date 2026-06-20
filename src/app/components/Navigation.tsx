@@ -6,13 +6,8 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/products", label: "Products" },
-
-    /*{ path: "/pricing", label: "Pricing" },*/
-
+    { path: "/products", label: "Designs" },
     { path: "/about", label: "About" },
-    { path: "/faq", label: "FAQ" },
     { path: "/blog", label: "Blog" },
     { path: "/contact", label: "Contact" },
   ];
@@ -23,54 +18,97 @@ export function Navigation() {
       : location.pathname.startsWith(path);
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md border-b border-[rgba(42,42,42,0.12)] bg-[#F0EDE6]/90">
-      <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+    <nav className="absolute top-0 left-0 w-full z-[100]">
 
-        {/* Logo */}
-        <Link to="/" className="text-[18px] tracking-wide">
-          <span className="font-serif">Design</span>{" "}
-          <span className="opacity-40">|</span>{" "}
-          <span className="font-serif italic">MyBackyard.</span>
-        </Link>
+      {/* Dark Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent" />
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex gap-10 text-[11px] uppercase tracking-[0.18em]">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`transition-opacity ${
-                isActive(link.path)
-                  ? "opacity-100"
-                  : "opacity-50 hover:opacity-100"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+      <div className="relative px-6 md:px-10 lg:px-14 py-8">
+
+        <div className="flex items-center justify-between">
+
+          {/* Logo */}
+          <Link
+            to="/"
+            className="font-serif tracking-tight"
+            style={{
+  color: "#ffffff",
+  fontSize: "clamp(1.8rem, 3vw, 3.2rem)",
+  textShadow: "0 2px 12px rgba(0,0,0,0.5)",
+}}
+          >
+            Backyard Nest.
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-16">
+
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                style={{
+                  color: "#ffffff",
+                  opacity: isActive(link.path) ? 1 : 0.8,
+                  textShadow: "0 2px 10px rgba(0,0,0,0.6)",
+                }}
+                className="
+                  uppercase
+                  text-[11px]
+                  tracking-[0.3em]
+                  transition-all
+                  duration-300
+                  hover:opacity-100
+                "
+              >
+                {link.label}
+              </Link>
+            ))}
+
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{ color: "#ffffff" }}
+            className="
+              lg:hidden
+              uppercase
+              tracking-[0.25em]
+              text-xs
+            "
+          >
+            Menu
+          </button>
+
         </div>
-
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-sm"
-        >
-          Menu
-        </button>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[rgba(42,42,42,0.12)] px-8 py-6 space-y-4 text-sm uppercase tracking-wide">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block opacity-70 hover:opacity-100"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="lg:hidden bg-black/95 backdrop-blur-xl px-8 py-8">
+
+          <div className="space-y-6">
+
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ color: "#ffffff" }}
+                className="
+                  block
+                  uppercase
+                  tracking-[0.25em]
+                  text-sm
+                "
+              >
+                {link.label}
+              </Link>
+            ))}
+
+          </div>
+
         </div>
       )}
     </nav>

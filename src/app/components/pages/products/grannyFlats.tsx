@@ -8,60 +8,77 @@ export default function GrannyFlats() {
     window.scrollTo(0, 0);
   }, []);
 
-  const sizes = [
-    {
-      id: 45,
-      label: "45 M²",
-      route: "/products/GrannyflatProduct1",
-      image:
-        "/images/granny_flats_hero.webp",
-      description:
-        "Compact one-bedroom flat with open-plan living, full kitchen and modern bathroom.",
-      footprint: "7 × 6.5 m",
-      bedrooms: "1",
-      bathrooms: "1",
-      occupants: "1–2",
-    },
-    {
-      id: 55,
-      label: "55 M²",
-      route: "/products/GrannyflatProduct2",
-      image:
-        "https://images.unsplash.com/photo-1494526585095-c41746248156?w=1400&q=80",
-      description:
-        "Expanded one-bedroom layout with larger living space and additional storage.",
-      footprint: "8 × 7 m",
-      bedrooms: "1",
-      bathrooms: "1",
-      occupants: "2",
-    },
-    {
-      id: 68,
-      label: "68 M²",
-      route: "/products/GrannyflatProduct3",
-      image:
-        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1400&q=80",
-      description:
-        "Spacious two-bedroom flat with open-plan living and dining.",
-      footprint: "7 × 9.7 m",
-      bedrooms: "2",
-      bathrooms: "2",
-      occupants: "2–4",
-    },
-    {
-      id: 75,
-      label: "75 M²",
-      route: "/products/GrannyflatProduct4",
-      image:
-        "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1400&q=80",
-      description:
-        "Premium two-bedroom configuration with generous living zones.",
-      footprint: "8 × 9.5 m",
-      bedrooms: "2",
-      bathrooms: "2",
-      occupants: "3–4",
-    },
-  ];
+ const sizes = [
+  {
+    id: 45,
+    label: "The Willow",
+    route: "/products/GrannyflatProduct1",
+    image: "/images/granny_flats_hero.webp",
+    description:
+      "A beautifully designed one-bedroom granny flat featuring open-plan living, a full kitchen and a private bathroom. Perfect for independent living, guest accommodation or rental income.",
+    footprint: "7 × 6.5 m",
+    area: "45 m²",
+    bedrooms: "1",
+    bathrooms: "1",
+    capacity: "1–2",
+  },
+
+  {
+    id: 55,
+    label: "The Haven",
+    route: "/products/GrannyflatProduct2",
+    image: "/images/grannyflat/haven/haven_hero.webp",
+    description:
+      "A spacious one-bedroom residence offering enhanced living areas, additional storage and abundant natural light for everyday comfort.",
+    footprint: "8 × 7 m",
+    area: "55 m²",
+    bedrooms: "1",
+    bathrooms: "1",
+    capacity: "2",
+  },
+
+  {
+    id: 68,
+    label: "The Elm",
+    route: "/products/GrannyflatProduct3",
+    image: "/images/grannyflat/elm/elm_hero.webp",
+    description:
+      "A thoughtfully planned two-bedroom home combining generous living spaces with contemporary design. Ideal for family, guests or long-term rental.",
+    footprint: "7 × 9.7 m",
+    area: "68 m²",
+    bedrooms: "2",
+    bathrooms: "2",
+    capacity: "2–4",
+  },
+
+  {
+    id: 75,
+    label: "The Grove",
+    route: "/products/GrannyflatProduct4",
+    image: "/images/grannyflat/grove/grove_hero.webp",
+    description:
+      "Our premium two-bedroom design featuring expansive living zones, refined finishes and a layout created for modern family living.",
+    footprint: "8 × 9.5 m",
+    area: "75 m²",
+    bedrooms: "2",
+    bathrooms: "2",
+    capacity: "3–4",
+  },
+
+  {
+    id: 99,
+    label: "Bespoke Design",
+    route: "/contact",
+    image: "/images/grannyflat/custom_design_hero.webp",
+    description:
+      "Work alongside our design team to create a completely tailored granny flat designed specifically for your site, lifestyle and future needs.",
+    footprint: "Custom",
+    area: "Tailored",
+    bedrooms: "Flexible",
+    bathrooms: "Flexible",
+    capacity: "Unlimited",
+  },
+];
 
   const [activeSize, setActiveSize] = useState(45);
   const current = sizes.find((s) => s.id === activeSize)!;
@@ -69,238 +86,456 @@ export default function GrannyFlats() {
   return (
     <div>
 
-      {/* HERO */}
-      <section className="border-b border-black/10 px-8 py-24 grid md:grid-cols-2 gap-16 animate-fadeUp">
+<section className="bg-[#F5F0EB] py-32">
 
-        <div>
-          <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
-            Live · Host · Earn
-          </span>
+  <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-          <h1 className="font-serif text-[clamp(3rem,5vw,5.5rem)] leading-[0.95]">
-            Granny <span className="italic text-[#6F8A5E]">Flats</span>
-          </h1>
-        </div>
+    {/* SECTION HEADER */}
 
-        <div className="max-w-md ml-auto">
-          <p className="text-[15px] leading-relaxed opacity-70 mb-6">
-            Four complete living configurations — designed for comfort,
-            flexibility and long-term living.
-          </p>
+    <div className="mb-20">
 
-          <span className="uppercase tracking-[0.18em] text-[11px] opacity-50">
-            4 designs available · From $68,000
-          </span>
-        </div>
+      <p
+        className="
+          uppercase
+          tracking-[0.3em]
+          text-[#A08E7C]
+          text-xs
+          mb-6
+        "
+      >
+        Studio Collection
+      </p>
 
-      </section>
+      <h2
+        className="
+          editorial-heading
+          text-[#2E2A26]
+          text-5xl
+          md:text-7xl
+          leading-[0.95]
+          tracking-[-0.04em]
+        "
+      >
+        Explore Every Design.
+      </h2>
 
-      {/* PRODUCT GRID */}
-      <section className="px-8 py-20 animate-fadeUp">
+      <p
+        className="
+          mt-6
+          text-[#5F5A55]
+          text-lg
+          max-w-2xl
+          leading-relaxed
+        "
+      >
+        Thoughtfully designed studio spaces created
+        for work, creativity and everyday living.
+      </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 border-t border-black/10">
+    </div>
 
-          {sizes.map((flat, index) => (
+    {/* GRID */}
+
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+      {sizes.map((item) => (
+
+        <div
+          key={item.id}
+          onClick={() => navigate(item.route)}
+          className={`
+group
+relative
+h-[520px]
+overflow-hidden
+rounded-[28px]
+cursor-pointer
+transition-all
+duration-500
+group-hover:-translate-y-2
+${
+  item.id === 99
+    ? "ring-1 ring-[#C7A77A]/40"
+    : "bg-[#EDE8E0]"
+}
+`}
+        >
+
+          {/* IMAGE */}
+
+          <img
+            src={item.image}
+            alt={item.label}
+            className="
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-cover
+              transition-all
+              duration-[1200ms]
+              group-hover:scale-110
+            "
+          />
+
+          {/* DARK OVERLAY */}
+
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-black/85
+              via-black/25
+              to-black/5
+            "
+          />
+
+          {/* GOLD HOVER OVERLAY */}
+
+          <div
+            className="
+              absolute
+              inset-0
+              opacity-0
+              group-hover:opacity-100
+              transition-all
+              duration-700
+              bg-gradient-to-t
+              from-[#C7A77A]/20
+              via-transparent
+              to-transparent
+            "
+          />
+
+          {/* CONTENT */}
+
+          <div
+            className="
+              absolute
+              inset-0
+              p-8
+              flex
+              flex-col
+              justify-end
+            "
+          >
+
+            {/* CATEGORY */}
+
+            <p
+  className="
+    text-white/60
+    uppercase
+    tracking-[0.28em]
+    text-[10px]
+    mb-3
+  "
+>
+  {item.id === 99
+    ? "Tailored Solution"
+    : "Studio Pod Collection"}
+</p>
+
+            {/* NAME */}
+
+            <h3
+              className="
+                text-white
+                text-[2rem]
+                md:text-[2.4rem]
+                leading-[0.95]
+                font-serif
+                tracking-[-0.03em]
+                mb-3
+                transition-all
+                duration-500
+                group-hover:text-[#D7BE8A]
+              "
+            >
+              {item.label}
+            </h3>
+
+            {/* SIZE */}
+
+           <p
+  className="
+    text-white/70
+    uppercase
+    tracking-[0.2em]
+    text-[11px]
+    mb-6
+  "
+>
+  {item.id === 99
+    ? "Designed Around You"
+    : `${item.id}m² Studio Pod`}
+</p>
+
+            {/* HOVER CONTENT */}
 
             <div
-              key={flat.id}
-              onClick={() => navigate(flat.route)}
-              className="group relative border-r border-b border-black/10 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:z-10"
+              className="
+                max-h-0
+                overflow-hidden
+                transition-all
+                duration-700
+                group-hover:max-h-[250px]
+              "
             >
 
-              {/* IMAGE */}
-              <div className="overflow-hidden">
-                <img
-                  src={flat.image}
-                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
+              <div
+                className="
+                  w-12
+                  h-px
+                  bg-[#D7BE8A]
+                  mb-5
+                "
+              />
 
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <p
+                className="
+                  text-white/80
+                  text-sm
+                  leading-relaxed
+                  mb-6
+                "
+              >
+                {item.description}
+              </p>
 
-              {/* CONTENT */}
-              <div className="p-8">
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-3
+                  text-[#D7BE8A]
+                  uppercase
+                  tracking-[0.22em]
+                  text-[11px]
+                "
+              >
+                Explore Design
 
-                <span className="uppercase text-[10px] tracking-[0.18em] opacity-50 block mb-2">
-                  GF — 0{index + 1}
+                <span
+                  className="
+                    transition-transform
+                    duration-500
+                    group-hover:translate-x-2
+                  "
+                >
+                  →
                 </span>
 
-                <h3 className="font-serif text-2xl mb-4">
-                  {flat.label} Configuration
-                </h3>
-
-                <p className="text-sm opacity-60 mb-6">
-                  {flat.description}
-                </p>
-
-                <div className="text-sm opacity-70 mb-6">
-                  {flat.bedrooms} Bed · {flat.bathrooms} Bath · {flat.occupants}
-                </div>
-
-                <div className="font-serif text-lg">
-                  From $
-                  {flat.id === 45
-                    ? "68,000"
-                    : flat.id === 55
-                    ? "74,000"
-                    : flat.id === 68
-                    ? "92,000"
-                    : "105,000"}
-                </div>
-
-                <div className="flex items-center justify-between mt-6">
-
-                  <span className="text-sm opacity-60 group-hover:opacity-100 transition">
-                    Explore Design
-                  </span>
-
-                  <span className="text-lg transform transition-all duration-300 group-hover:translate-x-2">
-                    →
-                  </span>
-
-                </div>
-
               </div>
 
             </div>
 
-          ))}
+          </div>
 
         </div>
 
-      </section>
+      ))}
 
-      {/* SIZE SELECTOR */}
-      <section className="bg-[#1E1E1C] text-white px-8 py-28 animate-fadeUp">
+    </div>
 
-        <div className="grid md:grid-cols-2 gap-20 mb-16">
+  </div>
 
-          <div>
-            <span className="uppercase tracking-[0.25em] text-[11px] opacity-40 block mb-6">
-              Find Your Fit
+</section>
+
+  {/* IMMERSIVE COLLECTION EXPLORER */}
+
+<section className="relative h-screen overflow-hidden">
+
+  {/* Background Image */}
+  <div className="absolute inset-0">
+
+    <img
+      src={current.image}
+      alt={current.label}
+      className="
+        w-full
+        h-full
+        object-cover
+        transition-all
+        duration-700
+        scale-105
+      "
+    />
+
+    <div className="absolute inset-0 bg-black/45" />
+
+  </div>
+
+  {/* Content */}
+
+  <div className="relative z-10 h-full flex">
+
+    {/* LEFT SIDE */}
+
+    <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-20">
+
+      <span
+        className="
+          uppercase
+          tracking-[0.3em]
+          text-[11px]
+          text-white/60
+          mb-12
+        "
+      >
+        Studio Collection
+      </span>
+
+      {sizes.map((item, index) => (
+
+        <button
+          key={item.id}
+          onMouseEnter={() => setActiveSize(item.id)}
+          onClick={() => navigate(item.route)}
+          className="
+            group
+            text-left
+            py-3
+          "
+        >
+
+          <div className="flex items-center gap-6">
+
+            <span
+              className={`
+                text-sm
+                transition-all
+                duration-300
+                ${
+                  activeSize === item.id
+                    ? "text-[#C7A77A]"
+                    : "text-white/40"
+                }
+              `}
+            >
+              0{index + 1}
             </span>
 
-            <h2 className="font-serif text-[clamp(3rem,5vw,5rem)] leading-[1]">
-              Choose Your <br />
-              <span className="italic text-[#93A87C]">Square Metres</span>
-            </h2>
-          </div>
-
-          <div className="max-w-md ml-auto opacity-60 text-sm leading-relaxed">
-            Four configurations from 45 to 75 m² — designed for
-            long-term living and flexible family use.
-          </div>
-
-        </div>
-
-        {/* SIZE TABS */}
-        <div className="flex gap-8 mb-10 border-b border-white/10 pb-4">
-
-          {sizes.map((size) => (
-
-            <button
-              key={size.id}
-              onClick={() => setActiveSize(size.id)}
-              className={`uppercase text-xs tracking-[0.2em] pb-2 transition-colors ${
-                activeSize === size.id
-                  ? "text-[#93A87C] border-b border-[#93A87C]"
-                  : "opacity-40 hover:opacity-80"
-              }`}
+            <h2
+              className={`
+                font-serif
+                transition-all
+                duration-500
+                leading-none
+                ${
+                  activeSize === item.id
+                    ? "text-white text-6xl"
+                    : "text-white/30 text-5xl"
+                }
+              `}
             >
-              {size.label}
-            </button>
-
-          ))}
-
-        </div>
-
-        {/* CONTENT */}
-        <div className="grid md:grid-cols-2 gap-20 items-start">
-
-          <div>
-            <img
-              src={current.image}
-              className="w-full h-[480px] object-cover"
-            />
-          </div>
-
-          <div>
-
-            <div className="font-serif text-[clamp(4rem,6vw,6rem)] leading-none mb-6">
-              {current.id}
-              <span className="text-2xl ml-2 align-top opacity-60">m²</span>
-            </div>
-
-            <p className="opacity-70 leading-relaxed mb-10 max-w-lg">
-              {current.description}
-            </p>
-
-            {/* SPEC GRID */}
-            <div className="grid grid-cols-2 bg-white/5 border border-white/10 mb-8">
-
-              <div className="p-6 border-b border-r border-white/10">
-                <div className="uppercase text-xs opacity-40 mb-2">
-                  Footprint
-                </div>
-                {current.footprint}
-              </div>
-
-              <div className="p-6 border-b border-white/10">
-                <div className="uppercase text-xs opacity-40 mb-2">
-                  Bedrooms
-                </div>
-                {current.bedrooms}
-              </div>
-
-              <div className="p-6 border-r border-white/10">
-                <div className="uppercase text-xs opacity-40 mb-2">
-                  Bathrooms
-                </div>
-                {current.bathrooms}
-              </div>
-
-              <div className="p-6">
-                <div className="uppercase text-xs opacity-40 mb-2">
-                  Occupants
-                </div>
-                {current.occupants}
-              </div>
-
-            </div>
-
-            {/* BUTTONS */}
-            <div className="flex gap-6">
-
-              <button
-                onClick={() => navigate(current.route)}
-                className="px-8 py-4 border border-white/30 text-xs tracking-[0.2em] uppercase
-  cursor-pointer
-  transition-all duration-300 ease-out
-  hover:bg-white/10 hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-  active:translate-y-[1px] active:scale-[0.98]"
-              >
-                View Design
-              </button>
-
-              <button
-                onClick={() => navigate("/booking")}
-                className="px-8 py-4 bg-[#E8E5DE] text-black text-xs tracking-[0.2em] uppercase
-    cursor-pointer
-    transition-all duration-300 ease-out
-    hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-    active:translate-y-[1px] active:scale-[0.98]s"
-              >
-                Get a Quote
-              </button>
-
-            </div>
+              {item.label}
+            </h2>
 
           </div>
 
+        </button>
+
+      ))}
+
+    </div>
+
+    {/* RIGHT SIDE INFO */}
+
+    <div
+      className="
+        hidden
+        lg:flex
+        w-1/2
+        items-end
+        justify-end
+        p-20
+      "
+    >
+
+      <div className="max-w-md text-white">
+
+        <span
+          className="
+            uppercase
+            tracking-[0.25em]
+            text-[11px]
+            text-[#C7A77A]
+            block
+            mb-6
+          "
+        >
+          Selected Design
+        </span>
+
+        <h3 className="font-serif text-5xl mb-6">
+          {current.label}
+        </h3>
+
+        <p className="text-white/70 leading-relaxed mb-8">
+          {current.description}
+        </p>
+
+        <div className="grid grid-cols-2 gap-6 mb-10">
+
+          <div>
+  <span className="text-white/40 text-xs uppercase">
+    Living Area
+  </span>
+
+  <p>{current.area}</p>
+</div>
+
+<div>
+  <span className="text-white/40 text-xs uppercase">
+    Bedrooms
+  </span>
+
+  <p>{current.bedrooms}</p>
+</div>
+
+<div>
+  <span className="text-white/40 text-xs uppercase">
+    Bathrooms
+  </span>
+
+  <p>{current.bathrooms}</p>
+</div>
+
+<div>
+  <span className="text-white/40 text-xs uppercase">
+    Occupancy
+  </span>
+
+  <p>{current.capacity} People</p>
+</div>
+
         </div>
 
-      </section>
+        <button
+          onClick={() => navigate(current.route)}
+          className="
+            border
+            border-white/30
+            px-8
+            py-4
+            hover:bg-white
+            hover:text-black
+            transition-all
+            duration-300
+          "
+        >
+          Explore Design →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
     </div>
   );

@@ -41,17 +41,17 @@ const finishes = [
   ];
 
 return (
-  <SingleStudioPage
-    category="Studio Flats"
-    title="Luma"
-    highlight="Studio"
-    description="Bright modern studio for backyard spaces."
-    size="15 m²"
-    beds="Studio"
-    baths="1"
-    warranty="10 yr"
-    heroImage="/images/studio/officeStudio/office_studio_hero.webp"
-    finishes={finishes}
-  />
+ <SingleStudioPage
+  category="Studio Pods"
+  title="The Aspen"
+  highlight="30"
+  description="A spacious studio retreat offering room to work, create and unwind. The Aspen balances contemporary design with practical functionality, making it ideal for home offices, creative studios or guest accommodation."
+  size="30 m²"
+  beds="Studio"
+  baths="1"
+  warranty="10 Year"
+  heroImage="/images/studio/studio2/studio2.1.webp"
+  finishes={finishes}
+/>
 );
 }

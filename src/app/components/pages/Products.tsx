@@ -1,24 +1,27 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const categories = [
   {
     id: "studio",
-    tag: "Work · Create · Retreat",
-    name: "Studio",
-    nameLine2: "Pods",
-    desc: "Purpose-built backyard spaces for focused work, creative pursuits, or mindful retreat. Designed for the way Australians live and work today, Studio Pods create a private workspace right in your backyard. Whether you need a backyard office, garden studio, creative workspace, or quiet retreat, each pod offers a smart alternative to costly home extensions.Designed for the Australian climate and lifestyle, Studio Pods transform unused outdoor space into a comfortable workspace, studio, study, or reset space.",
-    img: "/images/study_nook_hero.webp",
-    from: "From $24,900",
+    tag: "Work • Create • Retreat",
+    title: "Studio Pods",
+    description:
+      "Purpose-built backyard spaces for focused work, creative pursuits and quiet retreat. Create a dedicated office, studio or personal sanctuary without extending your home.",
+    image: "/images/study_nook_hero.webp",
+    from: "$24,900",
   },
+
   {
     id: "granny",
-    tag: "Live · Host · Earn",
-    name: "Granny",
-    nameLine2: "Flats",
-    desc: "Fully self-contained living spaces — perfect for extended family or rental income. Designed for modern Australian living, our granny flats provide a practical way to add extra living space, a secondary dwelling, or an investment opportunity right in your backyard. Each unit is thoughtfully designed with a private bedroom, bathroom, kitchen, and living area, creating a comfortable and independent home. Ideal for multi-generational living, long-term rental income, guest accommodation, or Airbnb, granny flats are a smart way to maximise your property’s potential. Built to meet Australian building standards, they offer a cost-effective alternative to traditional home extensions while increasing property value.",
-    img: "/images/granny_flats_hero.webp",
-    from: "From $68,000",
+    tag: "Live • Host • Earn",
+    title: "Granny Flats",
+    description:
+      "Fully self-contained living spaces designed for family, guests and rental income. A smart way to add flexibility and value to your property.",
+    image: "/images/granny_flats_hero.webp",
+    from: "$68,000",
   },
 ];
 
@@ -30,34 +33,280 @@ export default function Products() {
   }, []);
 
   return (
-    <section className="products-split">
-      {categories.map((cat) => (
-        <div
-          key={cat.id}
-          className="split-card"
-          onClick={() => navigate(`/products/${cat.id}`)}
-        >
-          <img src={cat.img} alt={cat.name} className="split-img" />
-          <div className="split-overlay" />
+    <main className="bg-[#F5F0EB]">
 
-          <div className="split-content">
-            <span className="split-tag">{cat.tag}</span>
+      {/* HERO */}
 
-            <h2 className="split-title">
-              {cat.name}
-              <br />
-              {cat.nameLine2}
-            </h2>
+      <section className="h-screen flex items-center">
 
-            <p className="split-desc">{cat.desc}</p>
+        <div className="max-w-7xl mx-auto px-8 lg:px-16">
 
-            <div className="split-cta">
-              <span>Explore Designs</span>
-              <span className="split-from">{cat.from}</span>
-            </div>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-8"
+          >
+            Our Collection
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="
+              editorial-heading
+              text-[#2E2A26]
+              text-6xl
+              md:text-8xl
+              leading-[0.92]
+              tracking-[-0.05em]
+              max-w-5xl
+            "
+          >
+            Spaces Designed
+            <br />
+            For Modern Living.
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="
+              mt-10
+              text-[#5F5A55]
+              text-lg
+              max-w-2xl
+              leading-relaxed
+            "
+          >
+            Explore our collection of backyard spaces,
+            thoughtfully designed for the way Australians
+            work, live and grow.
+          </motion.p>
+
         </div>
+
+      </section>
+
+      {/* CATEGORY SECTIONS */}
+
+      {categories.map((category, index) => (
+
+        <section
+          key={category.id}
+          className="
+            min-h-screen
+            flex
+            items-center
+            py-20
+          "
+        >
+
+          <div className="max-w-[1700px] mx-auto w-full px-8 lg:px-16">
+
+            <div
+  onClick={() =>
+    navigate(`/products/${category.id}`)
+  }
+  className={`
+    grid
+    lg:grid-cols-2
+    gap-16
+    items-center
+    cursor-pointer
+    group
+    ${
+      index % 2 === 1
+        ? "lg:[&>*:first-child]:order-2"
+        : ""
+    }
+  `}
+>
+
+              {/* IMAGE */}
+
+              <motion.div
+                initial={{ opacity: 0, scale: 1.05 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="
+                  overflow-hidden
+                  rounded-[24px]
+                  h-[70vh]
+                "
+              >
+
+                <img
+  src={category.image}
+  alt={category.title}
+  className="
+    w-full
+    h-full
+    object-cover
+    transition-all
+    duration-1000
+    group-hover:scale-105
+  "
+/>
+
+              </motion.div>
+
+              {/* CONTENT */}
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+
+                <p
+                  className="
+                    uppercase
+                    tracking-[0.25em]
+                    text-[#A08E7C]
+                    text-xs
+                    mb-8
+                  "
+                >
+                  {category.tag}
+                </p>
+
+                <h2
+  className="
+    editorial-heading
+    text-[#2E2A26]
+    text-5xl
+    md:text-7xl
+    leading-[0.95]
+    tracking-[-0.05em]
+    mb-8
+    transition-all
+    duration-500
+    group-hover:text-[#C7A77A]
+  "
+>
+                  {category.title}
+                </h2>
+
+                <div
+                  className="
+                    w-16
+                    h-px
+                    bg-[#C7A77A]
+                    mb-10
+                  "
+                />
+
+                <p
+                  className="
+                    text-[#5F5A55]
+                    text-lg
+                    leading-relaxed
+                    max-w-xl
+                    mb-12
+                  "
+                >
+                  {category.description}
+                </p>
+
+                <div className="flex items-center gap-8">
+
+                  <span
+                    className="
+                      text-[#2E2A26]
+                      text-2xl
+                    "
+                  >
+                    From {category.from}
+                  </span>
+
+                  <button
+                    onClick={() =>
+                      navigate(`/products/${category.id}`)
+                    }
+                    className="
+                      flex
+                      items-center
+                      gap-3
+                      text-[#2E2A26]
+                      hover:gap-5
+                      transition-all
+                    "
+                  >
+                    Explore Collection
+                    <ArrowRight size={18} />
+                  </button>
+
+                </div>
+
+              </motion.div>
+
+            </div>
+
+          </div>
+
+        </section>
+
       ))}
-    </section>
+
+      {/* FINAL CTA */}
+
+      <section className="py-40 text-center">
+
+        <div className="max-w-4xl mx-auto px-6">
+
+          <div className="w-20 h-px bg-[#C7A77A] mx-auto mb-12" />
+
+          <h2
+            className="
+              editorial-heading
+              text-[#2E2A26]
+              text-5xl
+              md:text-7xl
+              leading-[0.95]
+            "
+          >
+            Not Sure Which
+            <br />
+            Space Is Right?
+          </h2>
+
+          <p
+            className="
+              mt-8
+              text-[#5F5A55]
+              text-lg
+              max-w-2xl
+              mx-auto
+            "
+          >
+            Speak with our team and we'll help you find
+            the perfect solution for your property and lifestyle.
+          </p>
+
+          <button
+            onClick={() => navigate("/contact")}
+            className="
+              mt-10
+              px-8
+              py-4
+              bg-[#2E2A26]
+              text-white
+              hover:opacity-90
+              transition
+            "
+          >
+            Book Consultation
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
   );
 }

@@ -20,17 +20,17 @@ const finishes = [
 ];
 
 return (
-  <SingleStudioPage
-    category="Studio Flats"
-    title="Studio 2"
-    highlight="28"
-    description="An open-plan studio with kitchenette and full bathroom."
-    size="28 m²"
-    beds="Studio"
-    baths="1"
-    warranty="10 yr"
-    heroImage="images"
-    finishes={finishes}
-  />
+<SingleStudioPage
+  category="Studio Pods"
+  title="The Nest"
+  highlight="37"
+  description="Designed for those seeking maximum flexibility, The Nest combines generous open-plan living with premium finishes and abundant natural light. A sophisticated backyard space that adapts to changing lifestyles."
+  size="37 m²"
+  beds="Studio"
+  baths="1"
+  warranty="10 Year"
+  heroImage="/images/studio/studio3/studio3.webp"
+  finishes={finishes}
+/>
 );
 }

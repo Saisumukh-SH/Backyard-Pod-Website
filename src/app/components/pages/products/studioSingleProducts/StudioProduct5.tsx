@@ -20,17 +20,17 @@ const finishes = [
 ];
 
 return (
-  <SingleStudioPage
-    category="Studio Flats"
-    title="Studio 2"
-    highlight="28"
-    description="An open-plan studio with kitchenette and full bathroom."
-    size="28 m²"
-    beds="Studio"
-    baths="1"
-    warranty="10 yr"
-    heroImage="images"
-    finishes={finishes}
-  />
+<SingleStudioPage
+  category="Tailored Solution"
+  title="Bespoke"
+  highlight="Design"
+  description="Every property is unique. Collaborate with our design team to create a completely custom backyard studio tailored to your site, lifestyle and vision. From concept to completion, every detail is designed around you."
+  size="Custom"
+  beds="Flexible"
+  baths="Optional"
+  warranty="10 Year"
+  heroImage="/images/studio/custom_design_hero.webp"
+  finishes={finishes}
+/>
 );
 }

@@ -42,90 +42,137 @@ export default function SingleGrannyFlatPage({
 
   const [activeFinish, setActiveFinish] = useState(finishes[0]);
 
-  return (
+ return (
     <div>
-
       {/* HERO */}
+<section className="relative h-screen overflow-hidden">
 
-      <section className="grid md:grid-cols-2">
+  <img
+    src={heroImage}
+    alt={title}
+    className="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+      scale-105
+    "
+  />
 
-        <div className="relative">
-          <img
-            src={heroImage}
-            className="w-full h-[85vh] object-cover"
-          />
-        </div>
+  <div className="absolute inset-0 bg-black/45" />
 
-        <div className="px-16 py-24 flex flex-col justify-center">
+  <div
+    className="
+      relative
+      z-10
+      h-full
+      max-w-7xl
+      mx-auto
+      px-8
+      flex
+      flex-col
+      justify-end
+      pb-24
+    "
+  >
 
-          <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
-            {category}
-          </span>
+    <span
+      className="
+        uppercase
+        tracking-[0.3em]
+        text-white/60
+        text-xs
+        mb-6
+      "
+    >
+      {category}
+    </span>
 
-          <h1 className="font-serif text-[clamp(3rem,5vw,5.5rem)] leading-[0.95] mb-6">
-            {title} <span className="italic text-[#6F8A5E]">{highlight}</span>
-          </h1>
+    <h1
+      className="
+        editorial-heading
+        text-white
+        text-[clamp(4rem,10vw,8rem)]
+        leading-[0.9]
+      "
+    >
+      {title}
+      <span className="italic text-[#D7BE8A]">
+        {" "}
+        {highlight}
+      </span>
+    </h1>
 
-          <p className="opacity-70 mb-10 max-w-md leading-relaxed">
-            {description}
-          </p>
+    <div className="flex gap-10 mt-10 text-white/80">
 
-          <div className="flex gap-4 mb-12">
-            <button
-              onClick={() => navigate("/booking")}
-              className="px-8 py-4 bg-black text-white text-xs uppercase tracking-[0.2em]
-              cursor-pointer transition-all duration-300 ease-out
-              hover:bg-neutral-800 hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-              active:translate-y-[1px] active:scale-[0.98]"
-            >
-              Get a Quote
-            </button>
+      <div>
+        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+          Size
+        </p>
+        <p>{size}</p>
+      </div>
 
-            <button
-              className="px-8 py-4 border border-black/30 text-xs uppercase tracking-[0.2em]
-              cursor-pointer transition-all duration-300 ease-out
-              hover:bg-black hover:text-white hover:border-black hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-              active:translate-y-[1px] active:scale-[0.98]"
-            >
-              Download Brochure
-            </button>
-          </div>
+      <div>
+        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+          Beds
+        </p>
+        <p>{beds}</p>
+      </div>
 
+      <div>
+        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+          Baths
+        </p>
+        <p>{baths}</p>
+      </div>
 
-          {/* SPECIFICATIONS */}
+    </div>
 
-          <div className="grid grid-cols-5 border-t border-black/10 pt-8 text-sm">
+  </div>
 
-            <div>
-              <div className="uppercase text-xs opacity-40 mb-2">Size</div>
-              {size}
-            </div>
+</section>
 
-            <div>
-              <div className="uppercase text-xs opacity-40 mb-2">Area</div>
-              {area}
-            </div>
+{/* DETAILS */}
+<section className="bg-[#F5F0EB] py-24">
 
-            <div>
-              <div className="uppercase text-xs opacity-40 mb-2">Beds</div>
-              {beds}
-            </div>
+  <div className="max-w-7xl mx-auto px-8">
 
-            <div>
-              <div className="uppercase text-xs opacity-40 mb-2">Baths</div>
-              {baths}
-            </div>
+    <div className="grid md:grid-cols-4 border-y border-black/10">
 
-            <div>
-              <div className="uppercase text-xs opacity-40 mb-2">Warranty</div>
-              {warranty}
-            </div>
+      <div className="py-12">
+        <p className="text-5xl font-serif">{size}</p>
+        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+          Footprint
+        </p>
+      </div>
 
-          </div>
+      <div className="py-12">
+        <p className="text-5xl font-serif">{beds}</p>
+        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+          Layout
+        </p>
+      </div>
 
-        </div>
+      <div className="py-12">
+        <p className="text-5xl font-serif">{baths}</p>
+        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+          Bathroom
+        </p>
+      </div>
 
-      </section>
+      <div className="py-12">
+        <p className="text-5xl font-serif">{warranty}</p>
+        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+          Warranty
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* FEATURES SECTION */}
       <section className="border-t border-black/10 px-8 py-32 bg-[#F7F5F0]">
@@ -249,160 +296,247 @@ export default function SingleGrannyFlatPage({
       </section>
 
       {/* FINISH & MATERIALS */}
-<section className="border-t border-black/10 py-32 bg-[#F7F5F0]">
-  <div className="max-w-[1400px] mx-auto px-8">
+      <section className="border-t border-black/10 py-32 bg-[#F7F5F0]">
+        <div className="max-w-[1400px] mx-auto px-8">
+          {/* HEADER */}
+          <div className="mb-20 max-w-2xl">
+            <span className="uppercase tracking-[0.3em] text-[11px] opacity-40 block mb-6">
+              Finish & Materials
+            </span>
 
-    {/* HEADER */}
-    <div className="mb-20 max-w-2xl">
-      <span className="uppercase tracking-[0.3em] text-[11px] opacity-40 block mb-6">
-        Exterior Finishes
-      </span>
+            <h2 className="font-serif text-[clamp(3rem,5vw,5rem)] leading-[1]">
+              Choose Your Cladding
+            </h2>
+          </div>
 
-      <h2 className="font-serif text-[clamp(3rem,5vw,5rem)] leading-[1]">
-        Choose Your Cladding
-      </h2>
+          {/* HERO IMAGE */}
+          <div className="relative mb-16">
+            <div className="overflow-hidden rounded-xl border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
+              <img
+                key={activeFinish.id}
+                src={activeFinish.image}
+                alt={activeFinish.name}
+                className="w-full h-[85vh] object-cover transition-all duration-700 ease-out"
+              />
+            </div>
+
+            <div className="absolute bottom-10 left-10 bg-white/90 backdrop-blur-md px-8 py-4 uppercase tracking-[0.25em] text-xs shadow-md rounded-full">
+              {activeFinish.name}
+            </div>
+          </div>
+
+          {/* SELECTOR */}
+          <div className="bg-white/60 backdrop-blur-md border border-black/10 rounded-2xl p-8 shadow-sm">
+            <div className="grid md:grid-cols-5 gap-6">
+              {finishes.map((finish) => {
+                const isActive = activeFinish.id === finish.id;
+
+                return (
+                  <button
+                    key={finish.id}
+                    onClick={() => setActiveFinish(finish)}
+                    className={`group cursor-pointer text-left
+                    transition-all duration-300 ease-out
+                    hover:-translate-y-1
+                    ${isActive ? "scale-[1.02]" : ""}`}
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <div
+                        className={`w-12 h-12 rounded-full transition-all duration-300
+                        ${
+                          isActive
+                            ? "ring-2 ring-black scale-110 shadow"
+                            : "group-hover:scale-105"
+                        }`}
+                        style={{ backgroundColor: finish.color }}
+                      />
+
+                      {isActive && (
+                        <span className="text-[10px] uppercase tracking-[0.25em] opacity-50">
+                          Selected
+                        </span>
+                      )}
+                    </div>
+
+                    <div
+                      className={`font-medium mb-1 transition-colors duration-300 ${
+                        isActive ? "text-black" : "opacity-70"
+                      }`}
+                    >
+                      {finish.name}
+                    </div>
+
+                    <div className="text-xs opacity-50 leading-relaxed">
+                      {finish.subtitle}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+{/* RELATED PRODUCTS */}
+<section className="bg-[#F5F0EB] py-24">
+
+  <div className="max-w-7xl mx-auto px-8">
+
+    <p className="uppercase tracking-[0.3em] text-xs text-[#A08E7C] mb-8">
+      Explore More Designs
+    </p>
+
+    <div className="grid md:grid-cols-3 gap-6">
+
+      <div className="border-b border-black/10 pb-6 cursor-pointer">
+        <h3 className="font-serif text-3xl">15m² Studio</h3>
+      </div>
+
+      <div className="border-b border-black/10 pb-6 cursor-pointer">
+        <h3 className="font-serif text-3xl">22m² Studio</h3>
+      </div>
+
+      <div className="border-b border-black/10 pb-6 cursor-pointer">
+        <h3 className="font-serif text-3xl">37m² Studio</h3>
+      </div>
+
     </div>
 
+  </div>
 
-    {/* HERO IMAGE */}
-    <div className="relative mb-16">
+</section>
 
-      <div className="overflow-hidden rounded-xl border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
+{/* FINAL CTA */}
 
-        <img
-          key={activeFinish.id}
-          src={activeFinish.image}
-          alt={activeFinish.name}
-          className="w-full h-[720px] object-cover transition-all duration-700 ease-out"
-        />
+{/* CONSULTATION CTA */}
+
+<section className="bg-[#EFE8DF] py-40">
+
+  <div className="max-w-7xl mx-auto px-8">
+
+    <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+      {/* LEFT */}
+
+      <div>
+
+        <span
+          className="
+            uppercase
+            tracking-[0.3em]
+            text-[#A08E7C]
+            text-xs
+          "
+        >
+          Next Step
+        </span>
+
+        <h2
+          className="
+            editorial-heading
+            text-[#2E2A26]
+            text-5xl
+            md:text-7xl
+            leading-[0.92]
+            tracking-[-0.04em]
+            mt-6
+          "
+        >
+          Let's Design
+          <br />
+          Your Space
+          <br />
+          Together.
+        </h2>
 
       </div>
 
-      {/* FINISH LABEL */}
-      <div className="absolute bottom-10 left-10 bg-white/90 backdrop-blur-md px-8 py-4 uppercase tracking-[0.25em] text-xs shadow-md rounded-full">
-        {activeFinish.name}
-      </div>
+      {/* RIGHT */}
 
-    </div>
+      <div>
 
+        <p
+          className="
+            text-[#5F5A55]
+            text-lg
+            leading-relaxed
+            mb-10
+          "
+        >
+          Every property is different. Our team will guide you
+          through layouts, finishes, council requirements and
+          pricing to help create the perfect backyard space.
+        </p>
 
-    {/* SELECTOR */}
-    <div className="bg-white/60 backdrop-blur-md border border-black/10 rounded-2xl p-8 shadow-sm">
+        <div className="space-y-6 mb-12">
 
-      <div className="grid md:grid-cols-5 gap-6">
+          <div className="flex justify-between border-b border-black/10 pb-4">
+            <span className="text-[#5F5A55]">
+              Free Design Consultation
+            </span>
 
-        {finishes.map((finish) => {
+            <span className="text-[#2E2A26]">01</span>
+          </div>
 
-          const isActive = activeFinish.id === finish.id;
+          <div className="flex justify-between border-b border-black/10 pb-4">
+            <span className="text-[#5F5A55]">
+              Tailored Quote
+            </span>
 
-          return (
-            <button
-              key={finish.id}
-              onClick={() => setActiveFinish(finish)}
-              className={`group cursor-pointer text-left
-              transition-all duration-300 ease-out
-              hover:-translate-y-1
-              ${isActive ? "scale-[1.02]" : ""}`}
-            >
+            <span className="text-[#2E2A26]">02</span>
+          </div>
 
-              {/* COLOR SWATCH */}
-              <div className="flex items-center gap-4 mb-4">
+          <div className="flex justify-between border-b border-black/10 pb-4">
+            <span className="text-[#5F5A55]">
+              Design & Build Support
+            </span>
 
-                <div
-                  className={`w-12 h-12 rounded-full transition-all duration-300
-                  ${
-                    isActive
-                      ? "ring-2 ring-black scale-110 shadow"
-                      : "group-hover:scale-105"
-                  }`}
-                  style={{ backgroundColor: finish.color }}
-                />
+            <span className="text-[#2E2A26]">03</span>
+          </div>
 
-                {isActive && (
-                  <span className="text-[10px] uppercase tracking-[0.25em] opacity-50">
-                    Selected
-                  </span>
-                )}
+        </div>
 
-              </div>
+        <div className="flex flex-wrap gap-4">
 
+          <button
+            onClick={() => navigate("/contact")}
+            className="
+              px-8
+              py-4
+              bg-[#2E2A26]
+              text-white
+              hover:bg-black
+              transition-all
+            "
+          >
+            Book Consultation
+          </button>
 
-              {/* NAME */}
-              <div
-                className={`font-medium mb-1 transition-colors duration-300 ${
-                  isActive ? "text-black" : "opacity-70"
-                }`}
-              >
-                {finish.name}
-              </div>
+          <button
+            onClick={() => navigate("/products")}
+            className="
+              px-8
+              py-4
+              border
+              border-[#2E2A26]/20
+              text-[#2E2A26]
+              hover:bg-[#2E2A26]
+              hover:text-white
+              transition-all
+            "
+          >
+            Explore Collection
+          </button>
 
-
-              {/* SUBTITLE */}
-              <div className="text-xs opacity-50 leading-relaxed">
-                {finish.subtitle}
-              </div>
-
-            </button>
-          );
-        })}
+        </div>
 
       </div>
 
     </div>
 
   </div>
+
 </section>
-
-      {/* CTA */}
-      <section className="border-t border-black/10 px-8 py-32">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="font-serif text-[clamp(3.5rem,6vw,6rem)] leading-[0.95]">
-              Ready to <br />
-              build your <br />
-              <span className="italic text-[#6F8A5E]">ideal space?</span>
-            </h2>
-          </div>
-
-          <div className="max-w-lg ml-auto">
-            <p className="text-[15px] leading-relaxed opacity-70 mb-10">
-              Our team will guide you from concept to completion — fixed
-              pricing, fast delivery, and zero stress.
-            </p>
-
-            <div className="flex flex-wrap gap-6">
-              <button
-                onClick={() => navigate("/booking")}
-                className="px-10 py-4 bg-[#1E1E1C] text-white uppercase text-xs tracking-[0.2em]
-                cursor-pointer transition-all duration-300
-                hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-                active:translate-y-[1px] active:scale-[0.98]"
-              >
-                Get a Quote
-              </button>
-
-              <button
-                className="px-10 py-4 border border-black/20 uppercase text-xs tracking-[0.2em]
-                cursor-pointer transition-all duration-300
-                hover:bg-black hover:text-white hover:-translate-y-[2px] hover:shadow-lg hover:scale-[1.03]
-                active:translate-y-[1px] active:scale-[0.98]"
-              >
-                Download Brochure
-              </button>
-
-              <button
-                onClick={() => navigate("/products")}
-                className="px-10 py-4 border border-black/20 uppercase text-xs tracking-[0.2em]
-                cursor-pointer transition-all duration-300
-                hover:bg-black/5 hover:-translate-y-[2px] hover:shadow-md"
-              >
-                ← Back to Range
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }

@@ -8,29 +8,29 @@ const finishes = [
     name: "Classic Timber",
     subtitle: "Clean plaster finish",
     color: "#fcefd6",
-    image: "/images/hokkori/default.webp"
+    image: "/images/studio/studio1/studio1.webp"
   },
   {
     id: "charcoal",
     name: "Charcoal Cedar",
     subtitle: "Deep architectural tone",
     color: "#2B2B2B",
-    image: "/images/hokkori/charcoal.webp"
+    image: "/images/studio/studio1/charcoal.webp"
   }
 ];
 
 return (
-  <SingleStudioPage
-    category="Studio Flats"
-    title="Studio 2"
-    highlight="28"
-    description="An open-plan studio with kitchenette and full bathroom."
-    size="28 m²"
-    beds="Studio"
-    baths="1"
-    warranty="10 yr"
-    heroImage="images"
-    finishes={finishes}
-  />
+<SingleStudioPage
+  category="Studio Pods"
+  title="The Brighton"
+  highlight="22"
+  description="A refined backyard studio designed for focused work and flexible living. Featuring generous glazing, clean architectural lines and a highly efficient layout, The Brighton creates a bright and inspiring space for everyday use."
+  size="22 m²"
+  beds="Studio"
+  baths="1"
+  warranty="10 Year"
+  heroImage="/images/studio/studio1/studio1.1.webp"
+  finishes={finishes}
+/>
 );
 }
