@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 export function Contact() {
 
   useEffect(() => {
@@ -7,9 +7,33 @@ export function Contact() {
   }, []);
 
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
-  setSubmitted(true);
+const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  const formData = new FormData(form);
+
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams(
+        formData as any
+      ).toString(),
+    });
+
+    navigate("/thank-you");
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
+  }
 };
 
   return (
@@ -141,13 +165,13 @@ export function Contact() {
   </p>
 
   <form
-    name="contact"
-    method="POST"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-    action="/thank-you"
-    className="space-y-8"
-  >
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  onSubmit={handleSubmit}
+  className="space-y-8"
+>
     <input type="hidden" name="form-name" value="contact" />
 
     <p hidden>
