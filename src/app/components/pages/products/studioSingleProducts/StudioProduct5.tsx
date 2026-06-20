@@ -29,7 +29,7 @@ return (
   beds="Flexible"
   baths="Optional"
   warranty="10 Year"
-  heroImage="/images/studio/custom_design_hero.webp"
+  heroImage="/images/studio/custom_studio/customstudio.webp"
   finishes={finishes}
 />
 );

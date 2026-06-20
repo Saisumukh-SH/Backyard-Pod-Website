@@ -60,7 +60,7 @@ export default function StudioCategory() {
   label: "Bespoke Design",
   description:
     "Every property is different. Collaborate with our design team to create a one-of-a-kind studio tailored specifically to your needs, site conditions and aesthetic preferences.",
-  image: "/images/custom_design_hero.webp",
+  image: "/images/studio/custom_studio/customstudio.webp",
   route: "/contact",
 }
   ];
