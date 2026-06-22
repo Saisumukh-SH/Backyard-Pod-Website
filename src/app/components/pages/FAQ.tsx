@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function FAQ() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -35,66 +38,98 @@ export function FAQ() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <div className="bg-white text-black">
+    <div className="bg-[#F5F0EB] text-[#2E2A26]">
 
       {/* HERO */}
 
-      <section className="px-8 md:px-16 py-32 border-b border-black/10 grid md:grid-cols-2 gap-20 max-w-7xl mx-auto">
+      <section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-40 pb-24 border-b border-[#C7A77A]/15">
 
-        <div>
+        <div className="max-w-4xl">
 
-          <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
+          <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-8">
             Information
-          </span>
+          </p>
 
-          <h1 className="font-serif text-[clamp(3rem,5vw,5rem)] leading-[0.95]">
+          <h1
+            className="
+              editorial-heading
+              text-[#2E2A26]
+              text-[clamp(4rem,8vw,8rem)]
+              leading-[0.9]
+              tracking-[-0.05em]
+            "
+          >
             Frequently
             <br />
-            <span className="italic text-[#6F8A5E]">
-              Asked Questions
-            </span>
+            Asked Questions
           </h1>
 
-        </div>
-
-        <div className="max-w-md ml-auto text-black/70 text-lg leading-relaxed">
-
-          Find answers to common questions about our backyard pods,
-          granny flats and installation process.
+          <p className="mt-8 max-w-2xl text-[#8B7E74] text-lg leading-relaxed">
+            Everything you need to know about our backyard studios,
+            granny flats, approvals and installation process.
+          </p>
 
         </div>
 
       </section>
 
-
-
       {/* FAQ ACCORDION */}
 
-      <section className="px-8 md:px-16 py-28 max-w-4xl mx-auto">
+      <section className="max-w-5xl mx-auto px-6 md:px-10 py-24">
 
         {faqs.map((item, i) => (
 
           <div
             key={i}
-            className="border-b border-black/10 py-8 cursor-pointer group relative"
+            className="
+              border-b
+              border-[#C7A77A]/15
+              py-8
+              cursor-pointer
+              group
+              relative
+            "
             onClick={() => setActive(active === i ? null : i)}
           >
 
-            {/* hover accent line */}
-            <span className="absolute -left-4 top-0 h-full w-[2px] bg-[#6F8A5E] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
-            <div className="flex justify-between items-center">
+            {/* Accent Line */}
 
-              <h3 className="font-serif text-xl md:text-2xl group-hover:text-[#6F8A5E] transition-colors">
+            <span
+              className="
+                absolute
+                -left-4
+                top-0
+                h-full
+                w-[2px]
+                bg-[#C7A77A]
+                scale-y-0
+                group-hover:scale-y-100
+                origin-top
+                transition-transform
+                duration-300
+              "
+            />
 
+            <div className="flex justify-between items-center gap-6">
+
+              <h3
+                className="
+                  editorial-heading
+                  text-2xl
+                  md:text-3xl
+                  transition-colors
+                  duration-300
+                  group-hover:text-[#C7A77A]
+                "
+              >
                 {item.q}
-
               </h3>
 
-              {/* rotating icon */}
-
               <span
-                className={`text-2xl transition-transform duration-300 ${
-                  active === i ? "rotate-45 text-[#6F8A5E]" : ""
+                className={`text-2xl transition-all duration-300 ${
+                  active === i
+                    ? "rotate-45 text-[#C7A77A]"
+                    : "text-[#8B7E74]"
                 }`}
               >
                 +
@@ -104,13 +139,15 @@ export function FAQ() {
 
             <div
               className={`grid transition-all duration-500 ${
-                active === i ? "grid-rows-[1fr] mt-6" : "grid-rows-[0fr]"
+                active === i
+                  ? "grid-rows-[1fr] mt-6"
+                  : "grid-rows-[0fr]"
               }`}
             >
 
               <div className="overflow-hidden">
 
-                <p className="text-black/70 leading-relaxed pr-6">
+                <p className="text-[#8B7E74] leading-relaxed pr-6">
 
                   {item.a}
 
@@ -126,33 +163,57 @@ export function FAQ() {
 
       </section>
 
-
-
       {/* CTA SECTION */}
 
-      <section className="px-8 md:px-16 py-32 text-center border-t border-black/10">
+      <section className="py-32 border-t border-[#C7A77A]/15">
 
-        <h2 className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-8">
+        <div className="max-w-4xl mx-auto px-6 text-center">
 
-          Still have
-          <br />
+          <div className="w-20 h-px bg-[#C7A77A] mx-auto mb-12" />
 
-          <span className="italic text-[#6F8A5E]">
-            questions?
-          </span>
+          <h2
+            className="
+              editorial-heading
+              text-[#2E2A26]
+              text-[clamp(3rem,8vw,6rem)]
+              leading-[0.92]
+            "
+          >
+            Still Have
+            <br />
+            Questions?
+          </h2>
 
-        </h2>
+          <p
+            className="
+              mt-8
+              text-[#8B7E74]
+              text-lg
+              max-w-2xl
+              mx-auto
+              leading-relaxed
+            "
+          >
+            Speak with our team and we'll guide you through
+            design options, pricing, approvals and installation.
+          </p>
 
-        <p className="text-black/60 mb-12 max-w-xl mx-auto text-lg">
+          <button
+            onClick={() => navigate("/contact")}
+            className="
+              mt-10
+              px-8
+              py-4
+              bg-[#2E2A26]
+              text-white
+              hover:opacity-90
+              transition
+            "
+          >
+            Contact Us
+          </button>
 
-          Our team is happy to help. Reach out and we will guide you
-          through design options, pricing and installation.
-
-        </p>
-
-        <a href="/booking" className="btn-primary">
-  Contact us
-</a>
+        </div>
 
       </section>
 

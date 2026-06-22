@@ -77,128 +77,424 @@ export function Blog() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl text-gray-900 mb-6">
-            Blog & Resources
-          </h1>
-          <p className="text-xl text-gray-600">
-            Expert insights, design inspiration, and practical guides for backyard living
-          </p>
-        </div>
-      </section>
+<section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-40 pb-24">
 
-      {/* Categories */}
-      <section className="py-8 px-4 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`px-4 py-2 transition-colors ${
-                  category === "All Posts"
-                    ? "bg-gray-900 text-white"
-                    : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+  <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-8">
+    Journal
+  </p>
 
-      {/* Featured Post */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="relative h-[500px] bg-gray-100">
-              <img
-                src={posts[0].image}
-                alt={posts[0].title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <div className="inline-block px-3 py-1 bg-gray-900 text-white text-sm mb-4">
-                Featured
-              </div>
-              <h2 className="text-4xl text-gray-900 mb-4">{posts[0].title}</h2>
-              <p className="text-lg text-gray-600 mb-6">{posts[0].excerpt}</p>
-              <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
-                <div className="flex items-center gap-2">
-                  <User size={16} />
-                  <span>{posts[0].author}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar size={16} />
-                  <span>{posts[0].date}</span>
-                </div>
-              </div>
-              <button className="inline-flex items-center text-gray-900 hover:underline">
-                Read More
-                <ArrowRight className="ml-2" size={16} />
-              </button>
-            </div>
-          </div>
+  <h1
+    className="
+      editorial-heading
+      text-[#2E2A26]
+      text-[clamp(4rem,8vw,8rem)]
+      leading-[0.9]
+      tracking-[-0.05em]
+    "
+  >
+    Ideas,
+    <br />
+    Insights &
+    <br />
+    Inspiration.
+  </h1>
 
-          {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.slice(1).map((post) => (
-              <article key={post.id} className="bg-white group cursor-pointer">
-                <div className="relative h-64 bg-gray-100 overflow-hidden mb-4">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs mb-3">
-                  {post.category}
-                </div>
-                <h3 className="text-2xl text-gray-900 mb-3 group-hover:underline">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-2">
-                    <User size={14} />
-                    <span>{post.author}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar size={14} />
-                    <span>{post.date}</span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+  <p className="mt-8 max-w-2xl text-[#8B7E74] text-lg leading-relaxed">
+    Design inspiration, planning guides and project insights
+    for creating exceptional backyard spaces.
+  </p>
 
-      {/* Newsletter */}
-      <section className="py-20 px-4 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl mb-4">Stay Updated</h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Subscribe to our newsletter for the latest insights, tips, and inspiration
-          </p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 bg-white text-gray-900 focus:outline-none"
-              required
-            />
-            <button
-              type="submit"
-              className="px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors whitespace-nowrap"
+</section>
+
+{/* JOURNAL GRID */}
+
+{/* JOURNAL GRID */}
+
+<section className="max-w-[1700px] mx-auto px-6 lg:px-12 pb-24">
+
+  {/* DESKTOP */}
+
+  <div
+    className="
+      hidden
+      lg:grid
+      lg:grid-cols-3
+      border
+      border-[#C7A77A]/15
+      h-[900px]
+    "
+  >
+
+    {/* COLUMN 1 */}
+
+    <div
+      className="
+        overflow-y-auto
+        hide-scrollbar
+        border-r
+        border-[#C7A77A]/15
+      "
+    >
+
+      <div
+        className="
+          sticky
+          top-0
+          z-10
+          bg-[#F5F0EB]
+          p-8
+          border-b
+          border-[#C7A77A]/15
+        "
+      >
+        <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
+          Design Ideas
+        </p>
+      </div>
+
+      {posts.map((post) => (
+
+        <article
+          key={`design-${post.id}`}
+          className="
+            border-b
+            border-[#C7A77A]/15
+            group
+            cursor-pointer
+          "
+        >
+
+          <img
+            src={post.image}
+            alt={post.title}
+            className="
+              w-full
+              h-[260px]
+              object-cover
+              transition-transform
+              duration-700
+              group-hover:scale-105
+            "
+          />
+
+          <div className="p-8">
+
+            <h3
+              className="
+                editorial-heading
+                text-3xl
+                text-[#2E2A26]
+                mb-4
+              "
             >
-              Subscribe
+              {post.title}
+            </h3>
+
+            <p className="text-[#8B7E74] mb-6 leading-relaxed">
+              {post.excerpt}
+            </p>
+
+            <button
+              className="
+                uppercase
+                tracking-[0.25em]
+                text-xs
+                border-b
+                border-[#C7A77A]
+                pb-2
+              "
+            >
+              Read Article →
             </button>
-          </form>
-        </div>
-      </section>
+
+          </div>
+
+        </article>
+
+      ))}
+
+    </div>
+
+    {/* COLUMN 2 */}
+
+    <div
+      className="
+        overflow-y-auto
+        hide-scrollbar
+        border-r
+        border-[#C7A77A]/15
+      "
+    >
+
+      <div
+        className="
+          sticky
+          top-0
+          z-10
+          bg-[#F5F0EB]
+          p-8
+          border-b
+          border-[#C7A77A]/15
+        "
+      >
+        <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
+          Building Guides
+        </p>
+      </div>
+
+      {[...posts].reverse().map((post) => (
+
+        <article
+          key={`guide-${post.id}`}
+          className="
+            border-b
+            border-[#C7A77A]/15
+            group
+            cursor-pointer
+          "
+        >
+
+          <img
+            src={post.image}
+            alt={post.title}
+            className="
+              w-full
+              h-[260px]
+              object-cover
+              transition-transform
+              duration-700
+              group-hover:scale-105
+            "
+          />
+
+          <div className="p-8">
+
+            <h3
+              className="
+                editorial-heading
+                text-3xl
+                text-[#2E2A26]
+                mb-4
+              "
+            >
+              {post.title}
+            </h3>
+
+            <p className="text-[#8B7E74] mb-6 leading-relaxed">
+              {post.excerpt}
+            </p>
+
+            <button
+              className="
+                uppercase
+                tracking-[0.25em]
+                text-xs
+                border-b
+                border-[#C7A77A]
+                pb-2
+              "
+            >
+              Read Article →
+            </button>
+
+          </div>
+
+        </article>
+
+      ))}
+
+    </div>
+
+    {/* COLUMN 3 */}
+
+    <div
+      className="
+        overflow-y-auto
+        hide-scrollbar
+      "
+    >
+
+      <div
+        className="
+          sticky
+          top-0
+          z-10
+          bg-[#F5F0EB]
+          p-8
+          border-b
+          border-[#C7A77A]/15
+        "
+      >
+        <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
+          Investment
+        </p>
+      </div>
+
+      {[...posts, ...posts].map((post, index) => (
+
+        <article
+          key={`investment-${index}`}
+          className="
+            border-b
+            border-[#C7A77A]/15
+            group
+            cursor-pointer
+          "
+        >
+
+          <img
+            src={post.image}
+            alt={post.title}
+            className="
+              w-full
+              h-[260px]
+              object-cover
+              transition-transform
+              duration-700
+              group-hover:scale-105
+            "
+          />
+
+          <div className="p-8">
+
+            <h3
+              className="
+                editorial-heading
+                text-3xl
+                text-[#2E2A26]
+                mb-4
+              "
+            >
+              {post.title}
+            </h3>
+
+            <p className="text-[#8B7E74] mb-6 leading-relaxed">
+              {post.excerpt}
+            </p>
+
+            <button
+              className="
+                uppercase
+                tracking-[0.25em]
+                text-xs
+                border-b
+                border-[#C7A77A]
+                pb-2
+              "
+            >
+              Read Article →
+            </button>
+
+          </div>
+
+        </article>
+
+      ))}
+
+    </div>
+
+  </div>
+
+  {/* MOBILE */}
+
+  <div className="lg:hidden space-y-12">
+
+    {posts.map((post) => (
+
+      <article
+        key={post.id}
+        className="
+          border-b
+          border-[#C7A77A]/15
+          pb-10
+        "
+      >
+
+        <img
+          src={post.image}
+          alt={post.title}
+          className="
+            w-full
+            h-[280px]
+            object-cover
+            mb-6
+          "
+        />
+
+        <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] mb-4">
+          {post.category}
+        </p>
+
+        <h3
+          className="
+            editorial-heading
+            text-3xl
+            text-[#2E2A26]
+            mb-4
+          "
+        >
+          {post.title}
+        </h3>
+
+        <p className="text-[#8B7E74] mb-6">
+          {post.excerpt}
+        </p>
+
+        <button
+          className="
+            uppercase
+            tracking-[0.25em]
+            text-xs
+            border-b
+            border-[#C7A77A]
+            pb-2
+          "
+        >
+          Read Article →
+        </button>
+
+      </article>
+
+    ))}
+
+  </div>
+
+</section>
+
+{/*cta*/}
+<section className="py-32 border-t border-[#C7A77A]/15">
+
+  <div className="max-w-4xl mx-auto px-6 text-center">
+
+    <div className="w-20 h-px bg-[#C7A77A] mx-auto mb-12" />
+
+    <h2
+      className="
+        editorial-heading
+        text-[#2E2A26]
+        text-[clamp(3rem,8vw,6rem)]
+        leading-[0.92]
+      "
+    >
+      Stay Inspired
+    </h2>
+
+    <p
+      className="
+        mt-8
+        text-[#8B7E74]
+        text-lg
+        max-w-2xl
+        mx-auto
+      "
+    >
+      Receive design inspiration, project stories and practical
+      insights delivered directly to your inbox.
+    </p>
+
+  </div>
+
+</section>
     </div>
   );
 }

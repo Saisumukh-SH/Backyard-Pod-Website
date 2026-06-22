@@ -37,7 +37,7 @@ export default function Products() {
 
       {/* HERO */}
 
-      <section className="h-screen flex items-center">
+      <section className="min-h-[85vh] lg:h-screen flex items-center pt-24 lg:pt-0">
 
         <div className="max-w-7xl mx-auto px-8 lg:px-16">
 
@@ -57,8 +57,7 @@ export default function Products() {
             className="
               editorial-heading
               text-[#2E2A26]
-              text-6xl
-              md:text-8xl
+              text-[clamp(3.2rem,12vw,8rem)]
               leading-[0.92]
               tracking-[-0.05em]
               max-w-5xl
@@ -74,9 +73,9 @@ export default function Products() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
             className="
-              mt-10
-              text-[#5F5A55]
-              text-lg
+              mt-8
+text-[#5F5A55]
+text-base md:text-lg
               max-w-2xl
               leading-relaxed
             "
@@ -97,10 +96,7 @@ export default function Products() {
         <section
           key={category.id}
           className="
-            min-h-screen
-            flex
-            items-center
-            py-20
+            py-16 lg:py-24
           "
         >
 
@@ -112,8 +108,10 @@ export default function Products() {
   }
   className={`
     grid
-    lg:grid-cols-2
-    gap-16
+grid-cols-1
+lg:grid-cols-2
+gap-10
+lg:gap-16
     items-center
     cursor-pointer
     group
@@ -135,7 +133,9 @@ export default function Products() {
                 className="
                   overflow-hidden
                   rounded-[24px]
-                  h-[70vh]
+                  h-[320px]
+sm:h-[450px]
+lg:h-[70vh]
                 "
               >
 
@@ -179,8 +179,7 @@ export default function Products() {
   className="
     editorial-heading
     text-[#2E2A26]
-    text-5xl
-    md:text-7xl
+  text-[clamp(2.8rem,10vw,5rem)]
     leading-[0.95]
     tracking-[-0.05em]
     mb-8
@@ -204,7 +203,7 @@ export default function Products() {
                 <p
                   className="
                     text-[#5F5A55]
-                    text-lg
+                    text-base md:text-lg
                     leading-relaxed
                     max-w-xl
                     mb-12
@@ -213,7 +212,7 @@ export default function Products() {
                   {category.description}
                 </p>
 
-                <div className="flex items-center gap-8">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
 
                   <span
                     className="
@@ -255,7 +254,7 @@ export default function Products() {
 
       {/* FINAL CTA */}
 
-      <section className="py-40 text-center">
+      <section className="py-24 lg:py-40 text-center">
 
         <div className="max-w-4xl mx-auto px-6">
 
@@ -265,8 +264,7 @@ export default function Products() {
             className="
               editorial-heading
               text-[#2E2A26]
-              text-5xl
-              md:text-7xl
+              text-[clamp(2.8rem,10vw,7rem)]
               leading-[0.95]
             "
           >
@@ -279,7 +277,7 @@ export default function Products() {
             className="
               mt-8
               text-[#5F5A55]
-              text-lg
+              text-base md:text-lg
               max-w-2xl
               mx-auto
             "

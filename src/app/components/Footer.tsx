@@ -9,9 +9,21 @@ export function Footer() {
 
         {/* BRAND */}
         <div>
-          <h3 className="font-serif text-xl mb-6">
-            Backyard Nest.
-          </h3>
+          <Link
+  to="/"
+  className="
+    inline-block
+    font-serif
+    text-xl
+    mb-6
+    text-white
+    hover:text-[#C7A77A]
+    transition-colors
+    duration-300
+  "
+>
+  Backyard Nest.
+</Link>
 
           <p className="text-white/60 mb-6 leading-relaxed max-w-sm">
             Beautifully designed backyard pods and granny flats for

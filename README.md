@@ -1,6 +1,6 @@
 
   # Backyard Pod Website
-  link: https://designmybackyard.netlify.app/
+  link: https://backyardnest.netlify.app/
 
   ## Running the code
 

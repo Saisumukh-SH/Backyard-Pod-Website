@@ -14,13 +14,38 @@ import { AnimatePresence, motion } from "motion/react";
 export function Home() {
   const navigate = useNavigate();
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
+
   /* HERO GALLERY IMAGES */
-  const images = [
+  const desktopImages = [
     "/images/studio/studyNook/study_nook_timber.webp",
     "/images/grannyflat/grannyflatexmp/granny_flats_hero.webp",
-    "/images/studio/officeStudio/office_studio_navy.webp",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+    "/images/study_nook_hero.webp",
+    "/images/studio/studio1/studio1.1.webp",
+    "/images/studio/studio2/studio2.1.webp",
+    "/images/studio/studio3/studio3.webp",
   ];
+
+  const mobileImages = [
+    "/images/studio/studio1/mobile/studio1.m.webp",
+    "/images/studio/studio2/mobile/studio2.m.webp",
+    "/images/studio/studio3/mobile/studio3.m.webp",
+    "/images/studio/studyNook/mobile/studyNook.m.webp",
+  ];
+
+  const images = isMobile ? mobileImages : desktopImages;
 
   /* PROJECT EXPLORER DATA */
   const projectCategories = [
@@ -75,6 +100,8 @@ const processSteps = [
   const [activeProject, setActiveProject] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
 
+  
+
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -87,56 +114,56 @@ const processSteps = [
 
   return (
     <div className="bg-white">
-      {/* HERO */}
-      <section className="relative h-screen overflow-hidden">
-        {/* Background Slideshow */}
-        {images.map((img, i) => (
-          <img
-            key={i}
-            src={img}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-in-out ${
-              i === index ? "opacity-100 scale-105" : "opacity-0 scale-100"
-            }`}
-            alt=""
-          />
-        ))}
 
-        {/* Minimal Dark Overlay */}
-        <div className="absolute inset-0 bg-black/45" />
+  {/* HERO */}
+<section className="relative h-[85vh] min-h-[620px] lg:h-screen overflow-hidden">
+  {/* Background Slideshow */}
+  {images.map((img, i) => (
+    <img
+      key={i}
+      src={img}
+      className={`absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-in-out ${
+  i === index ? "opacity-100 scale-105" : "opacity-0 scale-100"
+}`}
+      alt=""
+    />
+  ))}
 
-        {/* Hero Content */}
-        <div className="absolute inset-0 flex items-end">
-          <div className="w-full pb-20 md:pb-24 lg:pb-28">
-            <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-              <div className="max-w-4xl">
-                <p className="uppercase tracking-[0.35em] text-white/70 text-xs md:text-sm mb-8">
-                  Designed For Modern Australian Living
-                </p>
+  {/* Minimal Dark Overlay */}
+  <div className="absolute inset-0 bg-black/45" />
 
-                <h1
-                  className="
+  {/* Hero Content */}
+  <div className="absolute inset-0 flex items-end">
+    <div className="w-full pb-28 md:pb-24 lg:pb-28">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+        <div className="max-w-4xl">
+          <p className="uppercase tracking-[0.35em] text-white/70 text-[10px] sm:text-xs md:text-sm mb-6 md:mb-8">
+            Designed For Modern Australian Living
+          </p>
+
+          <h1
+            className="
               editorial-heading
               text-white
-              text-[clamp(4rem,8vw,8rem)]
+              text-[clamp(2.8rem,11vw,8rem)]
               leading-[0.88]
               tracking-[-0.05em]
             "
-                >
-                  SMARTER SPACES.
-                  <br />
-                  BETTER LIVING.
-                  <br />
-                </h1>
+          >
+            SMARTER SPACES.
+            <br />
+            BETTER LIVING.
+          </h1>
 
-                <p className="mt-8 max-w-xl text-white/80 text-lg md:text-xl leading-relaxed">
-                  Architecturally designed backyard pods, studios and granny
-                  flats crafted to create more space for work, family and life.
-                </p>
+          <p className="mt-6 md:mt-8 max-w-sm md:max-w-xl text-white/80 text-base md:text-xl leading-relaxed">
+            Architecturally designed backyard pods, studios and granny
+            flats crafted to create more space for work, family and life.
+          </p>
 
-                <button
-                  onClick={() => navigate("/products")}
-                  className="
-              mt-10
+          <button
+            onClick={() => navigate("/products")}
+            className="
+              mt-8 md:mt-10
               text-white
               uppercase
               text-xs
@@ -147,35 +174,35 @@ const processSteps = [
               hover:opacity-70
               transition-opacity
             "
-                >
-                  Explore Projects →
-                </button>
-              </div>
-            </div>
-          </div>
+          >
+            Explore Projects →
+          </button>
         </div>
+      </div>
+    </div>
+  </div>
 
-        {/* Bottom Indicator */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/10 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-6 py-5">
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-[11px] md:text-xs uppercase tracking-[0.25em] text-white/70">
-              <span>Architecturally Designed</span>
+  {/* Bottom Indicator */}
+  <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/10 backdrop-blur-sm">
+    <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-5">
+      <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-y-6 gap-x-4 md:gap-12 text-[10px] md:text-xs uppercase tracking-[0.25em] text-white/70 text-center">
+        <span>Architecturally Designed</span>
 
-              <span className="hidden md:block">•</span>
+        <span className="hidden md:block">•</span>
 
-              <span>Council Compliant</span>
+        <span>Council Compliant</span>
 
-              <span className="hidden md:block">•</span>
+        <span className="hidden md:block">•</span>
 
-              <span>Built In Victoria</span>
+        <span>Built In Victoria</span>
 
-              <span className="hidden md:block">•</span>
+        <span className="hidden md:block">•</span>
 
-              <span>Premium Materials</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        <span>Premium Materials</span>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* WHY BACKYARD NEST */}
       <section className="bg-[#F5F0EB] py-28 md:py-36 overflow-hidden">
@@ -334,48 +361,113 @@ const processSteps = [
         </div>
       </section>
 
-      {/* PROJECT EXPLORER */}
-      <section className="bg-[#F5F0EB] py-32 overflow-hidden">
-        <div className="max-w-[1700px] mx-auto w-full">
-          <div className="grid lg:grid-cols-[38%_62%] items-center gap-16">
-            {/* LEFT PANEL */}
-            <div className="flex flex-col justify-center px-8 lg:px-20">
-              <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-16">
-                Explore Spaces
-              </p>
+{/* PROJECT EXPLORER */}
+<section className="bg-[#F5F0EB] py-20 lg:py-32 overflow-hidden">
+  <div className="max-w-[1700px] mx-auto w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-[38%_62%] items-center gap-12 lg:gap-16">
 
-              <div className="space-y-10">
-                {projectCategories.map((project, index) => (
-                  <button
-                    key={project.id}
-                    onMouseEnter={() => setActiveProject(index)}
-                    onClick={() => navigate(project.link)}
-                    className="group block text-left"
-                  >
-                    <div className="flex items-center gap-6">
-                      <h2
-                        className={`
+      {/* RIGHT PANEL - MOBILE FIRST */}
+      <div
+        onClick={() => navigate(projectCategories[activeProject].link)}
+        className="
+          order-1
+          lg:order-2
+          cursor-pointer
+          relative
+          overflow-hidden
+          rounded-[20px]
+          h-[320px]
+          sm:h-[420px]
+          md:h-[500px]
+          lg:h-[580px]
+          xl:h-[650px]
+          mx-6
+          lg:mx-0
+          lg:mr-16
+        "
+      >
+        {/* Warm Overlay */}
+        <div className="absolute inset-0 bg-[#C7A77A]/5 z-10 pointer-events-none" />
+
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={activeProject}
+            src={projectCategories[activeProject].image}
+            alt={projectCategories[activeProject].title}
+            initial={{
+              opacity: 0,
+              scale: 1.05,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-cover
+              object-center
+            "
+          />
+        </AnimatePresence>
+      </div>
+
+      {/* LEFT PANEL */}
+      <div
+        className="
+          order-2
+          lg:order-1
+          flex
+          flex-col
+          justify-center
+          px-6
+          lg:px-20
+        "
+      >
+        <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-10 lg:mb-16">
+          Explore Spaces
+        </p>
+
+        <div className="space-y-6 lg:space-y-10">
+          {projectCategories.map((project, index) => (
+            <button
+              key={project.id}
+              onMouseEnter={() => setActiveProject(index)}
+              onClick={() => navigate(project.link)}
+              className="group block text-left"
+            >
+              <div className="flex items-center gap-4 lg:gap-6">
+                <h2
+                  className={`
                     font-light
                     leading-none
                     tracking-[-0.05em]
                     transition-all
                     duration-500
-                    text-[clamp(4rem,7vw,7rem)]
+                    text-[clamp(2.8rem,12vw,7rem)]
                     ${
                       activeProject === index
                         ? "text-[#2E2A26] translate-x-2"
                         : "text-[#B8ADA2]"
                     }
                   `}
-                      >
-                        {project.category}
-                      </h2>
+                >
+                  {project.category}
+                </h2>
 
-                      <span
-                        className={`
+                <span
+                  className={`
                     transition-all
                     duration-500
-                    text-3xl
+                    text-2xl lg:text-3xl
                     text-[#C7A77A]
                     ${
                       activeProject === index
@@ -383,58 +475,57 @@ const processSteps = [
                         : "opacity-0 -translate-x-4"
                     }
                   `}
-                      >
-                        →
-                      </span>
-                    </div>
+                >
+                  →
+                </span>
+              </div>
 
-                    <div className="mt-4 flex items-center gap-4">
-                      <div
-                        className={`
+              <div className="mt-4 flex items-center gap-4">
+                <div
+                  className={`
                     h-px
                     bg-[#C7A77A]
                     transition-all
                     duration-500
                     ${activeProject === index ? "w-20" : "w-0"}
                   `}
-                      />
-                    </div>
-                  </button>
-                ))}
+                />
               </div>
+            </button>
+          ))}
+        </div>
 
-              {/* Active Project Details */}
+        {/* Active Project Details */}
+        <div className="mt-12 lg:mt-24">
+          <div className="w-16 h-px bg-[#C7A77A] mb-8" />
 
-              <div className="mt-24">
-                <div className="w-16 h-px bg-[#C7A77A] mb-8" />
+          <p className="uppercase tracking-[0.25em] text-[#A08E7C] text-xs mb-4">
+            Collection
+          </p>
 
-                <p className="uppercase tracking-[0.25em] text-[#A08E7C] text-xs mb-4">
-                  Collection
-                </p>
-
-                <h3
-                  className="
+          <h3
+            className="
               editorial-heading
               text-[#2E2A26]
-              text-4xl
+              text-3xl
               md:text-5xl
               mb-4
             "
-                >
-                  {projectCategories[activeProject].title}
-                </h3>
+          >
+            {projectCategories[activeProject].title}
+          </h3>
 
-                <p className="text-[#8B7E74] text-lg">
-                  {projectCategories[activeProject].location}
-                  {" • "}
-                  {projectCategories[activeProject].size}
-                </p>
+          <p className="text-[#8B7E74] text-base md:text-lg">
+            {projectCategories[activeProject].location}
+            {" • "}
+            {projectCategories[activeProject].size}
+          </p>
 
-                <button
-                  onClick={() =>
-                    navigate(projectCategories[activeProject].link)
-                  }
-                  className="
+          <button
+            onClick={() =>
+              navigate(projectCategories[activeProject].link)
+            }
+            className="
               mt-8
               uppercase
               tracking-[0.25em]
@@ -446,62 +537,15 @@ const processSteps = [
               hover:opacity-70
               transition-opacity
             "
-                >
-                  Explore Collection →
-                </button>
-              </div>
-            </div>
-
-            {/* RIGHT PANEL */}
-
-            <div
-              onClick={() => navigate(projectCategories[activeProject].link)}
-              className="
-          cursor-pointer
-          relative
-          overflow-hidden
-          rounded-[20px]
-          h-[580px]
-          xl:h-[650px]
-          mr-8
-          lg:mr-16
-        "
-            >
-              {/* Warm Overlay */}
-              <div className="absolute inset-0 bg-[#C7A77A]/5 z-10 pointer-events-none" />
-
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeProject}
-                  src={projectCategories[activeProject].image}
-                  alt={projectCategories[activeProject].title}
-                  initial={{
-                    opacity: 0,
-                    scale: 1.05,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.8,
-                  }}
-                  className="
-              absolute
-              inset-0
-              w-full
-              h-full
-              object-cover
-            "
-                />
-              </AnimatePresence>
-            </div>
-          </div>
+          >
+            Explore Collection →
+          </button>
         </div>
-      </section>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 {/* OUR PROCESS */}
 <section className="bg-[#F5F0EB] py-32 overflow-hidden">
@@ -751,19 +795,21 @@ const processSteps = [
 {/* FINAL CTA */}
 <section className="relative h-[80vh] overflow-hidden">
 
-  {/* Background Image */}
-
   <img
-    src="/images/study_nook_hero.webp"
-    alt="Backyard Nest"
-    className="
-      absolute
-      inset-0
-      w-full
-      h-full
-      object-cover
-    "
-  />
+  src={
+    window.innerWidth < 768
+      ? "/images/studio/studyNook/mobile/studyNook.m.webp"
+      : "/images/studio/studyNook/study_nook_timber.webp"
+  }
+  alt="Backyard Nest"
+  className="
+    absolute
+    inset-0
+    w-full
+    h-full
+    object-cover
+  "
+/>
 
   {/* Overlay */}
 
@@ -881,9 +927,21 @@ const processSteps = [
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-16">
           {/* BRAND */}
           <div>
-            <h3 className="font-serif text-xl mb-6">
-              Backyard <span className="opacity-40">|</span>Nest.
-            </h3>
+           <Link
+  to="/"
+  className="
+    inline-block
+    font-serif
+    text-xl
+    mb-6
+    text-white
+    hover:text-[#C7A77A]
+    transition-colors
+    duration-300
+  "
+>
+  Backyard Nest.
+</Link>
 
             <p className="text-white/60 mb-6 leading-relaxed max-w-sm">
               Beautifully designed backyard pods and granny flats for modern
@@ -891,7 +949,7 @@ const processSteps = [
             </p>
 
             <div className="text-white/60 space-y-2">
-              <p>hello@designmybackyard.com.au</p>
+              <p>hello@backyardnest.com.au</p>
               <p>07 3000 0000</p>
             </div>
           </div>
@@ -903,13 +961,26 @@ const processSteps = [
             </h4>
 
             <ul className="space-y-3 text-white/70">
-              <li className="hover:text-white transition cursor-pointer">
-                Studio Pods
-              </li>
-              <li className="hover:text-white transition cursor-pointer">
-                Granny Flats
-              </li>
-            </ul>
+
+  <li>
+    <Link
+      to="/products/studio"
+      className="hover:text-white transition"
+    >
+      Studio Pods
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/products/granny"
+      className="hover:text-white transition"
+    >
+      Granny Flats
+    </Link>
+  </li>
+
+</ul>
           </div>
 
           {/* COMPANY */}
@@ -918,17 +989,36 @@ const processSteps = [
               Company
             </h4>
 
-            <ul className="space-y-3 text-white/70">
-              <li className="hover:text-white transition cursor-pointer">
-                About Us
-              </li>
-              <li className="hover:text-white transition cursor-pointer">
-                FAQs
-              </li>
-              <li className="hover:text-white transition cursor-pointer">
-                Contact Us
-              </li>
-            </ul>
+<ul className="space-y-3 text-white/70">
+
+  <li>
+    <Link
+      to="/about"
+      className="hover:text-white transition"
+    >
+      About Us
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/contact"
+      className="hover:text-white transition"
+    >
+      Contact Us
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/blog"
+      className="hover:text-white transition"
+    >
+      Blog
+    </Link>
+  </li>
+
+</ul>
           </div>
 
           {/* PARTNERSHIP */}

@@ -1,9 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Navigation() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+useEffect(() => {
+  if (mobileMenuOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [mobileMenuOpen]);
 
   const navLinks = [
     { path: "/products", label: "Designs" },
@@ -23,7 +35,7 @@ export function Navigation() {
       {/* Dark Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent" />
 
-      <div className="relative px-6 md:px-10 lg:px-14 py-8">
+      <div className="relative px-5 sm:px-8 lg:px-14 py-6 lg:py-8">
 
         <div className="flex items-center justify-between">
 
@@ -33,7 +45,7 @@ export function Navigation() {
             className="font-serif tracking-tight"
             style={{
   color: "#ffffff",
-  fontSize: "clamp(1.8rem, 3vw, 3.2rem)",
+  fontSize: "clamp(1.5rem, 6vw, 3.2rem)",
   textShadow: "0 2px 12px rgba(0,0,0,0.5)",
 }}
           >
@@ -68,49 +80,122 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{ color: "#ffffff" }}
-            className="
-              lg:hidden
-              uppercase
-              tracking-[0.25em]
-              text-xs
-            "
-          >
-            Menu
-          </button>
+<button
+  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+  className="
+    lg:hidden
+    relative
+    z-[250]
+    flex
+    flex-col
+    justify-center
+    gap-1.5
+    w-8
+    h-8
+  "
+>
+  <span
+    className={`h-[2px] transition-all duration-300 ${
+      mobileMenuOpen
+        ? "rotate-45 translate-y-[7px] bg-[#1A1A1A]"
+        : "bg-white"
+    }`}
+  />
+
+  <span
+    className={`h-[2px] transition-all duration-300 ${
+      mobileMenuOpen
+        ? "opacity-0 bg-[#1A1A1A]"
+        : "bg-white"
+    }`}
+  />
+
+  <span
+    className={`h-[2px] transition-all duration-300 ${
+      mobileMenuOpen
+        ? "-rotate-45 -translate-y-[7px] bg-[#1A1A1A]"
+        : "bg-white"
+    }`}
+  />
+</button>
 
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-black/95 backdrop-blur-xl px-8 py-8">
+{/* Mobile Menu */}
+{mobileMenuOpen && (
+  <div
+    className="
+      fixed
+      inset-0
+      z-[200]
+      lg:hidden
+      bg-gradient-to-br
+      from-[#F5F0EB]/95
+      via-[#EFE7DF]/95
+      to-[#E8DED5]/95
+      backdrop-blur-xl
+    "
+  >
+    {/* Decorative Blur Orbs */}
+    <div className="pointer-events-none absolute top-20 left-10 w-40 h-40 bg-white/30 rounded-full blur-3xl" />
+    <div className="pointer-events-none absolute bottom-20 right-10 w-52 h-52 bg-white/20 rounded-full blur-3xl" />
 
-          <div className="space-y-6">
 
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setMobileMenuOpen(false)}
-                style={{ color: "#ffffff" }}
-                className="
-                  block
-                  uppercase
-                  tracking-[0.25em]
-                  text-sm
-                "
-              >
-                {link.label}
-              </Link>
-            ))}
 
-          </div>
+    <div className="relative z-10 h-full flex flex-col justify-center items-center">
+      <div className="space-y-8 text-center">
+        {navLinks.map((link) => (
+          <Link
+            key={link.path}
+            to={link.path}
+            onClick={() => setMobileMenuOpen(false)}
+            className={`
+              block
+              uppercase
+              tracking-[0.3em]
+              text-lg
+              transition-all
+              duration-300
+              ${
+                isActive(link.path)
+                  ? "text-[#1A1A1A]"
+                  : "text-[#1A1A1A]/60 hover:text-[#1A1A1A]"
+              }
+            `}
+          >
+            {link.label}
+          </Link>
+        ))}
 
-        </div>
-      )}
+        <button
+          onClick={() => {
+            setMobileMenuOpen(false);
+            window.location.href = "/booking";
+          }}
+          className="
+            mt-10
+            px-8
+            py-4
+            border
+            border-[#1A1A1A]/20
+            text-[#1A1A1A]
+            uppercase
+            tracking-[0.25em]
+            text-xs
+            rounded-full
+            hover:bg-white/40
+            transition-all
+            duration-300
+            min-w-[240px]
+          "
+        >
+          Book Consultation
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </nav>
   );
 }

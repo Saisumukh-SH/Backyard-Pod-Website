@@ -66,8 +66,6 @@ const handleSubmit = async (
 
 </section>
 
-
-
 {/* FORM */}
 
 <section className="px-8 pb-32 bg-[#F5F0EB]">
@@ -322,6 +320,74 @@ const handleSubmit = async (
 
 </section>
 
+{/* CONSULTATION BENEFITS */}
+
+<section className="bg-[#EFE8DF] py-28">
+
+  <div className="max-w-6xl mx-auto px-8 md:px-16">
+
+    <div className="text-center mb-20">
+
+      <span className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs">
+        What To Expect
+      </span>
+
+      <h2 className="editorial-heading text-[#2E2A26] text-[clamp(2.5rem,4vw,4rem)] mt-6">
+        A Consultation Designed
+        <br />
+        Around Your Goals
+      </h2>
+
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-8">
+
+      {[
+        {
+          title: "Discuss Your Ideas",
+          text: "Share your vision, requirements and goals for your backyard space."
+        },
+        {
+          title: "Explore Possibilities",
+          text: "Discover design options tailored to your property and lifestyle."
+        },
+        {
+          title: "Get Expert Guidance",
+          text: "Receive practical advice on layouts, planning and next steps."
+        }
+      ].map((item) => (
+
+        <div
+          key={item.title}
+          className="
+            bg-white
+            rounded-[28px]
+            p-8
+            border border-[rgba(46,42,38,0.08)]
+            hover:border-[#C7A77A]
+            hover:-translate-y-1
+            transition-all duration-300
+          "
+        >
+
+          <h3 className="text-[#2E2A26] text-2xl mb-4">
+            {item.title}
+          </h3>
+
+          <p className="text-[#5F5A55] leading-relaxed">
+            {item.text}
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
     </div>
   );
+
 }

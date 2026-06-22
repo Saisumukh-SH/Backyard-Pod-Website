@@ -172,3 +172,23 @@ a {
 .btn-primary {
   @apply inline-flex items-center justify-center px-10 py-4 border border-black uppercase text-xs tracking-[0.2em] transition-all duration-300 hover:bg-black hover:text-white hover:scale-105 active:scale-95;
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
