@@ -364,20 +364,193 @@ const processSteps = [
 {/* PROJECT EXPLORER */}
 <section className="bg-[#F5F0EB] py-20 lg:py-32 overflow-hidden">
   <div className="max-w-[1700px] mx-auto w-full">
-    <div className="grid grid-cols-1 lg:grid-cols-[38%_62%] items-center gap-12 lg:gap-16">
+    <div className="grid grid-cols-1 lg:grid-cols-[38%_62%] items-center gap-8 lg:gap-16">
 
-      {/* RIGHT PANEL - MOBILE FIRST */}
+      {/* LEFT PANEL */}
+      <div
+        className="
+          order-1
+          lg:order-1
+          flex
+          flex-col
+          justify-center
+          px-6
+          lg:px-20
+        "
+      >
+        <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-8 lg:mb-16">
+          Explore Spaces
+        </p>
+
+        {/* MOBILE CATEGORY SELECTOR */}
+        <div className="lg:hidden mb-1">
+          <div
+            className="
+              flex
+              gap-8
+              overflow-x-auto
+              hide-scrollbar
+              pb-2
+            "
+          >
+            {projectCategories.map((project, index) => (
+              <button
+                key={project.id}
+                onClick={() => setActiveProject(index)}
+                className={`
+                  flex-shrink-0
+                  pb-3
+                  text-2xl
+                  transition-all
+                  duration-300
+                  ${
+                    activeProject === index
+                      ? "text-[#2E2A26] border-b border-[#C7A77A]"
+                      : "text-[#B8ADA2]"
+                  }
+                `}
+              >
+                {project.category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* DESKTOP CATEGORY SELECTOR */}
+        <div className="hidden lg:block space-y-1">
+          {projectCategories.map((project, index) => (
+            <button
+              key={project.id}
+              onMouseEnter={() => setActiveProject(index)}
+              onClick={() => navigate(project.link)}
+              className="group block text-left"
+            >
+              <div className="flex items-center gap-6">
+                <h2
+                  className={`
+                    font-light
+                    leading-none
+                    tracking-[-0.05em]
+                    transition-all
+                    duration-500
+                    text-[clamp(4rem,7vw,7rem)]
+                    ${
+                      activeProject === index
+                        ? "text-[#2E2A26] translate-x-2"
+                        : "text-[#B8ADA2]"
+                    }
+                  `}
+                >
+                  {project.category}
+                </h2>
+
+                <span
+                  className={`
+                    transition-all
+                    duration-500
+                    text-3xl
+                    text-[#C7A77A]
+                    ${
+                      activeProject === index
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 -translate-x-4"
+                    }
+                  `}
+                >
+                  →
+                </span>
+              </div>
+
+              <div className="mt-4 flex items-center gap-4">
+                <div
+                  className={`
+                    h-px
+                    bg-[#C7A77A]
+                    transition-all
+                    duration-500
+                    ${activeProject === index ? "w-20" : "w-0"}
+                  `}
+                />
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* ACTIVE PROJECT DETAILS */}
+        <div className="mt-4 lg:mt-24">
+
+          <div
+            className="
+              bg-white/50
+              backdrop-blur-sm
+              border
+              border-[#C7A77A]/10
+              p-6
+              lg:p-0
+              lg:bg-transparent
+              lg:border-0
+            "
+          >
+            <div className="w-16 h-px bg-[#C7A77A] mb-8" />
+
+            <p className="uppercase tracking-[0.25em] text-[#A08E7C] text-xs mb-4">
+              Collection
+            </p>
+
+            <h3
+              className="
+                editorial-heading
+                text-[#2E2A26]
+                text-3xl
+                md:text-5xl
+                mb-4
+              "
+            >
+              {projectCategories[activeProject].title}
+            </h3>
+
+            <p className="text-[#8B7E74] text-base md:text-lg">
+              {projectCategories[activeProject].location}
+              {" • "}
+              {projectCategories[activeProject].size}
+            </p>
+
+            <button
+              onClick={() =>
+                navigate(projectCategories[activeProject].link)
+              }
+              className="
+                mt-8
+                uppercase
+                tracking-[0.25em]
+                text-xs
+                text-[#2E2A26]
+                border-b
+                border-[#C7A77A]
+                pb-2
+                hover:opacity-70
+                transition-opacity
+              "
+            >
+              Explore Collection →
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      {/* IMAGE PANEL */}
       <div
         onClick={() => navigate(projectCategories[activeProject].link)}
         className="
-          order-1
+          order-2
           lg:order-2
           cursor-pointer
           relative
           overflow-hidden
           rounded-[20px]
-          h-[320px]
-          sm:h-[420px]
+          h-[260px]
+          sm:h-[360px]
           md:h-[500px]
           lg:h-[580px]
           xl:h-[650px]
@@ -386,7 +559,6 @@ const processSteps = [
           lg:mr-16
         "
       >
-        {/* Warm Overlay */}
         <div className="absolute inset-0 bg-[#C7A77A]/5 z-10 pointer-events-none" />
 
         <AnimatePresence mode="wait">
@@ -418,129 +590,6 @@ const processSteps = [
             "
           />
         </AnimatePresence>
-      </div>
-
-      {/* LEFT PANEL */}
-      <div
-        className="
-          order-2
-          lg:order-1
-          flex
-          flex-col
-          justify-center
-          px-6
-          lg:px-20
-        "
-      >
-        <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-10 lg:mb-16">
-          Explore Spaces
-        </p>
-
-        <div className="space-y-6 lg:space-y-10">
-          {projectCategories.map((project, index) => (
-            <button
-              key={project.id}
-              onMouseEnter={() => setActiveProject(index)}
-              onClick={() => navigate(project.link)}
-              className="group block text-left"
-            >
-              <div className="flex items-center gap-4 lg:gap-6">
-                <h2
-                  className={`
-                    font-light
-                    leading-none
-                    tracking-[-0.05em]
-                    transition-all
-                    duration-500
-                    text-[clamp(2.8rem,12vw,7rem)]
-                    ${
-                      activeProject === index
-                        ? "text-[#2E2A26] translate-x-2"
-                        : "text-[#B8ADA2]"
-                    }
-                  `}
-                >
-                  {project.category}
-                </h2>
-
-                <span
-                  className={`
-                    transition-all
-                    duration-500
-                    text-2xl lg:text-3xl
-                    text-[#C7A77A]
-                    ${
-                      activeProject === index
-                        ? "opacity-100 translate-x-0"
-                        : "opacity-0 -translate-x-4"
-                    }
-                  `}
-                >
-                  →
-                </span>
-              </div>
-
-              <div className="mt-4 flex items-center gap-4">
-                <div
-                  className={`
-                    h-px
-                    bg-[#C7A77A]
-                    transition-all
-                    duration-500
-                    ${activeProject === index ? "w-20" : "w-0"}
-                  `}
-                />
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Active Project Details */}
-        <div className="mt-12 lg:mt-24">
-          <div className="w-16 h-px bg-[#C7A77A] mb-8" />
-
-          <p className="uppercase tracking-[0.25em] text-[#A08E7C] text-xs mb-4">
-            Collection
-          </p>
-
-          <h3
-            className="
-              editorial-heading
-              text-[#2E2A26]
-              text-3xl
-              md:text-5xl
-              mb-4
-            "
-          >
-            {projectCategories[activeProject].title}
-          </h3>
-
-          <p className="text-[#8B7E74] text-base md:text-lg">
-            {projectCategories[activeProject].location}
-            {" • "}
-            {projectCategories[activeProject].size}
-          </p>
-
-          <button
-            onClick={() =>
-              navigate(projectCategories[activeProject].link)
-            }
-            className="
-              mt-8
-              uppercase
-              tracking-[0.25em]
-              text-xs
-              text-[#2E2A26]
-              border-b
-              border-[#C7A77A]
-              pb-2
-              hover:opacity-70
-              transition-opacity
-            "
-          >
-            Explore Collection →
-          </button>
-        </div>
       </div>
 
     </div>
