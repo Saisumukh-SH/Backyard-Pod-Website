@@ -21,16 +21,16 @@ const finishes = [
 
 return (
 <SingleStudioPage
-  category="Tailored Solution"
-  title="Bespoke"
-  highlight="Design"
-  description="Every property is unique. Collaborate with our design team to create a completely custom backyard studio tailored to your site, lifestyle and vision. From concept to completion, every detail is designed around you."
-  size="Custom"
-  beds="Flexible"
-  baths="Optional"
-  warranty="10 Year"
-  heroImage="/images/studio/custom_studio/customstudio.webp"
-  finishes={finishes}
+    category="Tailored Solution"
+    title="Bespoke"
+    highlight="Design"
+    description="Every property is unique. Collaborate with our design team to create a completely custom backyard studio tailored to your site, lifestyle and vision. From concept to completion, every detail is designed around you."
+    size="Custom"
+    beds="Flexible"
+    baths="Optional"
+    warranty="10 Year"
+    heroImage="/images/studio/custom_studio/customstudio.webp"
+    finishes={finishes} galleryImages={[]}  
 />
 );
 }

@@ -39,6 +39,23 @@ const finishes = [
       image: "/images/studio/officeStudio/office_studio_sage.webp",
     },
   ];
+  const galleryImages = [
+  {
+    main: "/images/studio/studio2/studio2.webp",
+    thumb: "/images/studio/studio2/studio2_thumb.webp",
+    label: "Exterior",
+  },
+  {
+    main: "/images/studio/studio2/interior/studio2_int.webp",
+    thumb: "/images/studio/studio2/interior/studio2_int_thumb.webp",
+    label: "Interior",
+  },
+  {
+    main: "/images/studio/studio2/floorplan/aspen_floorplan.webp",
+    thumb: "/images/studio/studio2/floorplan/aspen_floorplan_thumb.webp",
+    label: "Floor Plan",
+  },
+];
 
 return (
  <SingleStudioPage
@@ -52,6 +69,7 @@ return (
   warranty="10 Year"
   heroImage="/images/studio/studio2/studio2.1.webp"
   finishes={finishes}
+  galleryImages={galleryImages}
 />
 );
 }

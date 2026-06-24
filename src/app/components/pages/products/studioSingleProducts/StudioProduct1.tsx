@@ -1,6 +1,25 @@
 import SingleStudioPage from "../singleStudioPage";
 
 export default function StudioProduct1() {
+
+  const galleryImages = [
+  {
+    main: "/images/studio/studyNook/study_nook_hero.webp",
+    thumb: "/images/studio/studyNook/study_nook_thumb.webp",
+    label: "Exterior",
+  },
+  {
+    main: "/images/studio/studyNook/interior.webp",
+    thumb: "/images/studio/studyNook/interior_thumb.webp",
+    label: "Interior",
+  },
+  {
+    main: "/images/studio/studyNook/floorplan/28sqm.webp",
+    thumb: "/images/studio/studyNook/floorplan/28sqm_thumb.webp",
+    label: "Floor Plan",
+  },
+];
+
   const finishes = [
     {
       id: "default",
@@ -51,6 +70,7 @@ export default function StudioProduct1() {
       warranty="10 Year"
       heroImage="/images/studio/studyNook/study_nook_hero.webp"
       finishes={finishes}
+      galleryImages={galleryImages}
     />
   );
 }

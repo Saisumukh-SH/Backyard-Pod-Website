@@ -19,6 +19,24 @@ const finishes = [
   }
 ];
 
+const galleryImages = [
+  {
+    main: "/images/studio/studio3/studio3.webp",
+    thumb: "/images/studio/studio3/studio3_thumb.webp",
+    label: "Exterior",
+  },
+  {
+    main: "/images/studio/studio3/interior/studio3_int.webp",
+    thumb: "/images/studio/studio3/interior/studio3_int_thumb.webp",
+    label: "Interior",
+  },
+  {
+    main: "/images/studio/studio3/floorplan/nest_floorplan.webp",
+    thumb: "/images/studio/studio3/floorplan/nest_floorplan_thumb.webp",
+    label: "Floor Plan",
+  },
+];
+
 return (
 <SingleStudioPage
   category="Studio Pods"
@@ -29,8 +47,9 @@ return (
   beds="Studio"
   baths="1"
   warranty="10 Year"
-  heroImage="/images/studio/studio3/studio3.webp"
+  heroImage="/images/studio/studio3/studio3.2.webp"
   finishes={finishes}
+  galleryImages={galleryImages}
 />
 );
 }

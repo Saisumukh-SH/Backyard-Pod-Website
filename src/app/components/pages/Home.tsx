@@ -15,6 +15,7 @@ export function Home() {
   const navigate = useNavigate();
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
 
 useEffect(() => {
   const handleResize = () => {
@@ -120,6 +121,8 @@ const processSteps = [
   {/* Background Slideshow */}
   {images.map((img, i) => (
     <img
+    fetchPriority="high"
+  decoding="sync"
       key={i}
       src={img}
       className={`absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-in-out ${

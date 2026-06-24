@@ -11,7 +11,7 @@ const categories = [
     description:
       "Purpose-built backyard spaces for focused work, creative pursuits and quiet retreat. Create a dedicated office, studio or personal sanctuary without extending your home.",
     image: "/images/study_nook_hero.webp",
-    from: "$24,900",
+    from: "$71,090",
   },
 
   {
@@ -21,7 +21,7 @@ const categories = [
     description:
       "Fully self-contained living spaces designed for family, guests and rental income. A smart way to add flexibility and value to your property.",
     image: "/images/granny_flats_hero.webp",
-    from: "$68,000",
+    from: "$169,998",
   },
 ];
 

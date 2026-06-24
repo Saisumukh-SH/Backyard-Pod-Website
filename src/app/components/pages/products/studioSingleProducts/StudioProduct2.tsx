@@ -18,6 +18,23 @@ const finishes = [
     image: "/images/studio/studio1/charcoal.webp"
   }
 ];
+const galleryImages = [
+  {
+    main: "/images/studio/studio1/studio1.webp",
+    thumb: "/images/studio/studio1/studio1_thumb.webp",
+    label: "Exterior",
+  },
+  {
+    main: "/images/studio/studio1/interior/studio1_int.webp",
+    thumb: "/images/studio/studio1/interior/studio1_int_thumb.webp",
+    label: "Interior",
+  },
+  {
+    main: "/images/studio/studio1/floorplan/brighton_floorplan.webp",
+    thumb: "/images/studio/studio1/floorplan/brighton_floorplan_thumb.webp",
+    label: "Floor Plan",
+  },
+];
 
 return (
 <SingleStudioPage
@@ -31,6 +48,7 @@ return (
   warranty="10 Year"
   heroImage="/images/studio/studio1/studio1.1.webp"
   finishes={finishes}
+  galleryImages={galleryImages}
 />
 );
 }

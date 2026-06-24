@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Finish {
   id: string;
@@ -20,6 +20,11 @@ interface ProductProps {
   warranty: string;
   heroImage: string;
   finishes: Finish[];
+    galleryImages: {
+    main: string;
+    thumb: string;
+    label: string;
+  }[];
 }
 
 export default function SingleStudioPage({
@@ -33,20 +38,38 @@ export default function SingleStudioPage({
   warranty,
   heroImage,
   finishes,
+   galleryImages,
+  
 }: ProductProps) {
   const navigate = useNavigate();
 
   const [activeFinish, setActiveFinish] = useState(finishes[0]);
 
+const [activeGallery, setActiveGallery] = useState(0);
+const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
+
+const displayGallery =
+  hoveredThumb !== null ? hoveredThumb : activeGallery;
+
+useEffect(() => {
+  galleryImages.forEach((image) => {
+    const img = new Image();
+    img.src = image.main;
+  });
+}, []);
   return (
     <div>
-      {/* HERO */}
-<section className="relative h-screen overflow-hidden">
 
-  <img
-    src={heroImage}
-    alt={title}
-    className="
+
+      {/* HERO */}
+      <section className="relative h-screen overflow-hidden">
+        <img
+        fetchPriority="high"
+  decoding="sync"
+          src={heroImage}
+          alt={title}
+          
+          className="
       absolute
       inset-0
       w-full
@@ -54,12 +77,12 @@ export default function SingleStudioPage({
       object-cover
       scale-105
     "
-  />
+        />
 
-  <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/45" />
 
-  <div
-    className="
+        <div
+          className="
       relative
       z-10
       h-full
@@ -71,56 +94,259 @@ export default function SingleStudioPage({
       justify-end
       pb-24
     "
-  >
-
-    <span
-      className="
+        >
+          <span
+            className="
         uppercase
         tracking-[0.3em]
         text-white/60
         text-xs
         mb-6
       "
-    >
-      {category}
-    </span>
+          >
+            {category}
+          </span>
 
-    <h1
-      className="
+          <h1
+            className="
         editorial-heading
         text-white
         text-[clamp(4rem,10vw,8rem)]
         leading-[0.9]
       "
-    >
-      {title}
-      <span className="italic text-[#D7BE8A]">
-        {" "}
-        {highlight}
+          >
+            {title}
+            <span className="italic text-[#D7BE8A]"> {highlight}</span>
+          </h1>
+
+          <div className="flex gap-10 mt-10 text-white/80">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+                Size
+              </p>
+              <p>{size}</p>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+                Beds
+              </p>
+              <p>{beds}</p>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+                Baths
+              </p>
+              <p>{baths}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{/* DESIGN GALLERY */}
+<section className="bg-[#F5F0EB] py-24 lg:py-32">
+
+  <div className="max-w-[1700px] mx-auto px-6 lg:px-10">
+
+    {/* Header */}
+    <div className="max-w-3xl mb-12 lg:mb-20">
+
+      <span className="text-[11px] uppercase tracking-[0.35em] text-black/40">
+        Design Overview
       </span>
-    </h1>
 
-    <div className="flex gap-10 mt-10 text-white/80">
+      <h2 className="editorial-heading text-5xl lg:text-7xl mt-4">
+        Explore The Design
+      </h2>
 
-      <div>
-        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
-          Size
-        </p>
-        <p>{size}</p>
+      <p className="mt-6 text-black/60 text-lg leading-relaxed">
+        Visualise every detail of your studio pod, from the architectural
+        floor plan through to the completed living space.
+      </p>
+
+    </div>
+
+    {/* Gallery */}
+    <div
+      className="
+        relative
+        h-[550px]
+        md:h-[700px]
+        lg:h-[850px]
+        rounded-[50px]
+        lg:rounded-[70px]
+        overflow-hidden
+        border
+        border-black/10
+        bg-[#EFE8E1]
+      "
+    >
+
+      {/* Images */}
+      {galleryImages.map((image, index) => (
+
+        <div
+          key={index}
+          className={`
+            absolute inset-0
+            transition-all duration-700 ease-out
+            ${
+              displayGallery === index
+                ? "opacity-100 scale-100 z-10"
+                : "opacity-0 scale-[1.03] z-0"
+            }
+          `}
+        >
+
+          <img
+            src={image.main}
+            alt={image.label}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+            className={`
+              w-full h-full
+              ${
+                image.label === "Floor Plan"
+                  ? "object-contain p-8 lg:p-12"
+                  : "object-cover"
+              }
+            `}
+          />
+
+        </div>
+
+      ))}
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none z-20" />
+
+      {/* Top Left Label */}
+      <div className="absolute top-8 left-8 z-30">
+
+        <div className="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-sm">
+
+          <span className="text-[11px] uppercase tracking-[0.3em]">
+            {galleryImages[displayGallery].label}
+          </span>
+
+        </div>
+
       </div>
 
-      <div>
-        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
-          Beds
-        </p>
-        <p>{beds}</p>
+      {/* Counter */}
+      <div className="absolute top-8 right-8 z-30">
+
+        <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
+
+          <span className="text-[11px] uppercase tracking-[0.25em]">
+            {displayGallery + 1} / {galleryImages.length}
+          </span>
+
+        </div>
+
       </div>
 
-      <div>
-        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
-          Baths
-        </p>
-        <p>{baths}</p>
+      {/* Navigation Hint */}
+      <div className="absolute bottom-56 left-8 z-30 hidden lg:block">
+
+        <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
+
+          <span className="text-[10px] uppercase tracking-[0.3em] text-black/50">
+            Hover To Preview • Click To Select
+          </span>
+
+        </div>
+
+      </div>
+
+      {/* Thumbnail Navigation */}
+      <div className="absolute bottom-8 left-8 z-30 flex gap-4">
+
+        {galleryImages.map((image, index) => (
+
+          <button
+            key={index}
+            onClick={() => setActiveGallery(index)}
+            onMouseEnter={() => setHoveredThumb(index)}
+            onMouseLeave={() => setHoveredThumb(null)}
+            className={`
+              relative
+              group
+              w-24 h-24
+              md:w-32 md:h-32
+              lg:w-40 lg:h-40
+              rounded-[28px]
+              overflow-hidden
+              transition-all
+              duration-500
+              ${
+                activeGallery === index
+                  ? "scale-105"
+                  : "opacity-75 hover:opacity-100 hover:-translate-y-2"
+              }
+            `}
+          >
+
+            <img
+              src={image.thumb}
+              alt={image.label}
+              loading="lazy"
+              decoding="async"
+              className="
+                w-full h-full
+                object-cover
+                transition-transform
+                duration-700
+                group-hover:scale-110
+              "
+            />
+
+            {/* Overlay */}
+            <div
+              className={`
+                absolute inset-0
+                transition-all duration-300
+                ${
+                  activeGallery === index
+                    ? "bg-black/10"
+                    : "bg-black/25 group-hover:bg-black/10"
+                }
+              `}
+            />
+
+            {/* Active Ring */}
+            {activeGallery === index && (
+              <div className="absolute inset-0 rounded-[28px] ring-4 ring-white" />
+            )}
+
+            {/* Label */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
+
+              <span className="text-[10px] uppercase tracking-[0.2em] text-white whitespace-nowrap">
+                {image.label}
+              </span>
+
+            </div>
+
+          </button>
+
+        ))}
+
+      </div>
+
+      {/* Progress Bar */}
+      <div className="absolute bottom-0 left-0 w-full h-[4px] bg-black/5 z-30">
+
+        <div
+          className="h-full bg-black/80 transition-all duration-500"
+          style={{
+            width: `${
+              ((activeGallery + 1) / galleryImages.length) * 100
+            }%`,
+          }}
+        />
+
       </div>
 
     </div>
@@ -129,46 +355,40 @@ export default function SingleStudioPage({
 
 </section>
 
-{/* DETAILS */}
-<section className="bg-[#F5F0EB] py-24">
+      {/* DETAILS */}
+      <section className="bg-[#F5F0EB] py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid md:grid-cols-4 border-y border-black/10">
+            <div className="py-12">
+              <p className="text-5xl font-serif">{size}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Footprint
+              </p>
+            </div>
 
-  <div className="max-w-7xl mx-auto px-8">
+            <div className="py-12">
+              <p className="text-5xl font-serif">{beds}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Layout
+              </p>
+            </div>
 
-    <div className="grid md:grid-cols-4 border-y border-black/10">
+            <div className="py-12">
+              <p className="text-5xl font-serif">{baths}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Bathroom
+              </p>
+            </div>
 
-      <div className="py-12">
-        <p className="text-5xl font-serif">{size}</p>
-        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-          Footprint
-        </p>
-      </div>
-
-      <div className="py-12">
-        <p className="text-5xl font-serif">{beds}</p>
-        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-          Layout
-        </p>
-      </div>
-
-      <div className="py-12">
-        <p className="text-5xl font-serif">{baths}</p>
-        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-          Bathroom
-        </p>
-      </div>
-
-      <div className="py-12">
-        <p className="text-5xl font-serif">{warranty}</p>
-        <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-          Warranty
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+            <div className="py-12">
+              <p className="text-5xl font-serif">{warranty}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Warranty
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FEATURES SECTION */}
       <section className="border-t border-black/10 px-8 py-32 bg-[#F7F5F0]">
@@ -205,7 +425,7 @@ export default function SingleStudioPage({
             },
             {
               title: "Fast Installation",
-              desc: "Prefabricated and assembled on-site in 1–2 days with minimal disruption.",
+              desc: "Prefabricated and assembled on-site with minimal disruption.",
               icon: (
                 <>
                   {" "}
@@ -309,6 +529,8 @@ export default function SingleStudioPage({
           <div className="relative mb-16">
             <div className="overflow-hidden rounded-xl border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
               <img
+                loading="lazy"
+  decoding="async"
                 key={activeFinish.id}
                 src={activeFinish.image}
                 alt={activeFinish.name}
@@ -373,62 +595,52 @@ export default function SingleStudioPage({
         </div>
       </section>
 
-{/* RELATED PRODUCTS */}
-<section className="bg-[#F5F0EB] py-24">
+      {/* RELATED PRODUCTS */}
+      <section className="bg-[#F5F0EB] py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <p className="uppercase tracking-[0.3em] text-xs text-[#A08E7C] mb-8">
+            Explore More Designs
+          </p>
 
-  <div className="max-w-7xl mx-auto px-8">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="border-b border-black/10 pb-6 cursor-pointer">
+              <h3 className="font-serif text-3xl">15m² Studio</h3>
+            </div>
 
-    <p className="uppercase tracking-[0.3em] text-xs text-[#A08E7C] mb-8">
-      Explore More Designs
-    </p>
+            <div className="border-b border-black/10 pb-6 cursor-pointer">
+              <h3 className="font-serif text-3xl">22m² Studio</h3>
+            </div>
 
-    <div className="grid md:grid-cols-3 gap-6">
+            <div className="border-b border-black/10 pb-6 cursor-pointer">
+              <h3 className="font-serif text-3xl">37m² Studio</h3>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div className="border-b border-black/10 pb-6 cursor-pointer">
-        <h3 className="font-serif text-3xl">15m² Studio</h3>
-      </div>
+      {/* FINAL CTA */}
 
-      <div className="border-b border-black/10 pb-6 cursor-pointer">
-        <h3 className="font-serif text-3xl">22m² Studio</h3>
-      </div>
+      {/* CONSULTATION CTA */}
 
-      <div className="border-b border-black/10 pb-6 cursor-pointer">
-        <h3 className="font-serif text-3xl">37m² Studio</h3>
-      </div>
+      <section className="bg-[#EFE8DF] py-40">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* LEFT */}
 
-    </div>
-
-  </div>
-
-</section>
-
-{/* FINAL CTA */}
-
-{/* CONSULTATION CTA */}
-
-<section className="bg-[#EFE8DF] py-40">
-
-  <div className="max-w-7xl mx-auto px-8">
-
-    <div className="grid lg:grid-cols-2 gap-20 items-center">
-
-      {/* LEFT */}
-
-      <div>
-
-        <span
-          className="
+            <div>
+              <span
+                className="
             uppercase
             tracking-[0.3em]
             text-[#A08E7C]
             text-xs
           "
-        >
-          Next Step
-        </span>
+              >
+                Next Step
+              </span>
 
-        <h2
-          className="
+              <h2
+                className="
             editorial-heading
             text-[#2E2A26]
             text-5xl
@@ -437,66 +649,57 @@ export default function SingleStudioPage({
             tracking-[-0.04em]
             mt-6
           "
-        >
-          Let's Design
-          <br />
-          Your Space
-          <br />
-          Together.
-        </h2>
+              >
+                Let's Design
+                <br />
+                Your Space
+                <br />
+                Together.
+              </h2>
+            </div>
 
-      </div>
+            {/* RIGHT */}
 
-      {/* RIGHT */}
-
-      <div>
-
-        <p
-          className="
+            <div>
+              <p
+                className="
             text-[#5F5A55]
             text-lg
             leading-relaxed
             mb-10
           "
-        >
-          Every property is different. Our team will guide you
-          through layouts, finishes, council requirements and
-          pricing to help create the perfect backyard space.
-        </p>
+              >
+                Every property is different. Our team will guide you through
+                layouts, finishes, council requirements and pricing to help
+                create the perfect backyard space.
+              </p>
 
-        <div className="space-y-6 mb-12">
+              <div className="space-y-6 mb-12">
+                <div className="flex justify-between border-b border-black/10 pb-4">
+                  <span className="text-[#5F5A55]">
+                    Free Design Consultation
+                  </span>
 
-          <div className="flex justify-between border-b border-black/10 pb-4">
-            <span className="text-[#5F5A55]">
-              Free Design Consultation
-            </span>
+                  <span className="text-[#2E2A26]">01</span>
+                </div>
 
-            <span className="text-[#2E2A26]">01</span>
-          </div>
+                <div className="flex justify-between border-b border-black/10 pb-4">
+                  <span className="text-[#5F5A55]">Tailored Quote</span>
 
-          <div className="flex justify-between border-b border-black/10 pb-4">
-            <span className="text-[#5F5A55]">
-              Tailored Quote
-            </span>
+                  <span className="text-[#2E2A26]">02</span>
+                </div>
 
-            <span className="text-[#2E2A26]">02</span>
-          </div>
+                <div className="flex justify-between border-b border-black/10 pb-4">
+                  <span className="text-[#5F5A55]">Design & Build Support</span>
 
-          <div className="flex justify-between border-b border-black/10 pb-4">
-            <span className="text-[#5F5A55]">
-              Design & Build Support
-            </span>
+                  <span className="text-[#2E2A26]">03</span>
+                </div>
+              </div>
 
-            <span className="text-[#2E2A26]">03</span>
-          </div>
-
-        </div>
-
-        <div className="flex flex-wrap gap-4">
-
-          <button
-            onClick={() => navigate("/contact")}
-            className="
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="
               px-8
               py-4
               bg-[#2E2A26]
@@ -504,13 +707,13 @@ export default function SingleStudioPage({
               hover:bg-black
               transition-all
             "
-          >
-            Book Consultation
-          </button>
+                >
+                  Book Consultation
+                </button>
 
-          <button
-            onClick={() => navigate("/products")}
-            className="
+                <button
+                  onClick={() => navigate("/products")}
+                  className="
               px-8
               py-4
               border
@@ -520,19 +723,14 @@ export default function SingleStudioPage({
               hover:text-white
               transition-all
             "
-          >
-            Explore Collection
-          </button>
-
+                >
+                  Explore Collection
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+      </section>
     </div>
   );
 }
