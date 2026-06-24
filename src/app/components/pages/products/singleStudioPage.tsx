@@ -146,6 +146,42 @@ useEffect(() => {
         </div>
       </section>
 
+
+      {/* DETAILS */}
+      <section className="bg-[#F5F0EB] py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid md:grid-cols-4 border-y border-black/10">
+            <div className="py-12">
+              <p className="text-5xl font-serif">{size}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Footprint
+              </p>
+            </div>
+
+            <div className="py-12">
+              <p className="text-5xl font-serif">{beds}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Layout
+              </p>
+            </div>
+
+            <div className="py-12">
+              <p className="text-5xl font-serif">{baths}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Bathroom
+              </p>
+            </div>
+
+            <div className="py-12">
+              <p className="text-5xl font-serif">{warranty}</p>
+              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
+                Warranty
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
 {/* DESIGN GALLERY */}
 <section className="bg-[#F5F0EB] py-16 md:py-24 lg:py-32">
 
@@ -391,40 +427,6 @@ useEffect(() => {
 
 </section>
 
-      {/* DETAILS */}
-      <section className="bg-[#F5F0EB] py-24">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid md:grid-cols-4 border-y border-black/10">
-            <div className="py-12">
-              <p className="text-5xl font-serif">{size}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Footprint
-              </p>
-            </div>
-
-            <div className="py-12">
-              <p className="text-5xl font-serif">{beds}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Layout
-              </p>
-            </div>
-
-            <div className="py-12">
-              <p className="text-5xl font-serif">{baths}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Bathroom
-              </p>
-            </div>
-
-            <div className="py-12">
-              <p className="text-5xl font-serif">{warranty}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Warranty
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FEATURES SECTION */}
       <section className="border-t border-black/10 px-8 py-32 bg-[#F7F5F0]">
