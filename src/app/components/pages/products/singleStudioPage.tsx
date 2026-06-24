@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Finish {
   id: string;
@@ -50,6 +50,8 @@ const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
 
 const displayGallery =
   hoveredThumb !== null ? hoveredThumb : activeGallery;
+
+  const touchStartX = useRef(0);
 
 useEffect(() => {
   galleryImages.forEach((image) => {
@@ -145,22 +147,22 @@ useEffect(() => {
       </section>
 
 {/* DESIGN GALLERY */}
-<section className="bg-[#F5F0EB] py-24 lg:py-32">
+<section className="bg-[#F5F0EB] py-16 md:py-24 lg:py-32">
 
-  <div className="max-w-[1700px] mx-auto px-6 lg:px-10">
+  <div className="max-w-[1700px] mx-auto px-5 md:px-6 lg:px-10">
 
     {/* Header */}
-    <div className="max-w-3xl mb-12 lg:mb-20">
+    <div className="max-w-3xl mb-10 md:mb-16 lg:mb-20">
 
       <span className="text-[11px] uppercase tracking-[0.35em] text-black/40">
         Design Overview
       </span>
 
-      <h2 className="editorial-heading text-5xl lg:text-7xl mt-4">
+      <h2 className="editorial-heading text-4xl md:text-5xl lg:text-7xl mt-4">
         Explore The Design
       </h2>
 
-      <p className="mt-6 text-black/60 text-lg leading-relaxed">
+      <p className="mt-5 md:mt-6 text-black/60 text-base md:text-lg leading-relaxed">
         Visualise every detail of your studio pod, from the architectural
         floor plan through to the completed living space.
       </p>
@@ -171,16 +173,37 @@ useEffect(() => {
     <div
       className="
         relative
-        h-[550px]
-        md:h-[700px]
+        h-[380px]
+        sm:h-[500px]
+        md:h-[650px]
         lg:h-[850px]
-        rounded-[50px]
+        rounded-[32px]
+        md:rounded-[50px]
         lg:rounded-[70px]
         overflow-hidden
         border
         border-black/10
         bg-[#EFE8E1]
       "
+      onTouchStart={(e) => {
+        touchStartX.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        const delta =
+          touchStartX.current - e.changedTouches[0].clientX;
+
+        if (delta > 50) {
+          setActiveGallery((prev) =>
+            prev === galleryImages.length - 1 ? 0 : prev + 1
+          );
+        }
+
+        if (delta < -50) {
+          setActiveGallery((prev) =>
+            prev === 0 ? galleryImages.length - 1 : prev - 1
+          );
+        }
+      }}
     >
 
       {/* Images */}
@@ -208,7 +231,7 @@ useEffect(() => {
               w-full h-full
               ${
                 image.label === "Floor Plan"
-                  ? "object-contain p-8 lg:p-12"
+                  ? "object-contain p-4 md:p-8 lg:p-12"
                   : "object-cover"
               }
             `}
@@ -218,15 +241,15 @@ useEffect(() => {
 
       ))}
 
-      {/* Gradient Overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none z-20" />
 
-      {/* Top Left Label */}
-      <div className="absolute top-8 left-8 z-30">
+      {/* Label */}
+      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30">
 
-        <div className="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-sm">
+        <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-6 md:py-3 rounded-full shadow-sm">
 
-          <span className="text-[11px] uppercase tracking-[0.3em]">
+          <span className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em]">
             {galleryImages[displayGallery].label}
           </span>
 
@@ -235,11 +258,11 @@ useEffect(() => {
       </div>
 
       {/* Counter */}
-      <div className="absolute top-8 right-8 z-30">
+      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30">
 
-        <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
+        <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-5 md:py-3 rounded-full shadow-sm">
 
-          <span className="text-[11px] uppercase tracking-[0.25em]">
+          <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em]">
             {displayGallery + 1} / {galleryImages.length}
           </span>
 
@@ -247,7 +270,20 @@ useEffect(() => {
 
       </div>
 
-      {/* Navigation Hint */}
+      {/* Swipe Hint */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 md:hidden">
+
+        <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full">
+
+          <span className="text-[10px] uppercase tracking-[0.2em] text-black/50">
+            Swipe →
+          </span>
+
+        </div>
+
+      </div>
+
+      {/* Desktop Hint */}
       <div className="absolute bottom-56 left-8 z-30 hidden lg:block">
 
         <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
@@ -260,8 +296,8 @@ useEffect(() => {
 
       </div>
 
-      {/* Thumbnail Navigation */}
-      <div className="absolute bottom-8 left-8 z-30 flex gap-4">
+      {/* Thumbnails */}
+      <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-4">
 
         {galleryImages.map((image, index) => (
 
@@ -273,10 +309,13 @@ useEffect(() => {
             className={`
               relative
               group
-              w-24 h-24
-              md:w-32 md:h-32
+              w-16 h-16
+              sm:w-20 sm:h-20
+              md:w-28 md:h-28
               lg:w-40 lg:h-40
-              rounded-[28px]
+              rounded-[18px]
+              md:rounded-[24px]
+              lg:rounded-[28px]
               overflow-hidden
               transition-all
               duration-500
@@ -302,7 +341,6 @@ useEffect(() => {
               "
             />
 
-            {/* Overlay */}
             <div
               className={`
                 absolute inset-0
@@ -315,15 +353,13 @@ useEffect(() => {
               `}
             />
 
-            {/* Active Ring */}
             {activeGallery === index && (
-              <div className="absolute inset-0 rounded-[28px] ring-4 ring-white" />
+              <div className="absolute inset-0 rounded-[18px] md:rounded-[24px] lg:rounded-[28px] ring-2 md:ring-4 ring-white" />
             )}
 
-            {/* Label */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:block">
 
-              <span className="text-[10px] uppercase tracking-[0.2em] text-white whitespace-nowrap">
+              <span className="text-[9px] lg:text-[10px] uppercase tracking-[0.15em] lg:tracking-[0.2em] text-white whitespace-nowrap">
                 {image.label}
               </span>
 
@@ -335,8 +371,8 @@ useEffect(() => {
 
       </div>
 
-      {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-[4px] bg-black/5 z-30">
+      {/* Progress */}
+      <div className="absolute bottom-0 left-0 w-full h-[3px] md:h-[4px] bg-black/5 z-30">
 
         <div
           className="h-full bg-black/80 transition-all duration-500"
@@ -618,7 +654,6 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* FINAL CTA */}
 
       {/* CONSULTATION CTA */}
 
