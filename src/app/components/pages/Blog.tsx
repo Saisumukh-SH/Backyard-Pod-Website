@@ -1,5 +1,6 @@
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEO from "../SEO";
 
 export function Blog() {
   const posts = [
@@ -76,6 +77,11 @@ export function Blog() {
 
   return (
     <div className="bg-white">
+      <SEO
+    title="Blog | Backyard Nest"
+    description="Explore completed backyard pods, granny flats and studio projects across Melbourne."
+    url="https://backyardnest.com.au/gallery"
+/>
       {/* Hero */}
 <section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-40 pb-24">
 
@@ -107,9 +113,6 @@ export function Blog() {
 </section>
 
 {/* JOURNAL GRID */}
-
-{/* JOURNAL GRID */}
-
 <section className="max-w-[1700px] mx-auto px-6 lg:px-12 pb-24">
 
   {/* DESKTOP */}

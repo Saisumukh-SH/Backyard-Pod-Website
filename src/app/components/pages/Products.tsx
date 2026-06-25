@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import ImageWithWatermark from "../ImageWithWatermark";
+import SEO from "../SEO";
 
 const categories = [
   {
@@ -34,6 +36,11 @@ export default function Products() {
 
   return (
     <main className="bg-[#F5F0EB]">
+      <SEO
+    title="Project Gallery | Backyard Nest"
+    description="Explore completed backyard pods, granny flats and studio projects across Melbourne."
+    url="https://backyardnest.com.au/gallery"
+/>
 
       {/* HERO */}
 
@@ -139,18 +146,19 @@ lg:h-[70vh]
                 "
               >
 
-                <img
+
+<ImageWithWatermark
   src={category.image}
   alt={category.title}
   className="
     w-full
     h-full
-    object-cover
     transition-all
     duration-1000
     group-hover:scale-105
   "
 />
+
 
               </motion.div>
 

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import ImageWithWatermark from "../../ImageWithWatermark";
 
 interface Finish {
   id: string;
@@ -20,7 +21,7 @@ interface ProductProps {
   warranty: string;
   heroImage: string;
   finishes: Finish[];
-    galleryImages: {
+  galleryImages: {
     main: string;
     thumb: string;
     label: string;
@@ -38,48 +39,80 @@ export default function SingleStudioPage({
   warranty,
   heroImage,
   finishes,
-   galleryImages,
-  
+  galleryImages,
 }: ProductProps) {
   const navigate = useNavigate();
 
   const [activeFinish, setActiveFinish] = useState(finishes[0]);
 
-const [activeGallery, setActiveGallery] = useState(0);
-const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
+  const [activeGallery, setActiveGallery] = useState(0);
+  const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
 
-const displayGallery =
-  hoveredThumb !== null ? hoveredThumb : activeGallery;
+  const displayGallery = hoveredThumb !== null ? hoveredThumb : activeGallery;
 
   const touchStartX = useRef(0);
 
-useEffect(() => {
-  galleryImages.forEach((image) => {
-    const img = new Image();
-    img.src = image.main;
-  });
-}, []);
+  useEffect(() => {
+    galleryImages.forEach((image) => {
+      const img = new Image();
+      img.src = image.main;
+    });
+  }, []);
   return (
     <div>
-
-
       {/* HERO */}
       <section className="relative h-screen overflow-hidden">
-        <img
-        fetchPriority="high"
-  decoding="sync"
-          src={heroImage}
-          alt={title}
-          
-          className="
+       {/* Hero Image */}
+<div
+  onContextMenu={(e) => e.preventDefault()}
+  role="img"
+  aria-label={title}
+  className="
+    absolute
+    inset-0
+    bg-cover
+    bg-center
+    bg-no-repeat
+    scale-105
+  "
+  style={{
+    backgroundImage: `url(${heroImage})`,
+  }}
+>
+  {/* Watermark */}
+  <div
+    className="
       absolute
-      inset-0
-      w-full
-      h-full
-      object-cover
-      scale-105
+      bottom-4
+      right-4
+      sm:bottom-5
+      sm:right-5
+      md:bottom-6
+      md:right-6
+      lg:bottom-8
+      lg:right-8
+      z-20
+      pointer-events-none
+      select-none
     "
-        />
+  >
+    <span
+      className="
+        text-white/70
+        font-light
+        uppercase
+        tracking-[0.3em]
+        text-[10px]
+        sm:text-xs
+        md:text-sm
+        drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]
+      "
+    >
+      © BACKYARD NEST
+    </span>
+  </div>
+
+</div>
 
         <div className="absolute inset-0 bg-black/45" />
 
@@ -146,7 +179,6 @@ useEffect(() => {
         </div>
       </section>
 
-
       {/* DETAILS */}
       <section className="bg-[#F5F0EB] py-24">
         <div className="max-w-7xl mx-auto px-8">
@@ -182,32 +214,28 @@ useEffect(() => {
         </div>
       </section>
 
-{/* DESIGN GALLERY */}
-<section className="bg-[#F5F0EB] py-16 md:py-24 lg:py-32">
+      {/* DESIGN GALLERY */}
+      <section className="bg-[#F5F0EB] py-16 md:py-24 lg:py-32">
+        <div className="max-w-[1700px] mx-auto px-5 md:px-6 lg:px-10">
+          {/* Header */}
+          <div className="max-w-3xl mb-10 md:mb-16 lg:mb-20">
+            <span className="text-[11px] uppercase tracking-[0.35em] text-black/40">
+              Design Overview
+            </span>
 
-  <div className="max-w-[1700px] mx-auto px-5 md:px-6 lg:px-10">
+            <h2 className="editorial-heading text-4xl md:text-5xl lg:text-7xl mt-4">
+              Explore The Design
+            </h2>
 
-    {/* Header */}
-    <div className="max-w-3xl mb-10 md:mb-16 lg:mb-20">
+            <p className="mt-5 md:mt-6 text-black/60 text-base md:text-lg leading-relaxed">
+              Visualise every detail of your studio pod, from the architectural
+              floor plan through to the completed living space.
+            </p>
+          </div>
 
-      <span className="text-[11px] uppercase tracking-[0.35em] text-black/40">
-        Design Overview
-      </span>
-
-      <h2 className="editorial-heading text-4xl md:text-5xl lg:text-7xl mt-4">
-        Explore The Design
-      </h2>
-
-      <p className="mt-5 md:mt-6 text-black/60 text-base md:text-lg leading-relaxed">
-        Visualise every detail of your studio pod, from the architectural
-        floor plan through to the completed living space.
-      </p>
-
-    </div>
-
-    {/* Gallery */}
-    <div
-      className="
+          {/* Gallery */}
+          <div
+            className="
         relative
         h-[380px]
         sm:h-[500px]
@@ -221,128 +249,97 @@ useEffect(() => {
         border-black/10
         bg-[#EFE8E1]
       "
-      onTouchStart={(e) => {
-        touchStartX.current = e.touches[0].clientX;
-      }}
-      onTouchEnd={(e) => {
-        const delta =
-          touchStartX.current - e.changedTouches[0].clientX;
+            onTouchStart={(e) => {
+              touchStartX.current = e.touches[0].clientX;
+            }}
+            onTouchEnd={(e) => {
+              const delta = touchStartX.current - e.changedTouches[0].clientX;
 
-        if (delta > 50) {
-          setActiveGallery((prev) =>
-            prev === galleryImages.length - 1 ? 0 : prev + 1
-          );
-        }
-
-        if (delta < -50) {
-          setActiveGallery((prev) =>
-            prev === 0 ? galleryImages.length - 1 : prev - 1
-          );
-        }
-      }}
-    >
-
-      {/* Images */}
-      {galleryImages.map((image, index) => (
-
-        <div
-          key={index}
-          className={`
-            absolute inset-0
-            transition-all duration-700 ease-out
-            ${
-              displayGallery === index
-                ? "opacity-100 scale-100 z-10"
-                : "opacity-0 scale-[1.03] z-0"
-            }
-          `}
-        >
-
-          <img
-            src={image.main}
-            alt={image.label}
-            loading={index === 0 ? "eager" : "lazy"}
-            decoding="async"
-            className={`
-              w-full h-full
-              ${
-                image.label === "Floor Plan"
-                  ? "object-contain p-4 md:p-8 lg:p-12"
-                  : "object-cover"
+              if (delta > 50) {
+                setActiveGallery((prev) =>
+                  prev === galleryImages.length - 1 ? 0 : prev + 1,
+                );
               }
-            `}
-          />
 
-        </div>
+              if (delta < -50) {
+                setActiveGallery((prev) =>
+                  prev === 0 ? galleryImages.length - 1 : prev - 1,
+                );
+              }
+            }}
+          >
+            {/* Images */}
+            {/* Images */}
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className={`
+      absolute inset-0
+      transition-all duration-700 ease-out
+      ${
+        displayGallery === index
+          ? "opacity-100 scale-100 z-10"
+          : "opacity-0 scale-[1.03] z-0"
+      }
+    `}
+              >
+                <ImageWithWatermark
+                  src={image.main}
+                  alt={image.label}
+                  fit={image.label === "Floor Plan" ? "contain" : "cover"}
+                  className="w-full h-full"
+                />
+              </div>
+            ))}
 
-      ))}
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none z-20" />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none z-20" />
+            {/* Label */}
+            <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30">
+              <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-6 md:py-3 rounded-full shadow-sm">
+                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em]">
+                  {galleryImages[displayGallery].label}
+                </span>
+              </div>
+            </div>
 
-      {/* Label */}
-      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30">
+            {/* Counter */}
+            <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30">
+              <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-5 md:py-3 rounded-full shadow-sm">
+                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em]">
+                  {displayGallery + 1} / {galleryImages.length}
+                </span>
+              </div>
+            </div>
 
-        <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-6 md:py-3 rounded-full shadow-sm">
+            {/* Swipe Hint */}
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 md:hidden">
+              <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-black/50">
+                  Swipe →
+                </span>
+              </div>
+            </div>
 
-          <span className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em]">
-            {galleryImages[displayGallery].label}
-          </span>
+            {/* Desktop Hint */}
+            <div className="absolute bottom-56 left-8 z-30 hidden lg:block">
+              <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-black/50">
+                  Hover To Preview • Click To Select
+                </span>
+              </div>
+            </div>
 
-        </div>
-
-      </div>
-
-      {/* Counter */}
-      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30">
-
-        <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-5 md:py-3 rounded-full shadow-sm">
-
-          <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em]">
-            {displayGallery + 1} / {galleryImages.length}
-          </span>
-
-        </div>
-
-      </div>
-
-      {/* Swipe Hint */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 md:hidden">
-
-        <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full">
-
-          <span className="text-[10px] uppercase tracking-[0.2em] text-black/50">
-            Swipe →
-          </span>
-
-        </div>
-
-      </div>
-
-      {/* Desktop Hint */}
-      <div className="absolute bottom-56 left-8 z-30 hidden lg:block">
-
-        <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
-
-          <span className="text-[10px] uppercase tracking-[0.3em] text-black/50">
-            Hover To Preview • Click To Select
-          </span>
-
-        </div>
-
-      </div>
-
-      {/* Thumbnails */}
-      <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-4">
-
-        {galleryImages.map((image, index) => (
-
-          <button
-            key={index}
-            onClick={() => setActiveGallery(index)}
-            onMouseEnter={() => setHoveredThumb(index)}
-            onMouseLeave={() => setHoveredThumb(null)}
-            className={`
+            {/* Thumbnails */}
+            <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-4">
+              {galleryImages.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveGallery(index)}
+                  onMouseEnter={() => setHoveredThumb(index)}
+                  onMouseLeave={() => setHoveredThumb(null)}
+                  className={`
               relative
               group
               w-16 h-16
@@ -361,24 +358,24 @@ useEffect(() => {
                   : "opacity-75 hover:opacity-100 hover:-translate-y-2"
               }
             `}
-          >
+                >
+                  <div
+                    className="
+    w-full
+    h-full
+    bg-cover
+    bg-center
+    transition-transform
+    duration-700
+    group-hover:scale-110
+  "
+                    style={{
+                      backgroundImage: `url(${image.thumb})`,
+                    }}
+                  />
 
-            <img
-              src={image.thumb}
-              alt={image.label}
-              loading="lazy"
-              decoding="async"
-              className="
-                w-full h-full
-                object-cover
-                transition-transform
-                duration-700
-                group-hover:scale-110
-              "
-            />
-
-            <div
-              className={`
+                  <div
+                    className={`
                 absolute inset-0
                 transition-all duration-300
                 ${
@@ -387,46 +384,35 @@ useEffect(() => {
                     : "bg-black/25 group-hover:bg-black/10"
                 }
               `}
-            />
+                  />
 
-            {activeGallery === index && (
-              <div className="absolute inset-0 rounded-[18px] md:rounded-[24px] lg:rounded-[28px] ring-2 md:ring-4 ring-white" />
-            )}
+                  {activeGallery === index && (
+                    <div className="absolute inset-0 rounded-[18px] md:rounded-[24px] lg:rounded-[28px] ring-2 md:ring-4 ring-white" />
+                  )}
 
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:block">
-
-              <span className="text-[9px] lg:text-[10px] uppercase tracking-[0.15em] lg:tracking-[0.2em] text-white whitespace-nowrap">
-                {image.label}
-              </span>
-
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:block">
+                    <span className="text-[9px] lg:text-[10px] uppercase tracking-[0.15em] lg:tracking-[0.2em] text-white whitespace-nowrap">
+                      {image.label}
+                    </span>
+                  </div>
+                </button>
+              ))}
             </div>
 
-          </button>
-
-        ))}
-
-      </div>
-
-      {/* Progress */}
-      <div className="absolute bottom-0 left-0 w-full h-[3px] md:h-[4px] bg-black/5 z-30">
-
-        <div
-          className="h-full bg-black/80 transition-all duration-500"
-          style={{
-            width: `${
-              ((activeGallery + 1) / galleryImages.length) * 100
-            }%`,
-          }}
-        />
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
+            {/* Progress */}
+            <div className="absolute bottom-0 left-0 w-full h-[3px] md:h-[4px] bg-black/5 z-30">
+              <div
+                className="h-full bg-black/80 transition-all duration-500"
+                style={{
+                  width: `${
+                    ((activeGallery + 1) / galleryImages.length) * 100
+                  }%`,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FEATURES SECTION */}
       <section className="border-t border-black/10 px-8 py-32 bg-[#F7F5F0]">
@@ -566,13 +552,17 @@ useEffect(() => {
           {/* HERO IMAGE */}
           <div className="relative mb-16">
             <div className="overflow-hidden rounded-xl border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
-              <img
-                loading="lazy"
-  decoding="async"
+              <ImageWithWatermark
                 key={activeFinish.id}
                 src={activeFinish.image}
                 alt={activeFinish.name}
-                className="w-full h-[85vh] object-cover transition-all duration-700 ease-out"
+                className="
+        w-full
+        h-[85vh]
+        transition-all
+        duration-700
+        ease-out
+      "
               />
             </div>
 
@@ -656,9 +646,7 @@ useEffect(() => {
         </div>
       </section>
 
-
       {/* CONSULTATION CTA */}
-
       <section className="bg-[#EFE8DF] py-40">
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">

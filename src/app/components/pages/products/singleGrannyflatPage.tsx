@@ -47,18 +47,22 @@ export default function SingleGrannyFlatPage({
       {/* HERO */}
 <section className="relative h-screen overflow-hidden">
 
-  <img
-    src={heroImage}
-    alt={title}
-    className="
-      absolute
-      inset-0
-      w-full
-      h-full
-      object-cover
-      scale-105
-    "
-  />
+<div
+  onContextMenu={(e) => e.preventDefault()}
+  role="img"
+  aria-label={title}
+  className="
+    absolute
+    inset-0
+    bg-cover
+    bg-center
+    bg-no-repeat
+    scale-105
+  "
+  style={{
+    backgroundImage: `url(${heroImage})`,
+  }}
+/>
 
   <div className="absolute inset-0 bg-black/45" />
 
@@ -312,12 +316,25 @@ export default function SingleGrannyFlatPage({
           {/* HERO IMAGE */}
           <div className="relative mb-16">
             <div className="overflow-hidden rounded-xl border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
-              <img
-                key={activeFinish.id}
-                src={activeFinish.image}
-                alt={activeFinish.name}
-                className="w-full h-[85vh] object-cover transition-all duration-700 ease-out"
-              />
+              <div
+  key={activeFinish.id}
+  onContextMenu={(e) => e.preventDefault()}
+  role="img"
+  aria-label={activeFinish.name}
+  className="
+    w-full
+    h-[85vh]
+    bg-cover
+    bg-center
+    bg-no-repeat
+    transition-all
+    duration-700
+    ease-out
+  "
+  style={{
+    backgroundImage: `url(${activeFinish.image})`,
+  }}
+/>
             </div>
 
             <div className="absolute bottom-10 left-10 bg-white/90 backdrop-blur-md px-8 py-4 uppercase tracking-[0.25em] text-xs shadow-md rounded-full">

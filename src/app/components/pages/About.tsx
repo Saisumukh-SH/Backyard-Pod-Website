@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import ImageWithWatermark from "../ImageWithWatermark";
+import SEO from "../SEO";
 
 export function About() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -37,7 +39,14 @@ export function About() {
   ];
 
   return (
+    
     <div className="bg-white text-black">
+      <SEO
+    title="About Us | Backyard Nest"
+    description="Explore completed backyard pods, granny flats and studio projects across Melbourne."
+    url="https://backyardnest.com.au/gallery"
+/>
+
       {/* HERO */}
       <section className="relative min-h-screen bg-[#F5F0EB] overflow-hidden">
         <div className="max-w-7xl mx-auto px-8 md:px-16 pt-40 pb-24">
@@ -63,10 +72,18 @@ export function About() {
             </div>
 
             <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80"
-                className="w-full h-[750px] object-cover rounded-[32px]"
-              />
+
+<ImageWithWatermark
+  src="/images/studio/studio2/mobile/studio2.m.webp"
+  alt="BackyardNestStudio"
+  className="  w-full
+    h-[750px]
+    rounded-[32px]
+    bg-cover
+    bg-center
+    bg-no-repeat
+    overflow-hidden"
+/>
             </div>
           </div>
         </div>
@@ -142,11 +159,19 @@ export function About() {
         <div className="max-w-7xl mx-auto px-8 md:px-16">
           <div className="grid lg:grid-cols-[45%_55%] gap-20 items-center">
             <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1600&q=80"
-                alt="Backyard Nest Design Philosophy"
-                className="w-full h-[700px] object-cover rounded-[32px]"
-              />
+      
+<ImageWithWatermark
+  src="images/studio/studio1/interior/studio1_int.webp"
+  alt="studio1_intAboutus"
+  className="w-full
+    h-[700px]
+    rounded-[32px]
+    overflow-hidden
+    bg-cover
+    bg-center
+    bg-no-repeat"
+     aria-label="Backyard Nest Design Philosophy"
+/>
 
               <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-6 py-5">
                 <p className="uppercase tracking-[0.25em] text-[#A08E7C] text-xs mb-2">

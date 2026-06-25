@@ -237,11 +237,21 @@ export function CustomDesign() {
             {pastProjects.map((project, index) => (
               <div key={index} className="bg-white">
                 <div className="relative h-64 bg-gray-100 mb-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <div
+  onContextMenu={(e) => e.preventDefault()}
+  role="img"
+  aria-label={project.title}
+  className="
+    w-full
+    h-full
+    bg-cover
+    bg-center
+    bg-no-repeat
+  "
+  style={{
+    backgroundImage: `url(${project.image})`,
+  }}
+/>
                 </div>
                 <div className="text-sm text-gray-500 mb-2">{project.size}</div>
                 <h3 className="text-xl text-gray-900 mb-2">{project.title}</h3>

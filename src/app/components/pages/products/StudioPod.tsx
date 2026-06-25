@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ImageWithWatermark from "../../ImageWithWatermark";
+
 
 export default function StudioCategory() {
   useEffect(() => {
@@ -158,20 +160,26 @@ ${
 
           {/* IMAGE */}
 
-          <img
-            src={item.gridImage}
-            alt={item.label}
-            className="
-              absolute
-              inset-0
-              w-full
-              h-full
-              object-cover
-              transition-all
-              duration-[1200ms]
-              group-hover:scale-110
-            "
-          />
+          <div
+  onContextMenu={(e) => e.preventDefault()}
+  role="img"
+  aria-label={item.label}
+  className="
+    absolute
+    inset-0
+    w-full
+    h-full
+    bg-cover
+    bg-center
+    bg-no-repeat
+    transition-all
+    duration-[1200ms]
+    group-hover:scale-110
+  "
+  style={{
+    backgroundImage: `url(${item.gridImage})`,
+  }}
+/>
 
           {/* DARK OVERLAY */}
 
@@ -345,20 +353,25 @@ md:text-[2.4rem]
   {/* Background Image */}
   <div className="absolute inset-0">
 
-    <img
-      src={current.immersiveImage}
-      alt={current.label}
-      className="
-  w-full
-  h-full
-  object-cover
-  object-center
-  transition-all
-  duration-700
-  scale-100
-  lg:scale-105
-"
-    />
+   <div className="relative w-full h-full">
+
+  {/* Image */}
+  <ImageWithWatermark
+  src={current.immersiveImage}
+  alt={current.label}
+  className="
+    w-full
+    h-full
+    transition-all
+    duration-700
+    scale-100
+    lg:scale-105
+  "
+/>
+
+
+
+</div>
 
     <div className="absolute inset-0 bg-black/45" />
 

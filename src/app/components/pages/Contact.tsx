@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SEO from "../SEO";
 export function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,6 +34,11 @@ export function Contact() {
 
   return (
     <div>
+      <SEO
+    title="Contact Us | Backyard Nest"
+    description="Explore completed backyard pods, granny flats and studio projects across Melbourne."
+    url="https://backyardnest.com.au/gallery"
+/>
       {/* HERO */}
 
       <section className="bg-[#F5F0EB] py-40">
