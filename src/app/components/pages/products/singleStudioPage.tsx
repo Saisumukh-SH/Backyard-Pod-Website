@@ -185,13 +185,9 @@ export default function SingleStudioPage({
       </section>
 
 {/* SPECIFICATIONS */}
-
 <section className="bg-[#F5F0EB] py-20 lg:py-28">
-
   <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
     <div className="text-center mb-16">
-
       <p className="uppercase tracking-[0.35em] text-xs text-[#A08E7C] mb-5">
         Specifications
       </p>
@@ -208,104 +204,149 @@ export default function SingleStudioPage({
         <br />
         Modern Living.
       </h2>
-
     </div>
 
-   <div
-  className={`grid gap-6 ${
-    baths && baths !== "0"
-      ? "grid-cols-2 md:grid-cols-4"
-      : "grid-cols-3 max-w-3xl mx-auto"
-  }`}
->
-
-      {[
-  {
-    value: size,
-    label: "Footprint",
-  },
-  {
-    value: beds,
-    label: "Bedroom",
-  },
-
-  ...(baths && baths !== "0"
-    ? [
+    {(() => {
+      const items = [
         {
-          value: baths,
-          label: "Bathroom",
+          value: size,
+          label: "Footprint",
         },
-      ]
-    : []),
+        {
+          value: beds,
+          label: "Bedroom",
+        },
 
-  {
-    value: warranty,
-    label: "Warranty*",
-  },
-].map((item, index) => (
+        ...(baths && baths !== "0"
+          ? [
+              {
+                value: baths,
+                label: "Bathroom",
+              },
+            ]
+          : []),
 
-        <motion.div
-          key={item.label}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.6,
-            delay: index * 0.1,
-          }}
-          whileHover={{
-            y: -6,
-          }}
-          className="
-            group
-            rounded-[28px]
-            border
-            border-[#E8DED3]
-            bg-white
-            p-8
-            text-center
-            transition-all
-            duration-500
-            hover:border-[#C7A77A]
-            hover:shadow-[0_20px_45px_rgba(0,0,0,0.05)]
-          "
-        >
+        {
+          value: warranty,
+          label: "Warranty*",
+        },
+      ];
 
-          <p
-            className="
-              editorial-heading
-              text-[#2E2A26]
-              text-[clamp(2.2rem,5vw,3.6rem)]
-              leading-none
-              transition-colors
-              duration-300
-              group-hover:text-[#C7A77A]
-            "
+      const threeCards = !baths || baths === "0";
+
+      return (
+        <>
+          {/* ---------- MOBILE ---------- */}
+          <div className="lg:hidden">
+            {threeCards ? (
+              <>
+                <div className="grid grid-cols-2 gap-5">
+                  {items.slice(0, 2).map((item, index) => (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      whileHover={{ y: -6 }}
+                      className="group rounded-[28px] border border-[#E8DED3] bg-white p-6 text-center transition-all duration-500 hover:border-[#C7A77A] hover:shadow-[0_20px_45px_rgba(0,0,0,0.05)]"
+                    >
+                      <p className="editorial-heading text-[#2E2A26] text-[clamp(2.2rem,7vw,3.6rem)] leading-none group-hover:text-[#C7A77A] transition-colors">
+                        {item.value}
+                      </p>
+
+                      <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
+
+                      <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
+                        {item.label}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="flex justify-center mt-5">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    whileHover={{ y: -6 }}
+                    className="group w-full max-w-[220px] rounded-[28px] border border-[#E8DED3] bg-white p-6 text-center transition-all duration-500 hover:border-[#C7A77A] hover:shadow-[0_20px_45px_rgba(0,0,0,0.05)]"
+                  >
+                    <p className="editorial-heading text-[#2E2A26] text-[clamp(2.2rem,7vw,3.6rem)] leading-none group-hover:text-[#C7A77A] transition-colors">
+                      {items[2].value}
+                    </p>
+
+                    <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
+
+                    <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
+                      {items[2].label}
+                    </p>
+                  </motion.div>
+                </div>
+              </>
+            ) : (
+              <div className="grid grid-cols-2 gap-5">
+                {items.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -6 }}
+                    className="group rounded-[28px] border border-[#E8DED3] bg-white p-6 text-center transition-all duration-500 hover:border-[#C7A77A] hover:shadow-[0_20px_45px_rgba(0,0,0,0.05)]"
+                  >
+                    <p className="editorial-heading text-[#2E2A26] text-[clamp(2.2rem,7vw,3.6rem)] leading-none group-hover:text-[#C7A77A] transition-colors">
+                      {item.value}
+                    </p>
+
+                    <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
+
+                    <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
+                      {item.label}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* ---------- DESKTOP ---------- */}
+          <div
+            className={`hidden lg:grid gap-6 ${
+              threeCards ? "grid-cols-3" : "grid-cols-4"
+            }`}
           >
-            {item.value}
-          </p>
+            {items.map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                }}
+                whileHover={{ y: -6 }}
+                className="group rounded-[28px] border border-[#E8DED3] bg-white p-8 text-center transition-all duration-500 hover:border-[#C7A77A] hover:shadow-[0_20px_45px_rgba(0,0,0,0.05)]"
+              >
+                <p className="editorial-heading text-[#2E2A26] text-[clamp(2.6rem,4vw,3.8rem)] leading-none transition-colors duration-300 group-hover:text-[#C7A77A]">
+                  {item.value}
+                </p>
 
-          <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
+                <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
 
-          <p
-            className="
-              uppercase
-              tracking-[0.28em]
-              text-[11px]
-              text-[#8B7E74]
-            "
-          >
-            {item.label}
-          </p>
-
-        </motion.div>
-
-      ))}
-
-    </div>
-
+                <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
+                  {item.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </>
+      );
+    })()}
   </div>
-
 </section>
 
   {/* FEATURES SECTION */}
@@ -902,7 +943,7 @@ lg:w-24 lg:h-24
 
               <div className="flex flex-wrap gap-4">
                 <button
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate("/booking")}
                   className="
               px-8
               py-4

@@ -100,6 +100,14 @@ export function Footer() {
               Blog
             </Link>
           </li>
+          <li>
+            <Link
+              to="/faq"
+              className="hover:text-white transition"
+            >
+              FAQ
+            </Link>
+          </li>
         </ul>
       </div>
 

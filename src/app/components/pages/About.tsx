@@ -119,18 +119,18 @@ export function About() {
                 {[
                   {
                     title: "Work From Home",
-                    text: "Purpose-built backyard offices designed for focus and productivity.",
+                    text: "Purpose built backyard offices designed for focus and productivity.",
                   },
                   {
                     title: "Family Living",
-                    text: "Flexible granny flats that support multi-generational living.",
+                    text: "Flexible granny flats that support multi generational living.",
                   },
                   {
                     title: "Creative Spaces",
                     text: "Studios and retreats designed for creativity and wellbeing.",
                   },
                   {
-                    title: "Long-Term Value",
+                    title: "Long Term Value",
                     text: "Smart investments that add functionality and value to your property.",
                   },
                 ].map((item) => (
@@ -204,7 +204,7 @@ export function About() {
                 </p>
 
                 <p>
-                  Our designs balance aesthetics, practicality and long-term
+                  Our designs balance aesthetics, practicality and long term
                   value. Every studio, granny flat and backyard retreat is
                   carefully planned to complement the existing home while making
                   the most of natural light, privacy and available space.
@@ -244,7 +244,7 @@ export function About() {
               {
                 number: "01",
                 title: "Architectural Thinking",
-                text: "Every project begins with a thoughtful design process focused on space, light, functionality and long-term usability.",
+                text: "Every project begins with a thoughtful design process focused on space, light, functionality and long term usability.",
               },
               {
                 number: "02",

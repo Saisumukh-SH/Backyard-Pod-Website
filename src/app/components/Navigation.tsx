@@ -22,6 +22,7 @@ useEffect(() => {
     { path: "/about", label: "About" },
     { path: "/blog", label: "Blog" },
     { path: "/contact", label: "Contact" },
+     { path: "/faq", label: "faq" },
   ];
 
   const isActive = (path: string) =>
