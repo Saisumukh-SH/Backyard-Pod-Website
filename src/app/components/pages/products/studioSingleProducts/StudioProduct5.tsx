@@ -1,4 +1,5 @@
 import SingleStudioPage from "../singleStudioPage";
+import RelatedProducts from "../../../RelatedProducts";
 
 export default function StudioProduct5() {
 

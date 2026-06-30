@@ -168,7 +168,7 @@ export default function SingleGrannyFlatPage({
       <div className="py-12">
         <p className="text-5xl font-serif">{warranty}</p>
         <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-          Warranty
+          Warranty*
         </p>
       </div>
 
@@ -197,7 +197,7 @@ export default function SingleGrannyFlatPage({
           </div>{" "}
           <div className="max-w-md ml-auto text-sm leading-relaxed opacity-60">
             {" "}
-            Every element engineered for how you live, work, and rest — without
+            Every element engineered for how you live, work, and rest without
             compromise.{" "}
           </div>{" "}
         </div>{" "}
@@ -223,7 +223,7 @@ export default function SingleGrannyFlatPage({
             },
             {
               title: "Fast Lead Times",
-              desc: "Deposit to delivery in as little as 6 weeks — industry-leading turnaround.",
+              desc: "Deposit to delivery in as little as 6 weeks industry-leading turnaround.",
               icon: <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" />,
             },
             {
@@ -237,8 +237,8 @@ export default function SingleGrannyFlatPage({
               ),
             },
             {
-              title: "10-Year Warranty",
-              desc: "A decade of structural warranty and dedicated ongoing support.",
+              title: "10-Year Warranty*",
+              desc: "A decade of structural warranty* and dedicated ongoing support.",
               icon: (
                 <>
                   {" "}
@@ -249,7 +249,7 @@ export default function SingleGrannyFlatPage({
             },
             {
               title: "Fixed Price Contract",
-              desc: "The price you see is the price you pay — fully transparent, no surprises.",
+              desc: "The price you see is the price you pay fully transparent, no surprises.",
               icon: (
                 <>
                   {" "}

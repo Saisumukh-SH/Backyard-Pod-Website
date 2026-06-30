@@ -6,7 +6,7 @@ export function Blog() {
   const posts = [
     {
       id: 1,
-      title: "10 Creative Ways to Use Your Backyard Pod",
+      title: "10 Creative Ways to Use Your Backyard studios",
       excerpt:
         "Discover innovative uses for your backyard space, from home offices to art studios and everything in between.",
       author: "Sarah Mitchell",
@@ -56,9 +56,9 @@ export function Blog() {
     },
     {
       id: 6,
-      title: "5 Ways a Home Office Pod Improves Productivity",
+      title: "5 Ways a Home Office studios Improves Productivity",
       excerpt:
-        "Working from home? Learn how a dedicated office pod can transform your work-life balance and efficiency.",
+        "Working from home? Learn how a dedicated office studios can transform your work-life balance and efficiency.",
       author: "James Chen",
       date: "December 28, 2025",
       category: "Work From Home",
@@ -79,7 +79,7 @@ export function Blog() {
     <div className="bg-white">
       <SEO
     title="Blog | Backyard Nest"
-    description="Explore completed backyard pods, granny flats and studio projects across Melbourne."
+    description="Explore completed backyard studios, granny flats and studio projects across Melbourne."
     url="https://backyardnest.com.au/gallery"
 />
       {/* Hero */}

@@ -36,7 +36,7 @@ export function Contact() {
     <div>
       <SEO
     title="Contact Us | Backyard Nest"
-    description="Explore completed backyard pods, granny flats and studio projects across Melbourne."
+    description="Explore completed backyard studios, granny flats and studio projects across Melbourne."
     url="https://backyardnest.com.au/gallery"
 />
       {/* HERO */}

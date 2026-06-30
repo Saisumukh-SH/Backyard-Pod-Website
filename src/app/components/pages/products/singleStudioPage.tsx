@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
+import { motion } from "framer-motion";
 
 interface Finish {
   id: string;
@@ -26,6 +27,8 @@ interface ProductProps {
     thumb: string;
     label: string;
   }[];
+  relatedProducts?: React.ReactNode;
+  designInspiration?: React.ReactNode;
 }
 
 export default function SingleStudioPage({
@@ -40,10 +43,12 @@ export default function SingleStudioPage({
   heroImage,
   finishes,
   galleryImages,
+  relatedProducts,
+  designInspiration,
 }: ProductProps) {
   const navigate = useNavigate();
 
-  const [activeFinish, setActiveFinish] = useState(finishes[0]);
+  // const [activeFinish, setActiveFinish] = useState(finishes[0]);
 
   const [activeGallery, setActiveGallery] = useState(0);
   const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
@@ -60,14 +65,15 @@ export default function SingleStudioPage({
   }, []);
   return (
     <div>
+      
       {/* HERO */}
       <section className="relative h-screen overflow-hidden">
-       {/* Hero Image */}
-<div
-  onContextMenu={(e) => e.preventDefault()}
-  role="img"
-  aria-label={title}
-  className="
+        {/* Hero Image */}
+        <div
+          onContextMenu={(e) => e.preventDefault()}
+          role="img"
+          aria-label={title}
+          className="
     absolute
     inset-0
     bg-cover
@@ -75,13 +81,13 @@ export default function SingleStudioPage({
     bg-no-repeat
     scale-105
   "
-  style={{
-    backgroundImage: `url(${heroImage})`,
-  }}
->
-  {/* Watermark */}
-  <div
-    className="
+          style={{
+            backgroundImage: `url(${heroImage})`,
+          }}
+        >
+          {/* Watermark */}
+          <div
+            className="
       absolute
       bottom-4
       right-4
@@ -95,9 +101,9 @@ export default function SingleStudioPage({
       pointer-events-none
       select-none
     "
-  >
-    <span
-      className="
+          >
+            <span
+              className="
         text-white/70
         font-light
         uppercase
@@ -107,12 +113,11 @@ export default function SingleStudioPage({
         md:text-sm
         drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]
       "
-    >
-      © BACKYARD NEST
-    </span>
-  </div>
-
-</div>
+            >
+              © BACKYARD NEST
+            </span>
+          </div>
+        </div>
 
         <div className="absolute inset-0 bg-black/45" />
 
@@ -179,40 +184,351 @@ export default function SingleStudioPage({
         </div>
       </section>
 
-      {/* DETAILS */}
-      <section className="bg-[#F5F0EB] py-24">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid md:grid-cols-4 border-y border-black/10">
-            <div className="py-12">
-              <p className="text-5xl font-serif">{size}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Footprint
+{/* SPECIFICATIONS */}
+
+<section className="bg-[#F5F0EB] py-20 lg:py-28">
+
+  <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div className="text-center mb-16">
+
+      <p className="uppercase tracking-[0.35em] text-xs text-[#A08E7C] mb-5">
+        Specifications
+      </p>
+
+      <h2
+        className="
+          editorial-heading
+          text-[#2E2A26]
+          text-[clamp(2.8rem,6vw,4.8rem)]
+          leading-[0.95]
+        "
+      >
+        Designed For
+        <br />
+        Modern Living.
+      </h2>
+
+    </div>
+
+   <div
+  className={`grid gap-6 ${
+    baths && baths !== "0"
+      ? "grid-cols-2 md:grid-cols-4"
+      : "grid-cols-3 max-w-3xl mx-auto"
+  }`}
+>
+
+      {[
+  {
+    value: size,
+    label: "Footprint",
+  },
+  {
+    value: beds,
+    label: "Bedroom",
+  },
+
+  ...(baths && baths !== "0"
+    ? [
+        {
+          value: baths,
+          label: "Bathroom",
+        },
+      ]
+    : []),
+
+  {
+    value: warranty,
+    label: "Warranty*",
+  },
+].map((item, index) => (
+
+        <motion.div
+          key={item.label}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            delay: index * 0.1,
+          }}
+          whileHover={{
+            y: -6,
+          }}
+          className="
+            group
+            rounded-[28px]
+            border
+            border-[#E8DED3]
+            bg-white
+            p-8
+            text-center
+            transition-all
+            duration-500
+            hover:border-[#C7A77A]
+            hover:shadow-[0_20px_45px_rgba(0,0,0,0.05)]
+          "
+        >
+
+          <p
+            className="
+              editorial-heading
+              text-[#2E2A26]
+              text-[clamp(2.2rem,5vw,3.6rem)]
+              leading-none
+              transition-colors
+              duration-300
+              group-hover:text-[#C7A77A]
+            "
+          >
+            {item.value}
+          </p>
+
+          <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
+
+          <p
+            className="
+              uppercase
+              tracking-[0.28em]
+              text-[11px]
+              text-[#8B7E74]
+            "
+          >
+            {item.label}
+          </p>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+  {/* FEATURES SECTION */}
+
+<section className="border-t border-[#E8DED3] bg-[#F7F5F0] py-24 lg:py-32">
+
+  <div className="max-w-7xl mx-auto px-8">
+
+    {/* HEADER */}
+
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20">
+
+      <div>
+
+        <p className="uppercase tracking-[0.35em] text-[11px] text-[#A08E7C] mb-5">
+          What's Included
+        </p>
+
+        <h2
+          className="
+            editorial-heading
+            text-[#2E2A26]
+            text-[clamp(3rem,5vw,4.8rem)]
+            leading-[0.95]
+          "
+        >
+          Everything
+          <br />
+          Included.
+        </h2>
+
+      </div>
+
+      <p
+        className="
+          max-w-md
+          lg:ml-auto
+          text-[#5F5A55]
+          text-base
+          leading-relaxed
+        "
+      >
+        Every Backyard Nest studio is thoughtfully designed with premium
+        materials, modern construction and everything needed for a seamless
+        experience from design through installation.
+      </p>
+
+    </div>
+
+    {/* FEATURES */}
+
+    {(() => {
+
+      const features = [
+        {
+          title: "Full Customisation",
+          desc: "Tailor cladding, finishes, layouts and dimensions to suit your property and lifestyle.",
+          icon: (
+            <path d="M3 21l3-3m0 0l11-11a2.5 2.5 0 013.5 3.5L9.5 21H3z" />
+          ),
+        },
+        {
+          title: "Fast Installation",
+          desc: "Precision built off site and efficiently installed with minimal disruption.",
+          icon: (
+            <>
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 3" />
+            </>
+          ),
+        },
+        {
+          title: "Planning Permit",
+          desc: "Many studio designs can be completed without requiring a planning permit.",
+          icon: (
+            <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" />
+          ),
+        },
+        {
+          title: "Building Compliant",
+          desc: "Designed to meet Australian building standards and local council requirements.",
+          icon: (
+            <>
+              <path d="M3 10l9-7 9 7" />
+              <path d="M9 21V12h6v9" />
+            </>
+          ),
+        },
+        {
+          title: "Warranty*",
+          desc: "Built with confidence and backed by our comprehensive structural warranty* of 10 years and a build warranty* of 7 years.",
+          icon: (
+            <>
+              <circle cx="12" cy="8" r="4" />
+              <path d="M8 14h8l-1 7H9l-1-7z" />
+            </>
+          ),
+        },
+        {
+          title: "Fixed Price Contract",
+          desc: "Transparent pricing from the beginning with no hidden surprises.",
+          icon: (
+            <>
+              <rect x="4" y="7" width="16" height="12" rx="2" />
+              <path d="M9 7V5h6v2" />
+            </>
+          ),
+        },
+      ];
+
+      return (
+
+        <div
+          className="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            xl:grid-cols-3
+            border
+            border-[#E8DED3]
+          "
+        >
+
+          {features.map((feature, index) => (
+
+            <div
+              key={index}
+              className="
+                group
+                border-r
+                border-b
+                border-[#E8DED3]
+                p-10
+                transition-all
+                duration-500
+                hover:bg-white
+                hover:-translate-y-1
+                hover:shadow-[0_18px_40px_rgba(0,0,0,0.05)]
+              "
+            >
+
+              {/* ICON */}
+
+              <div
+                className="
+                  w-14
+                  h-14
+                  rounded-full
+                  border
+                  border-[#DCCDBB]
+                  flex
+                  items-center
+                  justify-center
+                  mb-7
+                  transition-all
+                  duration-500
+                  group-hover:bg-[#C7A77A]
+                  group-hover:border-[#C7A77A]
+                "
+              >
+
+                <svg
+                  className="
+                    w-6
+                    h-6
+                    text-[#C7A77A]
+                    transition-all
+                    duration-500
+                    group-hover:text-white
+                    group-hover:scale-110
+                  "
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                >
+                  {feature.icon}
+                </svg>
+
+              </div>
+
+              {/* TITLE */}
+
+              <h3
+                className="
+                  editorial-heading
+                  text-[#2E2A26]
+                  text-[2rem]
+                  leading-none
+                  mb-4
+                  transition-colors
+                  duration-300
+                  group-hover:text-[#C7A77A]
+                "
+              >
+                {feature.title}
+              </h3>
+
+              {/* DESCRIPTION */}
+
+              <p
+                className="
+                  text-[#5F5A55]
+                  text-[15px]
+                  leading-relaxed
+                "
+              >
+                {feature.desc}
               </p>
+
             </div>
 
-            <div className="py-12">
-              <p className="text-5xl font-serif">{beds}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Layout
-              </p>
-            </div>
+          ))}
 
-            <div className="py-12">
-              <p className="text-5xl font-serif">{baths}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Bathroom
-              </p>
-            </div>
-
-            <div className="py-12">
-              <p className="text-5xl font-serif">{warranty}</p>
-              <p className="uppercase tracking-[0.25em] text-xs opacity-50 mt-2">
-                Warranty
-              </p>
-            </div>
-          </div>
         </div>
-      </section>
+
+      );
+
+    })()}
+
+  </div>
+
+</section>
 
       {/* DESIGN GALLERY */}
       <section className="bg-[#F5F0EB] py-16 md:py-24 lg:py-32">
@@ -228,7 +544,7 @@ export default function SingleStudioPage({
             </h2>
 
             <p className="mt-5 md:mt-6 text-black/60 text-base md:text-lg leading-relaxed">
-              Visualise every detail of your studio pod, from the architectural
+              Visualise every detail of your studio, from the architectural
               floor plan through to the completed living space.
             </p>
           </div>
@@ -268,7 +584,7 @@ export default function SingleStudioPage({
               }
             }}
           >
-            {/* Images */}
+
             {/* Images */}
             {galleryImages.map((image, index) => (
               <div
@@ -322,17 +638,17 @@ export default function SingleStudioPage({
               </div>
             </div>
 
-            {/* Desktop Hint */}
-            <div className="absolute bottom-56 left-8 z-30 hidden lg:block">
+            {/* Desktop Hint
+            <div className="absolute bottom-38 left-8 z-30 hidden lg:block">
               <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-black/50">
-                  Hover To Preview • Click To Select
+                  Hover To Preview | Click To Select
                 </span>
               </div>
-            </div>
+            </div> */}
 
             {/* Thumbnails */}
-            <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-4">
+            <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-2">
               {galleryImages.map((image, index) => (
                 <button
                   key={index}
@@ -342,10 +658,10 @@ export default function SingleStudioPage({
                   className={`
               relative
               group
-              w-16 h-16
-              sm:w-20 sm:h-20
-              md:w-28 md:h-28
-              lg:w-40 lg:h-40
+              w-12 h-12
+sm:w-14 sm:h-14
+md:w-16 md:h-16
+lg:w-24 lg:h-24
               rounded-[18px]
               md:rounded-[24px]
               lg:rounded-[28px]
@@ -413,133 +729,16 @@ export default function SingleStudioPage({
           </div>
         </div>
       </section>
+      
+      {/* DESIGN INSPIRATION */}
 
-      {/* FEATURES SECTION */}
-      <section className="border-t border-black/10 px-8 py-32 bg-[#F7F5F0]">
-        {" "}
-        {/* HEADER */}{" "}
-        <div className="grid md:grid-cols-2 gap-16 mb-20">
-          {" "}
-          <div>
-            {" "}
-            <span className="uppercase tracking-[0.25em] text-[11px] opacity-50 block mb-6">
-              {" "}
-              What's Included{" "}
-            </span>{" "}
-            <h2 className="font-serif text-[clamp(3rem,5vw,4.5rem)] leading-[1]">
-              {" "}
-              The Best of <br /> Our Features{" "}
-            </h2>{" "}
-          </div>{" "}
-          <div className="max-w-md ml-auto text-sm leading-relaxed opacity-60">
-            {" "}
-            Every element engineered for how you live, work, and rest — without
-            compromise.{" "}
-          </div>{" "}
-        </div>{" "}
-        {/* FEATURES DATA */}{" "}
-        {(() => {
-          const features = [
-            {
-              title: "Full Customization",
-              desc: "Tailor cladding, finishes, layout, and dimensions to match your vision exactly.",
-              icon: (
-                <path d="M3 21l3-3m0 0l11-11a2.5 2.5 0 013.5 3.5L9.5 21H3z" />
-              ),
-            },
-            {
-              title: "Fast Installation",
-              desc: "Prefabricated and assembled on-site with minimal disruption.",
-              icon: (
-                <>
-                  {" "}
-                  <circle cx="12" cy="12" r="9" /> <path d="M12 7v5l3 3" />{" "}
-                </>
-              ),
-            },
-            {
-              title: "Fast Lead Times",
-              desc: "Deposit to delivery in as little as 6 weeks — industry-leading turnaround.",
-              icon: <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" />,
-            },
-            {
-              title: "Regulation Compliant",
-              desc: "All documentation meets local planning and building regulation requirements.",
-              icon: (
-                <>
-                  {" "}
-                  <path d="M3 10l9-7 9 7" /> <path d="M9 21V12h6v9" />{" "}
-                </>
-              ),
-            },
-            {
-              title: "10-Year Warranty",
-              desc: "A decade of structural warranty and dedicated ongoing support.",
-              icon: (
-                <>
-                  {" "}
-                  <circle cx="12" cy="8" r="4" />{" "}
-                  <path d="M8 14h8l-1 7H9l-1-7z" />{" "}
-                </>
-              ),
-            },
-            {
-              title: "Fixed Price Contract",
-              desc: "The price you see is the price you pay — fully transparent, no surprises.",
-              icon: (
-                <>
-                  {" "}
-                  <rect x="4" y="7" width="16" height="12" rx="2" />{" "}
-                  <path d="M9 7V5h6v2" />{" "}
-                </>
-              ),
-            },
-          ];
-          return (
-            <div className="grid md:grid-cols-3 border border-black/10">
-              {" "}
-              {features.map((feature, i) => (
-                <div
-                  key={i}
-                  className="group border-r border-b border-black/10 p-12 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-white hover:border-black/20"
-                >
-                  {" "}
-                  {/* ICON */}{" "}
-                  <div className="w-14 h-14 rounded-full border border-black/20 flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 group-hover:border-[#6F8A5E]">
-                    {" "}
-                    <svg
-                      className="w-6 h-6 text-[#6F8A5E] transition-all duration-500 group-hover:rotate-6"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      viewBox="0 0 24 24"
-                    >
-                      {" "}
-                      {feature.icon}{" "}
-                    </svg>{" "}
-                  </div>{" "}
-                  {/* TITLE */}{" "}
-                  <h3 className="font-serif text-2xl mb-4 transition-all duration-300 group-hover:tracking-wide">
-                    {" "}
-                    {feature.title}{" "}
-                  </h3>{" "}
-                  {/* DESCRIPTION */}{" "}
-                  <p className="text-sm opacity-60 leading-relaxed transition-all duration-300 group-hover:opacity-80">
-                    {" "}
-                    {feature.desc}{" "}
-                  </p>{" "}
-                </div>
-              ))}{" "}
-            </div>
-          );
-        })()}{" "}
-      </section>
+{designInspiration}
 
       {/* FINISH & MATERIALS */}
-      <section className="border-t border-black/10 py-32 bg-[#F7F5F0]">
-        <div className="max-w-[1400px] mx-auto px-8">
-          {/* HEADER */}
-          <div className="mb-20 max-w-2xl">
+      {/* <section className="border-t border-black/10 py-32 bg-[#F7F5F0]">
+        <div className="max-w-[1400px] mx-auto px-8"> */}
+      {/* HEADER */}
+      {/* <div className="mb-20 max-w-2xl">
             <span className="uppercase tracking-[0.3em] text-[11px] opacity-40 block mb-6">
               Finish & Materials
             </span>
@@ -547,10 +746,10 @@ export default function SingleStudioPage({
             <h2 className="font-serif text-[clamp(3rem,5vw,5rem)] leading-[1]">
               Choose Your Cladding
             </h2>
-          </div>
+          </div> */}
 
-          {/* HERO IMAGE */}
-          <div className="relative mb-16">
+      {/* HERO IMAGE */}
+      {/* <div className="relative mb-16">
             <div className="overflow-hidden rounded-xl border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
               <ImageWithWatermark
                 key={activeFinish.id}
@@ -569,10 +768,10 @@ export default function SingleStudioPage({
             <div className="absolute bottom-10 left-10 bg-white/90 backdrop-blur-md px-8 py-4 uppercase tracking-[0.25em] text-xs shadow-md rounded-full">
               {activeFinish.name}
             </div>
-          </div>
+          </div> */}
 
-          {/* SELECTOR */}
-          <div className="bg-white/60 backdrop-blur-md border border-black/10 rounded-2xl p-8 shadow-sm">
+      {/* SELECTOR */}
+      {/* <div className="bg-white/60 backdrop-blur-md border border-black/10 rounded-2xl p-8 shadow-sm">
             <div className="grid md:grid-cols-5 gap-6">
               {finishes.map((finish) => {
                 const isActive = activeFinish.id === finish.id;
@@ -619,32 +818,12 @@ export default function SingleStudioPage({
                 );
               })}
             </div>
-          </div>
-        </div>
-      </section>
+          </div> */}
+      {/* </div>
+      </section> */}
 
       {/* RELATED PRODUCTS */}
-      <section className="bg-[#F5F0EB] py-24">
-        <div className="max-w-7xl mx-auto px-8">
-          <p className="uppercase tracking-[0.3em] text-xs text-[#A08E7C] mb-8">
-            Explore More Designs
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="border-b border-black/10 pb-6 cursor-pointer">
-              <h3 className="font-serif text-3xl">15m² Studio</h3>
-            </div>
-
-            <div className="border-b border-black/10 pb-6 cursor-pointer">
-              <h3 className="font-serif text-3xl">22m² Studio</h3>
-            </div>
-
-            <div className="border-b border-black/10 pb-6 cursor-pointer">
-              <h3 className="font-serif text-3xl">37m² Studio</h3>
-            </div>
-          </div>
-        </div>
-      </section>
+     {relatedProducts}
 
       {/* CONSULTATION CTA */}
       <section className="bg-[#EFE8DF] py-40">

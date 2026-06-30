@@ -26,11 +26,11 @@ export function About() {
     },
     {
       year: "2023",
-      text: "First collection of studio pods launched across Melbourne.",
+      text: "First collection of backyard studio launched across Melbourne.",
     },
     {
       year: "2024",
-      text: "Granny flat range introduced for modern multi-generational living.",
+      text: "Granny flat range introduced for modern multi generational living.",
     },
     {
       year: "2025",
@@ -43,7 +43,7 @@ export function About() {
     <div className="bg-white text-black">
       <SEO
     title="About Us | Backyard Nest"
-    description="Explore completed backyard pods, granny flats and studio projects across Melbourne."
+    description="Explore completed backyard studios, granny flats and studio projects across Melbourne."
     url="https://backyardnest.com.au/gallery"
 />
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export function Pricing() {
   const packages = [
     {
-      name: "Studio Pod",
+      name: "Backyard Studio",
       price: "45,000",
       description: "Ideal for home offices and creative spaces",
       features: [
@@ -13,7 +13,7 @@ export function Pricing() {
         "Basic electrical setup",
         "Single glazed windows",
         "Standard flooring",
-        "1 year warranty",
+        "1 year warranty*",
         "Basic interior finish",
       ],
       popular: false,
@@ -30,7 +30,7 @@ export function Pricing() {
         "Quality flooring throughout",
         "Kitchen appliances included",
         "Modern bathroom fixtures",
-        "5 year warranty",
+        "5 year warranty*",
         "Premium interior finish",
       ],
       popular: true,
@@ -48,7 +48,7 @@ export function Pricing() {
         "Premium kitchen appliances",
         "Two modern bathrooms",
         "Outdoor deck included",
-        "10 year warranty",
+        "10 year warranty*",
         "Luxury interior finish",
       ],
       popular: false,

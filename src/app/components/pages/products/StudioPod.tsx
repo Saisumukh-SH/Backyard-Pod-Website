@@ -12,67 +12,72 @@ export default function StudioCategory() {
 
   const sizes = [
     {
-      id: 15,
-      label: "Hikkori 85",
+      id: 1,
+      label: "The Vista",
       route: "/products/StudioProduct1",
-      gridImage: "/images/studio/studyNook/mobile/studyNook.m.webp",
-      immersiveImage: "/images/studio/studyNook/study_nook_hero.webp",
+      gridImage: "/images/studio/studio4/mobile/studio4.m.webp",
+      immersiveImage: "/images/studio/studio4/studio4.3.webp",
       description:
-        "A modern backyard studio with clean horizontal cladding and wide glass doors. Designed to maximise natural light, it provides a bright and practical space ideal for a home office, studio, or quiet workspace.",
+        "A premium 26m² backyard studio purpose built for sloping blocks, delivering modern design, smart space and seamless integration with challenging terrain.",
       footprint: "3 x 5 m",
       height: "2.7 m",
+      size:"26",
       glazing: "Single wall",
-      capacity: "1 person",
+      capacity: "2-3",
     },
     {
-      id: 22,
+      id: 2,
       label: "The Brighton ",
       route: "/products/StudioProduct2",
       gridImage: "/images/studio/studio1/mobile/studio1.m.webp",
       immersiveImage: "/images/studio/studio1/studio1.3.webp",
       description:
         "A compact modern backyard studio with clean cladding and large glass doors framed in black aluminum. Designed to bring in natural light, it creates a bright, functional space ideal for a home office, studio, or private retreat.",
-      footprint: "4 × 5.5 m",
+      footprint: "4 x 5.5 m",
       height: "2.7 m",
+      size:"32",
       glazing: "Double wall",
-      capacity: "2 people",
+      capacity: "2",
     },
     {
-      id: 30,
-      label: "The Aspen 20",
+      id: 3,
+      label: "The Aspen",
       route: "/products/StudioProduct3",
       gridImage: "/images/studio/studio2/mobile/studio2.m.webp",
       immersiveImage: "/images/studio/studio2/studio2.3.webp",
-      description: "...",
-      footprint: "5 × 6 m",
+      description: "A premium 20m² backyard studio designed for modern Australian living, featuring contemporary architecture, abundant natural light and versatile spaces for work, relaxation or guest accommodation.",
+      footprint: "5 x 6 m",
       height: "2.7 m",
+      size:"20",
       glazing: "Clerestory",
-      capacity: "2–3 people",
+      capacity: "2",
     },
     {
-      id: 37,
-      label: "The Nest 15",
+      id: 4,
+      label: "The Nest",
       route: "/products/StudioProduct4",
       gridImage: "/images/studio/studio3/mobile/studio3.m.webp",
       immersiveImage: "/images/studio/studio3/studio3.3.webp",
-      description: "...",
-      footprint: "6 × 6 m",
+      description: "A compact 15m² backyard studio thoughtfully designed to maximise space, natural light and functionality, making it ideal for a home office, creative studio or private retreat.",
+      footprint: "6 x 6 m",
       height: "2.7 m",
+      size:"15",
       glazing: "Panoramic",
-      capacity: "3 people",
+      capacity: "1",
     },
     {
-  id: 99,
+  id: 5,
   label: "Bespoke Design",
   description:
-    "Every property is different. Collaborate with our design team to create a one-of-a-kind studio tailored specifically to your needs, site conditions and aesthetic preferences.",
-    gridImage: "/images/studio/custom_studio/customstudio.webp",
+    "Every property is different. Collaborate with our design team to create a one of a kind studio tailored specifically to your needs, site conditions and aesthetic preferences.",
+    gridImage: "/images/studio/custom_studio/mobile/customstudio_mobile.webp",
     immersiveImage: "/images/studio/custom_studio/customstudio.webp",
+    size:"custo",
   route: "/contact",
 }
   ];
 
-  const [activeSize, setActiveSize] = useState(15);
+  const [activeSize, setActiveSize] = useState(1);
 
   const current = sizes.find((s) => s.id === activeSize)!;
 
@@ -81,7 +86,6 @@ export default function StudioCategory() {
 
 
 {/* LUXURY COLLECTION GRID */}
-
 <section className="bg-[#F5F0EB] py-20 lg:py-32">
 
   <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -237,7 +241,7 @@ ${
 >
   {item.id === 99
     ? "Tailored Solution"
-    : "Studio Pod Collection"}
+    : "Studios Collection"}
 </p>
 
             {/* NAME */}
@@ -272,7 +276,7 @@ md:text-[2.4rem]
 >
   {item.id === 99
     ? "Designed Around You"
-    : `${item.id}m² Studio Pod`}
+    : `${item.size}m² Studio`}
 </p>
 
             {/* HOVER CONTENT */}
@@ -347,7 +351,6 @@ md:text-[2.4rem]
 </section>
 
   {/* IMMERSIVE COLLECTION EXPLORER */}
-
 <section className="relative min-h-[850px] lg:h-screen overflow-hidden hidden lg:block">
 
   {/* Background Image */}

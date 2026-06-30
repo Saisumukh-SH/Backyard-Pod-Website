@@ -1,4 +1,6 @@
 import SingleStudioPage from "../singleStudioPage";
+import RelatedProducts from "../../../RelatedProducts";
+import DesignInspiration from "../DesignInspiration";
 
 export default function StudioProduct2() {
 
@@ -38,17 +40,55 @@ const galleryImages = [
 
 return (
 <SingleStudioPage
-  category="Studio Pods"
+  category="Backyard Studio"
   title="The Brighton"
-  highlight="22"
+  highlight="32"
   description="A refined backyard studio designed for focused work and flexible living. Featuring generous glazing, clean architectural lines and a highly efficient layout, The Brighton creates a bright and inspiring space for everyday use."
-  size="22 m²"
-  beds="Studio"
+  size="32 m²"
+  beds="1"
   baths="1"
   warranty="10 Year"
   heroImage="/images/studio/studio1/studio1.1.webp"
   finishes={finishes}
   galleryImages={galleryImages}
+  relatedProducts={<RelatedProducts currentId={32} />}
+  designInspiration={
+  <DesignInspiration
+    title={
+      <>
+        Inspired By
+        <br />
+        Mediterranean
+        <br />
+        Coastal Living.
+      </>
+    }
+    subtitle="Mediterranean Coastal Backyard Studio"
+    intro="Clean lines, bright white finishes and timeless Mediterranean architecture inspired by the relaxed homes of the Greek Islands."
+
+    paragraphs={[
+      "The Brighton draws inspiration from timeless Mediterranean architecture, combining clean white finishes, natural textures and light filled interiors to create a peaceful retreat within your own backyard.",
+
+      "Influenced by the relaxed coastal homes of the Greek Islands, this design embraces simplicity, elegance and connection to outdoor living. Crisp white cladding, soft neutral tones and carefully considered architectural details create a bright and welcoming space that feels both modern and timeless.",
+
+      "Perfectly suited to Melbourne's bayside suburbs, the Brighton luxury backyard studio is ideal for homeowners seeking a sophisticated backyard studio that complements coastal and contemporary homes alike.",
+
+      "Whether used as a home office, guest accommodation, creative studio or private retreat, the Brighton backyard studio delivers a sense of calm, comfort and understated luxury.",
+    ]}
+
+    features={[
+      "Mediterranean inspired architecture",
+      "Bright white exterior finishes",
+      "Natural timber accents",
+      "Large glazed openings",
+      "Minimalist interiors",
+      "Energy efficient design",
+      "Indoor outdoor connection",
+    ]}
+
+    outro="Designed to evoke the relaxed atmosphere of a luxury coastal escape, The Brighton transforms your backyard into a beautiful extension of your lifestyle."
+  />
+}
 />
 );
 }

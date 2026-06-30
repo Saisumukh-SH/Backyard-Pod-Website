@@ -16,6 +16,7 @@ import { NotFound } from "./components/pages/NotFound";
 import StudioPod from "./components/pages/products/StudioPod";
 import GrannyFlats from "./components/pages/products/grannyFlats";
 import Booking from "./components/pages/bookings";
+import ComingSoon from "./components/pages/ComingSoon";
 
 
 import StudioProduct1 from "./components/pages/products/studioSingleProducts/StudioProduct1";
@@ -45,11 +46,12 @@ export const router = createBrowserRouter([
       { path: "faq", Component: FAQ },
       { path: "contact", Component: Contact },
       { path: "about", Component: About },
-      { path: "blog", Component: Blog },
+      { path: "blog", Component: ComingSoon },
       { path: "products/studio", Component: StudioPod },
-      { path: "products/granny", Component: GrannyFlats },
+      { path: "products/granny", Component: Contact },
       { path: "booking", Component: Booking },
       { path: "thank-you", Component: ThankyouPage },
+      { path: "coming-soon", Component: ComingSoon },
       
       { path: "products/StudioProduct1", Component: StudioProduct1 },
       { path: "products/StudioProduct2", Component: StudioProduct2 },

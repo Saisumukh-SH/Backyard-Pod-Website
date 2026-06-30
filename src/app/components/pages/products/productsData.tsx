@@ -11,14 +11,14 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
-    number: "01 — Studio Pod",
+    number: "Studio Pod",
     name: "Studio Pod",
     slug: "studio-pod",
     description: "Perfect for home offices or creative studios.",
     image:
       "https://images.unsplash.com/photo-1765810655582-97eae3a801bb?w=1080&q=80",
     features: [
-      "15–25 sqm",
+      "15-25 sqm",
       "Insulated walls",
       "Electrical setup",
       "Internet ready",
@@ -26,7 +26,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    number: "02 — Granny Flat",
+    number: "Granny Flat",
     name: "One Bedroom Granny Flat",
     slug: "one-bedroom-flat",
     description: "Complete backyard living solution.",

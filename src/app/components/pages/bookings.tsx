@@ -110,7 +110,7 @@ const handleSubmit = async (
 
         <div className="flex flex-wrap gap-3">
 
-          {["Studio Pod", "Granny Flat"].map((type) => (
+          {["Backyard Studio", "Granny Flat"].map((type) => (
 
             <button
               key={type}
@@ -222,7 +222,7 @@ const handleSubmit = async (
 
       {/* STUDIO MODEL */}
 
-      {projectType === "Studio Pod" && (
+      {projectType === "Backyard Studio" && (
 
         <select
           name="studio-model"
@@ -238,10 +238,10 @@ const handleSubmit = async (
           "
         >
           <option>Select Studio Model</option>
-          <option>Hokkori</option>
-          <option>Arbor</option>
-          <option>Vista</option>
-          <option>Luma</option>
+          <option>The Vista</option>
+          <option>The Brighton </option>
+          <option>The Aspen</option>
+          <option>The Nest</option>
         </select>
 
       )}

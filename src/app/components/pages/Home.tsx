@@ -34,7 +34,6 @@ export function Home() {
   const desktopImages = [
     "/images/studio/studyNook/study_nook_timber.webp",
     "/images/grannyflat/grannyflatexmp/granny_flats_hero.webp",
-    "/images/study_nook_hero.webp",
     "/images/studio/studio1/studio1.1.webp",
     "/images/studio/studio2/studio2.1.webp",
     "/images/studio/studio3/studio3.webp",
@@ -54,10 +53,9 @@ export function Home() {
     {
       id: 0,
       category: "Studios",
-      title: "Garden Nook",
+      title: "Backyard Studios",
       location: "Melbourne",
-      size: "28m²",
-      image: "/images/study_nook_hero.webp",
+      image: "/images/studio/studio3/studio3.2.webp",
       link: "/products?category=studio",
     },
     {
@@ -65,7 +63,6 @@ export function Home() {
       category: "Granny Flats",
       title: "Granny Flat",
       location: "Melbourne",
-      size: "45m²",
       image: "/images/granny_flats_hero.webp",
       link: "/products?category=granny-flat",
     },
@@ -89,7 +86,7 @@ export function Home() {
       number: "03",
       title: "Permits & Approvals",
       description:
-        "We manage planning and building approvals where required, helping make the process straightforward and stress-free.",
+        "We manage planning and building approvals where required, helping make the process straightforward and stress free.",
     },
     {
       number: "04",
@@ -121,8 +118,8 @@ export function Home() {
   return (
     <>
     <SEO
-        title="Backyard Nest | Premium Backyard Pods, Studios & Granny Flats Melbourne"
-        description="Premium backyard pods, home studios and granny flats designed and built across Melbourne and Victoria."
+        title="Backyard Nest | Premium Backyard studios, Studios & Granny Flats Melbourne"
+        description="Premium backyard studios, home studios and granny flats designed and built across Melbourne and Victoria."
         url="https://backyardnest.com.au/"
       />
 
@@ -205,7 +202,6 @@ export function Home() {
           "
         >
           Create extra space without moving. Backyard Nest designs and builds premium backyard studios, granny flats, home offices and garden retreats across Melbourne and Victoria.
-          From concept design and permits to construction and handover, we deliver beautiful, council-compliant spaces tailored to your lifestyle and property.
         </p>
 
         {/* CTA */}
@@ -311,7 +307,7 @@ export function Home() {
     "Council Permit & Approval Management",
     "Heritage Overlay Expertise",
     "Premium Australian Materials",
-    "Transparent Fixed-Price Quotes",
+    "Transparent Fixed Price Quotes",
     "Complete Turnkey Delivery",
   ].map((item) => (
     <li
@@ -396,7 +392,7 @@ export function Home() {
     hover:-translate-y-1
   "
 >
-          Whether you're creating a home office, private retreat, guest accommodation, rental investment or space for a growing family, our experienced team manages every stage—from concept and approvals through to construction and handover.
+          Whether you're creating a home office, private retreat, guest accommodation, rental investment or space for a growing family, our experienced team manages every stage from concept and approvals through to construction and handover.
         </p>
 
         <p
@@ -569,8 +565,6 @@ export function Home() {
 
                   <p className="text-[#8B7E74] text-base md:text-lg">
                     {projectCategories[activeProject].location}
-                    {" • "}
-                    {projectCategories[activeProject].size}
                   </p>
 
                   <button
@@ -695,7 +689,7 @@ export function Home() {
           number: "02",
           title: "Granny Flats",
           description:
-            "Fully self-contained living spaces designed for family members, guests or investment opportunities.",
+            "Fully self contained living spaces designed for family members, guests or investment opportunities.",
         },
         {
           number: "03",
@@ -705,7 +699,7 @@ export function Home() {
         },
         {
           number: "04",
-          title: "Home Office Pods",
+          title: "Backyard Office Pods",
           description:
             "Create a productive work environment without sacrificing space inside your home.",
         },
@@ -717,7 +711,7 @@ export function Home() {
         },
         {
           number: "06",
-          title: "Multi-Purpose Studios",
+          title: "Multi Purpose Studios",
           description:
             "Flexible spaces designed around your unique lifestyle requirements.",
         },
@@ -1133,138 +1127,226 @@ export function Home() {
         </div>
       </section>
 
-      {/* HOME FOOTER */}
-      <footer className="bg-[#1E1E1C] text-white px-10 py-24 border-t border-white/10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-16">
-          {/* BRAND */}
-          <div>
+{/* HOME FOOTER */}
+<footer className="bg-[#1E1E1C] text-white border-t border-white/10">
+  <div className="max-w-7xl mx-auto px-10 pt-24">
+
+    {/* TOP SECTION */}
+    <div className="grid md:grid-cols-3 gap-20">
+
+      {/* BRAND */}
+      <div>
+        <Link
+  to="/"
+  className="group inline-flex items-center gap-4 mb-6"
+>
+  <img
+    src="/images/logo/final.webp"
+    alt="Backyard Nest"
+    draggable={false}
+    onDragStart={(e) => e.preventDefault()}
+    onContextMenu={(e) => e.preventDefault()}
+    className="h-10 w-auto shrink-0 opacity-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105"
+  />
+
+  <span className="font-serif text-[2rem] leading-none text-white transition-colors duration-300 group-hover:text-[#C7A77A]">
+    Backyard Nest.
+  </span>
+</Link>
+
+        <p className="text-white/60 mb-6 leading-relaxed max-w-sm">
+          Beautifully designed backyard studios and granny flats for modern
+          Australian living. Built with precision, delivered with care.
+        </p>
+
+        <div className="text-white/60 space-y-2">
+          <p>build@backyardnest.com.au</p>
+          <p>07 3000 0000</p>
+        </div>
+      </div>
+
+      {/* PRODUCTS */}
+      <div>
+        <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
+          Products
+        </h4>
+
+        <ul className="space-y-3 text-white/70">
+          <li>
             <Link
-              to="/"
-              className="
-    inline-block
-    font-serif
-    text-xl
-    mb-6
-    text-white
-    hover:text-[#C7A77A]
-    transition-colors
-    duration-300
-  "
+              to="/products/studio"
+              className="hover:text-white transition"
             >
-              Backyard Nest.
+              Backyard Studio
             </Link>
+          </li>
 
-            <p className="text-white/60 mb-6 leading-relaxed max-w-sm">
-              Beautifully designed backyard pods and granny flats for modern
-              Australian living. Built with precision, delivered with care.
-            </p>
+          <li>
+            <Link
+              to="/products/granny"
+              className="hover:text-white transition"
+            >
+              Granny Flats
+            </Link>
+          </li>
+        </ul>
+      </div>
 
-            <div className="text-white/60 space-y-2">
-              <p>hello@backyardnest.com.au</p>
-              <p>07 3000 0000</p>
-            </div>
-          </div>
+      {/* COMPANY */}
+      <div>
+        <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
+          Company
+        </h4>
 
-          {/* PRODUCTS */}
-          <div>
-            <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
-              Products
-            </h4>
+        <ul className="space-y-3 text-white/70">
+          <li>
+            <Link
+              to="/about"
+              className="hover:text-white transition"
+            >
+              About Us
+            </Link>
+          </li>
 
-            <ul className="space-y-3 text-white/70">
-              <li>
-                <Link
-                  to="/products/studio"
-                  className="hover:text-white transition"
-                >
-                  Studio Pods
-                </Link>
-              </li>
+          <li>
+            <Link
+              to="/contact"
+              className="hover:text-white transition"
+            >
+              Contact Us
+            </Link>
+          </li>
 
-              <li>
-                <Link
-                  to="/products/granny"
-                  className="hover:text-white transition"
-                >
-                  Granny Flats
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <li>
+            <Link
+              to="/blog"
+              className="hover:text-white transition"
+            >
+              Blog
+            </Link>
+          </li>
+        </ul>
+      </div>
 
-          {/* COMPANY */}
-          <div>
-            <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
-              Company
-            </h4>
+    </div>
 
-            <ul className="space-y-3 text-white/70">
-              <li>
-                <Link to="/about" className="hover:text-white transition">
-                  About Us
-                </Link>
-              </li>
+{/* INDUSTRY ACCREDITATIONS */}
+<div className="mt-10 lg:mt-14 pt-8 border-t border-white/10">
+  <div className="grid lg:grid-cols-[220px_1fr] gap-8 lg:gap-10 items-center">
 
-              <li>
-                <Link to="/contact" className="hover:text-white transition">
-                  Contact Us
-                </Link>
-              </li>
+    {/* Left Content */}
+    <div className="text-center lg:text-left mx-auto lg:mx-0">
+      <h4 className="uppercase tracking-[0.28em] text-xs text-[#C7A77A] mb-3">
+        Industry Accreditations
+      </h4>
 
-              <li>
-                <Link to="/blog" className="hover:text-white transition">
-                  Blog
-                </Link>
-              </li>
-            </ul>
-          </div>
+      <p className="text-white/50 text-sm leading-relaxed max-w-xs mx-auto lg:mx-0">
+        Proudly accredited and working alongside recognised industry
+        leaders, ensuring every project meets Australia's highest
+        standards.
+      </p>
+    </div>
 
-          {/* PARTNERSHIP */}
-          <div>
-            <h4 className="uppercase tracking-[0.25em] text-xs text-white/40 mb-6">
-              Proud Partner
-            </h4>
+    {/* Logos */}
+    <div className="grid grid-cols-2 lg:flex lg:justify-end items-center gap-5 md:gap-6 lg:gap-10">
 
-            <div className="bg-white/5 border border-white/10 rounded-lg p-4 w-fit mb-4 hover:bg-white/10 transition">
-              <img
-                src="/images/Master-Builders-Victoria-Master-Builder.webp"
-                alt="Master Builders Victoria"
-                draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                onContextMenu={(e) => e.preventDefault()}
-                className="w-24 object-contain select-none"
-              />
-            </div>
+      {/* MASTER BUILDERS */}
+      <div className="group relative flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
 
-            <p className="text-white/60 text-sm leading-relaxed max-w-[260px]">
-              Proudly working alongside Master Builders Victoria, ensuring the
-              highest standards of construction quality and compliance.
-            </p>
-          </div>
+        <div className="w-full max-w-[170px] sm:max-w-[220px] lg:w-80 h-20 sm:h-24 lg:h-28 flex items-center justify-center">
+          <img
+            src="/images/partners/Master-Builders-Victoria-Master-Builder.webp"
+            alt="Master Builders Victoria"
+            draggable={false}
+            onDragStart={(e) => e.preventDefault()}
+            onContextMenu={(e) => e.preventDefault()}
+            className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+          />
         </div>
 
-        {/* BOTTOM BAR */}
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-white/10">
-          <p className="text-white/40 text-sm">
-            © 2026 Backyard Nest. All rights reserved.
-          </p>
+        <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
 
-          {/* SOCIAL ICONS */}
-          <div className="flex gap-4 mt-6 md:mt-0">
-            <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
-              <Instagram size={16} />
-            </button>
+        <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
+          Master Builders Victoria
+        </p>
 
-            <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
-              <Facebook size={16} />
-            </button>
+      </div>
 
-            <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
-              <Linkedin size={16} />
-            </button>
-          </div>
+      {/* MELBOURNE BOUTIQUE HOMES */}
+      <div className="group relative flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
+
+        <div className="w-full max-w-[170px] sm:max-w-[220px] lg:w-80 h-20 sm:h-24 lg:h-28 flex items-center justify-center">
+          <img
+            src="/images/partners/melbourne-boutique-homes.webp"
+            alt="Melbourne Boutique Homes"
+            draggable={false}
+            onDragStart={(e) => e.preventDefault()}
+            onContextMenu={(e) => e.preventDefault()}
+            className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+          />
         </div>
-      </footer>
+
+        <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
+
+        <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
+          Melbourne Boutique Homes
+        </p>
+
+      </div>
+
+      {/* AMS BUILD */}
+      <div className="group relative col-span-2 lg:col-span-1 flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
+
+        <div className="w-32 sm:w-40 lg:w-52 h-40 sm:h-52 lg:h-72 flex items-center justify-center">
+          <img
+            src="/images/partners/ams-build.webp"
+            alt="AMS Build"
+            draggable={false}
+            onDragStart={(e) => e.preventDefault()}
+            onContextMenu={(e) => e.preventDefault()}
+            className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+          />
+        </div>
+
+        <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
+
+        <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
+          AMS Build
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+    {/* BOTTOM BAR */}
+    <div className="flex flex-col md:flex-row justify-between items-center mt-20 py-8 border-t border-white/10">
+
+      <p className="text-white/40 text-sm">
+        © 2026 Backyard Nest. All rights reserved.
+      </p>
+
+      {/* SOCIAL ICONS */}
+      <div className="flex gap-4 mt-6 md:mt-0">
+        <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+          <Instagram size={16} />
+        </button>
+
+        <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+          <Facebook size={16} />
+        </button>
+
+        <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+          <Linkedin size={16} />
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</footer>
     </div>
     </>
   );

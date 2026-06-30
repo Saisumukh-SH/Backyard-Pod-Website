@@ -62,7 +62,7 @@ export function CustomDesign() {
       options: [
         "Solar panel systems",
         "Rainwater harvesting",
-        "Energy-efficient design",
+        "Energy efficient design",
         "Sustainable materials",
       ],
     },
@@ -210,7 +210,7 @@ export function CustomDesign() {
               <CheckCircle className="text-gray-900 flex-shrink-0 mt-0.5" size={20} />
               <div>
                 <h4 className="text-lg text-gray-900 mb-1">Quality Guarantee</h4>
-                <p className="text-gray-600">10 year structural warranty</p>
+                <p className="text-gray-600">10 year structural warranty*</p>
               </div>
             </div>
             <div className="flex items-start gap-3">

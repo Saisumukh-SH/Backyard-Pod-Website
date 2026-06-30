@@ -4,6 +4,7 @@ interface ImageWithWatermarkProps {
   src: string;
   alt?: string;
   className?: string;
+  watermarkClassName?: string;
   fit?: "cover" | "contain";
 
   // Watermark options
@@ -18,6 +19,7 @@ export default function ImageWithWatermark({
   src,
   alt = "",
   className = "",
+  watermarkClassName = "",
   fit = "cover",
 
   watermark = true,
@@ -65,20 +67,21 @@ export default function ImageWithWatermark({
             opacity: watermarkOpacity,
           }}
         >
-          <span
-            className="
-        text-white
-        font-light
-        uppercase
-        tracking-[0.35em]
-        text-[6px]
-sm:text-[8px]
-md:text-[10px]
-lg:text-xs
-        whitespace-nowrap
-        drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]
-      "
-          >
+        <span
+  className={`
+    text-white
+    font-light
+    uppercase
+    tracking-[0.35em]
+    text-[6px]
+    sm:text-[8px]
+    md:text-[10px]
+    lg:text-xs
+    whitespace-nowrap
+    drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]
+    ${watermarkClassName}
+  `}
+>
             © BACKYARD NEST
           </span>
         </div>
