@@ -1225,7 +1225,7 @@ export function FAQ() {
         "
             >
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => navigate("/booking")}
                 className="
             group
             inline-flex

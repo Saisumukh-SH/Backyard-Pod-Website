@@ -49,6 +49,7 @@ return (
   baths="1"
   warranty="10 Year"
   heroImage="/images/studio/studio1/studio1.1.webp"
+  mobileHeroImage="/images/studio/studio1/studio1.1_mobile.webp"
   finishes={finishes}
   galleryImages={galleryImages}
   relatedProducts={<RelatedProducts currentId={32} />}

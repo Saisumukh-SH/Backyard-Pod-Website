@@ -71,6 +71,7 @@ export default function StudioProduct1() {
       baths="1"
       warranty="10 Year"
       heroImage="/images/studio/studio4/studio4.1.webp"
+      mobileHeroImage="/images/studio/studio4/studio4.1_mobile.webp"
       finishes={finishes}
       galleryImages={galleryImages}
       

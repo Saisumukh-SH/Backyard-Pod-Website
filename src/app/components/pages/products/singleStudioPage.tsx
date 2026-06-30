@@ -21,6 +21,7 @@ interface ProductProps {
   baths: string;
   warranty: string;
   heroImage: string;
+mobileHeroImage?: string;
   finishes: Finish[];
   galleryImages: {
     main: string;
@@ -45,6 +46,7 @@ export default function SingleStudioPage({
   galleryImages,
   relatedProducts,
   designInspiration,
+  mobileHeroImage,
 }: ProductProps) {
   const navigate = useNavigate();
 
@@ -66,28 +68,52 @@ export default function SingleStudioPage({
   return (
     <div>
       
-      {/* HERO */}
-      <section className="relative h-screen overflow-hidden">
-        {/* Hero Image */}
-        <div
-          onContextMenu={(e) => e.preventDefault()}
-          role="img"
-          aria-label={title}
-          className="
-    absolute
-    inset-0
-    bg-cover
-    bg-center
-    bg-no-repeat
-    scale-105
-  "
-          style={{
-            backgroundImage: `url(${heroImage})`,
-          }}
-        >
-          {/* Watermark */}
-          <div
-            className="
+{/* HERO */}
+<section className="relative h-screen overflow-hidden">
+
+  {/* Desktop Hero Image */}
+  <div
+    onContextMenu={(e) => e.preventDefault()}
+    role="img"
+    aria-label={title}
+    className="
+      hidden
+      md:block
+      absolute
+      inset-0
+      bg-cover
+      bg-center
+      bg-no-repeat
+      scale-105
+    "
+    style={{
+      backgroundImage: `url(${heroImage})`,
+    }}
+  />
+
+  {/* Mobile Hero Image */}
+  <div
+    onContextMenu={(e) => e.preventDefault()}
+    role="img"
+    aria-label={title}
+    className="
+      block
+      md:hidden
+      absolute
+      inset-0
+      bg-cover
+      bg-center
+      bg-no-repeat
+      scale-105
+    "
+    style={{
+      backgroundImage: `url(${mobileHeroImage || heroImage})`,
+    }}
+  />
+
+  {/* Watermark */}
+  <div
+    className="
       absolute
       bottom-4
       right-4
@@ -101,9 +127,9 @@ export default function SingleStudioPage({
       pointer-events-none
       select-none
     "
-          >
-            <span
-              className="
+  >
+    <span
+      className="
         text-white/70
         font-light
         uppercase
@@ -113,18 +139,19 @@ export default function SingleStudioPage({
         md:text-sm
         drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]
       "
-            >
-              © BACKYARD NEST
-            </span>
-          </div>
-        </div>
+    >
+      © BACKYARD NEST
+    </span>
+  </div>
 
-        <div className="absolute inset-0 bg-black/45" />
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/45 z-10" />
 
-        <div
-          className="
+  {/* Hero Content */}
+  <div
+    className="
       relative
-      z-10
+      z-20
       h-full
       max-w-7xl
       mx-auto
@@ -134,55 +161,56 @@ export default function SingleStudioPage({
       justify-end
       pb-24
     "
-        >
-          <span
-            className="
+  >
+    <span
+      className="
         uppercase
         tracking-[0.3em]
         text-white/60
         text-xs
         mb-6
       "
-          >
-            {category}
-          </span>
+    >
+      {category}
+    </span>
 
-          <h1
-            className="
+    <h1
+      className="
         editorial-heading
         text-white
         text-[clamp(4rem,10vw,8rem)]
         leading-[0.9]
       "
-          >
-            {title}
-            <span className="italic text-[#D7BE8A]"> {highlight}</span>
-          </h1>
+    >
+      {title}
+      <span className="italic text-[#D7BE8A]"> {highlight}</span>
+    </h1>
 
-          <div className="flex gap-10 mt-10 text-white/80">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] opacity-50">
-                Size
-              </p>
-              <p>{size}</p>
-            </div>
+    <div className="flex gap-10 mt-10 text-white/80">
+      <div>
+        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+          Size
+        </p>
+        <p>{size}</p>
+      </div>
 
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] opacity-50">
-                Beds
-              </p>
-              <p>{beds}</p>
-            </div>
+      <div>
+        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+          Beds
+        </p>
+        <p>{beds}</p>
+      </div>
 
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] opacity-50">
-                Baths
-              </p>
-              <p>{baths}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div>
+        <p className="text-xs uppercase tracking-[0.2em] opacity-50">
+          Baths
+        </p>
+        <p>{baths}</p>
+      </div>
+    </div>
+  </div>
+
+</section>
 
 {/* SPECIFICATIONS */}
 <section className="bg-[#F5F0EB] py-20 lg:py-28">
