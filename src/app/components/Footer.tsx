@@ -36,7 +36,7 @@ export function Footer() {
 
         <div className="text-white/60 space-y-2">
           <p>build@backyardnest.com.au</p>
-          <p>07 3000 0000</p>
+          <p>+61 466 333 438</p>
         </div>
       </div>
 

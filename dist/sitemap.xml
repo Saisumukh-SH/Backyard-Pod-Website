@@ -3,7 +3,7 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://backyardnest.com.au/</loc>
+    <loc>https://backyardnest.com.au</loc>
   </url>
 
   <url>
@@ -19,7 +19,7 @@
   </url>
 
   <url>
-    <loc>https://backyardnest.com.au/designs</loc>
+    <loc>https://backyardnest.com.au/products</loc>
   </url>
 
 </urlset>
