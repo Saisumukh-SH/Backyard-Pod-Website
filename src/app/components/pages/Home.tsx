@@ -815,61 +815,68 @@ export function Home() {
   </div>
 </section>
 
-      {/* OUR PROCESS */}
-      <section className="bg-[#F5F0EB] py-32 overflow-hidden">
-        <div className="max-w-[1700px] mx-auto">
-          <div className="grid lg:grid-cols-[40%_60%] gap-20 items-center">
-            {/* LEFT */}
+{/* OUR PROCESS */}
+<section className="bg-[#F5F0EB] py-20 lg:py-32 overflow-hidden">
+  <div className="max-w-[1700px] mx-auto">
 
-            <div className="px-8 lg:px-20">
-              <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-10">
-                Our Process
-              </p>
+    <div className="grid lg:grid-cols-[40%_60%] gap-12 lg:gap-20">
 
-              <h2
-                className="
+      {/* LEFT */}
+      <div className="px-6 lg:px-20">
+
+        <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-8">
+          Our Process
+        </p>
+
+        <h2
+          className="
             editorial-heading
             text-[#2E2A26]
-            text-5xl
-            md:text-7xl
+            text-[3rem]
+            md:text-6xl
+            lg:text-7xl
             leading-[0.95]
-            mb-16
+            mb-10
+            lg:mb-14
           "
-              >
-                From Concept
-                <br />
-                To Completion.
-              </h2>
+        >
+          From Concept
+          <br />
+          To Completion.
+        </h2>
 
-              <div className="space-y-8">
-                {processSteps.map((step, index) => (
-                  <button
-                    key={step.number}
-                    onMouseEnter={() => setActiveStep(index)}
-                    className="
-                block
-                text-left
-                w-full
-                group
-              "
-                  >
-                    <div className="flex gap-6">
-                      <span
-                        className={`
+        <div className="space-y-6 lg:space-y-8">
+
+          {processSteps.map((step, index) => (
+            <button
+              key={step.number}
+              onMouseEnter={() => setActiveStep(index)}
+              className="block text-left w-full group"
+            >
+              <div className="flex gap-5">
+
+                <span
+                  className={`
                     transition-all duration-500
+                    text-sm lg:text-base
                     ${
-                      activeStep === index ? "text-[#C7A77A]" : "text-[#B8ADA2]"
+                      activeStep === index
+                        ? "text-[#C7A77A]"
+                        : "text-[#B8ADA2]"
                     }
                   `}
-                      >
-                        {step.number}
-                      </span>
+                >
+                  {step.number}
+                </span>
 
-                      <div>
-                        <h3
-                          className={`
+                <div>
+
+                  <h3
+                    className={`
                       transition-all duration-500
-                      text-3xl md:text-5xl
+                      text-2xl
+                      md:text-3xl
+                      lg:text-5xl
                       tracking-[-0.04em]
                       ${
                         activeStep === index
@@ -877,72 +884,99 @@ export function Home() {
                           : "text-[#B8ADA2]"
                       }
                     `}
-                        >
-                          {step.title}
-                        </h3>
+                  >
+                    {step.title}
+                  </h3>
 
-                        <AnimatePresence>
-                          {activeStep === index && (
-                            <motion.div
-                              initial={{
-                                opacity: 0,
-                                height: 0,
-                              }}
-                              animate={{
-                                opacity: 1,
-                                height: "auto",
-                              }}
-                              exit={{
-                                opacity: 0,
-                                height: 0,
-                              }}
-                              transition={{
-                                duration: 0.4,
-                              }}
-                            >
-                              <div className="w-12 h-px bg-[#C7A77A] my-4" />
+                  <AnimatePresence>
+                    {activeStep === index && (
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          height: 0,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          height: "auto",
+                        }}
+                        exit={{
+                          opacity: 0,
+                          height: 0,
+                        }}
+                        transition={{
+                          duration: 0.35,
+                        }}
+                      >
+                        <div className="w-12 h-px bg-[#C7A77A] my-4" />
 
-                              <p className="text-[#5F5A55] max-w-md leading-relaxed">
-                                {step.description}
-                              </p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </div>
-                  </button>
-                ))}
+                        <p className="text-[#5F5A55] max-w-md leading-relaxed text-sm lg:text-base">
+                          {step.description}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                </div>
+
               </div>
-            </div>
+            </button>
+          ))}
 
-            {/* VIDEO */}
-
-            <div className="pr-8 lg:pr-20">
-              <div
-                className="
-            overflow-hidden
-            rounded-[20px]
-            h-[650px]
-          "
-              >
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="
-              w-full
-              h-full
-              object-cover
-            "
-                >
-                  <source src="/videos/process.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
+
+{/* VIDEO */}
+<div className="px-6 lg:px-0 lg:pr-20 flex items-start lg:mt-14 xl:mt-16">
+  <div
+    className="
+      relative
+      w-full
+      overflow-hidden
+      rounded-[20px]
+      shadow-2xl
+      border border-black/5
+
+      h-[260px]
+      sm:h-[340px]
+      md:h-[450px]
+      lg:h-[650px]
+    "
+  >
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      poster="/video/haomepage_thumb.webp"
+      disablePictureInPicture
+      controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
+      draggable={false}
+      onContextMenu={(e) => e.preventDefault()}
+      style={{
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        pointerEvents: "none",
+      }}
+      className="w-full h-full object-cover select-none"
+    >
+      <source src="/video/homepage.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    {/* Protection Overlay */}
+    <div
+      className="absolute inset-0 z-10"
+      onContextMenu={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
+    />
+  </div>
+</div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* TRUST SECTION */}
       <section className="bg-[#F5F0EB] py-40">

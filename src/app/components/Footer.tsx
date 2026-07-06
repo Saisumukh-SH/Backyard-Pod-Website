@@ -211,20 +211,38 @@ export function Footer() {
         © 2026 Backyard Nest. All rights reserved.
       </p>
 
-      {/* SOCIAL ICONS */}
-      <div className="flex gap-4 mt-6 md:mt-0">
-        <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
-          <Instagram size={16} />
-        </button>
+ {/* SOCIAL ICONS */}
+<div className="flex gap-4 mt-6 md:mt-0">
+  <a
+    href="https://www.instagram.com/backyard_nest_au/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+    className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white hover:bg-white/10 transition duration-300"
+  >
+    <Instagram size={16} />
+  </a>
 
-        <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
-          <Facebook size={16} />
-        </button>
+  <a
+    href="https://www.facebook.com/YOUR_FACEBOOK"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+    className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white hover:bg-white/10 transition duration-300"
+  >
+    <Facebook size={16} />
+  </a>
 
-        <button className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
-          <Linkedin size={16} />
-        </button>
-      </div>
+  <a
+    href="https://www.linkedin.com/company/YOUR_LINKEDIN"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+    className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:border-white hover:bg-white/10 transition duration-300"
+  >
+    <Linkedin size={16} />
+  </a>
+</div>
 
     </div>
 
