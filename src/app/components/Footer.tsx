@@ -224,7 +224,7 @@ export function Footer() {
   </a>
 
   <a
-    href="https://www.facebook.com/YOUR_FACEBOOK"
+    href="https://www.facebook.com/share/18ttovRcLR/"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Facebook"

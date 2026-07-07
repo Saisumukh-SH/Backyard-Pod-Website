@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
 import { motion } from "framer-motion";
 
+
 interface Finish {
   id: string;
   name: string;
@@ -58,6 +59,53 @@ export default function SingleStudioPage({
   const displayGallery = hoveredThumb !== null ? hoveredThumb : activeGallery;
 
   const touchStartX = useRef(0);
+
+  const inclusionCategories = [
+  {
+    title: "Structure & Compliance",
+    subtitle: "Built on Quality",
+    items: [
+      "10-Year Structural Warranty*",
+      "Premium 7-Year Build Warranty*",
+      "Architecturally Designed & Engineered",
+      "Building Permit Included",
+      "7-Star Energy Compliance",
+      "Engineered Steel Frame",
+      "Surefoot® Foundation System*",
+    ],
+  },
+  {
+    title: "Exterior",
+    subtitle: "Premium Outside",
+    items: [
+      "Premium Double-Glazed Aluminium Windows & Doors",
+      "Flyscreens to Openable Windows",
+      "Choice of Premium External Cladding",
+    ],
+  },
+  {
+    title: "Interior & Comfort",
+    subtitle: "Luxury Living",
+    items: [
+      "Reverse Cycle Heating & Cooling",
+      "Designer Kitchen with Polytec Cabinetry",
+      "Luxury Bathroom with Quality Fixtures & Fittings",
+      "Hybrid Timber Flooring Throughout",
+      "LED Lighting & Standard Electrical Package",
+      "Internal & External Painting",
+    ],
+  },
+  {
+    title: "Installation",
+    subtitle: "Ready to Enjoy",
+    items: [
+      "Installation & Site Delivery",
+      "Service Connections (within 10m*)",
+    ],
+  },
+];
+
+const [activeCard, setActiveCard] = useState<number | null>(0);
 
   useEffect(() => {
     galleryImages.forEach((image) => {
@@ -377,225 +425,347 @@ export default function SingleStudioPage({
   </div>
 </section>
 
-  {/* FEATURES SECTION */}
+{/* STANDARD INCLUSIONS */}
+<section className="relative border-t border-[#E8DED3] bg-[#F7F5F0] py-24 lg:py-32 overflow-hidden">
 
-<section className="border-t border-[#E8DED3] bg-[#F7F5F0] py-24 lg:py-32">
+  {/* Background Decoration */}
 
-  <div className="max-w-7xl mx-auto px-8">
+  <div className="absolute inset-0 pointer-events-none">
 
-    {/* HEADER */}
+    <div className="absolute -top-48 left-0 w-[500px] h-[500px] rounded-full bg-[#C7A77A]/5 blur-3xl" />
 
-    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20">
+    <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#C7A77A]/5 blur-3xl" />
 
-      <div>
+  </div>
 
-        <p className="uppercase tracking-[0.35em] text-[11px] text-[#A08E7C] mb-5">
-          What's Included
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+
+    {/* Header */}
+
+  <div className="max-w-4xl mx-auto text-center mb-20">
+
+  <p className="uppercase tracking-[0.35em] text-[11px] text-[#A08E7C] mb-5">
+    STANDARD INCLUSIONS
+  </p>
+
+  <h2
+    className="
+      editorial-heading
+      text-[#2E2A26]
+      text-[clamp(3.2rem,5vw,5.4rem)]
+      leading-[0.92]
+      mb-8
+    "
+  >
+    Luxury Comes Standard.
+  </h2>
+
+  <p
+    className="
+      text-[#5F5A55]
+      text-lg
+      leading-relaxed
+      max-w-3xl
+      mx-auto
+    "
+  >
+    Every Backyard Nest studio is thoughtfully designed and built to deliver
+    comfort, quality and long-term value. Explore what's included as
+    standard in every premium studio.
+  </p>
+
+</div>
+
+    {/* Two Columns */}
+
+   <div className="grid md:grid-cols-2 gap-7">
+  {inclusionCategories.map((category, index) => {
+
+  const isActive = activeCard === index;
+
+  return (
+
+    <div
+      key={index}
+      onMouseEnter={() => setActiveCard(index)}
+      onMouseLeave={() => setActiveCard(null)}
+      onClick={() =>
+        setActiveCard(isActive ? null : index)
+      }
+      className={`
+        group
+        relative
+        overflow-hidden
+        rounded-[28px]
+        border
+        bg-white
+        cursor-pointer
+        transition-all
+        duration-700
+        ease-out
+        ${
+          isActive
+            ? "border-[#C7A77A] shadow-[0_25px_60px_rgba(0,0,0,0.08)]"
+            : "border-[#E8DED3] hover:border-[#D6BE9C]"
+        }
+      `}
+    >
+
+      {/* Background Number */}
+
+      <span
+        className="
+          absolute
+          right-8
+          top-4
+          editorial-heading
+          text-[7rem]
+          leading-none
+          text-[#F4EFE8]
+          select-none
+          pointer-events-none
+        "
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      {/* Gold Accent */}
+
+      <div
+        className={`
+          absolute
+          left-0
+          top-0
+          h-[3px]
+          bg-[#C7A77A]
+          transition-all
+          duration-700
+          ${
+            isActive
+              ? "w-full"
+              : "w-0 group-hover:w-full"
+          }
+        `}
+      />
+
+      {/* Content */}
+
+      <div className="relative z-10 p-9">
+
+        <p
+          className="
+            uppercase
+            tracking-[0.25em]
+            text-[11px]
+            text-[#A08E7C]
+            mb-5
+          "
+        >
+          STANDARD
         </p>
 
-        <h2
+        <h3
           className="
             editorial-heading
             text-[#2E2A26]
-            text-[clamp(3rem,5vw,4.8rem)]
-            leading-[0.95]
+            text-[2.4rem]
+            leading-none
+            mb-3
           "
         >
-          Everything
-          <br />
-          Included.
-        </h2>
+          {category.title}
+        </h3>
 
-      </div>
+        <p
+          className="
+            text-[#7D7368]
+            text-sm
+            mb-8
+          "
+        >
+          {category.subtitle}
+        </p>{/* Expandable Content */}
 
-      <p
-        className="
-          max-w-md
-          lg:ml-auto
-          text-[#5F5A55]
-          text-base
-          leading-relaxed
-        "
-      >
-        Every Backyard Nest studio is thoughtfully designed with premium
-        materials, modern construction and everything needed for a seamless
-        experience from design through installation.
-      </p>
+<div
+  className={`
+    grid
+    transition-all
+    duration-700
+    ease-in-out
+    ${
+      isActive
+        ? "grid-rows-[1fr] opacity-100 mt-8"
+        : "grid-rows-[0fr] opacity-0 mt-0"
+    }
+  `}
+>
 
-    </div>
+  <div className="overflow-hidden">
 
-    {/* FEATURES */}
+    <div className="space-y-2">
 
-    {(() => {
-
-      const features = [
-        {
-          title: "Full Customisation",
-          desc: "Tailor cladding, finishes, layouts and dimensions to suit your property and lifestyle.",
-          icon: (
-            <path d="M3 21l3-3m0 0l11-11a2.5 2.5 0 013.5 3.5L9.5 21H3z" />
-          ),
-        },
-        {
-          title: "Fast Installation",
-          desc: "Precision built off site and efficiently installed with minimal disruption.",
-          icon: (
-            <>
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 7v5l3 3" />
-            </>
-          ),
-        },
-        {
-          title: "Planning Permit",
-          desc: "Many studio designs can be completed without requiring a planning permit.",
-          icon: (
-            <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" />
-          ),
-        },
-        {
-          title: "Building Compliant",
-          desc: "Designed to meet Australian building standards and local council requirements.",
-          icon: (
-            <>
-              <path d="M3 10l9-7 9 7" />
-              <path d="M9 21V12h6v9" />
-            </>
-          ),
-        },
-        {
-          title: "Warranty*",
-          desc: "Built with confidence and backed by our comprehensive structural warranty* of 10 years and a build warranty* of 7 years.",
-          icon: (
-            <>
-              <circle cx="12" cy="8" r="4" />
-              <path d="M8 14h8l-1 7H9l-1-7z" />
-            </>
-          ),
-        },
-        {
-          title: "Fixed Price Contract",
-          desc: "Transparent pricing from the beginning with no hidden surprises.",
-          icon: (
-            <>
-              <rect x="4" y="7" width="16" height="12" rx="2" />
-              <path d="M9 7V5h6v2" />
-            </>
-          ),
-        },
-      ];
-
-      return (
+      {category.items.map((item, itemIndex) => (
 
         <div
-          className="
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            xl:grid-cols-3
-            border
-            border-[#E8DED3]
-          "
+          key={itemIndex}
+          className={`
+            flex
+            items-start
+            gap-4
+            py-3
+            border-b
+            border-[#F1EBE4]
+            transition-all
+            duration-700
+            ${
+              isActive
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-3"
+            }
+          `}
+          style={{
+            transitionDelay: `${itemIndex * 70}ms`,
+          }}
         >
 
-          {features.map((feature, index) => (
+          {/* Check */}
 
-            <div
-              key={index}
-              className="
-                group
-                border-r
-                border-b
-                border-[#E8DED3]
-                p-10
-                transition-all
-                duration-500
-                hover:bg-white
-                hover:-translate-y-1
-                hover:shadow-[0_18px_40px_rgba(0,0,0,0.05)]
-              "
-            >
+          <div
+            className="
+              mt-0.5
+              flex
+              h-7
+              w-7
+              items-center
+              justify-center
+              rounded-full
+              bg-[#F5EFE7]
+              text-[#C7A77A]
+              transition-all
+              duration-500
+              group-hover:bg-[#C7A77A]
+              group-hover:text-white
+            "
+          >
+            ✓
+          </div>
 
-              {/* ICON */}
+          {/* Text */}
 
-              <div
-                className="
-                  w-14
-                  h-14
-                  rounded-full
-                  border
-                  border-[#DCCDBB]
-                  flex
-                  items-center
-                  justify-center
-                  mb-7
-                  transition-all
-                  duration-500
-                  group-hover:bg-[#C7A77A]
-                  group-hover:border-[#C7A77A]
-                "
-              >
-
-                <svg
-                  className="
-                    w-6
-                    h-6
-                    text-[#C7A77A]
-                    transition-all
-                    duration-500
-                    group-hover:text-white
-                    group-hover:scale-110
-                  "
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                >
-                  {feature.icon}
-                </svg>
-
-              </div>
-
-              {/* TITLE */}
-
-              <h3
-                className="
-                  editorial-heading
-                  text-[#2E2A26]
-                  text-[2rem]
-                  leading-none
-                  mb-4
-                  transition-colors
-                  duration-300
-                  group-hover:text-[#C7A77A]
-                "
-              >
-                {feature.title}
-              </h3>
-
-              {/* DESCRIPTION */}
-
-              <p
-                className="
-                  text-[#5F5A55]
-                  text-[15px]
-                  leading-relaxed
-                "
-              >
-                {feature.desc}
-              </p>
-
-            </div>
-
-          ))}
+          <p
+            className="
+              flex-1
+              text-[15px]
+              leading-7
+              text-[#4E4943]
+            "
+          >
+            {item}
+          </p>
 
         </div>
 
-      );
+      ))}
 
-    })()}
+    </div>
 
   </div>
+
+</div>
+
+{/* Bottom indicator */}
+
+<div
+  className="
+    mt-10
+    flex
+    items-center
+    justify-between
+    border-t
+    border-[#EEE6DC]
+    pt-6
+  "
+>
+
+  <span
+    className="
+      uppercase
+      tracking-[0.2em]
+      text-[11px]
+      text-[#A08E7C]
+    "
+  >
+    {category.items.length} Standard Inclusions
+  </span>
+
+  <div
+    className={`
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      border
+      transition-all
+      duration-500
+      ${
+        isActive
+          ? "border-[#C7A77A] bg-[#C7A77A] text-white rotate-45"
+          : "border-[#E4D8C8] text-[#A08E7C]"
+      }
+    `}
+  >
+
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 5v14M5 12h14"
+      />
+    </svg>
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+  );
+
+})}
+
+</div>
+
+{/* Disclaimer */}
+
+<div className="mt-14 border-t border-[#E8DED3] pt-8">
+
+  <p
+    className="
+      text-sm
+      leading-7
+      text-[#7B7268]
+      max-w-4xl
+    "
+  >
+    <strong>*Disclaimer:</strong> Standard inclusions are subject to site
+    conditions, engineering requirements, council approvals and service
+    connection availability. Specifications may vary depending on the selected
+    Backyard Nest studio design and individual project requirements.
+  </p>
+
+</div>
+
+</div>
 
 </section>
 
