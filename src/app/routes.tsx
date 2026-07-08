@@ -12,6 +12,7 @@ import { FAQ } from "./components/pages/FAQ";
 import { Contact } from "./components/pages/Contact";
 import { About } from "./components/pages/About";
 import { Blog } from "./components/pages/Blog";
+import { BlogPost } from "./components/pages/BlogPost";
 import { NotFound } from "./components/pages/NotFound";
 import StudioPod from "./components/pages/products/StudioPod";
 import GrannyFlats from "./components/pages/products/grannyFlats";
@@ -46,7 +47,8 @@ export const router = createBrowserRouter([
       { path: "faq", Component: FAQ },
       { path: "contact", Component: Contact },
       { path: "about", Component: About },
-      { path: "blog", Component: ComingSoon },
+      { path: "blog", Component: Blog },
+    { path: "blog/:slug", Component: BlogPost },
       { path: "products/studio", Component: StudioPod },
       { path: "products/granny", Component: Contact },
       { path: "booking", Component: Booking },
