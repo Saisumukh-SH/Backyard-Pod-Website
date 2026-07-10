@@ -5,6 +5,7 @@ export function Navigation() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+
 useEffect(() => {
   if (mobileMenuOpen) {
     document.body.style.overflow = "hidden";
@@ -29,6 +30,8 @@ useEffect(() => {
     path === "/"
       ? location.pathname === "/"
       : location.pathname.startsWith(path);
+
+  
 
   return (
     <nav className="absolute top-0 left-0 w-full z-[100]">

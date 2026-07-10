@@ -5,11 +5,14 @@ import ScrollToTop from "./pages/ScrollToTop";
 
 export function Root() {
   const location = useLocation();
+  
 
   return (
     <>
     <ScrollToTop />
-      <Navigation />
+         {/* Hide Navigation on Landing Page */}
+      {location.pathname !== "/landingPage" && <Navigation />}
+    
 
       <Outlet />
 
