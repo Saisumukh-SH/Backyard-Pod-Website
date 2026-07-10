@@ -32,6 +32,7 @@ import GrannyflatProduct3 from "./components/pages/products/grannyflatSingleProd
 import GrannyflatProduct4 from "./components/pages/products/grannyflatSingleProduct/GrannyflatProduct4";
 import GrannyflatProduct5 from "./components/pages/products/grannyflatSingleProduct/GrannyflatProduct5";
 import ThankyouPage from "./components/pages/ThankyouPage";
+import LandingPage from "./components/pages/landingPage";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,8 @@ export const router = createBrowserRouter([
       { path: "booking", Component: Booking },
       { path: "thank-you", Component: ThankyouPage },
       { path: "coming-soon", Component: ComingSoon },
+      { path: "landingPage", Component: LandingPage },
+
       
       { path: "products/StudioProduct1", Component: StudioProduct1 },
       { path: "products/StudioProduct2", Component: StudioProduct2 },
