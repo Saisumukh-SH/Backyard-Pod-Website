@@ -5,6 +5,37 @@ import { Menu, X, Phone, MessageCircle, Mail } from "lucide-react";
 export default function LandingPage() {
   const [mobileMenu, setMobileMenu] = useState(false);
 
+  const [formData, setFormData] = useState({
+  name: "",
+  phone: "",
+  email: "",
+  suburb: "",
+  projectType: "",
+  message: "",
+});
+
+const sendWhatsApp = () => {
+  const message = `Hi Backyard Nest!
+
+Name: ${formData.name}
+
+Phone: ${formData.phone}
+
+Email: ${formData.email}
+
+Suburb: ${formData.suburb}
+
+Project Type: ${formData.projectType}
+
+Message:
+${formData.message}`;
+
+  window.open(
+    `https://wa.me/61466333438?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+};
+
   return (
     <>
       <SEO
@@ -113,7 +144,7 @@ export default function LandingPage() {
 
               <a
                 href="#enquire"
-                className="px-5 py-3 border border-[#1C1B19] hover:bg-[#1C1B19] hover:text-white transition"
+                className="px-5 py-3 border border-[#1C1B19] hover:bg-[#6E4630] hover:text-white transition"
               >
                 Free Consultation
               </a>
@@ -147,7 +178,7 @@ export default function LandingPage() {
 
                 <a
                   href="#enquire"
-                  className="bg-[#1C1B19] text-white text-center py-3"
+                  className="bg-[#6E4630] text-white text-center py-3"
                 >
                   Free Consultation
                 </a>
@@ -1170,47 +1201,178 @@ export default function LandingPage() {
 
                 </h3>
 
-                <form className="space-y-5">
+               <form className="space-y-6">
 
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none"
-                  />
+  {/* Row 1 */}
 
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none"
-                  />
+  <div className="grid md:grid-cols-2 gap-5">
 
-                  <input
-                    type="tel"
-                    placeholder="Phone"
-                    className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none"
-                  />
+    <div>
+      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+        Name
+      </label>
 
-                  <textarea
-                    rows={5}
-                    placeholder="Tell us about your project..."
-                    className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none"
-                  />
+      <input
+  type="text"
+  name="name"
+  placeholder="Full name"
+  value={formData.name}
+  onChange={(e) =>
+    setFormData({ ...formData, name: e.target.value })
+  }
+  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
+/>
+    </div>
 
-                  <button
-  type="button"
-  className="w-full py-4 font-semibold bg-white hover:bg-[#8B5A3C] transition-colors duration-300"
-  style={{ color: "#1C1B19" }}
-  onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
-  onMouseLeave={(e) => (e.currentTarget.style.color = "#1C1B19")}
+    <div>
+      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+        Phone
+      </label>
+
+      <input
+  type="tel"
+  name="phone"
+  placeholder="04XX XXX XXX"
+  value={formData.phone}
+  onChange={(e) =>
+    setFormData({ ...formData, phone: e.target.value })
+  }
+  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
+/>
+    </div>
+
+  </div>
+
+  {/* Row 2 */}
+
+  <div className="grid md:grid-cols-2 gap-5">
+
+    <div>
+      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+        Email
+      </label>
+
+      <input
+  type="email"
+  name="email"
+  placeholder="you@email.com"
+  value={formData.email}
+  onChange={(e) =>
+    setFormData({ ...formData, email: e.target.value })
+  }
+  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
+/>
+    </div>
+
+    <div>
+      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+        Suburb
+      </label>
+
+      <select
+  name="suburb"
+  value={formData.suburb}
+  onChange={(e) =>
+    setFormData({ ...formData, suburb: e.target.value })
+  }
+  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white focus:border-[#C7A77A] transition"
 >
-  Get My Free Consultation
+  <option value="">Select suburb</option>
+
+  <option>Brighton</option>
+  <option>Bentleigh</option>
+  <option>Malvern</option>
+  <option>Kew</option>
+  <option>Mount Eliza</option>
+  <option>Sandringham</option>
+  <option>Frankston</option>
+  <option>St Kilda</option>
+  <option>Caulfield</option>
+  <option>Eltham</option>
+  <option>Another Melbourne suburb</option>
+</select>
+    </div>
+
+  </div>
+
+  {/* Project Type */}
+
+  <div>
+
+    <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+      Project Type
+    </label>
+
+    <select
+  name="projectType"
+  value={formData.projectType}
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      projectType: e.target.value,
+    })
+  }
+  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white focus:border-[#C7A77A] transition"
+>
+  <option value="">Select project type</option>
+
+  <option>Backyard Studio</option>
+  <option>Granny Flat</option>
+  <option>Office Pod</option>
+</select>
+
+  </div>
+
+  {/* Message */}
+
+  <div>
+
+    <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+      Message (Optional)
+    </label>
+
+    <textarea
+  rows={5}
+  name="message"
+  placeholder="Tell us a little about your project..."
+  value={formData.message}
+  onChange={(e) =>
+    setFormData({ ...formData, message: e.target.value })
+  }
+  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 resize-none focus:border-[#C7A77A] transition"
+/>
+
+  </div>
+
+  {/* Buttons */}
+
+  <div className="grid md:grid-cols-2 gap-4">
+
+    <button
+      type="submit"
+      className="bg-[#1C1B19] hover:bg-[#6E4630] transition-colors duration-300 text-white font-semibold py-4"
+    >
+      Email My Enquiry
+    </button>
+
+    <button
+  type="button"
+  onClick={sendWhatsApp}
+  className="bg-[#5E7551] hover:bg-[#4D6242] transition-colors duration-300 text-white font-semibold py-4 text-center"
+>
+  Send via WhatsApp
 </button>
 
-                    <p className="text-center text-xs text-neutral-400 leading-6">
-                  By submitting, you agree to our Privacy Policy. We never share your details with third parties.
-                  </p>      
+  </div>
 
-                </form>
+  {/* Privacy */}
+
+  <p className="text-center text-xs text-neutral-400 leading-6">
+    By submitting, you agree to our Privacy Policy. We never share your
+    details with third parties.
+  </p>
+
+</form>
 
               </div>
 
