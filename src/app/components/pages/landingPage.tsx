@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SEO from "../../components/SEO";
 import { Menu, X, Phone, MessageCircle, Mail } from "lucide-react";
+import EnquiryForm from "../../components/enquiryForm";
 
 export default function LandingPage() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -13,6 +14,49 @@ export default function LandingPage() {
   projectType: "",
   message: "",
 });
+const encode = (data: Record<string, string>) => {
+  return Object.keys(data)
+    .map(
+      (key) =>
+        encodeURIComponent(key) +
+        "=" +
+        encodeURIComponent(data[key])
+    )
+    .join("&");
+};
+const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type":
+          "application/x-www-form-urlencoded",
+      },
+      body: encode({
+        "form-name": "consultation",
+        ...formData,
+      }),
+    });
+
+    alert("Thank you! Your enquiry has been sent.");
+
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      suburb: "",
+      projectType: "",
+      message: "",
+    });
+
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+  }
+};
 
 const sendWhatsApp = () => {
   const message = `Hi Backyard Nest!
@@ -353,120 +397,7 @@ ${formData.message}`;
 
                   </p>
 
-                  <form className="space-y-5">
-
-                    <div>
-
-                      <label className="text-xs uppercase tracking-widest text-[#CBBFA4]">
-
-                        Name
-
-                      </label>
-
-                      <input
-                        type="text"
-                        placeholder="John Smith"
-                        className="w-full mt-2 bg-[#2B2925] border border-white/10 px-4 py-3 outline-none focus:border-[#8B5A3C]"
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <label className="text-xs uppercase tracking-widest text-[#CBBFA4]">
-
-                        Phone
-
-                      </label>
-
-                      <input
-                        type="tel"
-                        placeholder="0400 000 000"
-                        className="w-full mt-2 bg-[#2B2925] border border-white/10 px-4 py-3 outline-none focus:border-[#8B5A3C]"
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <label className="text-xs uppercase tracking-widest text-[#CBBFA4]">
-
-                        Email
-
-                      </label>
-
-                      <input
-                        type="email"
-                        placeholder="john@email.com"
-                        className="w-full mt-2 bg-[#2B2925] border border-white/10 px-4 py-3 outline-none focus:border-[#8B5A3C]"
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <label className="text-xs uppercase tracking-widest text-[#CBBFA4]">
-
-                        Suburb
-
-                      </label>
-
-                      <select
-                        className="w-full mt-2 bg-[#2B2925] border border-white/10 px-4 py-3 outline-none focus:border-[#8B5A3C]"
-                      >
-
-                        <option>Select your suburb</option>
-
-                        <option>Brighton</option>
-
-                        <option>Malvern</option>
-
-                        <option>Kew</option>
-
-                        <option>Mount Eliza</option>
-
-                        <option>Sandringham</option>
-
-                        <option>Bentleigh</option>
-
-                        <option>Frankston</option>
-
-                        <option>Caulfield</option>
-
-                        <option>St Kilda</option>
-
-                        <option>Other</option>
-
-                      </select>
-
-                    </div>
-
-                    <button
-                      className="w-full bg-white text-black py-4 hover:bg-[#8B5A3C] hover:text-white transition-all duration-300 font-medium"
-                    >
-
-                      Get My Free Consultation
-
-                    </button>
-
-                    <a
-                      href="https://wa.me/message/63HQ6LV2X7ABF1"
-                      className="w-full flex justify-center items-center gap-3 bg-[#4B5D45] py-4 hover:bg-[#3D4C38] transition-all duration-300"
-                    >
-
-                      <MessageCircle size={18} />
-
-                      Chat on WhatsApp
-
-                    </a>
-
-                    <p className="text-center text-xs text-neutral-400 leading-6">
-
-                      No spam, no pressure — just an honest conversation about what's possible.
-
-                    </p>
-
-                  </form>
+<EnquiryForm />
 
                 </div>
 
@@ -1201,178 +1132,7 @@ ${formData.message}`;
 
                 </h3>
 
-               <form className="space-y-6">
-
-  {/* Row 1 */}
-
-  <div className="grid md:grid-cols-2 gap-5">
-
-    <div>
-      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
-        Name
-      </label>
-
-      <input
-  type="text"
-  name="name"
-  placeholder="Full name"
-  value={formData.name}
-  onChange={(e) =>
-    setFormData({ ...formData, name: e.target.value })
-  }
-  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
-/>
-    </div>
-
-    <div>
-      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
-        Phone
-      </label>
-
-      <input
-  type="tel"
-  name="phone"
-  placeholder="04XX XXX XXX"
-  value={formData.phone}
-  onChange={(e) =>
-    setFormData({ ...formData, phone: e.target.value })
-  }
-  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
-/>
-    </div>
-
-  </div>
-
-  {/* Row 2 */}
-
-  <div className="grid md:grid-cols-2 gap-5">
-
-    <div>
-      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
-        Email
-      </label>
-
-      <input
-  type="email"
-  name="email"
-  placeholder="you@email.com"
-  value={formData.email}
-  onChange={(e) =>
-    setFormData({ ...formData, email: e.target.value })
-  }
-  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
-/>
-    </div>
-
-    <div>
-      <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
-        Suburb
-      </label>
-
-      <select
-  name="suburb"
-  value={formData.suburb}
-  onChange={(e) =>
-    setFormData({ ...formData, suburb: e.target.value })
-  }
-  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white focus:border-[#C7A77A] transition"
->
-  <option value="">Select suburb</option>
-
-  <option>Brighton</option>
-  <option>Bentleigh</option>
-  <option>Malvern</option>
-  <option>Kew</option>
-  <option>Mount Eliza</option>
-  <option>Sandringham</option>
-  <option>Frankston</option>
-  <option>St Kilda</option>
-  <option>Caulfield</option>
-  <option>Eltham</option>
-  <option>Another Melbourne suburb</option>
-</select>
-    </div>
-
-  </div>
-
-  {/* Project Type */}
-
-  <div>
-
-    <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
-      Project Type
-    </label>
-
-    <select
-  name="projectType"
-  value={formData.projectType}
-  onChange={(e) =>
-    setFormData({
-      ...formData,
-      projectType: e.target.value,
-    })
-  }
-  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white focus:border-[#C7A77A] transition"
->
-  <option value="">Select project type</option>
-
-  <option>Backyard Studio</option>
-  <option>Granny Flat</option>
-  <option>Office Pod</option>
-</select>
-
-  </div>
-
-  {/* Message */}
-
-  <div>
-
-    <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
-      Message (Optional)
-    </label>
-
-    <textarea
-  rows={5}
-  name="message"
-  placeholder="Tell us a little about your project..."
-  value={formData.message}
-  onChange={(e) =>
-    setFormData({ ...formData, message: e.target.value })
-  }
-  className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 resize-none focus:border-[#C7A77A] transition"
-/>
-
-  </div>
-
-  {/* Buttons */}
-
-  <div className="grid md:grid-cols-2 gap-4">
-
-    <button
-      type="submit"
-      className="bg-[#1C1B19] hover:bg-[#6E4630] transition-colors duration-300 text-white font-semibold py-4"
-    >
-      Email My Enquiry
-    </button>
-
-    <button
-  type="button"
-  onClick={sendWhatsApp}
-  className="bg-[#5E7551] hover:bg-[#4D6242] transition-colors duration-300 text-white font-semibold py-4 text-center"
->
-  Send via WhatsApp
-</button>
-
-  </div>
-
-  {/* Privacy */}
-
-  <p className="text-center text-xs text-neutral-400 leading-6">
-    By submitting, you agree to our Privacy Policy. We never share your
-    details with third parties.
-  </p>
-
-</form>
+<EnquiryForm />     
 
               </div>
 
