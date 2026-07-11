@@ -30,7 +30,7 @@ const suburbs = [
 ];
 
 const projectTypes = [
-  "Backyard Studio",
+  "Studio",
   "Granny Flat",
   "Office Pod",
 ];
