@@ -33,10 +33,6 @@ const projectTypes = [
   "Backyard Studio",
   "Granny Flat",
   "Office Pod",
-  "Home Office",
-  "Guest House",
-  "Gym",
-  "Airbnb",
 ];
 
 export default function EnquiryForm({
