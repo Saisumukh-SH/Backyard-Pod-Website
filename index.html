@@ -106,13 +106,41 @@
 
   <body>
 
-    <!-- Netlify Form -->
-    <form name="booking" netlify hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <textarea name="message"></textarea>
-    </form>
+    <!-- Netlify Hidden Forms -->
+
+<form
+  name="booking"
+  netlify
+  netlify-honeypot="bot-field"
+  hidden
+>
+  <input type="hidden" name="form-name" value="booking" />
+
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="tel" name="phone" />
+  <textarea name="message"></textarea>
+
+  <input name="bot-field" />
+</form>
+
+<form
+  name="consultation"
+  netlify
+  netlify-honeypot="bot-field"
+  hidden
+>
+  <input type="hidden" name="form-name" value="consultation" />
+
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="tel" name="phone" />
+  <input type="text" name="suburb" />
+  <input type="text" name="projectType" />
+  <textarea name="message"></textarea>
+
+  <input name="bot-field" />
+</form>
 
     <div id="root"></div>
 

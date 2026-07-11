@@ -167,17 +167,20 @@ const handleSubmit = async (
   setLoading(true);
 
   try {
-    await fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded",
-      },
-      body: encode({
-        "form-name": formName,
-        ...formData,
-      }),
-    });
+const response = await fetch("/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: encode({
+    "form-name": formName,
+    ...formData,
+  }),
+});
+
+if (!response.ok) {
+  throw new Error("Submission failed");
+}
 
     setSuccess(true);
 
@@ -518,22 +521,6 @@ return (
 
       </form>
     )}
-    {/* Hidden Netlify Form Detection */}
-
-<div hidden aria-hidden="true">
-  <form
-    name="consultation"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-  >
-    <input name="name" />
-    <input name="phone" />
-    <input name="email" />
-    <input name="suburb" />
-    <input name="projectType" />
-    <textarea name="message" />
-    <input name="bot-field" />
-  </form>
-</div>
+    
   </>
 );}
