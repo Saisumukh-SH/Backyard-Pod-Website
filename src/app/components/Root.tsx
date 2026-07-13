@@ -11,7 +11,7 @@ export function Root() {
     <>
     <ScrollToTop />
          {/* Hide Navigation on Landing Page */}
-      {location.pathname !== "/landingPage" && <Navigation />}
+{location.pathname !== "/landingPage" && <Navigation />}
     
 
       <Outlet />
