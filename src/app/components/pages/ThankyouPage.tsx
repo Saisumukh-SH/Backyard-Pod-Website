@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { trackContactConversion } from "../../../utils/googleAds";
 
 export default function ThankYouPage() {
   useEffect(() => {
+    trackContactConversion();
     window.scrollTo(0, 0);
     document.title = "Thank You | Backyard Nest";
   }, []);
