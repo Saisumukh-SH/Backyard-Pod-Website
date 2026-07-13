@@ -49,13 +49,14 @@ export const router = createBrowserRouter([
       { path: "contact", Component: Contact },
       { path: "about", Component: About },
       { path: "blog", Component: Blog },
-    { path: "blog/:slug", Component: BlogPost },
+      { path: "blog/:slug", Component: BlogPost },
       { path: "products/studio", Component: StudioPod },
       { path: "products/granny", Component: Contact },
       { path: "booking", Component: Booking },
       { path: "thank-you", Component: ThankyouPage },
       { path: "coming-soon", Component: ComingSoon },
       { path: "landingPage", Component: LandingPage },
+      { path: "landingpage", Component: LandingPage },
 
       
       { path: "products/StudioProduct1", Component: StudioProduct1 },
