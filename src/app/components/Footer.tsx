@@ -25,7 +25,7 @@ export function Footer() {
   />
 
   <span className="font-serif text-[2rem] leading-none text-white transition-colors duration-300 group-hover:text-[#C7A77A]">
-    Backyard Nest.
+    Backyard Nest
   </span>
 </Link>
 
@@ -107,6 +107,14 @@ export function Footer() {
             >
               FAQ
             </Link>
+          </li>
+          <li>
+            <Link
+  to="/privacy-policy"
+  className="hover:text-[#C8A97E] transition-colors"
+>
+  Privacy Policy
+</Link>
           </li>
         </ul>
       </div>

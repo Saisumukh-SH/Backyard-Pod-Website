@@ -278,7 +278,7 @@ const [activeCard, setActiveCard] = useState<number | null>(0);
       >
         Designed For
         <br />
-        Modern Living.
+        Modern Living
       </h2>
     </div>
 
@@ -457,7 +457,7 @@ const [activeCard, setActiveCard] = useState<number | null>(0);
       mb-8
     "
   >
-    Luxury Comes Standard.
+    Luxury Comes Standard
   </h2>
 
   <p

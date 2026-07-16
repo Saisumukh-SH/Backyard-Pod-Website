@@ -23,7 +23,8 @@ useEffect(() => {
     { path: "/about", label: "About" },
     { path: "/blog", label: "Blog" },
     { path: "/contact", label: "Contact" },
-     { path: "/faq", label: "faq" },
+     { path: "/faq", label: "FAQ" },
+     { path: "/privacy-policy", label: "Privacy Policy" },
   ];
 
   const isActive = (path: string) =>
@@ -53,7 +54,7 @@ useEffect(() => {
   textShadow: "0 2px 12px rgba(0,0,0,0.5)",
 }}
           >
-            Backyard Nest.
+            Backyard Nest
           </Link>
 
           {/* Desktop Navigation */}

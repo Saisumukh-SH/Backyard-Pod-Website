@@ -567,7 +567,7 @@ export function Contact() {
             <br />
             Backyard Vision
             <br />
-            To Life.
+            To Life
           </h2>
 
           <p className="mt-8 text-[#5F5A55] text-lg max-w-2xl mx-auto leading-relaxed">

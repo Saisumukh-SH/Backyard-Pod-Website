@@ -115,7 +115,7 @@ export default function StudioCategory() {
           tracking-[-0.04em]
         "
       >
-        Explore Every Design.
+        Explore Every Design
       </h2>
 
       <p

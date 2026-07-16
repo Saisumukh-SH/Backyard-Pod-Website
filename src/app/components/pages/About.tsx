@@ -59,7 +59,7 @@ export function About() {
               <h1 className="editorial-heading text-[#2E2A26] text-[clamp(4rem,8vw,7rem)] mt-8 leading-[0.95]">
                 Designed For
                 <br />
-                Better Living.
+                Better Living
               </h1>
 
               <div className="w-24 h-[2px] bg-[#C7A77A] mt-8 mb-8" />
@@ -102,7 +102,7 @@ export function About() {
               <h2 className="editorial-heading text-[#2E2A26] text-[clamp(2.5rem,4vw,4.5rem)] mt-6 leading-tight">
                 More than
                 <br />
-                just extra space.
+                just extra space
               </h2>
             </div>
 
@@ -190,7 +190,7 @@ export function About() {
               </span>
 
               <h2 className="editorial-heading text-[#2E2A26] text-[clamp(2.8rem,5vw,5rem)] leading-tight mt-6">
-                Every backyard deserves more potential.
+                Every backyard deserves more potential
               </h2>
 
               <div className="w-20 h-[2px] bg-[#C7A77A] my-10" />
@@ -231,9 +231,9 @@ export function About() {
             </span>
 
             <h2 className="editorial-heading text-[#2E2A26] text-[clamp(3rem,5vw,5rem)] mt-6">
-              Designed With Purpose.
+              Designed With Purpose
               <br />
-              Built With Care.
+              Built With Care
             </h2>
 
             <div className="w-24 h-[2px] bg-[#C7A77A] mx-auto mt-8" />

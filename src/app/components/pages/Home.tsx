@@ -168,9 +168,9 @@ export function Home() {
             tracking-[-0.05em]
           "
         >
-          SMARTER SPACES.
+          SMARTER SPACES
           <br />
-          BETTER LIVING.
+          BETTER LIVING
         </h1>
 
         {/* NEW SEO SUBHEADING */}
@@ -282,7 +282,7 @@ export function Home() {
 >
         More Than Just
         <br />
-        Extra Space.
+        Extra Space
       </h2>
     </motion.div>
 
@@ -842,7 +842,7 @@ export function Home() {
         >
           From Concept
           <br />
-          To Completion.
+          To Completion
         </h2>
 
         <div className="space-y-6 lg:space-y-8">
@@ -997,7 +997,7 @@ export function Home() {
             >
               Built With
               <br />
-              Confidence.
+              Confidence
             </h2>
           </div>
 

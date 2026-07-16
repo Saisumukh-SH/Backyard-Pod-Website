@@ -33,6 +33,7 @@ import GrannyflatProduct4 from "./components/pages/products/grannyflatSingleProd
 import GrannyflatProduct5 from "./components/pages/products/grannyflatSingleProduct/GrannyflatProduct5";
 import ThankyouPage from "./components/pages/ThankyouPage";
 import LandingPage from "./components/pages/landingPage";
+import PrivacyPolicy from "./components/pages/privacyPolicy";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,8 @@ export const router = createBrowserRouter([
       { path: "coming-soon", Component: ComingSoon },
       { path: "landingPage", Component: LandingPage },
       { path: "landingpage", Component: LandingPage },
+      { path: "privacy-policy", Component: PrivacyPolicy },
+      
 
       
       { path: "products/StudioProduct1", Component: StudioProduct1 },

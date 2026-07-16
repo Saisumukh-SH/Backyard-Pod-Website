@@ -90,7 +90,7 @@ export default function Products() {
           >
             Spaces Designed
             <br />
-            For Modern Living.
+            For Modern Living
           </motion.h1>
 
           {/* Description */}
@@ -276,7 +276,7 @@ export default function Products() {
         >
           Designed Around
           <br />
-          The Way You Live.
+          The Way You Live
         </h2>
 
         <div className="w-20 h-[2px] bg-[#C7A77A] mt-10 transition-all duration-500 hover:w-32" />
