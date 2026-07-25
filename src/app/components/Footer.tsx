@@ -102,6 +102,14 @@ export function Footer() {
           </li>
           <li>
             <Link
+              to="/projects"
+              className="hover:text-white transition"
+            >
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/faq"
               className="hover:text-white transition"
             >
