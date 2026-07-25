@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { trackContactConversion } from "../../../utils/googleAds";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function ThankYouPage() {
   useEffect(() => {
@@ -8,6 +9,21 @@ export default function ThankYouPage() {
     window.scrollTo(0, 0);
     document.title = "Thank You | Backyard Nest";
   }, []);
+
+  const navigate = useNavigate();
+const location = useLocation();
+
+useEffect(() => {
+  if (!location.state?.formSubmitted) {
+    navigate("/", { replace: true });
+  }
+}, [location, navigate]);
+
+if (!location.state?.formSubmitted) {
+  return null;
+}
+
+
 
   return (
     <div className="bg-[#F5F0EB] min-h-screen">

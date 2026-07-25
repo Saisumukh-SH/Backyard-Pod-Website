@@ -239,12 +239,12 @@ ${formData.message}`;
         <section className="py-24">
 
           <div className="max-w-7xl mx-auto px-6">
-
             <div className="grid lg:grid-cols-2 gap-20 items-center">
+
 
               {/* LEFT */}
 
-              <div>
+              <div className="order-2 lg:order-1">
 
                 <p className="uppercase tracking-[0.35em] text-[#4B5D45] text-sm mb-5">
                   Bayside & Inner East Melbourne
@@ -338,7 +338,7 @@ ${formData.message}`;
               </div>
                             {/* RIGHT */}
 
-              <div className="space-y-8">
+              <div className="space-y-8 order-1 lg:order-2">
 
                 {/* Architectural Preview */}
 

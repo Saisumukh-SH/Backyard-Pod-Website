@@ -135,6 +135,7 @@ const handleSubmit = async (
         <input
           type="hidden"
           name="project"
+          required
           value={projectType}
         />
 
@@ -186,6 +187,7 @@ const handleSubmit = async (
           type="tel"
           name="phone"
           placeholder="Phone Number"
+          required
           className="
             w-full
             px-5 py-4
@@ -204,6 +206,7 @@ const handleSubmit = async (
           type="text"
           name="location"
           placeholder="Project Location"
+          required
           className="
             w-full
             px-5 py-4
@@ -226,6 +229,7 @@ const handleSubmit = async (
 
         <select
           name="studio-model"
+          required
           className="
             w-full
             px-5 py-4
@@ -252,6 +256,7 @@ const handleSubmit = async (
 
         <select
           name="granny-model"
+          required
           className="
             w-full
             px-5 py-4

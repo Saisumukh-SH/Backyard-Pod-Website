@@ -11,7 +11,11 @@ interface FormData {
   phone: string;
   email: string;
   suburb: string;
+  address: string;
   projectType: string;
+  studioModel: string;
+  grannyModel: string;
+   purpose: string;
   message: string;
 }
 
@@ -25,14 +29,13 @@ const suburbs = [
   "Frankston",
   "St Kilda",
   "Caulfield",
-  "Eltham",
+  "Eltham",   
   "Another Melbourne suburb",
 ];
 
 const projectTypes = [
   "Studio",
   "Granny Flat",
-  "Office Pod",
 ];
 
 export default function EnquiryForm({
@@ -50,7 +53,11 @@ export default function EnquiryForm({
     phone: "",
     email: "",
     suburb: "",
+    address: "",
     projectType: "",
+    studioModel: "",
+    grannyModel: "",
+    purpose: "",
     message: "",
   });
 
@@ -61,17 +68,15 @@ export default function EnquiryForm({
     setFormData((prev) => ({
       ...prev,
       [field]: value,
+      ...(field === "projectType"
+      ? {
+          studioModel: "",
+          grannyModel: "",
+        }
+      : {}),
     }));
   };
 
-  const phoneRegex =
-    /^(\+61|0)[2-9]\d{8}$/;
-
-  const emailRegex =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const nameRegex =
-    /^[A-Za-zÀ-ÿ' -]{2,60}$/;
 
   const encode = (
     data: Record<string, string>
@@ -85,16 +90,67 @@ export default function EnquiryForm({
       )
       .join("&");
   };
+
+  const phoneRegex =
+    /^(\+61|0)[2-9]\d{8}$/;
+
+  const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const nameRegex =
+    /^[A-Za-zÀ-ÿ' -]{2,60}$/;
+
+
+
   const validateForm = () => {
+    const secondsOnPage = (Date.now() - formLoadedAt) / 1000;
+
+if (secondsOnPage < 5) {
+  setError("Please take a moment to complete the form before submitting.");
+  return false;
+}
   if (!nameRegex.test(formData.name.trim())) {
     setError("Please enter a valid name.");
     return false;
   }
+  const fakeNames = [
+  "test",
+  "testing",
+  "admin",
+  "asdf",
+  "qwerty",
+  "unknown",
+  "demo",
+  "sample",
+];
+
+const linkCount =
+  (formData.message.match(/https?:\/\//gi) || []).length +
+  (formData.message.match(/www\./gi) || []).length;
+
+if (linkCount > 1) {
+  setError("Please remove links from your message.");
+  return false;
+}
+
+if (
+  fakeNames.includes(formData.name.trim().toLowerCase())
+) {
+  setError("Please enter your real name.");
+  return false;
+}
 
   if (!phoneRegex.test(formData.phone.trim())) {
     setError("Please enter a valid Australian phone number.");
     return false;
   }
+
+    const digits = formData.phone.replace(/\D/g, "");
+
+if (/^(.)\1+$/.test(digits)) {
+  setError("Please enter a valid phone number.");
+  return false;
+}
 
   if (!emailRegex.test(formData.email.trim())) {
     setError("Please enter a valid email address.");
@@ -106,24 +162,87 @@ export default function EnquiryForm({
     return false;
   }
 
+  if (!formData.address.trim()) {
+  setError("Please enter the property address.");
+  return false;
+}
+
+const addressRegex = /^\d+.*$/;
+
+if (!addressRegex.test(formData.address.trim())) {
+  setError("Please enter a valid property address.");
+  return false;
+}
+
   if (!formData.projectType) {
     setError("Please select a project type.");
     return false;
   }
+  if (
+  formData.projectType === "Studio" &&
+  !formData.studioModel
+) {
+  setError("Please select a studio model.");
+  return false;
+}
+
+if (
+  formData.projectType === "Granny Flat" &&
+  !formData.grannyModel
+) {
+  setError("Please select a granny flat model.");
+  return false;
+}
+if (!formData.purpose) {
+  setError("Please select the purpose of your project.");
+  return false;
+}
+
+if (formData.message.trim().length > 1500) {
+  setError("Message is too long.");
+  return false;
+}
+
+const gibberish =
+  /(asdf|qwerty|zxcv|123456|aaaa|bbbb|xxxxx)/i;
+
+if (gibberish.test(formData.message)) {
+  setError("Please enter a meaningful message.");
+  return false;
+}
+
+if (/(.)\1{7,}/.test(formData.message)) {
+  setError("Please enter a meaningful message.");
+  return false;
+}
+
+if (formData.message.trim().length < 10) {
+  setError("Please tell us a little more about your project.");
+  return false;
+}
 
   // Simple spam protection
-  const spamWords = [
-    "seo",
-    "casino",
-    "crypto",
-    "bitcoin",
-    "loan",
-    "viagra",
-    "forex",
-    "http://",
-    "https://",
-    "www.",
-  ];
+const spamWords = [
+  "seo",
+  "backlink",
+  "guest post",
+  "guest-post",
+  "google ranking",
+  "rank your website",
+  "marketing agency",
+  "casino",
+  "bitcoin",
+  "crypto",
+  "loan",
+  "forex",
+  "viagra",
+  "porn",
+  "escort",
+  "telegram",
+  "whatsapp group",
+  "buy now",
+  "click here",
+];
 
   const combined = (
     formData.name +
@@ -148,7 +267,11 @@ const resetForm = () => {
     phone: "",
     email: "",
     suburb: "",
+    address: "",
     projectType: "",
+    studioModel: "",
+    grannyModel: "",
+    purpose: "",
     message: "",
   });
 };
@@ -207,8 +330,21 @@ ${formData.email}
 Suburb:
 ${formData.suburb}
 
+Property Address:
+${formData.address}
+
 Project Type:
 ${formData.projectType}
+
+Model:
+${
+  formData.projectType === "Studio"
+    ? formData.studioModel
+    : formData.grannyModel
+}
+
+Purpose:
+${formData.purpose}
 
 Message:
 ${formData.message}`;
@@ -220,6 +356,11 @@ ${formData.message}`;
     "_blank"
   );
 };
+
+const [formLoadedAt] = useState(Date.now());
+
+
+
 return (
   <>
     {success ? (
@@ -292,7 +433,7 @@ return (
               onChange={(e) =>
                 updateField("name", e.target.value)
               }
-              placeholder="John Smith"
+              placeholder="Your Name"
               className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
             />
 
@@ -387,6 +528,26 @@ return (
           </div>
 
         </div>
+        {/* PROPERTY ADDRESS */}
+
+<div>
+
+  <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+    Property Address
+  </label>
+
+  <input
+    required
+    type="text"
+    name="address"
+    value={formData.address}
+    onChange={(e) => updateField("address", e.target.value)}
+    placeholder="123 Example Street, Brighton VIC 3186"
+    autoComplete="street-address"
+    className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white placeholder:text-neutral-500 focus:border-[#C7A77A] transition"
+  />
+
+</div>
 
         {/* Project */}
 
@@ -430,6 +591,102 @@ return (
           </select>
 
         </div>
+
+        {/* MODEL SELECTION */}
+
+          {formData.projectType === "Studio" && (
+
+            <div>
+
+              <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+                Studio Model
+              </label>
+
+              <select
+                required
+                name="studioModel"
+                value={formData.studioModel}
+                onChange={(e) => updateField("studioModel", e.target.value)}
+                className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white focus:border-[#C7A77A] transition"
+              >
+                <option value="">
+                  Select Studio Model
+                </option>
+
+                <option value="The Vista">The Vista</option>
+                <option value="The Brighton">The Brighton</option>
+                <option value="The Aspen">The Aspen</option>
+                <option value="The Nest">The Nest</option>
+              </select>
+
+            </div>
+
+          )}
+
+          {formData.projectType === "Granny Flat" && (
+
+            <div>
+
+              <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+                Granny Flat Model
+              </label>
+
+              <select
+                required
+                name="grannyModel"
+                value={formData.grannyModel}
+                onChange={(e) => updateField("grannyModel", e.target.value)}
+                className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white focus:border-[#C7A77A] transition"
+              >
+                <option value="">
+                  Select Granny Flat Model
+                </option>
+
+                <option value="1 Bedroom Granny Flat">
+                  1 Bedroom Granny Flat
+                </option>
+
+                <option value="2 Bedroom Granny Flat">
+                  2 Bedroom Granny Flat
+                </option>
+
+                <option value="Custom Granny Flat">
+                  Custom Granny Flat
+                </option>
+
+              </select>
+
+            </div>
+
+          )}
+
+          {/* PURPOSE OF STUDIO */}
+
+<div>
+
+  <label className="block text-xs uppercase tracking-[3px] text-[#C7A77A] mb-3">
+    Purpose of Your Project
+  </label>
+
+  <select
+    required
+    name="purpose"
+    value={formData.purpose}
+    onChange={(e) => updateField("purpose", e.target.value)}
+    className="w-full bg-[#1C1B19] border border-white/10 px-5 py-4 outline-none text-white focus:border-[#C7A77A] transition"
+  >
+    <option value="">Select purpose</option>
+
+    <option value="Home Office">Home Office</option>
+    <option value="Extra Living Space">Extra Living Space</option>
+    <option value="Rental Income">Rental Income</option>
+    <option value="Guest Accommodation">Guest Accommodation</option>
+    <option value="Teenage Retreat">Teenage Retreat</option>
+    <option value="Not Sure Yet">Not Sure Yet</option>
+
+  </select>
+
+</div>
 
         {/* Message */}
 

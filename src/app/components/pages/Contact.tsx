@@ -1,36 +1,324 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../SEO";
+import { Loader2 } from "lucide-react";
+
 export function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+const navigate = useNavigate();
 
-  const [submitted, setSubmitted] = useState(false);
-  const navigate = useNavigate();
+const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+const [success, setSuccess] = useState(false);
 
-    const form = e.currentTarget;
+const [error, setError] = useState("");
 
-    const formData = new FormData(form);
+const [formLoadedAt] = useState(Date.now());
 
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams(formData as any).toString(),
-      });
+const [formData, setFormData] = useState({
+  projectType: "",
+  studioModel: "",
+  grannyModel: "",
+  purpose: "",
+  name: "",
+  email: "",
+  phone: "",
+  suburb: "",
+  address: "",
+  message: "",
+});
 
-      navigate("/thank-you");
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong. Please try again.");
+const updateField = (
+  field: keyof typeof formData,
+  value: string
+) => {
+  setFormData((prev) => ({
+    ...prev,
+    [field]: value,
+
+    ...(field === "projectType"
+      ? {
+          studioModel: "",
+          grannyModel: "",
+        }
+      : {}),
+  }));
+};
+
+const encode = (
+  data: Record<string, string>
+) => {
+  return Object.keys(data)
+    .map(
+      (key) =>
+        encodeURIComponent(key) +
+        "=" +
+        encodeURIComponent(data[key])
+    )
+    .join("&");
+};
+
+const suburbs = [
+  "Brighton",
+  "Bentleigh",
+  "Malvern",
+  "Kew",
+  "Mount Eliza",
+  "Sandringham",
+  "Frankston",
+  "St Kilda",
+  "Caulfield",
+  "Eltham",
+  "Another Melbourne suburb",
+];
+
+const phoneRegex =
+  /^(\+61|0)[2-9]\d{8}$/;
+
+const emailRegex =
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const nameRegex =
+  /^[A-Za-zÀ-ÿ' -]{2,60}$/;
+
+const addressRegex =
+  /^\d+.*$/;
+
+const fakeNames = [
+  "test",
+  "testing",
+  "admin",
+  "asdf",
+  "qwerty",
+  "unknown",
+  "demo",
+  "sample",
+];
+
+const spamWords = [
+  "seo",
+  "backlink",
+  "guest post",
+  "guest-post",
+  "google ranking",
+  "rank your website",
+  "marketing agency",
+  "casino",
+  "bitcoin",
+  "crypto",
+  "loan",
+  "forex",
+  "viagra",
+  "porn",
+  "escort",
+  "telegram",
+  "whatsapp group",
+  "buy now",
+  "click here",
+];
+
+const validateForm = () => {
+  const secondsOnPage =
+    (Date.now() - formLoadedAt) / 1000;
+
+  if (secondsOnPage < 5) {
+    setError(
+      "Please take a moment to complete the form before submitting."
+    );
+    return false;
+  }
+
+  if (!nameRegex.test(formData.name.trim())) {
+    setError("Please enter a valid name.");
+    return false;
+  }
+
+  if (
+    fakeNames.includes(
+      formData.name.trim().toLowerCase()
+    )
+  ) {
+    setError("Please enter your real name.");
+    return false;
+  }
+
+  if (!phoneRegex.test(formData.phone.trim())) {
+    setError(
+      "Please enter a valid Australian phone number."
+    );
+    return false;
+  }
+
+  const digits = formData.phone.replace(/\D/g, "");
+
+  if (/^(.)\1+$/.test(digits)) {
+    setError("Please enter a valid phone number.");
+    return false;
+  }
+
+  if (!emailRegex.test(formData.email.trim())) {
+    setError("Please enter a valid email address.");
+    return false;
+  }
+
+  if (!formData.suburb) {
+    setError("Please select your suburb.");
+    return false;
+  }
+
+  if (!formData.address.trim()) {
+    setError("Please enter the property address.");
+    return false;
+  }
+
+  if (!addressRegex.test(formData.address.trim())) {
+    setError("Please enter a valid property address.");
+    return false;
+  }
+
+  if (!formData.projectType) {
+    setError("Please select a project type.");
+    return false;
+  }
+
+  if (
+    formData.projectType === "Studio" &&
+    !formData.studioModel
+  ) {
+    setError("Please select a studio model.");
+    return false;
+  }
+
+  if (
+    formData.projectType === "Granny Flat" &&
+    !formData.grannyModel
+  ) {
+    setError("Please select a granny flat model.");
+    return false;
+  }
+
+  if (!formData.purpose) {
+    setError(
+      "Please select the purpose of your project."
+    );
+    return false;
+  }
+
+  if (formData.message.trim().length > 1500) {
+    setError("Message is too long.");
+    return false;
+  }
+
+  if (formData.message.trim().length < 10) {
+    setError(
+      "Please tell us a little more about your project."
+    );
+    return false;
+  }
+
+  const gibberish =
+    /(asdf|qwerty|zxcv|123456|aaaa|bbbb|xxxxx)/i;
+
+  if (gibberish.test(formData.message)) {
+    setError("Please enter a meaningful message.");
+    return false;
+  }
+
+  if (/(.)\1{7,}/.test(formData.message)) {
+    setError("Please enter a meaningful message.");
+    return false;
+  }
+
+  const linkCount =
+    (formData.message.match(/https?:\/\//gi) || [])
+      .length +
+    (formData.message.match(/www\./gi) || [])
+      .length;
+
+  if (linkCount > 1) {
+    setError("Please remove links from your message.");
+    return false;
+  }
+
+  const combined = (
+    formData.name +
+    formData.email +
+    formData.message
+  ).toLowerCase();
+
+  if (
+    spamWords.some((word) =>
+      combined.includes(word)
+    )
+  ) {
+    setError("Spam detected.");
+    return false;
+  }
+
+  setError("");
+  return true;
+};
+
+const resetForm = () => {
+  setFormData({
+    projectType: "",
+    studioModel: "",
+    grannyModel: "",
+    purpose: "",
+    name: "",
+    email: "",
+    phone: "",
+    suburb: "",
+    address: "",
+    message: "",
+  });
+};
+
+const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  if (!validateForm()) return;
+
+  setLoading(true);
+
+  try {
+    const response = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type":
+          "application/x-www-form-urlencoded",
+      },
+      body: encode({
+        "form-name": "contact",
+        ...formData,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Submission failed");
     }
-  };
+
+    resetForm();
+
+    setSuccess(true);
+
+    navigate("/thank-you", {
+  state: {
+    formSubmitted: true,
+  },
+});
+  } catch (err) {
+    setError(
+      "Something went wrong. Please try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div>
@@ -155,147 +443,63 @@ export function Contact() {
 
                 {/* PROJECT TYPE */}
 
-                <div>
-                  <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-4">
-                    Project Type
-                  </label>
+ <div>
+  <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-4">
+    Project Type
+  </label>
 
-                  <div className="flex flex-wrap gap-3">
-                    {[
-                      "Backyard Studio",
-                      "Granny Flat",
-                      "Not Sure Yet",
-                    ].map((item) => (
-                      <label
-                        key={item}
-                        className="
-              cursor-pointer
-            "
-                      >
-                        <input
-                          type="radio"
-                          name="projectType"
-                          value={item}
-                          className="peer hidden"
-                        />
+  <div className="flex flex-wrap gap-3">
+    {["Studio", "Granny Flat", "Not Sure Yet"].map((item) => (
+      <label key={item} className="cursor-pointer">
 
-                        <div
-                          className="
-                px-6 py-3
-                rounded-full
-                border
-                border-[rgba(46,42,38,0.08)]
-                bg-[#F5F0EB]
-                text-[#5F5A55]
-                transition-all
-                duration-300
-                peer-checked:bg-[#C7A77A]
-                peer-checked:text-[#2E2A26]
-                peer-checked:border-[#C7A77A]
-                hover:border-[#C7A77A]
-              "
-                        >
-                          {item}
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
+        <input
+          type="radio"
+          name="projectType"
+          value={item}
+          checked={formData.projectType === item}
+          onChange={(e) =>
+            updateField("projectType", e.target.value)
+          }
+          className="peer hidden"
+        />
 
-                {/* DETAILS */}
+        <div
+          className="
+            px-6 py-3
+            rounded-full
+            border
+            border-[rgba(46,42,38,0.08)]
+            bg-[#F5F0EB]
+            text-[#5F5A55]
+            transition-all
+            duration-300
+            peer-checked:bg-[#C7A77A]
+            peer-checked:text-[#2E2A26]
+            peer-checked:border-[#C7A77A]
+            hover:border-[#C7A77A]
+          "
+        >
+          {item}
+        </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Full Name"
-                    required
-                    className="
-          w-full
-          px-5
-          py-4
-          rounded-2xl
-          border
-          border-[rgba(46,42,38,0.08)]
-          bg-[#FAF8F5]
-          text-[#2E2A26]
-          focus:border-[#C7A77A]
-          focus:bg-white
-          outline-none
-          transition-all
-        "
-                  />
+      </label>
+    ))}
+  </div>
+</div>
+{formData.projectType === "Studio" && (
+  <div>
+    <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-4">
+      Studio Model
+    </label>
 
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    required
-                    className="
-          w-full
-          px-5
-          py-4
-          rounded-2xl
-          border
-          border-[rgba(46,42,38,0.08)]
-          bg-[#FAF8F5]
-          text-[#2E2A26]
-          focus:border-[#C7A77A]
-          focus:bg-white
-          outline-none
-          transition-all
-        "
-                  />
-
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    className="
-          w-full
-          px-5
-          py-4
-          rounded-2xl
-          border
-          border-[rgba(46,42,38,0.08)]
-          bg-[#FAF8F5]
-          text-[#2E2A26]
-          focus:border-[#C7A77A]
-          focus:bg-white
-          outline-none
-          transition-all
-        "
-                  />
-
-                  <input
-                    type="text"
-                    name="location"
-                    placeholder="Project Location"
-                    className="
-          w-full
-          px-5
-          py-4
-          rounded-2xl
-          border
-          border-[rgba(46,42,38,0.08)]
-          bg-[#FAF8F5]
-          text-[#2E2A26]
-          focus:border-[#C7A77A]
-          focus:bg-white
-          outline-none
-          transition-all
-        "
-                  />
-                </div>
-
-                {/* MESSAGE */}
-
-                <textarea
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="Tell us about your project..."
-                  className="
+    <select
+      name="studioModel"
+      required
+      value={formData.studioModel}
+      onChange={(e) =>
+        updateField("studioModel", e.target.value)
+      }
+      className="
         w-full
         px-5
         py-4
@@ -304,33 +508,310 @@ export function Contact() {
         border-[rgba(46,42,38,0.08)]
         bg-[#FAF8F5]
         text-[#2E2A26]
-        resize-none
+        appearance-none
         focus:border-[#C7A77A]
         focus:bg-white
         outline-none
         transition-all
       "
-                />
+    >
+      <option value="">Select Studio Model</option>
+      <option value="The Nest 15">The Nest 15</option>
+      <option value="The Aspen 20">The Aspen 20</option>
+      <option value="The Brighton 22">The Brighton 22</option>
+      <option value="The Vista 26">The Vista 26</option>
+    </select>
+  </div>
+)}
+{formData.projectType === "Granny Flat" && (
+  <div>
+    <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-4">
+      Granny Flat Model
+    </label>
 
+    <select
+      name="grannyModel"
+      required
+      value={formData.grannyModel}
+      onChange={(e) =>
+        updateField("grannyModel", e.target.value)
+      }
+      className="
+        w-full
+        px-5
+        py-4
+        rounded-2xl
+        border
+        border-[rgba(46,42,38,0.08)]
+        bg-[#FAF8F5]
+        text-[#2E2A26]
+        appearance-none
+        focus:border-[#C7A77A]
+        focus:bg-white
+        outline-none
+        transition-all
+      "
+    >
+      <option value="">Select Granny Flat Model</option>
+      <option value="1 Bedroom">1 Bedroom</option>
+      <option value="2 Bedroom">2 Bedroom</option>
+      <option value="Custom Design">Custom Design</option>
+    </select>
+  </div>
+)}
+
+{/* PURPOSE OF PROJECT */}
+<div>
+  <label className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] block mb-4">
+    Purpose of Your Project
+  </label>
+
+  <select
+    name="purpose"
+    required
+    value={formData.purpose}
+    onChange={(e) =>
+      updateField("purpose", e.target.value)
+    }
+    className="
+      w-full
+      px-5
+      py-4
+      rounded-2xl
+      border
+      border-[rgba(46,42,38,0.08)]
+      bg-[#FAF8F5]
+      text-[#2E2A26]
+      appearance-none
+      focus:border-[#C7A77A]
+      focus:bg-white
+      outline-none
+      transition-all
+    "
+  >
+    <option value="">Select Purpose</option>
+    <option value="Home Office">Home Office</option>
+    <option value="Guest Accommodation">Guest Accommodation</option>
+    <option value="Teenage Retreat">Teenage Retreat</option>
+    <option value="Rental Income">Rental Income</option>
+    <option value="Extra Living Space">Extra Living Space</option>
+    <option value="Creative Studio">Creative Studio</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+
+
+                {/* DETAILS */}
+
+                <div className="grid md:grid-cols-2 gap-6">
+<input
+  type="text"
+  name="name"
+  required
+  value={formData.name}
+  onChange={(e) =>
+    updateField("name", e.target.value)
+  }
+  placeholder="Full Name"
+  autoComplete="name"
+  maxLength={60}
+  className="
+    w-full
+    px-5
+    py-4
+    rounded-2xl
+    border
+    border-[rgba(46,42,38,0.08)]
+    bg-[#FAF8F5]
+    text-[#2E2A26]
+    focus:border-[#C7A77A]
+    focus:bg-white
+    outline-none
+    transition-all
+  "
+/>
+
+<input
+  type="email"
+  name="email"
+  required
+  value={formData.email}
+  onChange={(e) =>
+    updateField("email", e.target.value)
+  }
+  placeholder="Email Address"
+  autoComplete="email"
+  maxLength={100}
+  className="
+    w-full
+    px-5
+    py-4
+    rounded-2xl
+    border
+    border-[rgba(46,42,38,0.08)]
+    bg-[#FAF8F5]
+    text-[#2E2A26]
+    focus:border-[#C7A77A]
+    focus:bg-white
+    outline-none
+    transition-all
+  "
+/>
+
+<input
+  type="tel"
+  name="phone"
+  required
+  value={formData.phone}
+  onChange={(e) =>
+    updateField("phone", e.target.value)
+  }
+  placeholder="04XX XXX XXX"
+  autoComplete="tel"
+  maxLength={15}
+  className="
+    w-full
+    px-5
+    py-4
+    rounded-2xl
+    border
+    border-[rgba(46,42,38,0.08)]
+    bg-[#FAF8F5]
+    text-[#2E2A26]
+    focus:border-[#C7A77A]
+    focus:bg-white
+    outline-none
+    transition-all
+  "
+/>
+
+ <select
+  name="suburb"
+  required
+  value={formData.suburb}
+  onChange={(e) =>
+    updateField("suburb", e.target.value)
+  }
+  className="
+    w-full
+    px-5
+    py-4
+    rounded-2xl
+    border
+    border-[rgba(46,42,38,0.08)]
+    bg-[#FAF8F5]
+    text-[#2E2A26]
+    focus:border-[#C7A77A]
+    focus:bg-white
+    outline-none
+    transition-all
+  "
+>
+  <option value="">
+    Select suburb
+  </option>
+
+  {suburbs.map((suburb) => (
+    <option key={suburb} value={suburb}>
+      {suburb}
+    </option>
+  ))}
+</select>
+
+<input
+  type="text"
+  name="address"
+  required
+  value={formData.address}
+  onChange={(e) =>
+    updateField("address", e.target.value)
+  }
+  placeholder="123 Example Street, Brighton VIC 3186"
+  autoComplete="street-address"
+  maxLength={120}
+  className="
+    w-full
+    px-5
+    py-4
+    rounded-2xl
+    border
+    border-[rgba(46,42,38,0.08)]
+    bg-[#FAF8F5]
+    text-[#2E2A26]
+    focus:border-[#C7A77A]
+    focus:bg-white
+    outline-none
+    transition-all
+  "
+/>
+                </div>
+
+                {/* MESSAGE */}
+<textarea
+  name="message"
+  rows={5}
+  value={formData.message}
+  onChange={(e) =>
+    updateField("message", e.target.value)
+  }
+  placeholder="Tell us about your project..."
+  maxLength={1500}
+  className="
+    w-full
+    px-5
+    py-4
+    rounded-2xl
+    border
+    border-[rgba(46,42,38,0.08)]
+    bg-[#FAF8F5]
+    text-[#2E2A26]
+    resize-none
+    focus:border-[#C7A77A]
+    focus:bg-white
+    outline-none
+    transition-all
+  "
+/>
+
+{error && (
+  <div className="bg-red-100 border border-red-300 text-red-700 px-5 py-4 rounded-2xl text-sm">
+    {error}
+  </div>
+)}
                 {/* BUTTON */}
 
                 <div className="flex justify-end">
-                  <button
-                    type="submit"
-                    className="
-          px-8 py-4
-          bg-[#2E2A26]
-          text-[#F5F0EB]
-          rounded-full
-          transition-all
-          duration-300
-          hover:bg-[#C7A77A]
-          hover:text-[#2E2A26]
-          hover:-translate-y-1
-        "
-                  >
-                    Send Enquiry
-                  </button>
+<button
+  type="submit"
+  disabled={loading}
+  className="
+    px-8
+    py-4
+    bg-[#2E2A26]
+    text-[#F5F0EB]
+    rounded-full
+    transition-all
+    duration-300
+    hover:bg-[#C7A77A]
+    hover:text-[#2E2A26]
+    hover:-translate-y-1
+    disabled:opacity-60
+    disabled:cursor-not-allowed
+    flex
+    items-center
+    justify-center
+    gap-2
+  "
+>
+  {loading ? (
+    <>
+      <Loader2 size={18} className="animate-spin" />
+      Sending...
+    </>
+  ) : (
+    "Send Enquiry"
+  )}
+</button>
                 </div>
               </form>
             </div>
