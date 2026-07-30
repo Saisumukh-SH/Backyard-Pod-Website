@@ -730,7 +730,7 @@ return (
 
         <div className="grid md:grid-cols-2 gap-4">
 
-          <button
+          {/* <button
             type="submit"
             disabled={loading}
             className="bg-[#1C1B19] hover:bg-[#8B5A3C] hover:text-white transition font-semibold py-4 flex justify-center items-center gap-3 disabled:opacity-60"
@@ -748,7 +748,7 @@ return (
               "Email My Enquiry"
             )}
 
-          </button>
+          </button> */}
 
           <button
             type="button"
