@@ -94,7 +94,7 @@ const headings = useMemo(() => {
   return (
   <>
     <SEO
-      title={blog?.seoTitle || "Blog | Backyard Nest"}
+      title={blog?.seoTitle || "Blogs | Backyard Nest"}
       description={blog?.metaDescription || ""}
       url={`https://backyardnest.com.au/blog/${blog?.slug}`}
     />

@@ -50,6 +50,12 @@ return (
   warranty="10 Year"
   heroImage="/images/studio/studio1/studio1.1.webp"
   mobileHeroImage="/images/studio/studio1/studio1.1_mobile.webp"
+
+  seoTitle="The Brighton 32 | Custom Garden Studio Melbourne"
+  seoDescription="Bring your vision to life with The Brighton 32 by Backyard Nest. We design and build spacious backyard studios filled with natural light. Explore the design today."
+  seoUrl="https://backyardnest.com.au/products/studio/TheBrighton"
+  seoImage="/images/studio/studio1/studio1.1.webp"
+
   finishes={finishes}
   galleryImages={galleryImages}
   relatedProducts={<RelatedProducts currentId={32} />}

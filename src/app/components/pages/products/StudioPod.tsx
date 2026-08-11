@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
+import SEO from "../../SEO";
 
 
 export default function StudioCategory() {
@@ -14,7 +15,7 @@ export default function StudioCategory() {
     {
       id: 1,
       label: "The Nest",
-      route: "/products/StudioProduct4",
+      route: "/products/TheNest",
       gridImage: "/images/studio/studio3/mobile/studio3.m.webp",
       immersiveImage: "/images/studio/studio3/studio3.3.webp",
       description: "A compact 15m² backyard studio thoughtfully designed to maximise space, natural light and functionality, making it ideal for a home office, creative studio or private retreat.",
@@ -27,7 +28,7 @@ export default function StudioCategory() {
     {
       id: 2,
       label: "The Aspen",
-      route: "/products/StudioProduct3",
+      route: "/products/TheAspen",
       gridImage: "/images/studio/studio2/mobile/studio2.m.webp",
       immersiveImage: "/images/studio/studio2/studio2.3.webp",
       description: "A premium 20m² backyard studio designed for modern Australian living, featuring contemporary architecture, abundant natural light and versatile spaces for work, relaxation or guest accommodation.",
@@ -40,7 +41,7 @@ export default function StudioCategory() {
     {
       id: 3,
       label: "The Vista",
-      route: "/products/StudioProduct1",
+      route: "/products/TheVista",
       gridImage: "/images/studio/studio4/mobile/studio4.m.webp",
       immersiveImage: "/images/studio/studio4/studio4.3.webp",
       description:
@@ -54,7 +55,7 @@ export default function StudioCategory() {
     {
       id: 4,
       label: "The Brighton ",
-      route: "/products/StudioProduct2",
+      route: "/products/TheBrighton",
       gridImage: "/images/studio/studio1/mobile/studio1.m.webp",
       immersiveImage: "/images/studio/studio1/studio1.3.webp",
       description:
@@ -83,6 +84,12 @@ export default function StudioCategory() {
 
   return (
     <div>
+         <SEO
+          title="Backyard Studios Melbourne | Custom Studio Builders"
+          description="From home office to art studio, Backyard Nest builds custom backyard studios across Melbourne & Victoria — made to fit your space, style and budget.
+      "
+          url="https://backyardnest.com.au/studio"
+      />
 
 
 {/* LUXURY COLLECTION GRID */}

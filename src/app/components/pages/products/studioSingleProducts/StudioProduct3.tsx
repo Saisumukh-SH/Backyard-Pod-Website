@@ -71,6 +71,13 @@ return (
   warranty="10 Year"
   heroImage="/images/studio/studio2/studio2.1.webp"
   mobileHeroImage="/images/studio/studio2/studio2.1_mobile.webp"
+
+ seoTitle="The Aspen 20 | Premium Backyard Studio Melbourne"
+  seoDescription="Discover The Aspen 20 by Backyard Nest. We design and build premium 20m² backyard studios across Melbourne. Enquire today for a free consultation."
+  seoUrl="https://backyardnest.com.au/products/studio/TheAspen"
+  seoImage="/images/studio/studio2/studio2.1.webp"
+
+
   finishes={finishes}
   galleryImages={galleryImages}
   relatedProducts={<RelatedProducts currentId={20} />}

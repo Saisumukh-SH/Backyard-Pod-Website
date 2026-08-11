@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
 import { motion } from "framer-motion";
+import SEO from "../../SEO";
 
 
 interface Finish {
@@ -23,6 +24,13 @@ interface ProductProps {
   warranty: string;
   heroImage: string;
 mobileHeroImage?: string;
+
+// SEO
+  seoTitle: string;
+  seoDescription: string;
+  seoUrl: string;
+  seoImage?: string;
+
   finishes: Finish[];
   galleryImages: {
     main: string;
@@ -48,6 +56,10 @@ export default function SingleStudioPage({
   relatedProducts,
   designInspiration,
   mobileHeroImage,
+  seoTitle,
+  seoDescription,
+  seoUrl,
+  seoImage,
 }: ProductProps) {
   const navigate = useNavigate();
 
@@ -115,6 +127,13 @@ const [activeCard, setActiveCard] = useState<number | null>(0);
   }, []);
   return (
     <div>
+
+      <SEO
+      title={seoTitle}
+      description={seoDescription}
+      url={seoUrl}
+      image={seoImage}
+    />
       
 {/* HERO */}
 <section className="relative h-screen overflow-hidden">

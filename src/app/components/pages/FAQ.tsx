@@ -15,6 +15,7 @@ import {
   Hammer,
   House,
 } from "lucide-react";
+import SEO from "../SEO";
 
 export function FAQ() {
   const navigate = useNavigate();
@@ -63,6 +64,11 @@ export function FAQ() {
 
   return (
     <div className="bg-[#F5F0EB] text-[#2E2A26]">
+            <SEO
+          title="FAQs | Backyard Nest"
+          description="Confused about granny flat permits or costs in Melbourne? We answer the questions homeowners ask most — before you commit to a build."
+          url="https://backyardnest.com.au/faq"
+      />
       {/* HERO */}
 
       <section className="relative overflow-hidden border-b border-[#E8DED3]">

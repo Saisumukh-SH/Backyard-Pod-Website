@@ -43,7 +43,8 @@ export function About() {
     <div className="bg-white text-black">
       <SEO
     title="About Us | Backyard Nest"
-    description="Explore completed backyard studios, granny flats and studio projects across Melbourne."
+    description="Meet Backyard Nest — the Melbourne builders behind premium backyard pods, studios & granny flats. Learn our story, our process, and why Victorians trust us.
+"
     url="https://backyardnest.com.au/gallery"
 />
 

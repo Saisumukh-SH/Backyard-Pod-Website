@@ -54,8 +54,8 @@ export default function Products() {
   return (
     <main className="bg-[#F5F0EB]">
       <SEO
-        title="Project Gallery | Backyard Nest"
-        description="Explore completed backyard studios, granny flats and studio projects across Melbourne."
+        title="Our Products | Backyard Nest"
+        description="Explore our full range of backyard pods, home studios & granny flats — custom designed and built across Melbourne & Victoria. Find your perfect fit."
         url="https://backyardnest.com.au/gallery"
       />
 

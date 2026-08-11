@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SEO from "../../SEO";
 
 export default function GrannyFlats() {
   const navigate = useNavigate();
@@ -100,6 +101,11 @@ export default function GrannyFlats() {
 
   return (
     <div>
+       <SEO
+                title="Granny Flat Builders Melbourne, Victoria | Backyard Nest"
+                description="Looking for trusted granny flat builders in Melbourne, Victoria? Backyard Nest designs and builds custom granny flats. Enquire today for a free quote."
+                url="https://backyardnest.com.au/granny"
+            />
 
 {/* LUXURY COLLECTION GRID */}
 

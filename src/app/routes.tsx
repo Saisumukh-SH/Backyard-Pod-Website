@@ -64,11 +64,11 @@ export const router = createBrowserRouter([
       
 
       
-      { path: "products/StudioProduct1", Component: StudioProduct1 },
-      { path: "products/StudioProduct2", Component: StudioProduct2 },
-      { path: "products/StudioProduct3", Component: StudioProduct3 },
-      { path: "products/StudioProduct4", Component: StudioProduct4 },
-      { path: "products/StudioProduct5", Component: StudioProduct5 },
+      { path: "products/TheVista", Component: StudioProduct1 },
+      { path: "products/TheBrighton", Component: StudioProduct2 },
+      { path: "products/TheAspen", Component: StudioProduct3 },
+      { path: "products/TheNest", Component: StudioProduct4 },
+      { path: "products/CustomDesign", Component: StudioProduct5 },
       
       { path: "products/GrannyflatProduct1", Component: GrannyflatProduct1 },
       { path: "products/GrannyflatProduct2", Component: GrannyflatProduct2 },

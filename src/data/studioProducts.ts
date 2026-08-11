@@ -3,7 +3,7 @@ export const studioProducts = [
      {
     id: 15,
     label: "The Nest",
-    route: "/products/StudioProduct4",
+    route: "/products/TheNest",
     image: "/images/studio/studio3/mobile/studio3.m.webp",
     tag: "15m² Backyard Studio",
     description:
@@ -13,7 +13,7 @@ export const studioProducts = [
  {
     id: 20,
     label: "The Aspen",
-    route: "/products/StudioProduct3",
+    route: "/products/TheAspen",
     image: "/images/studio/studio2/mobile/studio2.m.webp",
     tag: "20m² Backyard Studio",
     description:
@@ -22,7 +22,7 @@ export const studioProducts = [
   {
     id: 32,
     label: "The Brighton",
-    route: "/products/StudioProduct2",
+    route: "/products/TheBrighton",
     image: "/images/studio/studio1/mobile/studio1.m.webp",
     tag: "32m² Backyard Studio",
     description:
@@ -32,7 +32,7 @@ export const studioProducts = [
    {
     id: 26,
     label: "The Vista",
-    route: "/products/StudioProduct1",
+    route: "/products/TheVista",
     image: "/images/studio/studio4/mobile/studio4.m.webp",
     tag: "26m² Backyard Studio",
     description:

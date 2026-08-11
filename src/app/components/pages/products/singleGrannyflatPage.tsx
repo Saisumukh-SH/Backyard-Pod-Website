@@ -44,6 +44,13 @@ export default function SingleGrannyFlatPage({
 
  return (
     <div>
+
+      <SEO
+            title={seoTitle}
+            description={seoDescription}
+            url={seoUrl}
+            image={seoImage}
+          />
       {/* HERO */}
 <section className="relative h-screen overflow-hidden">
 

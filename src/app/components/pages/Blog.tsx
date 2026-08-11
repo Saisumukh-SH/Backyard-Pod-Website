@@ -27,8 +27,9 @@ useEffect(() => {
   return (
   <div className="bg-white">
     <SEO
-      title="Blog | Backyard Nest"
-      description="Expert advice, design inspiration and building guides for backyard studios and granny flats across Melbourne."
+      title="Blogs | Backyard Nest"
+      description="Explore the Backyard Nest blog for expert advice on backyard pods, granny flats & studios in Melbourne — design tips, permits, pricing & more.
+"
       url="https://backyardnest.com.au/blog"
     />
 

@@ -1,6 +1,7 @@
 import SingleStudioPage from "../singleStudioPage";
 import RelatedProducts from "../../../RelatedProducts";
 import DesignInspiration from "../DesignInspiration";
+import React from "react";
 
 export default function StudioProduct4() {
 
@@ -51,6 +52,13 @@ return (
   warranty="10 Year"
   heroImage="/images/studio/studio3/studio3.2.webp"
   mobileHeroImage="/images/studio/studio3/studio3.1_mobile.webp"
+
+
+  seoTitle="The Nest 15 | Custom Backyard Studio Melbourne, Victoria"   
+  seoDescription="Discover The Nest 15 by Backyard Nest, a compact backyard studio designed and built for work, creativity and relaxation. View the floor plan and get started today."
+  seoUrl="https://backyardnest.com.au/products/studio/TheNest"
+  seoImage="/images/studio/studio3/studio3.2.webp"
+
   finishes={finishes}
   galleryImages={galleryImages}
   relatedProducts={<RelatedProducts currentId={15} />}
