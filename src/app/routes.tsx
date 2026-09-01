@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
       { path: "blog", Component: Blog },
       { path: "blog/:slug", Component: BlogPost },
       { path: "products/studio", Component: StudioPod },
-      { path: "products/granny", Component: Contact },
+      { path: "products/granny", Component: GrannyFlats },
       { path: "booking", Component: Booking },
       { path: "thank-you", Component: ThankyouPage },
       { path: "coming-soon", Component: ComingSoon },
@@ -70,11 +70,11 @@ export const router = createBrowserRouter([
       { path: "products/TheNest", Component: StudioProduct4 },
       { path: "products/CustomDesign", Component: StudioProduct5 },
       
-      { path: "products/GrannyflatProduct1", Component: GrannyflatProduct1 },
-      { path: "products/GrannyflatProduct2", Component: GrannyflatProduct2 },
-      { path: "products/GrannyflatProduct3", Component: GrannyflatProduct3 },
-      { path: "products/GrannyflatProduct4", Component: GrannyflatProduct4 },
-      { path: "products/GrannyflatProduct5", Component: GrannyflatProduct5 },
+      { path: "products/TheWattle", Component: GrannyflatProduct1 },
+      { path: "products/TheHaven", Component: GrannyflatProduct2 },
+      { path: "products/TheElm", Component: GrannyflatProduct3 },
+      { path: "products/TheGrove", Component: GrannyflatProduct4 },
+      { path: "products/BespokeDesign", Component: GrannyflatProduct5 },
       
 
       { path: "*", Component: NotFound },

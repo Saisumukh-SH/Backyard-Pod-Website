@@ -12,10 +12,10 @@ export default function GrannyFlats() {
  const sizes = [
   {
     id: 45,
-    label: "The Willow",
-    route: "/products/GrannyflatProduct1",
-    immersiveImage: "/images/granny_flats_hero.webp",
-    gridImage: "/images/grannyflat/willow/willow_grid.webp",
+    label: "The Wattle",
+    route: "/products/TheWattle",
+    immersiveImage: "/images/grannyflat/wattle_60/wattle_2.webp",
+    gridImage: "/images/grannyflat/wattle_60/wattle_grid.webp",
     description:
       "A beautifully designed one-bedroom granny flat featuring open-plan living, a full kitchen and a private bathroom. Perfect for independent living, guest accommodation or rental income.",
     footprint: "7 × 6.5 m",
@@ -25,74 +25,6 @@ export default function GrannyFlats() {
     bedrooms: "1",
     bathrooms: "1",
     capacity: "1–2",
-  },
-
-  {
-    id: 55,
-    label: "The Haven",
-    route: "/products/GrannyflatProduct2",
-    immersiveImage: "/images/grannyflat/haven/haven_hero.webp",
-    gridImage: "/images/grannyflat/haven/haven_grid.webp",
-    description:
-      "A spacious one-bedroom residence offering enhanced living areas, additional storage and abundant natural light for everyday comfort.",
-    footprint: "8 × 7 m",
-    area: "55 m²",
-      height: "2.7 m",  
-    glazing: "Expansive glazed doors",
-    bedrooms: "1",
-    bathrooms: "1",
-    capacity: "2",
-  },
-
-  {
-    id: 68,
-    label: "The Elm",
-    route: "/products/GrannyflatProduct3",
-    immersiveImage: "/images/grannyflat/elm/elm_hero.webp",
-    gridImage: "/images/grannyflat/elm/elm_grid.webp",
-    description:
-      "A thoughtfully planned two-bedroom home combining generous living spaces with contemporary design. Ideal for family, guests or long-term rental.",
-    footprint: "7 × 9.7 m",
-    area: "68 m²",
-    height: "2.7 m",
-    glazing: "Large glazed doors",
-    bedrooms: "2",
-    bathrooms: "2",
-    capacity: "2–4",
-  },
-
-  {
-    id: 75,
-    label: "The Grove",
-    route: "/products/GrannyflatProduct4",
-    immersiveImage: "/images/grannyflat/grove/grove_hero.webp",
-    gridImage: "/images/grannyflat/grove/grove_grid.webp",
-    description:
-      "Our premium two-bedroom design featuring expansive living zones, refined finishes and a layout created for modern family living.",
-    footprint: "8 × 9.5 m",
-    area: "75 m²",
-    height: "2.7 m",
-    glazing: "Expansive glazed doors",
-    bedrooms: "2",
-    bathrooms: "2",
-    capacity: "3–4",
-  },
-
-  {
-    id: 99,
-    label: "Bespoke Design",
-    route: "/contact",
-    immersiveImage: "/images/grannyflat/custom_design_hero.webp",
-    gridImage: "/images/grannyflat/custom_design_grid.webp",
-    description:
-      "Work alongside our design team to create a completely tailored granny flat designed specifically for your site, lifestyle and future needs.",
-    footprint: "Custom",
-    area: "Tailored",
-    height: "Tailored",
-    glazing: "Tailored",
-    bedrooms: "Flexible",
-    bathrooms: "Flexible",
-    capacity: "Unlimited",
   },
 ];
 
