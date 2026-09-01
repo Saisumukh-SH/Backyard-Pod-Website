@@ -76,12 +76,13 @@ export default function GrannyProduct1() {
   baths="1"
   warranty="10 Year"
   heroImage="/images/grannyflat/wattle_60/wattle_1.webp"
-  floorplan="/images/grannyflat/wattle/wattle_floorplan.webp"
+  floorplan="/images/grannyflat/wattle_60/wattle_floorplan.webp"
+  mobileHeroImage="/images/grannyflat/wattle_60/wattle_mobile.webp"
 
   seoTitle="The Wattle 60 | 60m² Granny Flat Melbourne"
   seoDescription="Explore The Wattle 60 by Backyard Nest, a spacious 60m² granny flat designed for independent living, family accommodation, guests or rental potential in Melbourne."
   seoUrl="https://backyardnest.com.au/products/GrannyflatProductWattle"
-  seoImage="/images/grannyflat/wattle/wattle_hero.webp"
+  seoImage="/images/grannyflat/wattle_60/wattle_1.webp"
 
   finishes={finishes}
   galleryImages={galleryImages}

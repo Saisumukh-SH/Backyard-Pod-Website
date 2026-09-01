@@ -918,9 +918,9 @@ export default function SingleGrannyFlatPage({
                     relative
                     group
                     w-12 h-12
-      sm:w-14 sm:h-14
-      md:w-16 md:h-16
-      lg:w-24 lg:h-24
+                    sm:w-14 sm:h-14
+                    md:w-16 md:h-16
+                    lg:w-24 lg:h-24
                     rounded-[18px]
                     md:rounded-[24px]
                     lg:rounded-[28px]
