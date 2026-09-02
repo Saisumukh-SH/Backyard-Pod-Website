@@ -489,9 +489,9 @@ export default function SingleGrannyFlatPage({
             mx-auto
           "
         >
-          Every Backyard Nest studio is thoughtfully designed and built to deliver
+          Every Backyard Nest Granny flat is thoughtfully designed and built to deliver
           comfort, quality and long-term value. Explore what's included as
-          standard in every premium studio.
+          standard in every premium Granny flat.
         </p>
       
       </div>
@@ -780,7 +780,7 @@ export default function SingleGrannyFlatPage({
           <strong>*Disclaimer:</strong> Standard inclusions are subject to site
           conditions, engineering requirements, council approvals and service
           connection availability. Specifications may vary depending on the selected
-          Backyard Nest studio design and individual project requirements.
+          Backyard Nest Granny flat design and individual project requirements.
         </p>
       
       </div>
@@ -803,7 +803,7 @@ export default function SingleGrannyFlatPage({
                   </h2>
       
                   <p className="mt-5 md:mt-6 text-black/60 text-base md:text-lg leading-relaxed">
-                    Visualise every detail of your studio, from the architectural
+                    Visualise every detail of your Granny flat, from the architectural
                     floor plan through to the completed living space.
                   </p>
                 </div>

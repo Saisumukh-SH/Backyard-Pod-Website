@@ -11,7 +11,7 @@ export default function GrannyFlats() {
 
  const sizes = [
   {
-    id: 45,
+    id: 60,
     label: "The Wattle",
     route: "/products/TheWattle",
     immersiveImage: "/images/grannyflat/wattle_60/wattle_2.webp",
@@ -58,7 +58,7 @@ export default function GrannyFlats() {
           mb-6
         "
       >
-        Studio Collection
+        Granny Flat Collection
       </p>
 
       <h2
