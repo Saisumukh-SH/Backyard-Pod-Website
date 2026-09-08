@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
 import { motion } from "framer-motion";
 import SEO from "../../SEO";
+import React from "react";
 
 interface Finish {
   id: string;
@@ -23,6 +24,7 @@ interface ProductProps {
   warranty: string;
 
   heroImage: string;
+  floorplan?: string;
   mobileHeroImage?: string;
 
   // SEO
@@ -57,6 +59,7 @@ export default function SingleGrannyFlatPage({
   galleryImages,
   relatedProducts,
   designInspiration,
+  floorplan,
   mobileHeroImage,
   seoTitle,
   seoDescription,
@@ -65,14 +68,21 @@ export default function SingleGrannyFlatPage({
 }: ProductProps) {
   const navigate = useNavigate();
 
-  const [activeGallery, setActiveGallery] = useState(0);
-  const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
-  const [activeCard, setActiveCard] = useState<number | null>(0);
+const [activeGallery, setActiveGallery] = useState(0);
+const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
+const [activeCard, setActiveCard] = useState<number | null>(0);
 
-  const displayGallery =
-    hoveredThumb !== null ? hoveredThumb : activeGallery;
+const touchStartX = useRef(0);
 
-  const touchStartX = useRef(0);
+const displayGallery =
+  galleryImages && galleryImages.length > 0
+    ? Math.min(
+        hoveredThumb !== null ? hoveredThumb : activeGallery,
+        galleryImages.length - 1
+      )
+    : 0;
+
+const activeGalleryImage = galleryImages?.[displayGallery];
 
   const inclusionCategories = [
     {
@@ -119,22 +129,23 @@ export default function SingleGrannyFlatPage({
     },
   ];
 
-  useEffect(() => {
-    galleryImages?.forEach((image) => {
+useEffect(() => {
+  galleryImages?.forEach((image) => {
+    if (image?.main) {
       const img = new Image();
       img.src = image.main;
-    });
-  }, [galleryImages]);
-
-  // Prevent invalid gallery index
-  useEffect(() => {
-    if (
-      galleryImages?.length &&
-      activeGallery >= galleryImages.length
-    ) {
-      setActiveGallery(0);
     }
-  }, [galleryImages, activeGallery]);
+  });
+}, [galleryImages]);
+
+useEffect(() => {
+  if (
+    galleryImages?.length &&
+    activeGallery >= galleryImages.length
+  ) {
+    setActiveGallery(0);
+  }
+}, [galleryImages, activeGallery]);
 
   return (
     <div>
@@ -828,20 +839,23 @@ export default function SingleGrannyFlatPage({
                     touchStartX.current = e.touches[0].clientX;
                   }}
                   onTouchEnd={(e) => {
-                    const delta = touchStartX.current - e.changedTouches[0].clientX;
-      
-                    if (delta > 50) {
-                      setActiveGallery((prev) =>
-                        prev === galleryImages.length - 1 ? 0 : prev + 1,
-                      );
-                    }
-      
-                    if (delta < -50) {
-                      setActiveGallery((prev) =>
-                        prev === 0 ? galleryImages.length - 1 : prev - 1,
-                      );
-                    }
-                  }}
+  if (!galleryImages?.length) return;
+
+  const delta =
+    touchStartX.current - e.changedTouches[0].clientX;
+
+  if (delta > 50) {
+    setActiveGallery((prev) =>
+      prev >= galleryImages.length - 1 ? 0 : prev + 1
+    );
+  }
+
+  if (delta < -50) {
+    setActiveGallery((prev) =>
+      prev <= 0 ? galleryImages.length - 1 : prev - 1
+    );
+  }
+}}
                 >
       
                   {/* Images */}
@@ -874,7 +888,7 @@ export default function SingleGrannyFlatPage({
                   <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30">
                     <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-6 md:py-3 rounded-full shadow-sm">
                       <span className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em]">
-                        {galleryImages[displayGallery].label}
+                        {activeGalleryImage?.label || "Design"}
                       </span>
                     </div>
                   </div>
@@ -980,8 +994,10 @@ export default function SingleGrannyFlatPage({
                       className="h-full bg-black/80 transition-all duration-500"
                       style={{
                         width: `${
-                          ((activeGallery + 1) / galleryImages.length) * 100
-                        }%`,
+  galleryImages.length
+    ? ((activeGallery + 1) / galleryImages.length) * 100
+    : 0
+}%`,
                       }}
                     />
                   </div>

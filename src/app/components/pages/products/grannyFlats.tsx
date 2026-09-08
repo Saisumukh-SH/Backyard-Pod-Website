@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../SEO";
+import React from "react";
 
 export default function GrannyFlats() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function GrannyFlats() {
     description:
       "A beautifully designed one-bedroom granny flat featuring open-plan living, a full kitchen and a private bathroom. Perfect for independent living, guest accommodation or rental income.",
     footprint: "7 × 6.5 m",
-    area: "45 m²",
+    area: "60 m²",
     height: "2.7 m",
     glazing: "Large glazed doors",
     bedrooms: "1",
@@ -28,7 +29,7 @@ export default function GrannyFlats() {
   },
 ];
 
-  const [activeSize, setActiveSize] = useState(45);
+  const [activeSize, setActiveSize] = useState(60);
   const current = sizes.find((s) => s.id === activeSize)!;
 
   return (

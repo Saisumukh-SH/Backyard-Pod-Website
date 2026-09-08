@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../SEO";
 import { Loader2 } from "lucide-react";
+import React from "react";
 
 export function Contact() {
   useEffect(() => {
@@ -555,6 +556,7 @@ const handleSubmit = async (
       <option value="">Select Granny Flat Model</option>
       <option value="1 Bedroom">1 Bedroom</option>
       <option value="2 Bedroom">2 Bedroom</option>
+      <option value="The Wattle 60">The Wattle 60</option>
       <option value="Custom Design">Custom Design</option>
     </select>
   </div>
