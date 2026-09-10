@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ImageWithWatermark from "./ImageWithWatermark";
 
 import { studioProducts } from "../../data/studioProducts";
+import React from "react";
 
 interface RelatedProductsProps {
   currentId: number;

@@ -1,3 +1,4 @@
+import React from "react";
 import SingleGrannyFlatPage from "../singleGrannyflatPage";
 
 export default function GrannyProduct1() {

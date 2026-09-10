@@ -27,6 +27,58 @@ export default function GrannyFlats() {
     bathrooms: "1",
     capacity: "1–2",
   },
+  {
+  id: 44,
+  label: "The Yarra",
+  route: "/products/TheYarra",
+  immersiveImage: "/images/grannyflat/yara/yarra_44/yarra_44_1.webp",
+  gridImage: "/images/grannyflat/yara/yarra_44/yarra_44_mobile.webp",
+  description:
+    "A contemporary one-bedroom granny flat featuring clean architectural lines, generous glazing, natural timber accents and flexible living spaces. Designed for independent living, guest accommodation or additional backyard living.",
+  footprint: "7 × 6.5 m",
+  area: "44 m² & 38 m²",
+  height: "2.7 m",
+  glazing: "Generous glazed openings",
+  bedrooms: "1",
+  bathrooms: "1",
+  capacity: "1–2",
+},
+{
+  id: 38,
+  label: "The Palmview",
+  route: "/products/ThePalmview",
+  immersiveImage:
+    "/images/grannyflat/palmview/palmview_44/palmview_44_1.webp",
+  gridImage:
+    "/images/grannyflat/palmview/palmview_44/palmview_44_mobile.webp",
+  description:
+    "A contemporary backyard home combining modern comfort, smart design and effortless indoor-outdoor living. Featuring generous glazing, clean architectural lines and warm timber accents, The Palmview is designed for flexible modern living.",
+  footprint: "Compact backyard footprint",
+  area: "38 m² & 44 m²",
+  height: "—",
+  glazing: "Generous glazed openings",
+  bedrooms: "1",
+  bathrooms: "1",
+  capacity: "1-2",
+},
+{
+  id: 48,
+  label: "The Haven",
+  route: "/products/TheHaven",
+  immersiveImage:
+    "/images/grannyflat/haven/haven_48_1.webp",
+  gridImage:
+    "/images/grannyflat/haven/haven_48_mobile.webp",
+  description:
+    "A modern 48m² one-bedroom granny flat featuring an open-plan kitchen, living and dining area, private bedroom, bathroom and outdoor deck. Designed as a practical secondary dwelling solution for suitable Victorian properties.",
+  footprint: "Compact backyard footprint",
+  area: "48 m²",
+  height: "—",
+  glazing: "Large windows and glazed doors",
+  bedrooms: "1",
+  bathrooms: "1",
+  capacity: "1-2",
+},
 ];
 
   const [activeSize, setActiveSize] = useState(60);

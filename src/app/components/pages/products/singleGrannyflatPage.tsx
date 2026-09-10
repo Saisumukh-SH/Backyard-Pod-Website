@@ -4,6 +4,7 @@ import ImageWithWatermark from "../../ImageWithWatermark";
 import { motion } from "framer-motion";
 import SEO from "../../SEO";
 import React from "react";
+import RelatedGrannyFlatProducts from "../../RelatedGrannyFlatProducts";
 
 interface Finish {
   id: string;
@@ -43,6 +44,27 @@ interface ProductProps {
 
   relatedProducts?: React.ReactNode;
   designInspiration?: React.ReactNode;
+
+  sizeVariants?: {
+  highlight: string;
+  size: string;
+  heroImage: string;
+  mobileHeroImage?: string;
+  floorplan?: string;
+  description: string;
+  footprint: string;
+  height: string;
+  glazing: string;
+  capacity: string;
+
+  galleryImages: {
+    main: string;
+    thumb: string;
+    label: string;
+  }[];
+}[];
+
+  
 }
 
 export default function SingleGrannyFlatPage({
@@ -65,6 +87,7 @@ export default function SingleGrannyFlatPage({
   seoDescription,
   seoUrl,
   seoImage,
+  sizeVariants,
 }: ProductProps) {
   const navigate = useNavigate();
 
@@ -72,18 +95,32 @@ const [activeGallery, setActiveGallery] = useState(0);
 const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
 const [activeCard, setActiveCard] = useState<number | null>(0);
 
+const [activeVariant, setActiveVariant] = useState(
+  sizeVariants && sizeVariants.length > 0
+    ? sizeVariants.length - 1
+    : 0
+);
+const currentVariant =
+  sizeVariants?.[activeVariant];
+  const activeGalleryImages =
+  currentVariant?.galleryImages || galleryImages;
+  useEffect(() => {
+  setActiveGallery(0);
+  setHoveredThumb(null);
+}, [activeVariant]);
+
 const touchStartX = useRef(0);
 
 const displayGallery =
-  galleryImages && galleryImages.length > 0
+  activeGalleryImages && activeGalleryImages.length > 0
     ? Math.min(
         hoveredThumb !== null ? hoveredThumb : activeGallery,
-        galleryImages.length - 1
+        activeGalleryImages.length - 1
       )
     : 0;
 
-const activeGalleryImage = galleryImages?.[displayGallery];
-
+const activeGalleryImage =
+  activeGalleryImages?.[displayGallery];
   const inclusionCategories = [
     {
       title: "Structure & Compliance",
@@ -130,22 +167,22 @@ const activeGalleryImage = galleryImages?.[displayGallery];
   ];
 
 useEffect(() => {
-  galleryImages?.forEach((image) => {
+  activeGalleryImages?.forEach((image) => {
     if (image?.main) {
       const img = new Image();
       img.src = image.main;
     }
   });
-}, [galleryImages]);
+}, [activeGalleryImages]);
 
 useEffect(() => {
   if (
-    galleryImages?.length &&
-    activeGallery >= galleryImages.length
+    activeGalleryImages?.length &&
+    activeGallery >= activeGalleryImages.length
   ) {
     setActiveGallery(0);
   }
-}, [galleryImages, activeGallery]);
+}, [activeGalleryImages, activeGallery]);
 
   return (
     <div>
@@ -155,6 +192,103 @@ useEffect(() => {
         url={seoUrl}
         image={seoImage}
       />
+
+{sizeVariants && sizeVariants.length > 1 && (
+  <section
+    className="
+      relative
+      z-20
+      bg-[#F5F0EB]
+      pt-28
+      pb-8
+      lg:pt-32
+      lg:pb-10
+    "
+  >
+    <div className="max-w-7xl mx-auto px-6 lg:px-12">
+
+      <div
+        className="
+          flex
+          flex-col
+          md:flex-row
+          md:items-center
+          md:justify-between
+          gap-6
+        "
+      >
+
+        {/* TITLE */}
+
+        <div>
+          <p
+            className="
+              uppercase
+              tracking-[0.3em]
+              text-[#A08E7C]
+              text-[10px]
+              mb-2
+            "
+          >
+            The Yarra
+          </p>
+
+          <h2
+            className="
+              font-serif
+              text-[#2E2A26]
+              text-2xl
+              md:text-3xl
+            "
+          >
+            Choose Your Size
+          </h2>
+        </div>
+
+        {/* SIZE SWITCH */}
+
+        <div
+          className="
+            flex
+            gap-1
+            p-1
+            bg-white
+            rounded-full
+            shadow-sm
+            w-fit
+          "
+        >
+          {sizeVariants.map((variant, index) => (
+            <button
+              key={variant.size}
+              onClick={() => setActiveVariant(index)}
+              className={`
+                px-6
+                md:px-8
+                py-3
+                rounded-full
+                text-xs
+                uppercase
+                tracking-[0.18em]
+                transition-all
+                duration-300
+                ${
+                  activeVariant === index
+                    ? "bg-[#2E2A26] text-white"
+                    : "text-[#5F5A55] hover:bg-[#F5F0EB]"
+                }
+              `}
+            >
+              {variant.size}
+            </button>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+)}
 
       {/* HERO */}
       <section className="relative h-screen overflow-hidden">
@@ -171,7 +305,7 @@ useEffect(() => {
             scale-105
           "
           style={{
-            backgroundImage: `url(${heroImage})`,
+            backgroundImage: `url(${currentVariant?.heroImage || heroImage})`,
           }}
         />
 
@@ -187,7 +321,7 @@ useEffect(() => {
             scale-105
           "
           style={{
-            backgroundImage: `url(${mobileHeroImage || heroImage})`,
+            backgroundImage: `url(${currentVariant?.mobileHeroImage || mobileHeroImage})`,
           }}
         />
 
@@ -257,12 +391,12 @@ useEffect(() => {
             {title}
             <span className="italic text-[#D7BE8A]">
               {" "}
-              {highlight}
+              {currentVariant?.highlight || highlight}
             </span>
           </h1>
 
           <p className="text-white/75 max-w-2xl mt-6 text-base md:text-lg leading-relaxed">
-            {description}
+            {currentVariant?.description || description}
           </p>
 
           <div className="flex gap-10 mt-10 text-white/80">
@@ -270,7 +404,7 @@ useEffect(() => {
               <p className="text-xs uppercase tracking-[0.2em] opacity-50">
                 Size
               </p>
-              <p>{size}</p>
+              <p>{currentVariant?.size || size}</p>
             </div>
 
             <div>
@@ -316,7 +450,7 @@ useEffect(() => {
           {(() => {
             const items = [
               {
-                value: size,
+                value: currentVariant?.size || size,
                 label: "Footprint",
               },
               {
@@ -839,27 +973,27 @@ useEffect(() => {
                     touchStartX.current = e.touches[0].clientX;
                   }}
                   onTouchEnd={(e) => {
-  if (!galleryImages?.length) return;
+  if (!activeGalleryImages?.length) return;
 
   const delta =
     touchStartX.current - e.changedTouches[0].clientX;
 
   if (delta > 50) {
     setActiveGallery((prev) =>
-      prev >= galleryImages.length - 1 ? 0 : prev + 1
+      prev >= activeGalleryImages.length - 1 ? 0 : prev + 1
     );
   }
 
   if (delta < -50) {
     setActiveGallery((prev) =>
-      prev <= 0 ? galleryImages.length - 1 : prev - 1
+      prev <= 0 ? activeGalleryImages.length - 1 : prev - 1
     );
   }
 }}
                 >
       
                   {/* Images */}
-                  {galleryImages.map((image, index) => (
+                  {activeGalleryImages.map((image, index) => (
                     <div
                       key={index}
                       className={`
@@ -897,7 +1031,7 @@ useEffect(() => {
                   <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30">
                     <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-5 md:py-3 rounded-full shadow-sm">
                       <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em]">
-                        {displayGallery + 1} / {galleryImages.length}
+                        {displayGallery + 1} / {activeGalleryImages.length}
                       </span>
                     </div>
                   </div>
@@ -922,7 +1056,7 @@ useEffect(() => {
       
                   {/* Thumbnails */}
                   <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-2">
-                    {galleryImages.map((image, index) => (
+                    {activeGalleryImages.map((image, index) => (
                       <button
                         key={index}
                         onClick={() => setActiveGallery(index)}
@@ -994,8 +1128,8 @@ useEffect(() => {
                       className="h-full bg-black/80 transition-all duration-500"
                       style={{
                         width: `${
-  galleryImages.length
-    ? ((activeGallery + 1) / galleryImages.length) * 100
+  activeGalleryImages.length
+    ? ((activeGallery + 1) / activeGalleryImages.length) * 100
     : 0
 }%`,
                       }}
@@ -1098,7 +1232,9 @@ useEffect(() => {
             </section> */}
       
             {/* RELATED PRODUCTS */}
-           {relatedProducts}
+           <RelatedGrannyFlatProducts
+  currentId={Number(highlight)}
+/>
       
             {/* CONSULTATION CTA */}
             <section className="bg-[#EFE8DF] py-40">

@@ -554,9 +554,12 @@ const handleSubmit = async (
       "
     >
       <option value="">Select Granny Flat Model</option>
-      <option value="1 Bedroom">1 Bedroom</option>
-      <option value="2 Bedroom">2 Bedroom</option>
       <option value="The Wattle 60">The Wattle 60</option>
+<option value="The Yarra 38">The Yarra 38</option>
+<option value="The Yarra 44">The Yarra 44</option>
+<option value="The Palmview 44">The Palmview 44</option>
+<option value="The Palmview 38">The Palmview 38</option>
+<option value="The Haven 48">The Haven 48</option>
       <option value="Custom Design">Custom Design</option>
     </select>
   </div>

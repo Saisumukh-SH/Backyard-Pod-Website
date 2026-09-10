@@ -71,9 +71,9 @@ export const router = createBrowserRouter([
       { path: "products/CustomDesign", Component: StudioProduct5 },
       
       { path: "products/TheWattle", Component: GrannyflatProduct1 },
-      { path: "products/TheHaven", Component: GrannyflatProduct2 },
-      { path: "products/TheElm", Component: GrannyflatProduct3 },
-      { path: "products/TheGrove", Component: GrannyflatProduct4 },
+      { path: "products/TheYarra", Component: GrannyflatProduct2 },
+      { path: "products/ThePalmview", Component: GrannyflatProduct3 },
+      { path: "products/TheHaven", Component: GrannyflatProduct4 },
       { path: "products/BespokeDesign", Component: GrannyflatProduct5 },
       
 
