@@ -1,7 +1,9 @@
 import { useState } from "react";
 import SEO from "../../components/SEO";
 import { Menu, X, Phone, MessageCircle, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import EnquiryForm from "../../components/enquiryForm";
+import React from "react";
 
 export default function LandingPage() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -572,121 +574,111 @@ ${formData.message}`;
 
         {/* ================= FEATURED DESIGNS ================= */}
 
-        <section
-          id="gallery"
-          className="bg-[#EDE7DC] py-24"
+<section
+  id="gallery"
+  className="bg-[#EDE7DC] py-24"
+>
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="flex justify-between items-end flex-wrap gap-8">
+
+      <div>
+        <p className="uppercase tracking-[0.35em] text-xs text-[#4B5D45] mb-4">
+          A Sample of Recent Concepts
+        </p>
+
+        <h2 className="font-serif text-5xl">
+          Four ways to give your
+          <span className="italic text-[#8B5A3C]">
+            {" "}backyard
+          </span>
+          <br />
+          more purpose.
+        </h2>
+      </div>
+
+    </div>
+
+    <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mt-16">
+
+      {[
+        {
+          title: "Backyard Studio",
+          image: "/images/studio/studio1/studio1.webp",
+          text: "A flexible retreat for work, rest or play.",
+          path: "/products/studio",
+        },
+
+        {
+          title: "Home Office Pod",
+          image: "/images/studio/studio3/studio3.2.webp",
+          text: "A quiet, separate space to focus and create.",
+          path: "/products/studio",
+        },
+
+        {
+          title: "Granny Flat",
+          image: "/images/grannyflat/grannyflatexmp/granny_flats_hero.webp",
+          text: "Self-contained comfort for family or guests.",
+          path: "/products/granny",
+        },
+
+      ].map((project) => (
+
+        <Link
+          to={project.path}
+          key={project.title}
+          className="group bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 block cursor-pointer"
         >
 
-          <div className="max-w-7xl mx-auto px-6">
+          {/* Image */}
+          <div className="overflow-hidden">
 
-            <div className="flex justify-between items-end flex-wrap gap-8">
-
-              <div>
-
-                <p className="uppercase tracking-[0.35em] text-xs text-[#4B5D45] mb-4">
-
-                  A Sample of Recent Concepts
-
-                </p>
-
-                <h2 className="font-serif text-5xl">
-
-                  Four ways to give your 
-                  <span className="italic text-[#8B5A3C]">
-                    {" "}backyard
-                  </span>
-                  <br/>more purpose.
-
-                </h2>
-
-              </div>
-
-            </div>
-
-            <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mt-16">
-
-              {[
-                {
-                  title: "Backyard Studio",
-                  image: "/images/studio/studio1/studio1.webp",
-                  text: "A flexible retreat for work, rest or play.",
-                },
-
-                {
-                  title: "Home Office Pod",
-                  image: "/images/studio/studio3/studio3.2.webp",
-                  text: "A quiet, separate space to focus and create.",
-                },
-
-                {
-                  title: "Granny Flat",
-                  image: "/images/grannyflat/grannyflatexmp/granny_flats_hero.webp",
-                  text: "Self-contained comfort for family or guests.",
-                },
-
-              ].map((project) => (
-
-                <div
-                  key={project.title}
-                  className="group bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500"
-                >
-
-                  <div className="overflow-hidden">
-
-                    <img
-  src={project.image}
-  alt={project.title}
-  className="aspect-[4/3] w-full object-cover group-hover:scale-110 transition duration-700 select-none"
-  draggable={false}
-  loading="lazy"
-  onContextMenu={(e) => e.preventDefault()}
-  onDragStart={(e) => e.preventDefault()}
-  onMouseDown={(e) => {
-    if (e.button === 2) e.preventDefault();
-  }}
-  style={{
-    userSelect: "none",
-    WebkitUserDrag: "none",
-    WebkitUserSelect: "none",
-  }}
-/>
-
-                  </div>
-
-                  <div className="p-6">
-
-                    <h3 className="font-serif text-2xl mb-3">
-
-                      {project.title}
-
-                    </h3>
-
-                    <p className="text-neutral-600 leading-7 mb-6">
-
-                      {project.text}
-
-                    </p>
-
-                    <a
-                      href="#enquire"
-                      className="text-[#8B5A3C] font-medium hover:underline"
-                    >
-
-                      Start My Project →
-
-                    </a>
-
-                  </div>
-
-                </div>
-
-              ))}
-
-            </div>
+            <img
+              src={project.image}
+              alt={project.title}
+              className="aspect-[4/3] w-full object-cover group-hover:scale-110 transition duration-700 select-none"
+              draggable={false}
+              loading="lazy"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+              onMouseDown={(e) => {
+                if (e.button === 2) e.preventDefault();
+              }}
+              style={{
+                userSelect: "none",
+                WebkitUserDrag: "none",
+                WebkitUserSelect: "none",
+              }}
+            />
 
           </div>
 
-        </section>
+          {/* Content */}
+          <div className="p-6">
+
+            <h3 className="font-serif text-2xl mb-3">
+              {project.title}
+            </h3>
+
+            <p className="text-neutral-600 leading-7 mb-6">
+              {project.text}
+            </p>
+
+            <span className="text-[#8B5A3C] font-medium group-hover:underline">
+              Explore Design →
+            </span>
+
+          </div>
+
+        </Link>
+
+      ))}
+
+    </div>
+
+  </div>
+</section>
                 {/* ================= PROCESS ================= */}
 
         <section

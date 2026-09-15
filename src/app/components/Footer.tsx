@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
+import React from "react";
 
 export function Footer() {
   return (
@@ -35,8 +36,72 @@ export function Footer() {
         </p>
 
         <div className="text-white/60 space-y-2">
-          <p>build@backyardnest.com.au</p>
-          <p>+61 466 333 438</p>
+        <a
+  href="mailto:build@backyardnest.com.au"
+  className="
+    relative inline-block
+    text-[#2E2A26]
+    transition-colors duration-300
+    hover:text-[#C7A77A]
+    after:absolute
+    after:left-0
+    after:bottom-[-3px]
+    after:h-[1px]
+    after:w-0
+    after:bg-[#C7A77A]
+    after:transition-all
+    after:duration-300
+    hover:after:w-full
+  "
+  aria-label="Email Backyard Nest"
+>
+  Email: build@backyardnest.com.au
+</a>
+<p>
+<a
+  href="tel:+61466333438"
+  className="
+    relative inline-block
+    text-[#2E2A26]
+    transition-colors duration-300
+    hover:text-[#C7A77A]
+    after:absolute
+    after:left-0
+    after:bottom-[-3px]
+    after:h-[1px]
+    after:w-0
+    after:bg-[#C7A77A]
+    after:transition-all
+    after:duration-300
+    hover:after:w-full
+  "
+  aria-label="Call Backyard Nest"
+>
+  Ph No.: +61 466 333 438
+</a></p>
+<a
+  href="https://maps.app.goo.gl/FPbpaeABqK8EsoWN6"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    relative inline-block
+    text-[#2E2A26]
+    transition-colors duration-300
+    hover:text-[#C7A77A]
+    after:absolute
+    after:left-0
+    after:bottom-[-3px]
+    after:h-[1px]
+    after:w-0
+    after:bg-[#C7A77A]
+    after:transition-all
+    after:duration-300
+    hover:after:w-full
+  "
+  aria-label="View address on Google Maps"
+>
+  <p>Address: Unit 7/21-35 Ricketts Rd, Mount Waverley VIC 3149</p>
+</a>
         </div>
       </div>
 

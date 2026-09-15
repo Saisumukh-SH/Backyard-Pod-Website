@@ -13,9 +13,11 @@ import { BlogContent,
   BlogSummary,
   getBlog,
   getRelatedBlogs, } from "../../../services/blogService";
+import React from "react";
 
 export function BlogPost() {
 const { slug } = useParams();
+console.log("BLOG POST SLUG:", slug);
 
 const [blog, setBlog] = useState<BlogContent | null>(null);
 const [loading, setLoading] = useState(true);

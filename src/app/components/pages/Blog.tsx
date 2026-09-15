@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getBlogs, BlogSummary } from "../../../services/blogService";
 import { Link } from "react-router-dom";
 import SEO from "../SEO";
+import React from "react";
 
 export function Blog() {
   const [posts, setPosts] = useState<BlogSummary[]>([]);
