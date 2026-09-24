@@ -188,7 +188,7 @@ export default function TheYarra() {
       sizeVariants={sizeVariants}
 
       relatedProducts={
-        <RelatedProducts currentId={44} />
+        <RelatedProducts currentId="yarra-38" />
       }
 
       designInspiration={

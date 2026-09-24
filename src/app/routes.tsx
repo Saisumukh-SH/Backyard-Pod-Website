@@ -16,6 +16,7 @@ import { BlogPost } from "./components/pages/BlogPost";
 import { NotFound } from "./components/pages/NotFound";
 import StudioPod from "./components/pages/products/StudioPod";
 import GrannyFlats from "./components/pages/products/grannyFlats";
+import GrannyFlatSizeSelection from "./components/pages/GrannyFlatSizeSelection";
 import Booking from "./components/pages/bookings";
 import ComingSoon from "./components/pages/ComingSoon";
 
@@ -35,6 +36,10 @@ import ThankyouPage from "./components/pages/ThankyouPage";
 import LandingPage from "./components/pages/landingPage";
 import PrivacyPolicy from "./components/pages/privacyPolicy";
 import Projects from "./components/pages/Projects";
+import TheYarra38 from "./components/pages/products/grannyflatSingleProduct/TheYarra38";
+import ThePalmview38 from "./components/pages/products/grannyflatSingleProduct/ThePalmview38";
+import TheYarra44 from "./components/pages/products/grannyflatSingleProduct/TheYarra44";
+import ThePalmview44 from "./components/pages/products/grannyflatSingleProduct/ThePalmview44";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +59,10 @@ export const router = createBrowserRouter([
       { path: "blog/:slug", Component: BlogPost },
       { path: "products/studio", Component: StudioPod },
       { path: "products/granny", Component: GrannyFlats },
+      {
+  path: "products/granny/select-size/:model",
+  Component: GrannyFlatSizeSelection,
+},
       { path: "booking", Component: Booking },
       { path: "thank-you", Component: ThankyouPage },
       { path: "coming-soon", Component: ComingSoon },
@@ -71,8 +80,10 @@ export const router = createBrowserRouter([
       { path: "products/CustomDesign", Component: StudioProduct5 },
       
       { path: "products/TheWattle", Component: GrannyflatProduct1 },
-      { path: "products/TheYarra", Component: GrannyflatProduct2 },
-      { path: "products/ThePalmview", Component: GrannyflatProduct3 },
+      { path: "products/TheYarra38", Component: TheYarra38 },
+{ path: "products/TheYarra44", Component: TheYarra44 },
+{ path: "products/ThePalmview38", Component: ThePalmview38 },
+{ path: "products/ThePalmview44", Component: ThePalmview44 },
       { path: "products/TheHaven", Component: GrannyflatProduct4 },
       { path: "products/BespokeDesign", Component: GrannyflatProduct5 },
       

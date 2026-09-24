@@ -1,9 +1,10 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, Route, useLocation } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
 import ScrollToTop from "./pages/ScrollToTop";
 import React from "react";
 import { WhatsAppButton } from "./WhatsAppButton";
+import GrannyFlatSizeSelection from "./pages/GrannyFlatSizeSelection";
 
 export function Root() {
   const location = useLocation();
@@ -20,6 +21,7 @@ export function Root() {
 
       <Outlet />
       <Footer />
+
 
       <WhatsAppButton />
     </>

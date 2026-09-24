@@ -240,7 +240,7 @@ export default function ThePalmview() {
       sizeVariants={sizeVariants}
 
       relatedProducts={
-        <RelatedProducts currentId={44} />
+        <RelatedProducts currentId="yarra-38" />
       }
 
       designInspiration={

@@ -30,11 +30,13 @@ export default function GrannyFlats() {
   {
   id: 44,
   label: "The Yarra",
-  route: "/products/TheYarra",
-  immersiveImage: "/images/grannyflat/yara/yarra_44/yarra_44_1.webp",
-  gridImage: "/images/grannyflat/yara/yarra_44/yarra_44_mobile.webp",
+route: "/products/granny/select-size/yarra",
+  immersiveImage:
+    "/images/grannyflat/yara/yarra_44/yarra_44_1.webp",
+  gridImage:
+    "/images/grannyflat/yara/yarra_44/yarra_44_mobile.webp",
   description:
-    "A contemporary one-bedroom granny flat featuring clean architectural lines, generous glazing, natural timber accents and flexible living spaces. Designed for independent living, guest accommodation or additional backyard living.",
+    "A contemporary one-bedroom granny flat featuring clean architectural lines, generous glazing, natural timber accents and flexible living spaces. Available in 38 m² and 44 m² configurations, The Yarra is designed for independent living, guest accommodation or additional backyard living.",
   footprint: "7 × 6.5 m",
   area: "44 m² & 38 m²",
   height: "2.7 m",
@@ -43,23 +45,24 @@ export default function GrannyFlats() {
   bathrooms: "1",
   capacity: "1–2",
 },
+
 {
   id: 38,
   label: "The Palmview",
-  route: "/products/ThePalmview",
+route: "/products/granny/select-size/palmview",
   immersiveImage:
     "/images/grannyflat/palmview/palmview_44/palmview_44_1.webp",
   gridImage:
     "/images/grannyflat/palmview/palmview_44/palmview_44_mobile.webp",
   description:
-    "A contemporary backyard home combining modern comfort, smart design and effortless indoor-outdoor living. Featuring generous glazing, clean architectural lines and warm timber accents, The Palmview is designed for flexible modern living.",
+    "A contemporary backyard home combining modern comfort, smart design and effortless indoor-outdoor living. Available in 38 m² and 44 m² configurations, The Palmview features generous glazing, clean architectural lines and warm timber accents for flexible modern living.",
   footprint: "Compact backyard footprint",
   area: "38 m² & 44 m²",
   height: "—",
   glazing: "Generous glazed openings",
   bedrooms: "1",
   bathrooms: "1",
-  capacity: "1-2",
+  capacity: "1–2",
 },
 {
   id: 48,
