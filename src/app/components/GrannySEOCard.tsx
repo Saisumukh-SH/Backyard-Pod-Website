@@ -39,6 +39,7 @@ const features = [
 export default function GrannySEOCard({
   price,
   onExplore,
+  onQuote,
 }: GrannySEOCardProps) {
   return (
     <motion.div
@@ -173,74 +174,120 @@ export default function GrannySEOCard({
         meeting Victorian building requirements.
       </p>
 
-      {/* CTA */}
+{/* CTA */}
 
-      <div className="border-t border-[#E8DED3] mt-8 pt-8">
+<div className="border-t border-[#E8DED3] mt-8 pt-8">
 
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+  <div className="flex flex-col gap-6">
 
-          {/* Price */}
+    {/* Price */}
 
-          <div>
+    <div>
+      <p className="uppercase tracking-[0.25em] text-[#8B7E74] text-[11px] mb-2">
+        Starting From
+      </p>
 
-            <p className="uppercase tracking-[0.25em] text-[#8B7E74] text-[11px] mb-2">
-              Starting From
-            </p>
+      <h4
+        className="
+          text-[#2E2A26]
+          text-[2.4rem]
+          md:text-[2.8rem]
+          font-light
+          leading-none
+        "
+      >
+        {price}
+      </h4>
+    </div>
 
-            <h4
-              className="
-                text-[#2E2A26]
-                text-[2.4rem]
-                md:text-[2.8rem]
-                font-light
-                leading-none
-              "
-            >
-              {price}
-            </h4>
+    {/* Buttons */}
 
-          </div>
+    <div className="flex flex-wrap items-center gap-3">
 
-          {/* CTA Button */}
+      {/* Explore Collection */}
 
-          <motion.button
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onExplore}
-            className="
-              group
-              inline-flex
-              items-center
-              gap-3
-              rounded-full
-              border
-              border-[#2E2A26]
-              px-7
-              py-4
-              text-[#2E2A26]
-              transition-all
-              duration-300
-              hover:bg-[#2E2A26]
-              hover:text-white
-            "
-          >
+      <motion.button
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onExplore();
+        }}
+        className="
+          group
+          inline-flex
+          items-center
+          gap-3
+          rounded-full
+          border
+          border-[#2E2A26]
+          px-6
+          py-3.5
+          text-[#2E2A26]
+          text-sm
+          transition-all
+          duration-300
+          hover:bg-[#2E2A26]
+          hover:text-white
+        "
+      >
+        Explore Collection
 
-            Explore Collection
+        <ArrowRight
+          size={17}
+          className="
+            transition-transform
+            duration-300
+            group-hover:translate-x-1
+          "
+        />
+      </motion.button>
 
-            <ArrowRight
-              size={18}
-              className="
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            />
+      {/* Get Granny Flat Quote */}
 
-          </motion.button>
+      <motion.button
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onQuote();
+        }}
+        className="
+          group
+          inline-flex
+          items-center
+          gap-3
+          rounded-full
+          bg-[#C7A77A]
+          border
+          border-[#C7A77A]
+          px-6
+          py-3.5
+          text-[#2E2A26]
+          text-sm
+          transition-all
+          duration-300
+          hover:bg-[#D7BE8A]
+          hover:shadow-md
+        "
+      >
+        Get a Granny Flat Quote
 
-        </div>
+        <ArrowRight
+          size={17}
+          className="
+            transition-transform
+            duration-300
+            group-hover:translate-x-1
+          "
+        />
+      </motion.button>
 
-      </div>
+    </div>
+
+  </div>
+
+</div>
 
     </motion.div>
   );

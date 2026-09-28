@@ -792,23 +792,24 @@ export function Home() {
 </div>
 </section>
 
-        {/* OUR SERVICES */}
-        <section className="bg-[#F5F0EB] py-24 lg:py-32 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            {/* Heading */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto mb-20"
-            >
-              <p className="uppercase tracking-[0.3em] text-[#8B7E74] text-xs mb-6">
-                Our Services
-              </p>
+{/* OUR SERVICES */}
+<section className="bg-[#F5F0EB] py-24 lg:py-32 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-              <h2
-                className="
+    {/* Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="text-center max-w-4xl mx-auto mb-20"
+    >
+      <p className="uppercase tracking-[0.3em] text-[#8B7E74] text-xs mb-6">
+        Our Services
+      </p>
+
+      <h2
+        className="
           editorial-heading
           text-[#2E2A26]
           text-5xl
@@ -816,63 +817,77 @@ export function Home() {
           leading-[0.95]
           tracking-[-0.03em]
         "
-              >
-                Premium Backyard Spaces
-                <br />
-                For Every Lifestyle
-              </h2>
-            </motion.div>
+      >
+        Premium Backyard Spaces
+        <br />
+        For Every Lifestyle
+      </h2>
+    </motion.div>
 
-            {/* Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-              {[
-                {
-                  number: "01",
-                  title: "Backyard Studios",
-                  description:
-                    "Perfect for home offices, creative spaces, gyms and personal retreats.",
-                },
-                {
-                  number: "02",
-                  title: "Granny Flats",
-                  description:
-                    "Fully self contained living spaces designed for family members, guests or investment opportunities.",
-                },
-                {
-                  number: "03",
-                  title: "Garden Studios",
-                  description:
-                    "A stylish extension of your home that blends seamlessly with your outdoor environment.",
-                },
-                {
-                  number: "04",
-                  title: "Backyard Office Pods",
-                  description:
-                    "Create a productive work environment without sacrificing space inside your home.",
-                },
-                {
-                  number: "05",
-                  title: "Teenage Retreats",
-                  description:
-                    "Give growing families the additional space they need while maintaining privacy and comfort.",
-                },
-                {
-                  number: "06",
-                  title: "Multi Purpose Studios",
-                  description:
-                    "Flexible spaces designed around your unique lifestyle requirements.",
-                },
-              ].map((service, index) => (
-                <motion.div
-                  key={service.number}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.08,
-                  }}
-                  className="
+    {/* Cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+      {[
+        {
+          number: "01",
+          title: "Backyard Studios",
+          description:
+            "Perfect for home offices, creative spaces, gyms and personal retreats.",
+          route: "/products/studio",
+        },
+        {
+          number: "02",
+          title: "Granny Flats",
+          description:
+            "Fully self contained living spaces designed for family members, guests or investment opportunities.",
+          route: "/products/granny",
+        },
+        {
+          number: "03",
+          title: "Garden Studios",
+          description:
+            "A stylish extension of your home that blends seamlessly with your outdoor environment.",
+          route: "/products/studio",
+        },
+        {
+          number: "04",
+          title: "Backyard Office Pods",
+          description:
+            "Create a productive work environment without sacrificing space inside your home.",
+          route: "/products/studio",
+        },
+        {
+          number: "05",
+          title: "Teenage Retreats",
+          description:
+            "Give growing families the additional space they need while maintaining privacy and comfort.",
+          route: "/products/studio",
+        },
+        {
+          number: "06",
+          title: "Multi Purpose Studios",
+          description:
+            "Flexible spaces designed around your unique lifestyle requirements.",
+          route: "/products/studio",
+        },
+      ].map((service, index) => (
+        <motion.div
+          key={service.number}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            delay: index * 0.08,
+          }}
+          onClick={() => navigate(service.route)}
+          role="link"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              navigate(service.route);
+            }
+          }}
+          className="
             group
             relative
             bg-white/70
@@ -888,11 +903,16 @@ export function Home() {
             hover:-translate-y-3
             hover:border-[#C7A77A]
             hover:shadow-[0_30px_70px_rgba(0,0,0,0.08)]
+            cursor-pointer
+            focus:outline-none
+            focus:ring-2
+            focus:ring-[#C7A77A]
+            focus:ring-offset-2
           "
-                >
-                  {/* Background Number */}
-                  <div
-                    className="
+        >
+          {/* Background Number */}
+          <div
+            className="
               absolute
               -right-5
               -top-8
@@ -905,27 +925,28 @@ export function Home() {
               group-hover:scale-110
               group-hover:text-[#E6D7C3]
             "
-                  >
-                    {service.number}
-                  </div>
+          >
+            {service.number}
+          </div>
 
-                  <div className="relative z-10 h-full flex flex-col">
-                    {/* Small Number */}
-                    <span
-                      className="
+          <div className="relative z-10 h-full flex flex-col">
+
+            {/* Small Number */}
+            <span
+              className="
                 text-[#C7A77A]
                 uppercase
                 tracking-[0.25em]
                 text-xs
                 mb-6
               "
-                    >
-                      {service.number}
-                    </span>
+            >
+              {service.number}
+            </span>
 
-                    {/* Title */}
-                    <h3
-                      className="
+            {/* Title */}
+            <h3
+              className="
                 font-serif
                 text-3xl
                 text-[#2E2A26]
@@ -934,80 +955,107 @@ export function Home() {
                 duration-500
                 group-hover:text-[#B89463]
               "
-                    >
-                      {service.title}
-                    </h3>
+            >
+              {service.title}
+            </h3>
 
-                    {/* Description */}
-                    <p
-                      className="
+            {/* Description */}
+            <p
+              className="
                 text-[#5F5A55]
                 leading-relaxed
                 text-lg
                 flex-grow
               "
-                    >
-                      {service.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-          {/* CONTACT CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-16 flex flex-col items-center text-center"
-          >
-            <p className="mb-5 text-sm text-[#8B7E74]">
-              Have a space in mind? Let's create something around your
-              lifestyle.
+            >
+              {service.description}
             </p>
 
-            <button
-              onClick={() => navigate("/contact")}
+            {/* View Product */}
+            <div
               className="
-                group
-                inline-flex
+                mt-6
+                flex
                 items-center
-                justify-center
-                rounded-full
-                bg-[#C7A77A]
-                px-9
-                py-4
-                text-[#2E2A26]
-                uppercase
                 text-xs
-                font-semibold
+                uppercase
                 tracking-[0.2em]
-                shadow-[0_8px_25px_rgba(46,42,38,0.18)]
+                font-semibold
+                text-[#C7A77A]
+                opacity-0
+                translate-y-2
                 transition-all
                 duration-300
-                hover:bg-[#2E2A26]
-                hover:text-[#F5F0EB]
-                hover:scale-[1.05]
-                hover:shadow-[0_12px_30px_rgba(46,42,38,0.25)]
+                group-hover:opacity-100
+                group-hover:translate-y-0
               "
             >
-              Discuss Your Backyard Project
-              <span
-                className="
-                  ml-3
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              >
+              Explore Design
+              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
-            </button>
-          </motion.div>
+            </div>
 
-        </div>
-      </section>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* CONTACT CTA */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay: 0.2 }}
+      className="mt-16 flex flex-col items-center text-center"
+    >
+      <p className="mb-5 text-sm text-[#8B7E74]">
+        Have a space in mind? Let's create something around your
+        lifestyle.
+      </p>
+
+      <button
+        onClick={() => navigate("/contact")}
+        className="
+          group
+          inline-flex
+          items-center
+          justify-center
+          rounded-full
+          bg-[#C7A77A]
+          px-9
+          py-4
+          text-[#2E2A26]
+          uppercase
+          text-xs
+          font-semibold
+          tracking-[0.2em]
+          shadow-[0_8px_25px_rgba(46,42,38,0.18)]
+          transition-all
+          duration-300
+          hover:bg-[#2E2A26]
+          hover:text-[#F5F0EB]
+          hover:scale-[1.05]
+          hover:shadow-[0_12px_30px_rgba(46,42,38,0.25)]
+        "
+      >
+        Discuss Your Backyard Project
+
+        <span
+          className="
+            ml-3
+            transition-transform
+            duration-300
+            group-hover:translate-x-1
+          "
+        >
+          →
+        </span>
+      </button>
+    </motion.div>
+
+  </div>
+</section>
 
         {/* OUR PROCESS */}
         <section className="bg-[#F5F0EB] py-20 lg:py-32 overflow-hidden">

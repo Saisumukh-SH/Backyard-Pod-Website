@@ -28,17 +28,18 @@ export default function GrannyFlats() {
     capacity: "1–2",
   },
   {
-  id: 44,
+  id: "yarra-38",
   label: "The Yarra",
-route: "/products/granny/select-size/yarra",
+  size: "38 m²",
+  route: "/products/TheYarra38",
   immersiveImage:
-    "/images/grannyflat/yara/yarra_44/yarra_44_1.webp",
+    "/images/grannyflat/yara/yarra_38/yarra_38_1.webp",
   gridImage:
-    "/images/grannyflat/yara/yarra_44/yarra_44_mobile.webp",
+    "/images/grannyflat/yara/yarra_38/yarra_38_mobile.webp",
   description:
-    "A contemporary one-bedroom granny flat featuring clean architectural lines, generous glazing, natural timber accents and flexible living spaces. Available in 38 m² and 44 m² configurations, The Yarra is designed for independent living, guest accommodation or additional backyard living.",
-  footprint: "7 × 6.5 m",
-  area: "44 m² & 38 m²",
+    "A thoughtfully designed one-bedroom granny flat making efficient use of a compact backyard footprint. The Yarra 38 features generous glazing, natural light and a strong connection to the backyard.",
+  footprint: "7 × 5.5 m",
+  area: "38 m²",
   height: "2.7 m",
   glazing: "Generous glazed openings",
   bedrooms: "1",
@@ -47,17 +48,58 @@ route: "/products/granny/select-size/yarra",
 },
 
 {
-  id: 38,
+  id: "yarra-44",
+  label: "The Yarra",
+  size: "44 m²",
+  route: "/products/TheYarra44",
+  immersiveImage:
+    "/images/grannyflat/yara/yarra_44/yarra_44_1.webp",
+  gridImage:
+    "/images/grannyflat/yara/yarra_44/yarra_44_mobile.webp",
+  description:
+    "A contemporary one-bedroom granny flat featuring clean architectural lines, generous glazing, natural timber accents and flexible living spaces.",
+  footprint: "7 × 6.5 m",
+  area: "44 m²",
+  height: "2.7 m",
+  glazing: "Generous glazed openings",
+  bedrooms: "1",
+  bathrooms: "1",
+  capacity: "1–2",
+},
+
+{
+  id: "palmview-38",
   label: "The Palmview",
-route: "/products/granny/select-size/palmview",
+  size: "38 m²",
+  route: "/products/ThePalmview38",
+  immersiveImage:
+    "/images/grannyflat/palmview/palmview_38/palmview_38_1.webp",
+  gridImage:
+    "/images/grannyflat/palmview/palmview_38/palmview_38_mobile.webp",
+  description:
+    "A contemporary backyard home combining modern comfort, smart design and effortless indoor-outdoor living. The Palmview 38 features generous glazing, practical living spaces and a private outdoor connection.",
+  footprint: "Compact backyard footprint",
+  area: "38 m²",
+  height: "—",
+  glazing: "Generous glazed openings",
+  bedrooms: "1",
+  bathrooms: "1",
+  capacity: "1–2",
+},
+
+{
+  id: "palmview-44",
+  label: "The Palmview",
+  size: "44 m²",
+  route: "/products/ThePalmview44",
   immersiveImage:
     "/images/grannyflat/palmview/palmview_44/palmview_44_1.webp",
   gridImage:
     "/images/grannyflat/palmview/palmview_44/palmview_44_mobile.webp",
   description:
-    "A contemporary backyard home combining modern comfort, smart design and effortless indoor-outdoor living. Available in 38 m² and 44 m² configurations, The Palmview features generous glazing, clean architectural lines and warm timber accents for flexible modern living.",
+    "A contemporary backyard home combining modern comfort, smart design and effortless indoor-outdoor living. The Palmview 44 features clean architectural lines, generous glazing and warm timber accents.",
   footprint: "Compact backyard footprint",
-  area: "38 m² & 44 m²",
+  area: "44 m²",
   height: "—",
   glazing: "Generous glazed openings",
   bedrooms: "1",
@@ -138,7 +180,7 @@ route: "/products/granny/select-size/palmview",
           leading-relaxed
         "
       >
-        Thoughtfully designed studio spaces created
+        Thoughtfully designed granny flat spaces created
         for work, creativity and everyday living.
       </p>
 
@@ -252,7 +294,7 @@ ${
 >
   {item.id === 99
     ? "Tailored Solution"
-    : "Studio Pod Collection"}
+    : "granny flat  Collection"}
 </p>
 
             {/* NAME */}
@@ -287,7 +329,7 @@ md:text-[2.4rem]
 >
   {item.id === 99
     ? "Designed Around You"
-    : `${item.id}m² Studio Pod`}
+    : `${item.id}m² granny flat `}
 </p>
 
             {/* HOVER CONTENT */}
@@ -421,7 +463,7 @@ md:text-[2.4rem]
           mb-12
         "
       >
-        Studio Collection
+        granny flat Collection
       </span>
 
       {sizes.map((item, index) => (
@@ -592,7 +634,7 @@ py-4
           text-[#C7A77A]
         "
       >
-        Studio Collection
+        granny flat Collection
       </span>
     </div>
 
@@ -606,11 +648,11 @@ py-4
     >
       Find Your
       <br />
-      Perfect Studio.
+      Perfect granny flat.
     </h2>
 
     <p className="text-white/70 leading-relaxed mb-10">
-      Explore our range of architecturally designed backyard studios,
+      Explore our range of architecturally designed backyard granny flats,
       creative spaces and work-from-home retreats.
     </p>
 
@@ -668,6 +710,100 @@ py-4
   </div>
 </section>
 
+
+{/* CONSULTATION CTA */}
+<section className="relative bg-[#2E2A26] text-white overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#C7A77A]/10 blur-3xl" />
+    <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#C7A77A]/5 blur-3xl" />
+  </div>
+
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
+    <div className="max-w-4xl mx-auto text-center">
+
+      {/* Eyebrow */}
+      <p className="uppercase tracking-[0.3em] text-[#C7A77A] text-xs mb-6">
+        Start Your Project
+      </p>
+
+      {/* Heading */}
+      <h2
+        className="
+          editorial-heading
+          text-white
+          text-[clamp(3rem,8vw,6.5rem)]
+          leading-[0.9]
+          tracking-[-0.04em]
+        "
+      >
+        Let’s Create
+        <br />
+        <span className="text-[#C7A77A]">Something Beautiful.</span>
+      </h2>
+
+      {/* Description */}
+      <p className="mt-8 text-white/65 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+        Have a backyard project in mind? Talk to our team about your space,
+        your vision and the possibilities for your property.
+      </p>
+
+      {/* CTA */}
+      <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        <button
+          onClick={() => navigate("/contact")}
+          className="
+            group
+            w-full sm:w-auto
+            px-8 py-4
+            bg-[#C7A77A]
+            text-[#2E2A26]
+            uppercase
+            tracking-[0.22em]
+            text-xs
+            font-medium
+            transition-all
+            duration-300
+            hover:bg-[#D7BE8A]
+            hover:-translate-y-1
+          "
+        >
+          Book a Consultation
+          <span className="ml-3 inline-block transition-transform duration-300 group-hover:translate-x-2">
+            →
+          </span>
+        </button>
+
+        <button
+          onClick={() => navigate("/contact")}
+          className="
+            w-full sm:w-auto
+            px-8 py-4
+            border
+            border-white/25
+            text-white
+            uppercase
+            tracking-[0.22em]
+            text-xs
+            transition-all
+            duration-300
+            hover:bg-white
+            hover:text-[#2E2A26]
+          "
+        >
+          Enquire Now
+        </button>
+
+      </div>
+
+      {/* Small supporting text */}
+      <p className="mt-8 text-white/35 text-xs tracking-wide">
+        No pressure. Just a conversation about what’s possible.
+      </p>
+
+    </div>
+  </div>
+</section>
     </div>
   );
 }

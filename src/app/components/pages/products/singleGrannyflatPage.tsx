@@ -46,25 +46,23 @@ interface ProductProps {
   designInspiration?: React.ReactNode;
 
   sizeVariants?: {
-  highlight: string;
-  size: string;
-  heroImage: string;
-  mobileHeroImage?: string;
-  floorplan?: string;
-  description: string;
-  footprint: string;
-  height: string;
-  glazing: string;
-  capacity: string;
+    highlight: string;
+    size: string;
+    heroImage: string;
+    mobileHeroImage?: string;
+    floorplan?: string;
+    description: string;
+    footprint: string;
+    height: string;
+    glazing: string;
+    capacity: string;
 
-  galleryImages: {
-    main: string;
-    thumb: string;
-    label: string;
+    galleryImages: {
+      main: string;
+      thumb: string;
+      label: string;
+    }[];
   }[];
-}[];
-
-  
 }
 
 export default function SingleGrannyFlatPage({
@@ -91,36 +89,31 @@ export default function SingleGrannyFlatPage({
 }: ProductProps) {
   const navigate = useNavigate();
 
-const [activeGallery, setActiveGallery] = useState(0);
-const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
-const [activeCard, setActiveCard] = useState<number | null>(0);
+  const [activeGallery, setActiveGallery] = useState(0);
+  const [hoveredThumb, setHoveredThumb] = useState<number | null>(null);
+  const [activeCard, setActiveCard] = useState<number | null>(0);
 
-const [activeVariant, setActiveVariant] = useState(
-  sizeVariants && sizeVariants.length > 0
-    ? sizeVariants.length - 1
-    : 0
-);
-const currentVariant =
-  sizeVariants?.[activeVariant];
-  const activeGalleryImages =
-  currentVariant?.galleryImages || galleryImages;
+  const [activeVariant, setActiveVariant] = useState(
+    sizeVariants && sizeVariants.length > 0 ? sizeVariants.length - 1 : 0,
+  );
+  const currentVariant = sizeVariants?.[activeVariant];
+  const activeGalleryImages = currentVariant?.galleryImages || galleryImages;
   useEffect(() => {
-  setActiveGallery(0);
-  setHoveredThumb(null);
-}, [activeVariant]);
+    setActiveGallery(0);
+    setHoveredThumb(null);
+  }, [activeVariant]);
 
-const touchStartX = useRef(0);
+  const touchStartX = useRef(0);
 
-const displayGallery =
-  activeGalleryImages && activeGalleryImages.length > 0
-    ? Math.min(
-        hoveredThumb !== null ? hoveredThumb : activeGallery,
-        activeGalleryImages.length - 1
-      )
-    : 0;
+  const displayGallery =
+    activeGalleryImages && activeGalleryImages.length > 0
+      ? Math.min(
+          hoveredThumb !== null ? hoveredThumb : activeGallery,
+          activeGalleryImages.length - 1,
+        )
+      : 0;
 
-const activeGalleryImage =
-  activeGalleryImages?.[displayGallery];
+  const activeGalleryImage = activeGalleryImages?.[displayGallery];
   const inclusionCategories = [
     {
       title: "Structure & Compliance",
@@ -166,23 +159,23 @@ const activeGalleryImage =
     },
   ];
 
-useEffect(() => {
-  activeGalleryImages?.forEach((image) => {
-    if (image?.main) {
-      const img = new Image();
-      img.src = image.main;
-    }
-  });
-}, [activeGalleryImages]);
+  useEffect(() => {
+    activeGalleryImages?.forEach((image) => {
+      if (image?.main) {
+        const img = new Image();
+        img.src = image.main;
+      }
+    });
+  }, [activeGalleryImages]);
 
-useEffect(() => {
-  if (
-    activeGalleryImages?.length &&
-    activeGallery >= activeGalleryImages.length
-  ) {
-    setActiveGallery(0);
-  }
-}, [activeGalleryImages, activeGallery]);
+  useEffect(() => {
+    if (
+      activeGalleryImages?.length &&
+      activeGallery >= activeGalleryImages.length
+    ) {
+      setActiveGallery(0);
+    }
+  }, [activeGalleryImages, activeGallery]);
 
   return (
     <div>
@@ -193,9 +186,9 @@ useEffect(() => {
         image={seoImage}
       />
 
-{sizeVariants && sizeVariants.length > 1 && (
-  <section
-    className="
+      {sizeVariants && sizeVariants.length > 1 && (
+        <section
+          className="
       relative
       z-20
       bg-[#F5F0EB]
@@ -204,11 +197,10 @@ useEffect(() => {
       lg:pt-32
       lg:pb-10
     "
-  >
-    <div className="max-w-7xl mx-auto px-6 lg:px-12">
-
-      <div
-        className="
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div
+              className="
           flex
           flex-col
           md:flex-row
@@ -216,39 +208,38 @@ useEffect(() => {
           md:justify-between
           gap-6
         "
-      >
+            >
+              {/* TITLE */}
 
-        {/* TITLE */}
-
-        <div>
-          <p
-            className="
+              <div>
+                <p
+                  className="
               uppercase
               tracking-[0.3em]
               text-[#A08E7C]
               text-[10px]
               mb-2
             "
-          >
-            The Yarra
-          </p>
+                >
+                  The Yarra
+                </p>
 
-          <h2
-            className="
+                <h2
+                  className="
               font-serif
               text-[#2E2A26]
               text-2xl
               md:text-3xl
             "
-          >
-            Choose Your Size
-          </h2>
-        </div>
+                >
+                  Choose Your Size
+                </h2>
+              </div>
 
-        {/* SIZE SWITCH */}
+              {/* SIZE SWITCH */}
 
-        <div
-          className="
+              <div
+                className="
             flex
             gap-1
             p-1
@@ -257,12 +248,12 @@ useEffect(() => {
             shadow-sm
             w-fit
           "
-        >
-          {sizeVariants.map((variant, index) => (
-            <button
-              key={variant.size}
-              onClick={() => setActiveVariant(index)}
-              className={`
+              >
+                {sizeVariants.map((variant, index) => (
+                  <button
+                    key={variant.size}
+                    onClick={() => setActiveVariant(index)}
+                    className={`
                 px-6
                 md:px-8
                 py-3
@@ -278,21 +269,18 @@ useEffect(() => {
                     : "text-[#5F5A55] hover:bg-[#F5F0EB]"
                 }
               `}
-            >
-              {variant.size}
-            </button>
-          ))}
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-)}
+                  >
+                    {variant.size}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* HERO */}
       <section className="relative h-screen overflow-hidden">
-
         {/* Desktop Hero */}
         <div
           onContextMenu={(e) => e.preventDefault()}
@@ -432,7 +420,7 @@ useEffect(() => {
             <p className="uppercase tracking-[0.35em] text-xs text-[#A08E7C] mb-5">
               Specifications
             </p>
-      
+
             <h2
               className="
                 editorial-heading
@@ -446,7 +434,7 @@ useEffect(() => {
               Modern Living
             </h2>
           </div>
-      
+
           {(() => {
             const items = [
               {
@@ -457,7 +445,7 @@ useEffect(() => {
                 value: beds,
                 label: "Bedroom",
               },
-      
+
               ...(baths && baths !== "0"
                 ? [
                     {
@@ -466,15 +454,15 @@ useEffect(() => {
                     },
                   ]
                 : []),
-      
+
               {
                 value: warranty,
                 label: "Warranty*",
               },
             ];
-      
+
             const threeCards = !baths || baths === "0";
-      
+
             return (
               <>
                 {/* ---------- MOBILE ---------- */}
@@ -495,16 +483,16 @@ useEffect(() => {
                             <p className="editorial-heading text-[#2E2A26] text-[clamp(2.2rem,7vw,3.6rem)] leading-none group-hover:text-[#C7A77A] transition-colors">
                               {item.value}
                             </p>
-      
+
                             <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
-      
+
                             <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
                               {item.label}
                             </p>
                           </motion.div>
                         ))}
                       </div>
-      
+
                       <div className="flex justify-center mt-5">
                         <motion.div
                           initial={{ opacity: 0, y: 30 }}
@@ -517,9 +505,9 @@ useEffect(() => {
                           <p className="editorial-heading text-[#2E2A26] text-[clamp(2.2rem,7vw,3.6rem)] leading-none group-hover:text-[#C7A77A] transition-colors">
                             {items[2].value}
                           </p>
-      
+
                           <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
-      
+
                           <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
                             {items[2].label}
                           </p>
@@ -541,9 +529,9 @@ useEffect(() => {
                           <p className="editorial-heading text-[#2E2A26] text-[clamp(2.2rem,7vw,3.6rem)] leading-none group-hover:text-[#C7A77A] transition-colors">
                             {item.value}
                           </p>
-      
+
                           <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
-      
+
                           <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
                             {item.label}
                           </p>
@@ -552,7 +540,7 @@ useEffect(() => {
                     </div>
                   )}
                 </div>
-      
+
                 {/* ---------- DESKTOP ---------- */}
                 <div
                   className={`hidden lg:grid gap-6 ${
@@ -575,9 +563,9 @@ useEffect(() => {
                       <p className="editorial-heading text-[#2E2A26] text-[clamp(2.6rem,4vw,3.8rem)] leading-none transition-colors duration-300 group-hover:text-[#C7A77A]">
                         {item.value}
                       </p>
-      
+
                       <div className="w-12 h-px bg-[#C7A77A] mx-auto my-5" />
-      
+
                       <p className="uppercase tracking-[0.28em] text-[11px] text-[#8B7E74]">
                         {item.label}
                       </p>
@@ -589,75 +577,65 @@ useEffect(() => {
           })()}
         </div>
       </section>
-      
+
       {/* STANDARD INCLUSIONS */}
       <section className="relative border-t border-[#E8DED3] bg-[#F7F5F0] py-24 lg:py-32 overflow-hidden">
-      
         {/* Background Decoration */}
-      
+
         <div className="absolute inset-0 pointer-events-none">
-      
           <div className="absolute -top-48 left-0 w-[500px] h-[500px] rounded-full bg-[#C7A77A]/5 blur-3xl" />
-      
+
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#C7A77A]/5 blur-3xl" />
-      
         </div>
-      
+
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-      
           {/* Header */}
-      
-        <div className="max-w-4xl mx-auto text-center mb-20">
-      
-        <p className="uppercase tracking-[0.35em] text-[11px] text-[#A08E7C] mb-5">
-          STANDARD INCLUSIONS
-        </p>
-      
-        <h2
-          className="
+
+          <div className="max-w-4xl mx-auto text-center mb-20">
+            <p className="uppercase tracking-[0.35em] text-[11px] text-[#A08E7C] mb-5">
+              STANDARD INCLUSIONS
+            </p>
+
+            <h2
+              className="
             editorial-heading
             text-[#2E2A26]
             text-[clamp(3.2rem,5vw,5.4rem)]
             leading-[0.92]
             mb-8
           "
-        >
-          Luxury Comes Standard
-        </h2>
-      
-        <p
-          className="
+            >
+              Luxury Comes Standard
+            </h2>
+
+            <p
+              className="
             text-[#5F5A55]
             text-lg
             leading-relaxed
             max-w-3xl
             mx-auto
           "
-        >
-          Every Backyard Nest Granny flat is thoughtfully designed and built to deliver
-          comfort, quality and long-term value. Explore what's included as
-          standard in every premium Granny flat.
-        </p>
-      
-      </div>
-      
+            >
+              Every Backyard Nest Granny flat is thoughtfully designed and built
+              to deliver comfort, quality and long-term value. Explore what's
+              included as standard in every premium Granny flat.
+            </p>
+          </div>
+
           {/* Two Columns */}
-      
-         <div className="grid md:grid-cols-2 gap-7">
-        {inclusionCategories.map((category, index) => {
-      
-        const isActive = activeCard === index;
-      
-        return (
-      
-          <div
-            key={index}
-            onMouseEnter={() => setActiveCard(index)}
-            onMouseLeave={() => setActiveCard(null)}
-            onClick={() =>
-              setActiveCard(isActive ? null : index)
-            }
-            className={`
+
+          <div className="grid md:grid-cols-2 gap-7">
+            {inclusionCategories.map((category, index) => {
+              const isActive = activeCard === index;
+
+              return (
+                <div
+                  key={index}
+                  onMouseEnter={() => setActiveCard(index)}
+                  onMouseLeave={() => setActiveCard(null)}
+                  onClick={() => setActiveCard(isActive ? null : index)}
+                  className={`
               group
               relative
               overflow-hidden
@@ -674,12 +652,11 @@ useEffect(() => {
                   : "border-[#E8DED3] hover:border-[#D6BE9C]"
               }
             `}
-          >
-      
-            {/* Background Number */}
-      
-            <span
-              className="
+                >
+                  {/* Background Number */}
+
+                  <span
+                    className="
                 absolute
                 right-8
                 top-4
@@ -690,14 +667,14 @@ useEffect(() => {
                 select-none
                 pointer-events-none
               "
-            >
-              {String(index + 1).padStart(2, "0")}
-            </span>
-      
-            {/* Gold Accent */}
-      
-            <div
-              className={`
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Gold Accent */}
+
+                  <div
+                    className={`
                 absolute
                 left-0
                 top-0
@@ -705,54 +682,50 @@ useEffect(() => {
                 bg-[#C7A77A]
                 transition-all
                 duration-700
-                ${
-                  isActive
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
-                }
+                ${isActive ? "w-full" : "w-0 group-hover:w-full"}
               `}
-            />
-      
-            {/* Content */}
-      
-            <div className="relative z-10 p-9">
-      
-              <p
-                className="
+                  />
+
+                  {/* Content */}
+
+                  <div className="relative z-10 p-9">
+                    <p
+                      className="
                   uppercase
                   tracking-[0.25em]
                   text-[11px]
                   text-[#A08E7C]
                   mb-5
                 "
-              >
-                STANDARD
-              </p>
-      
-              <h3
-                className="
+                    >
+                      STANDARD
+                    </p>
+
+                    <h3
+                      className="
                   editorial-heading
                   text-[#2E2A26]
                   text-[2.4rem]
                   leading-none
                   mb-3
                 "
-              >
-                {category.title}
-              </h3>
-      
-              <p
-                className="
+                    >
+                      {category.title}
+                    </h3>
+
+                    <p
+                      className="
                   text-[#7D7368]
                   text-sm
                   mb-8
                 "
-              >
-                {category.subtitle}
-              </p>{/* Expandable Content */}
-      
-      <div
-        className={`
+                    >
+                      {category.subtitle}
+                    </p>
+                    {/* Expandable Content */}
+
+                    <div
+                      className={`
           grid
           transition-all
           duration-700
@@ -763,17 +736,13 @@ useEffect(() => {
               : "grid-rows-[0fr] opacity-0 mt-0"
           }
         `}
-      >
-      
-        <div className="overflow-hidden">
-      
-          <div className="space-y-2">
-      
-            {category.items.map((item, itemIndex) => (
-      
-              <div
-                key={itemIndex}
-                className={`
+                    >
+                      <div className="overflow-hidden">
+                        <div className="space-y-2">
+                          {category.items.map((item, itemIndex) => (
+                            <div
+                              key={itemIndex}
+                              className={`
                   flex
                   items-start
                   gap-4
@@ -788,15 +757,14 @@ useEffect(() => {
                       : "opacity-0 translate-y-3"
                   }
                 `}
-                style={{
-                  transitionDelay: `${itemIndex * 70}ms`,
-                }}
-              >
-      
-                {/* Check */}
-      
-                <div
-                  className="
+                              style={{
+                                transitionDelay: `${itemIndex * 70}ms`,
+                              }}
+                            >
+                              {/* Check */}
+
+                              <div
+                                className="
                     mt-0.5
                     flex
                     h-7
@@ -811,37 +779,32 @@ useEffect(() => {
                     group-hover:bg-[#C7A77A]
                     group-hover:text-white
                   "
-                >
-                  ✓
-                </div>
-      
-                {/* Text */}
-      
-                <p
-                  className="
+                              >
+                                ✓
+                              </div>
+
+                              {/* Text */}
+
+                              <p
+                                className="
                     flex-1
                     text-[15px]
                     leading-7
                     text-[#4E4943]
                   "
-                >
-                  {item}
-                </p>
-      
-              </div>
-      
-            ))}
-      
-          </div>
-      
-        </div>
-      
-      </div>
-      
-      {/* Bottom indicator */}
-      
-      <div
-        className="
+                              >
+                                {item}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom indicator */}
+
+                    <div
+                      className="
           mt-10
           flex
           items-center
@@ -850,21 +813,20 @@ useEffect(() => {
           border-[#EEE6DC]
           pt-6
         "
-      >
-      
-        <span
-          className="
+                    >
+                      <span
+                        className="
             uppercase
             tracking-[0.2em]
             text-[11px]
             text-[#A08E7C]
           "
-        >
-          {category.items.length} Standard Inclusions
-        </span>
-      
-        <div
-          className={`
+                      >
+                        {category.items.length} Standard Inclusions
+                      </span>
+
+                      <div
+                        className={`
             flex
             h-10
             w-10
@@ -880,82 +842,71 @@ useEffect(() => {
                 : "border-[#E4D8C8] text-[#A08E7C]"
             }
           `}
-        >
-      
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 5v14M5 12h14"
-            />
-          </svg>
-      
-        </div>
-      
-      </div>
-      
-      </div>
-      
-      </div>
-      
-        );
-      
-      })}
-      
-      </div>
-      
-      {/* Disclaimer */}
-      
-      <div className="mt-14 border-t border-[#E8DED3] pt-8">
-      
-        <p
-          className="
+                      >
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 5v14M5 12h14"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Disclaimer */}
+
+          <div className="mt-14 border-t border-[#E8DED3] pt-8">
+            <p
+              className="
             text-sm
             leading-7
             text-[#7B7268]
             max-w-4xl
           "
-        >
-          <strong>*Disclaimer:</strong> Standard inclusions are subject to site
-          conditions, engineering requirements, council approvals and service
-          connection availability. Specifications may vary depending on the selected
-          Backyard Nest Granny flat design and individual project requirements.
-        </p>
-      
-      </div>
-      
-      </div>
-      
+            >
+              <strong>*Disclaimer:</strong> Standard inclusions are subject to
+              site conditions, engineering requirements, council approvals and
+              service connection availability. Specifications may vary depending
+              on the selected Backyard Nest Granny flat design and individual
+              project requirements.
+            </p>
+          </div>
+        </div>
       </section>
-      
-            {/* DESIGN GALLERY */}
-            <section className="bg-[#F5F0EB] py-16 md:py-24 lg:py-32">
-              <div className="max-w-[1700px] mx-auto px-5 md:px-6 lg:px-10">
-                {/* Header */}
-                <div className="max-w-3xl mb-10 md:mb-16 lg:mb-20">
-                  <span className="text-[11px] uppercase tracking-[0.35em] text-black/40">
-                    Design Overview
-                  </span>
-      
-                  <h2 className="editorial-heading text-4xl md:text-5xl lg:text-7xl mt-4">
-                    Explore The Design
-                  </h2>
-      
-                  <p className="mt-5 md:mt-6 text-black/60 text-base md:text-lg leading-relaxed">
-                    Visualise every detail of your Granny flat, from the architectural
-                    floor plan through to the completed living space.
-                  </p>
-                </div>
-      
-                {/* Gallery */}
-                <div
-                  className="
+
+      {/* DESIGN GALLERY */}
+      <section className="bg-[#F5F0EB] py-16 md:py-24 lg:py-32">
+        <div className="max-w-[1700px] mx-auto px-5 md:px-6 lg:px-10">
+          {/* Header */}
+          <div className="max-w-3xl mb-10 md:mb-16 lg:mb-20">
+            <span className="text-[11px] uppercase tracking-[0.35em] text-black/40">
+              Design Overview
+            </span>
+
+            <h2 className="editorial-heading text-4xl md:text-5xl lg:text-7xl mt-4">
+              Explore The Design
+            </h2>
+
+            <p className="mt-5 md:mt-6 text-black/60 text-base md:text-lg leading-relaxed">
+              Visualise every detail of your Granny flat, from the architectural
+              floor plan through to the completed living space.
+            </p>
+          </div>
+
+          {/* Gallery */}
+          <div
+            className="
               relative
               h-[380px]
               sm:h-[500px]
@@ -969,34 +920,32 @@ useEffect(() => {
               border-black/10
               bg-[#EFE8E1]
             "
-                  onTouchStart={(e) => {
-                    touchStartX.current = e.touches[0].clientX;
-                  }}
-                  onTouchEnd={(e) => {
-  if (!activeGalleryImages?.length) return;
+            onTouchStart={(e) => {
+              touchStartX.current = e.touches[0].clientX;
+            }}
+            onTouchEnd={(e) => {
+              if (!activeGalleryImages?.length) return;
 
-  const delta =
-    touchStartX.current - e.changedTouches[0].clientX;
+              const delta = touchStartX.current - e.changedTouches[0].clientX;
 
-  if (delta > 50) {
-    setActiveGallery((prev) =>
-      prev >= activeGalleryImages.length - 1 ? 0 : prev + 1
-    );
-  }
+              if (delta > 50) {
+                setActiveGallery((prev) =>
+                  prev >= activeGalleryImages.length - 1 ? 0 : prev + 1,
+                );
+              }
 
-  if (delta < -50) {
-    setActiveGallery((prev) =>
-      prev <= 0 ? activeGalleryImages.length - 1 : prev - 1
-    );
-  }
-}}
-                >
-      
-                  {/* Images */}
-                  {activeGalleryImages.map((image, index) => (
-                    <div
-                      key={index}
-                      className={`
+              if (delta < -50) {
+                setActiveGallery((prev) =>
+                  prev <= 0 ? activeGalleryImages.length - 1 : prev - 1,
+                );
+              }
+            }}
+          >
+            {/* Images */}
+            {activeGalleryImages.map((image, index) => (
+              <div
+                key={index}
+                className={`
             absolute inset-0
             transition-all duration-700 ease-out
             ${
@@ -1005,47 +954,47 @@ useEffect(() => {
                 : "opacity-0 scale-[1.03] z-0"
             }
           `}
-                    >
-                      <ImageWithWatermark
-                        src={image.main}
-                        alt={image.label}
-                        fit={image.label === "Floor Plan" ? "contain" : "cover"}
-                        className="w-full h-full"
-                      />
-                    </div>
-                  ))}
-      
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none z-20" />
-      
-                  {/* Label */}
-                  <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30">
-                    <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-6 md:py-3 rounded-full shadow-sm">
-                      <span className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em]">
-                        {activeGalleryImage?.label || "Design"}
-                      </span>
-                    </div>
-                  </div>
-      
-                  {/* Counter */}
-                  <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30">
-                    <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-5 md:py-3 rounded-full shadow-sm">
-                      <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em]">
-                        {displayGallery + 1} / {activeGalleryImages.length}
-                      </span>
-                    </div>
-                  </div>
-      
-                  {/* Swipe Hint */}
-                  <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 md:hidden">
-                    <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full">
-                      <span className="text-[10px] uppercase tracking-[0.2em] text-black/50">
-                        Swipe →
-                      </span>
-                    </div>
-                  </div>
-      
-                  {/* Desktop Hint
+              >
+                <ImageWithWatermark
+                  src={image.main}
+                  alt={image.label}
+                  fit={image.label === "Floor Plan" ? "contain" : "cover"}
+                  className="w-full h-full"
+                />
+              </div>
+            ))}
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none z-20" />
+
+            {/* Label */}
+            <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30">
+              <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-6 md:py-3 rounded-full shadow-sm">
+                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em]">
+                  {activeGalleryImage?.label || "Design"}
+                </span>
+              </div>
+            </div>
+
+            {/* Counter */}
+            <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30">
+              <div className="bg-white/90 backdrop-blur-md px-4 py-2 md:px-5 md:py-3 rounded-full shadow-sm">
+                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em]">
+                  {displayGallery + 1} / {activeGalleryImages.length}
+                </span>
+              </div>
+            </div>
+
+            {/* Swipe Hint */}
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 md:hidden">
+              <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-black/50">
+                  Swipe →
+                </span>
+              </div>
+            </div>
+
+            {/* Desktop Hint
                   <div className="absolute bottom-38 left-8 z-30 hidden lg:block">
                     <div className="bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-sm">
                       <span className="text-[10px] uppercase tracking-[0.3em] text-black/50">
@@ -1053,16 +1002,16 @@ useEffect(() => {
                       </span>
                     </div>
                   </div> */}
-      
-                  {/* Thumbnails */}
-                  <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-2">
-                    {activeGalleryImages.map((image, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setActiveGallery(index)}
-                        onMouseEnter={() => setHoveredThumb(index)}
-                        onMouseLeave={() => setHoveredThumb(null)}
-                        className={`
+
+            {/* Thumbnails */}
+            <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-30 flex gap-2 md:gap-2">
+              {activeGalleryImages.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveGallery(index)}
+                  onMouseEnter={() => setHoveredThumb(index)}
+                  onMouseLeave={() => setHoveredThumb(null)}
+                  className={`
                     relative
                     group
                     w-12 h-12
@@ -1081,9 +1030,9 @@ useEffect(() => {
                         : "opacity-75 hover:opacity-100 hover:-translate-y-2"
                     }
                   `}
-                      >
-                        <div
-                          className="
+                >
+                  <div
+                    className="
           w-full
           h-full
           bg-cover
@@ -1092,13 +1041,13 @@ useEffect(() => {
           duration-700
           group-hover:scale-110
         "
-                          style={{
-                            backgroundImage: `url(${image.thumb})`,
-                          }}
-                        />
-      
-                        <div
-                          className={`
+                    style={{
+                      backgroundImage: `url(${image.thumb})`,
+                    }}
+                  />
+
+                  <div
+                    className={`
                       absolute inset-0
                       transition-all duration-300
                       ${
@@ -1107,47 +1056,47 @@ useEffect(() => {
                           : "bg-black/25 group-hover:bg-black/10"
                       }
                     `}
-                        />
-      
-                        {activeGallery === index && (
-                          <div className="absolute inset-0 rounded-[18px] md:rounded-[24px] lg:rounded-[28px] ring-2 md:ring-4 ring-white" />
-                        )}
-      
-                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:block">
-                          <span className="text-[9px] lg:text-[10px] uppercase tracking-[0.15em] lg:tracking-[0.2em] text-white whitespace-nowrap">
-                            {image.label}
-                          </span>
-                        </div>
-                      </button>
-                    ))}
+                  />
+
+                  {activeGallery === index && (
+                    <div className="absolute inset-0 rounded-[18px] md:rounded-[24px] lg:rounded-[28px] ring-2 md:ring-4 ring-white" />
+                  )}
+
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:block">
+                    <span className="text-[9px] lg:text-[10px] uppercase tracking-[0.15em] lg:tracking-[0.2em] text-white whitespace-nowrap">
+                      {image.label}
+                    </span>
                   </div>
-      
-                  {/* Progress */}
-                  <div className="absolute bottom-0 left-0 w-full h-[3px] md:h-[4px] bg-black/5 z-30">
-                    <div
-                      className="h-full bg-black/80 transition-all duration-500"
-                      style={{
-                        width: `${
-  activeGalleryImages.length
-    ? ((activeGallery + 1) / activeGalleryImages.length) * 100
-    : 0
-}%`,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
-            
-            {/* DESIGN INSPIRATION */}
-      
+                </button>
+              ))}
+            </div>
+
+            {/* Progress */}
+            <div className="absolute bottom-0 left-0 w-full h-[3px] md:h-[4px] bg-black/5 z-30">
+              <div
+                className="h-full bg-black/80 transition-all duration-500"
+                style={{
+                  width: `${
+                    activeGalleryImages.length
+                      ? ((activeGallery + 1) / activeGalleryImages.length) * 100
+                      : 0
+                  }%`,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DESIGN INSPIRATION */}
+
       {designInspiration}
-      
-            {/* FINISH & MATERIALS */}
-            {/* <section className="border-t border-black/10 py-32 bg-[#F7F5F0]">
+
+      {/* FINISH & MATERIALS */}
+      {/* <section className="border-t border-black/10 py-32 bg-[#F7F5F0]">
               <div className="max-w-[1400px] mx-auto px-8"> */}
-            {/* HEADER */}
-            {/* <div className="mb-20 max-w-2xl">
+      {/* HEADER */}
+      {/* <div className="mb-20 max-w-2xl">
                   <span className="uppercase tracking-[0.3em] text-[11px] opacity-40 block mb-6">
                     Finish & Materials
                   </span>
@@ -1156,9 +1105,9 @@ useEffect(() => {
                     Choose Your Cladding
                   </h2>
                 </div> */}
-      
-            {/* HERO IMAGE */}
-            {/* <div className="relative mb-16">
+
+      {/* HERO IMAGE */}
+      {/* <div className="relative mb-16">
                   <div className="overflow-hidden rounded-xl border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
                     <ImageWithWatermark
                       key={activeFinish.id}
@@ -1178,9 +1127,9 @@ useEffect(() => {
                     {activeFinish.name}
                   </div>
                 </div> */}
-      
-            {/* SELECTOR */}
-            {/* <div className="bg-white/60 backdrop-blur-md border border-black/10 rounded-2xl p-8 shadow-sm">
+
+      {/* SELECTOR */}
+      {/* <div className="bg-white/60 backdrop-blur-md border border-black/10 rounded-2xl p-8 shadow-sm">
                   <div className="grid md:grid-cols-5 gap-6">
                     {finishes.map((finish) => {
                       const isActive = activeFinish.id === finish.id;
@@ -1216,7 +1165,7 @@ useEffect(() => {
                             className={`font-medium mb-1 transition-colors duration-300 ${
                               isActive ? "text-black" : "opacity-70"
                             }`}
-                          >
+                          > 
                             {finish.name}
                           </div>
       
@@ -1228,34 +1177,29 @@ useEffect(() => {
                     })}
                   </div>
                 </div> */}
-            {/* </div>
+      {/* </div>
             </section> */}
-      
-            {/* RELATED PRODUCTS */}
-           <RelatedGrannyFlatProducts
-  currentId={Number(highlight)}
-/>
-      
-            {/* CONSULTATION CTA */}
-            <section className="bg-[#EFE8DF] py-40">
-              <div className="max-w-7xl mx-auto px-8">
-                <div className="grid lg:grid-cols-2 gap-20 items-center">
-                  {/* LEFT */}
-      
-                  <div>
-                    <span
-                      className="
+
+      {/* CONSULTATION CTA */}
+      <section className="bg-[#EFE8DF] py-40">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* LEFT */}
+
+            <div>
+              <span
+                className="
                   uppercase
                   tracking-[0.3em]
                   text-[#A08E7C]
                   text-xs
                 "
-                    >
-                      Next Step
-                    </span>
-      
-                    <h2
-                      className="
+              >
+                Next Step
+              </span>
+
+              <h2
+                className="
                   editorial-heading
                   text-[#2E2A26]
                   text-5xl
@@ -1264,57 +1208,57 @@ useEffect(() => {
                   tracking-[-0.04em]
                   mt-6
                 "
-                    >
-                      Let's Design
-                      <br />
-                      Your Space
-                      <br />
-                      Together.
-                    </h2>
-                  </div>
-      
-                  {/* RIGHT */}
-      
-                  <div>
-                    <p
-                      className="
+              >
+                Let's Design
+                <br />
+                Your Space
+                <br />
+                Together.
+              </h2>
+            </div>
+
+            {/* RIGHT */}
+
+            <div>
+              <p
+                className="
                   text-[#5F5A55]
                   text-lg
                   leading-relaxed
                   mb-10
                 "
-                    >
-                      Every property is different. Our team will guide you through
-                      layouts, finishes, council requirements and pricing to help
-                      create the perfect backyard space.
-                    </p>
-      
-                    <div className="space-y-6 mb-12">
-                      <div className="flex justify-between border-b border-black/10 pb-4">
-                        <span className="text-[#5F5A55]">
-                          Free Design Consultation
-                        </span>
-      
-                        <span className="text-[#2E2A26]">01</span>
-                      </div>
-      
-                      <div className="flex justify-between border-b border-black/10 pb-4">
-                        <span className="text-[#5F5A55]">Tailored Quote</span>
-      
-                        <span className="text-[#2E2A26]">02</span>
-                      </div>
-      
-                      <div className="flex justify-between border-b border-black/10 pb-4">
-                        <span className="text-[#5F5A55]">Design & Build Support</span>
-      
-                        <span className="text-[#2E2A26]">03</span>
-                      </div>
-                    </div>
-      
-                    <div className="flex flex-wrap gap-4">
-                      <button
-                        onClick={() => navigate("/booking")}
-                        className="
+              >
+                Every property is different. Our team will guide you through
+                layouts, finishes, council requirements and pricing to help
+                create the perfect backyard space.
+              </p>
+
+              <div className="space-y-6 mb-12">
+                <div className="flex justify-between border-b border-black/10 pb-4">
+                  <span className="text-[#5F5A55]">
+                    Free Design Consultation
+                  </span>
+
+                  <span className="text-[#2E2A26]">01</span>
+                </div>
+
+                <div className="flex justify-between border-b border-black/10 pb-4">
+                  <span className="text-[#5F5A55]">Tailored Quote</span>
+
+                  <span className="text-[#2E2A26]">02</span>
+                </div>
+
+                <div className="flex justify-between border-b border-black/10 pb-4">
+                  <span className="text-[#5F5A55]">Design & Build Support</span>
+
+                  <span className="text-[#2E2A26]">03</span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => navigate("/booking")}
+                  className="
                     px-8
                     py-4
                     bg-[#2E2A26]
@@ -1322,13 +1266,13 @@ useEffect(() => {
                     hover:bg-black
                     transition-all
                   "
-                      >
-                        Book Consultation
-                      </button>
-      
-                      <button
-                        onClick={() => navigate("/products")}
-                        className="
+                >
+                  Book Consultation
+                </button>
+
+                <button
+                  onClick={() => navigate("/products")}
+                  className="
                     px-8
                     py-4
                     border
@@ -1338,14 +1282,18 @@ useEffect(() => {
                     hover:text-white
                     transition-all
                   "
-                      >
-                        Explore Collection
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                >
+                  Explore Collection
+                </button>
               </div>
-            </section>
+            </div>
           </div>
-        );
-      }
+        </div>
+      </section>
+
+      
+      {/* RELATED PRODUCTS */}
+      <RelatedGrannyFlatProducts currentId={Number(highlight)} />
+    </div>
+  );
+}

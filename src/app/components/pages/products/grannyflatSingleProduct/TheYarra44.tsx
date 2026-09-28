@@ -1,5 +1,5 @@
 import SingleGrannyFlatPage from "../singleGrannyflatPage";
-import RelatedProducts from "../../../RelatedProducts";
+import RelatedGrannyFlatProducts from "../../../RelatedGrannyFlatProducts";
 import DesignInspiration from "../DesignInspiration";
 import React from "react";
 
@@ -79,13 +79,13 @@ export default function TheYarra44() {
       mobileHeroImage="/images/grannyflat/yara/yarra_44/yarra_44_mobile.webp"
       floorplan="/images/grannyflat/yara/yarra_44/yarra_44_floorplan.webp"
       seoTitle="The Yarra 44m² | Contemporary Granny Flat Melbourne"
-      seoDescription="Explore The Yarra 44m² by Backyard Nest, a contemporary granny flat designed for comfortable everyday living with generous glazing and natural timber accents."
+      seoDescription="Explore The Yarra 44m² by Backyard Nest, a contemporary one-bedroom granny flat offering additional living space, generous glazing, natural timber accents and a strong connection to the backyard."
       seoUrl="https://backyardnest.com.au/products/TheYarra44"
       seoImage="/images/grannyflat/yara/yarra_44/yarra_44_1.webp"
       finishes={finishes}
       galleryImages={galleryImages}
       relatedProducts={
-        <RelatedProducts currentId="yarra-44" />
+        <RelatedGrannyFlatProducts currentId="yarra-44" />
       }
       designInspiration={
         <DesignInspiration
@@ -99,12 +99,12 @@ export default function TheYarra44() {
             </>
           }
           subtitle="The Yarra 44 | Contemporary Australian Granny Flat"
-          intro="More space for the way you live."
+          intro="More space. Same considered design."
           paragraphs={[
-            "The Yarra 44 is a contemporary Australian granny flat designed for homeowners looking to create more usable space in their backyard.",
-            "The 44m² configuration provides additional room for comfortable everyday living while maintaining the clean architectural character of The Yarra.",
-            "Clean architectural lines, natural timber accents and generous glazing create a light-filled living environment with a strong connection to the outdoors.",
-            "Whether used for independent living, guest accommodation, a private retreat or additional backyard living, The Yarra 44 is designed to adapt to modern Australian lifestyles.",
+            "The Yarra 44 is a contemporary Australian granny flat designed to provide comfortable additional space while maintaining a compact backyard footprint.",
+            "With 44m² of thoughtfully planned living space, The Yarra provides room for everyday living without compromising on the clean architectural character of the design.",
+            "Generous glazing, natural light and warm timber accents create a welcoming interior with a strong connection to the surrounding backyard.",
+            "Whether used for independent living, guest accommodation, a private retreat or additional backyard living, The Yarra 44 is designed to support modern Australian lifestyles.",
           ]}
           features={[
             "44m² configuration",
@@ -117,11 +117,12 @@ export default function TheYarra44() {
             "Energy-efficient design",
             "Flexible living spaces",
             "Strong indoor-outdoor connection",
+            "Comfortable everyday living",
             "Suitable for independent living",
             "Ideal for guest accommodation",
             "Designed for Melbourne and Victorian homes",
           ]}
-          outro="The Yarra 44 transforms an underused backyard into a beautiful and functional space to live, welcome, work and unwind."
+          outro="The Yarra 44 creates a refined and functional backyard space designed for modern living, relaxing and welcoming guests."
         />
       }
     />

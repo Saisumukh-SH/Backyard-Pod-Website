@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
 import SEO from "../../SEO";
+import React from "react";
 
 
 export default function StudioCategory() {
@@ -660,6 +661,100 @@ py-4
       Book Consultation
     </button>
 
+  </div>
+</section>
+
+{/* CONSULTATION CTA */}
+<section className="relative bg-[#2E2A26] text-white overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#C7A77A]/10 blur-3xl" />
+    <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#C7A77A]/5 blur-3xl" />
+  </div>
+
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
+    <div className="max-w-4xl mx-auto text-center">
+
+      {/* Eyebrow */}
+      <p className="uppercase tracking-[0.3em] text-[#C7A77A] text-xs mb-6">
+        Start Your Project
+      </p>
+
+      {/* Heading */}
+      <h2
+        className="
+          editorial-heading
+          text-white
+          text-[clamp(3rem,8vw,6.5rem)]
+          leading-[0.9]
+          tracking-[-0.04em]
+        "
+      >
+        Let’s Create
+        <br />
+        <span className="text-[#C7A77A]">Something Beautiful.</span>
+      </h2>
+
+      {/* Description */}
+      <p className="mt-8 text-white/65 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+        Have a backyard project in mind? Talk to our team about your space,
+        your vision and the possibilities for your property.
+      </p>
+
+      {/* CTA */}
+      <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        <button
+          onClick={() => navigate("/contact")}
+          className="
+            group
+            w-full sm:w-auto
+            px-8 py-4
+            bg-[#C7A77A]
+            text-[#2E2A26]
+            uppercase
+            tracking-[0.22em]
+            text-xs
+            font-medium
+            transition-all
+            duration-300
+            hover:bg-[#D7BE8A]
+            hover:-translate-y-1
+          "
+        >
+          Book a Consultation
+          <span className="ml-3 inline-block transition-transform duration-300 group-hover:translate-x-2">
+            →
+          </span>
+        </button>
+
+        <button
+          onClick={() => navigate("/contact")}
+          className="
+            w-full sm:w-auto
+            px-8 py-4
+            border
+            border-white/25
+            text-white
+            uppercase
+            tracking-[0.22em]
+            text-xs
+            transition-all
+            duration-300
+            hover:bg-white
+            hover:text-[#2E2A26]
+          "
+        >
+          Enquire Now
+        </button>
+
+      </div>
+
+      {/* Supporting text */}
+      <p className="mt-8 text-white/35 text-xs tracking-wide">
+        No pressure. Just a conversation about what’s possible.
+      </p>
+
+    </div>
   </div>
 </section>
 

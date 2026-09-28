@@ -2,6 +2,7 @@ import SingleGrannyFlatPage from "../singleGrannyflatPage";
 import RelatedProducts from "../../../RelatedProducts";
 import DesignInspiration from "../DesignInspiration";
 import React from "react";
+import RelatedGrannyFlatProducts from "../../../RelatedGrannyFlatProducts";
 
 export default function TheYarra38() {
   const finishes = [
@@ -80,7 +81,7 @@ export default function TheYarra38() {
       finishes={finishes}
       galleryImages={galleryImages}
       relatedProducts={
-        <RelatedProducts currentId="yarra-38" />
+        <RelatedGrannyFlatProducts currentId="yarra-38" />
       }
       designInspiration={
         <DesignInspiration

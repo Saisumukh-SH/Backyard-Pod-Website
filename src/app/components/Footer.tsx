@@ -211,76 +211,106 @@ export function Footer() {
       </p>
     </div>
 
-    {/* Logos */}
-    <div className="grid grid-cols-2 lg:flex lg:justify-end items-center gap-5 md:gap-6 lg:gap-10">
+{/* Logos */}
+<div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-5 md:gap-6 lg:gap-8">
 
-      {/* MASTER BUILDERS */}
-      <div className="group relative flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
+  {/* BUNNINGS + MASTER BUILDERS COLUMN */}
+  <div className="flex flex-col items-center gap-4">
 
-        <div className="w-full max-w-[170px] sm:max-w-[220px] lg:w-80 h-20 sm:h-24 lg:h-28 flex items-center justify-center">
-          <img
-            src="/images/partners/Master-Builders-Victoria-Master-Builder.webp"
-            alt="Master Builders Victoria"
-            draggable={false}
-            onDragStart={(e) => e.preventDefault()}
-            onContextMenu={(e) => e.preventDefault()}
-            className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-          />
-        </div>
+    {/* BUNNINGS TRADE */}
+    <div className="group relative w-full flex flex-col items-center rounded-2xl px-2 md:px-4 py-4 lg:py-5 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
 
-        <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
-
-        <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
-          Master Builders Victoria
-        </p>
-
+      <div className="w-full h-28 sm:h-32 lg:h-36 flex items-center justify-center">
+        <img
+          src="/images/partners/bunnings.webp"
+          alt="Bunnings Trade"
+          draggable={false}
+          onDragStart={(e) => e.preventDefault()}
+          onContextMenu={(e) => e.preventDefault()}
+          className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+        />
       </div>
 
-      {/* MELBOURNE BOUTIQUE HOMES */}
-      <div className="group relative flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
+      <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
 
-        <div className="w-full max-w-[170px] sm:max-w-[220px] lg:w-80 h-20 sm:h-24 lg:h-28 flex items-center justify-center">
-          <img
-            src="/images/partners/melbourne-boutique-homes.webp"
-            alt="Melbourne Boutique Homes"
-            draggable={false}
-            onDragStart={(e) => e.preventDefault()}
-            onContextMenu={(e) => e.preventDefault()}
-            className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-          />
-        </div>
-
-        <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
-
-        <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
-          Melbourne Boutique Homes
-        </p>
-
-      </div>
-
-      {/* AMS BUILD */}
-      <div className="group relative col-span-2 lg:col-span-1 flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
-
-        <div className="w-32 sm:w-40 lg:w-52 h-40 sm:h-52 lg:h-72 flex items-center justify-center">
-          <img
-            src="/images/partners/ams-build.webp"
-            alt="AMS Build"
-            draggable={false}
-            onDragStart={(e) => e.preventDefault()}
-            onContextMenu={(e) => e.preventDefault()}
-            className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-          />
-        </div>
-
-        <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
-
-        <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
-          AMS Build
-        </p>
-
-      </div>
+      <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
+        Bunnings Trade
+      </p>
 
     </div>
+
+
+    {/* MASTER BUILDERS VICTORIA */}
+    <div className="group relative w-full flex flex-col items-center rounded-2xl px-2 md:px-4 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
+
+      <div className="w-full h-20 sm:h-24 lg:h-24 flex items-center justify-center">
+        <img
+          src="/images/partners/Master-Builders-Victoria-Master-Builder.webp"
+          alt="Master Builders Victoria"
+          draggable={false}
+          onDragStart={(e) => e.preventDefault()}
+          onContextMenu={(e) => e.preventDefault()}
+          className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+        />
+      </div>
+
+      <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
+
+      <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
+        Master Builders Victoria
+      </p>
+
+    </div>
+
+  </div>
+
+
+  {/* MELBOURNE BOUTIQUE HOMES */}
+  <div className="group relative flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
+
+    <div className="w-full h-20 sm:h-24 lg:h-28 flex items-center justify-center">
+      <img
+        src="/images/partners/melbourne-boutique-homes.webp"
+        alt="Melbourne Boutique Homes"
+        draggable={false}
+        onDragStart={(e) => e.preventDefault()}
+        onContextMenu={(e) => e.preventDefault()}
+        className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+      />
+    </div>
+
+    <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
+
+    <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
+      Melbourne Boutique Homes
+    </p>
+
+  </div>
+
+
+  {/* AMS BUILD */}
+  <div className="group relative flex flex-col items-center rounded-2xl px-2 md:px-4 lg:px-6 py-3 lg:py-4 transition-all duration-500 hover:-translate-y-1 hover:bg-white/[0.03]">
+
+    <div className="w-full h-20 sm:h-24 lg:h-28 flex items-center justify-center">
+      <img
+        src="/images/partners/ams-build.webp"
+        alt="AMS Build"
+        draggable={false}
+        onDragStart={(e) => e.preventDefault()}
+        onContextMenu={(e) => e.preventDefault()}
+        className="w-full h-full object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+      />
+    </div>
+
+    <span className="absolute bottom-0 left-1/2 h-px w-0 bg-[#C7A77A] transition-all duration-500 group-hover:w-20 group-hover:-translate-x-1/2" />
+
+    <p className="hidden lg:block mt-3 text-[10px] uppercase tracking-[0.25em] text-white/0 group-hover:text-white/45 transition-all duration-500">
+      AMS Build
+    </p>
+
+  </div>
+
+</div>
 
   </div>
 </div>

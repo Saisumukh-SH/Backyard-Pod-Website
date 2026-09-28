@@ -20,6 +20,7 @@ import {
   Leaf,
   RefreshCw,
 } from "lucide-react";
+import React from "react";
 
 const categories = [
   {
@@ -214,16 +215,19 @@ export default function Products() {
           {/* SEO CARDS */}
 
           {category.id === "studio" && (
-  <StudioSEOCard
-    price={category.from}
-    onExplore={() => navigate(`/products/${category.id}`)}
-  />
+<StudioSEOCard
+  price={category.from}
+  onExplore={() => navigate(`/products/${category.id}`)}
+  onQuote={() => navigate("/contact?type=studio")}
+/>
 )}
 
           {category.id === "granny" && (
-            <GrannySEOCard
-            price={category.from}
-    onExplore={() => navigate(`/products/${category.id}`)} />
+<GrannySEOCard
+  price={category.from}
+  onExplore={() => navigate(`/products/${category.id}`)}
+  onQuote={() => navigate("/contact?type=granny")}
+/>
           )}
 
         </motion.div>

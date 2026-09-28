@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
 import { motion } from "framer-motion";
 import SEO from "../../SEO";
+import React from "react";
 
 
 interface Finish {
@@ -1080,8 +1081,7 @@ lg:w-24 lg:h-24
       {/* </div>
       </section> */}
 
-      {/* RELATED PRODUCTS */}
-     {relatedProducts}
+
 
       {/* CONSULTATION CTA */}
       <section className="bg-[#EFE8DF] py-40">
@@ -1193,6 +1193,9 @@ lg:w-24 lg:h-24
           </div>
         </div>
       </section>
+
+      {/* RELATED PRODUCTS */}
+     {relatedProducts}
     </div>
   );
 }

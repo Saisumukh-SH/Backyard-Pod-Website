@@ -16,7 +16,6 @@ import { BlogPost } from "./components/pages/BlogPost";
 import { NotFound } from "./components/pages/NotFound";
 import StudioPod from "./components/pages/products/StudioPod";
 import GrannyFlats from "./components/pages/products/grannyFlats";
-import GrannyFlatSizeSelection from "./components/pages/GrannyFlatSizeSelection";
 import Booking from "./components/pages/bookings";
 import ComingSoon from "./components/pages/ComingSoon";
 
@@ -59,10 +58,7 @@ export const router = createBrowserRouter([
       { path: "blog/:slug", Component: BlogPost },
       { path: "products/studio", Component: StudioPod },
       { path: "products/granny", Component: GrannyFlats },
-      {
-  path: "products/granny/select-size/:model",
-  Component: GrannyFlatSizeSelection,
-},
+
       { path: "booking", Component: Booking },
       { path: "thank-you", Component: ThankyouPage },
       { path: "coming-soon", Component: ComingSoon },
