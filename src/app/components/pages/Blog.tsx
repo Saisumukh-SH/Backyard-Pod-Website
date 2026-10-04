@@ -1,399 +1,492 @@
 import { useEffect, useState } from "react";
-import { getBlogs, BlogSummary } from "../../../services/blogService";
 import { Link } from "react-router-dom";
-import SEO from "../SEO";
 import React from "react";
+
+import { getBlogs, BlogSummary } from "../../../services/blogService";
+import SEO from "../SEO";
 
 export function Blog() {
   const [posts, setPosts] = useState<BlogSummary[]>([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-useEffect(() => {
-  async function loadBlogs() {
-    try {
-      const blogs = await getBlogs();
-      setPosts(blogs);
-    } catch {
-      setError("Unable to load articles.");
-    } finally {
-      setLoading(false);
+  // ============================================================
+  // LOAD BLOG POSTS
+  // ============================================================
+
+  useEffect(() => {
+    async function loadBlogs() {
+      try {
+        const blogs = await getBlogs();
+
+        console.log("BLOGS LOADED:", blogs);
+        console.log(
+          "BLOG SLUGS:",
+          blogs.map((blog) => ({
+            title: blog.title,
+            slug: blog.slug,
+          }))
+        );
+
+        setPosts(blogs);
+      } catch (err) {
+        console.error("BLOG LOAD ERROR:", err);
+        setError("Unable to load articles.");
+      } finally {
+        setLoading(false);
+      }
     }
-  }
 
-  loadBlogs();
-}, []);
+    loadBlogs();
+  }, []);
 
+  // ============================================================
+  // HANDLE BLOG CLICK
+  // ============================================================
+
+  const handleBlogClick = (post: BlogSummary) => {
+    console.log("BLOG CARD CLICKED:", {
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      targetUrl: `/blog/${post.slug}`,
+    });
+
+    if (!post.slug) {
+      console.error("BLOG POST HAS NO SLUG:", post);
+    }
+  };
 
   return (
-  <div className="bg-white">
-    <SEO
-      title="Blogs | Backyard Nest"
-      description="Explore the Backyard Nest blog for expert advice on backyard pods, granny flats & studios in Melbourne — design tips, permits, pricing & more.
-"
-      url="https://backyardnest.com.au/blog"
-    />
+    <div className="bg-white">
+      {/* ========================================================
+          SEO
+      ======================================================== */}
 
-    {/* Hero */}
-    <section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-40 pb-24">
+      <SEO
+        title="Blogs | Backyard Nest"
+        description="Explore the Backyard Nest blog for expert advice on backyard pods, granny flats & studios in Melbourne — design tips, permits, pricing & more."
+        url="https://backyardnest.com.au/blog"
+      />
 
-      <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-8">
-        Journal
-      </p>
+      {/* ========================================================
+          HERO
+      ======================================================== */}
 
-      <h1
-        className="
-          editorial-heading
-          text-[#2E2A26]
-          text-[clamp(4rem,8vw,8rem)]
-          leading-[0.9]
-          tracking-[-0.05em]
-        "
-      >
-        Ideas,
-        <br />
-        Insights &
-        <br />
-        Inspiration.
-      </h1>
+      <section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-40 pb-24">
+        <p className="uppercase tracking-[0.3em] text-[#A08E7C] text-xs mb-8">
+          Journal
+        </p>
 
-      <p className="mt-8 max-w-2xl text-[#8B7E74] text-lg leading-relaxed">
-        Design inspiration, planning guides and project insights for creating
-        exceptional backyard spaces.
-      </p>
-
-    </section>
-
-    {loading && (
-      <section className="py-32">
-        <div className="text-center">
-          <div className="inline-block w-10 h-10 border-4 border-[#C7A77A]/30 border-t-[#C7A77A] rounded-full animate-spin mb-6" />
-
-          <p className="uppercase tracking-[0.25em] text-sm text-[#8B7E74]">
-            Loading Articles...
-          </p>
-        </div>
-      </section>
-    )}
-
-    {error && (
-      <section className="py-32">
-        <div className="max-w-xl mx-auto text-center">
-          <h2 className="editorial-heading text-4xl text-[#2E2A26] mb-6">
-            Unable to load articles
-          </h2>
-
-          <p className="text-[#8B7E74]">
-            {error}
-          </p>
-        </div>
-      </section>
-    )}
-
-    {!loading && !error && (
-
-      <>
-
-{/* JOURNAL GRID */}
-
-<section className="max-w-[1700px] mx-auto px-6 lg:px-12 pb-24">
-
-  {/* DESKTOP */}
-
-  <div
-    className="
-      hidden
-      lg:grid
-      lg:grid-cols-3
-      border
-      border-[#C7A77A]/15
-      h-[900px]
-    "
-  >
-
-    {[1, 2, 3].map((column) => (
-
-      <div
-        key={column}
-        className={`
-          overflow-y-auto
-          hide-scrollbar
-          ${column !== 3 ? "border-r border-[#C7A77A]/15" : ""}
-        `}
-      >
-
-        <div
+        <h1
           className="
-            sticky
-            top-0
-            z-10
-            bg-[#F5F0EB]
-            p-8
-            border-b
-            border-[#C7A77A]/15
+            editorial-heading
+            text-[#2E2A26]
+            text-[clamp(4rem,8vw,8rem)]
+            leading-[0.9]
+            tracking-[-0.05em]
           "
         >
-          <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
-            Latest Articles
-          </p>
-        </div>
+          Ideas,
+          <br />
+          Insights &
+          <br />
+          Inspiration.
+        </h1>
 
-        {posts.map((post) => (
+        <p className="mt-8 max-w-2xl text-[#8B7E74] text-lg leading-relaxed">
+          Design inspiration, planning guides and project insights for creating
+          exceptional backyard spaces.
+        </p>
+      </section>
 
-          <article
-            key={`${column}-${post.id}`}
-            className="
-              border-b
-              border-[#C7A77A]/15
-              group
-              cursor-pointer
-            "
-          >
+      {/* ========================================================
+          LOADING STATE
+      ======================================================== */}
 
-            <Link to={`/blog/${post.slug}`}>
+      {loading && (
+        <section className="py-32">
+          <div className="text-center">
+            <div className="inline-block w-10 h-10 border-4 border-[#C7A77A]/30 border-t-[#C7A77A] rounded-full animate-spin mb-6" />
 
-              {post.heroImage ? (
+            <p className="uppercase tracking-[0.25em] text-sm text-[#8B7E74]">
+              Loading Articles...
+            </p>
+          </div>
+        </section>
+      )}
 
-                <img
-                  src={post.heroImage}
-                  alt={post.title}
-                  className="
-                    w-full
-                    h-[260px]
-                    object-cover
-                    transition-transform
-                    duration-700
-                    group-hover:scale-105
-                  "
-                />
+      {/* ========================================================
+          ERROR STATE
+      ======================================================== */}
 
-              ) : (
+      {error && (
+        <section className="py-32">
+          <div className="max-w-xl mx-auto text-center">
+            <h2 className="editorial-heading text-4xl text-[#2E2A26] mb-6">
+              Unable to load articles
+            </h2>
 
-                <div
-                  className="
-                    w-full
-                    h-[260px]
-                    bg-[#F5F0EB]
-                    flex
-                    items-center
-                    justify-center
-                  "
-                >
-                  <span className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
-                    Backyard Nest
-                  </span>
-                </div>
+            <p className="text-[#8B7E74]">{error}</p>
+          </div>
+        </section>
+      )}
 
-              )}
+      {/* ========================================================
+          BLOG CONTENT
+      ======================================================== */}
 
-            </Link>
+      {!loading && !error && (
+        <>
+          {/* ====================================================
+              JOURNAL GRID
+          ==================================================== */}
 
-            <div className="p-8">
+          <section className="max-w-[1700px] mx-auto px-6 lg:px-12 pb-24">
+            {/* ==================================================
+                DESKTOP BLOG GRID
+            ================================================== */}
 
-              <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] mb-4">
-                {post.category}
-              </p>
+            <div
+              className="
+                hidden
+                lg:grid
+                lg:grid-cols-3
+                border
+                border-[#C7A77A]/15
+                h-[900px]
+              "
+            >
+              {[0, 1, 2].map((column) => {
+                /*
+                 * Split the posts across the three columns.
+                 * This prevents every post from appearing 3 times.
+                 */
+                const columnPosts = posts.filter(
+                  (_, index) => index % 3 === column
+                );
 
-              <h3
-                className="
-                  editorial-heading
-                  text-3xl
-                  text-[#2E2A26]
-                  mb-4
-                "
-              >
-                {post.title}
-              </h3>
+                return (
+                  <div
+                    key={column}
+                    className={`
+                      overflow-y-auto
+                      hide-scrollbar
+                      ${
+                        column !== 2
+                          ? "border-r border-[#C7A77A]/15"
+                          : ""
+                      }
+                    `}
+                  >
+                    {/* Column heading */}
 
-              <p className="text-[#8B7E74] mb-6 leading-relaxed">
-                {post.excerpt}
-              </p>
+                    <div
+                      className="
+                        sticky
+                        top-0
+                        z-10
+                        bg-[#F5F0EB]
+                        p-8
+                        border-b
+                        border-[#C7A77A]/15
+                      "
+                    >
+                      <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
+                        Latest Articles
+                      </p>
+                    </div>
 
-              <div className="flex items-center justify-between mb-8">
+                    {/* ==================================================
+                        BLOG POSTS
+                    ================================================== */}
 
-                <span className="text-sm text-[#8B7E74]">
-                  {post.publishDate}
-                </span>
+                    {columnPosts.map((post) => {
+                      const targetUrl = post.slug
+                        ? `/blog/${post.slug}`
+                        : "/blog";
 
-                <span className="text-sm text-[#8B7E74]">
-                  {post.readingTime} min read
-                </span>
+                      console.log("BLOG POST RENDERED:", {
+                        title: post.title,
+                        slug: post.slug,
+                        targetUrl,
+                      });
 
-              </div>
+                      return (
+                        <Link
+                          key={post.id}
+                          to={targetUrl}
+                          onClick={() => handleBlogClick(post)}
+                          className="
+                            block
+                            border-b
+                            border-[#C7A77A]/15
+                            group
+                            cursor-pointer
+                            no-underline
+                          "
+                        >
+                          {/* ==================================================
+                              BLOG IMAGE
+                          ================================================== */}
 
-              <Link
-                to={`/blog/${post.slug}`}
-                className="
-                  uppercase
-                  tracking-[0.25em]
-                  text-xs
-                  border-b
-                  border-[#C7A77A]
-                  pb-2
-                  transition-all
-                  hover:text-[#C7A77A]
-                "
-              >
-                Read Article →
-              </Link>
+                          {post.heroImage ? (
+                            <img
+                              src={post.heroImage}
+                              alt={post.title}
+                              className="
+                                w-full
+                                h-[260px]
+                                object-cover
+                                transition-transform
+                                duration-700
+                                group-hover:scale-105
+                              "
+                            />
+                          ) : (
+                            <div
+                              className="
+                                w-full
+                                h-[260px]
+                                bg-[#F5F0EB]
+                                flex
+                                items-center
+                                justify-center
+                              "
+                            >
+                              <span className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
+                                Backyard Nest
+                              </span>
+                            </div>
+                          )}
 
+                          {/* ==================================================
+                              BLOG CONTENT
+                          ================================================== */}
+
+                          <div className="p-8">
+                            {/* Category */}
+
+                            <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] mb-4">
+                              {post.category}
+                            </p>
+
+                            {/* Blog title */}
+
+                            <h3
+                              className="
+                                editorial-heading
+                                text-3xl
+                                text-[#2E2A26]
+                                mb-4
+                                group-hover:text-[#C7A77A]
+                                transition-colors
+                              "
+                            >
+                              {post.title}
+                            </h3>
+
+                            {/* Excerpt */}
+
+                            <p className="text-[#8B7E74] mb-6 leading-relaxed">
+                              {post.excerpt}
+                            </p>
+
+                            {/* Date + reading time */}
+
+                            <div className="flex items-center justify-between mb-8">
+                              <span className="text-sm text-[#8B7E74]">
+                                {post.publishDate}
+                              </span>
+
+                              <span className="text-sm text-[#8B7E74]">
+                                {post.readingTime} min read
+                              </span>
+                            </div>
+
+                            {/* Read Article CTA */}
+
+                            <span
+                              className="
+                                inline-block
+                                uppercase
+                                tracking-[0.25em]
+                                text-xs
+                                border-b
+                                border-[#C7A77A]
+                                pb-2
+                                transition-all
+                                group-hover:text-[#C7A77A]
+                              "
+                            >
+                              Read Article →
+                            </span>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </div>
 
-          </article>
+            {/* ==================================================
+                MOBILE BLOG LIST
+            ================================================== */}
 
-        ))}
+            <div className="lg:hidden space-y-12">
+              {posts.map((post) => {
+                const targetUrl = post.slug
+                  ? `/blog/${post.slug}`
+                  : "/blog";
 
-      </div>
+                console.log("MOBILE BLOG POST RENDERED:", {
+                  title: post.title,
+                  slug: post.slug,
+                  targetUrl,
+                });
 
-    ))}
+                return (
+                  <Link
+                    key={post.id}
+                    to={targetUrl}
+                    onClick={() => handleBlogClick(post)}
+                    className="
+                      block
+                      border-b
+                      border-[#C7A77A]/15
+                      pb-10
+                      group
+                      cursor-pointer
+                      no-underline
+                    "
+                  >
+                    {/* Blog image */}
 
-  </div>
+                    {post.heroImage ? (
+                      <img
+                        src={post.heroImage}
+                        alt={post.title}
+                        className="
+                          w-full
+                          h-[280px]
+                          object-cover
+                          mb-6
+                          transition-transform
+                          duration-700
+                          group-hover:scale-[1.02]
+                        "
+                      />
+                    ) : (
+                      <div
+                        className="
+                          w-full
+                          h-[280px]
+                          bg-[#F5F0EB]
+                          flex
+                          items-center
+                          justify-center
+                          mb-6
+                        "
+                      >
+                        <span className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
+                          Backyard Nest
+                        </span>
+                      </div>
+                    )}
 
-  {/* MOBILE */}
+                    {/* Blog category */}
 
-{/* MOBILE */}
+                    <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] mb-4">
+                      {post.category}
+                    </p>
 
-<div className="lg:hidden space-y-12">
+                    {/* Blog title */}
 
-  {posts.map((post) => (
+                    <h3
+                      className="
+                        editorial-heading
+                        text-3xl
+                        text-[#2E2A26]
+                        mb-4
+                        group-hover:text-[#C7A77A]
+                        transition-colors
+                      "
+                    >
+                      {post.title}
+                    </h3>
 
-    <article
-      key={post.id}
-      className="
-        border-b
-        border-[#C7A77A]/15
-        pb-10
-      "
-    >
+                    {/* Blog excerpt */}
 
-      <Link to={`/blog/${post.slug}`}>
+                    <p className="text-[#8B7E74] leading-relaxed mb-6">
+                      {post.excerpt}
+                    </p>
 
-        {post.heroImage ? (
+                    {/* Date + reading time */}
 
-          <img
-            src={post.heroImage}
-            alt={post.title}
-            className="
-              w-full
-              h-[280px]
-              object-cover
-              mb-6
-            "
-          />
+                    <div className="flex items-center justify-between text-sm text-[#8B7E74] mb-8">
+                      <span>{post.publishDate}</span>
+                      <span>{post.readingTime} min read</span>
+                    </div>
 
-        ) : (
+                    {/* Read Article CTA */}
 
-          <div
-            className="
-              w-full
-              h-[280px]
-              bg-[#F5F0EB]
-              flex
-              items-center
-              justify-center
-              mb-6
-            "
-          >
-            <span className="uppercase tracking-[0.25em] text-xs text-[#A08E7C]">
-              Backyard Nest
-            </span>
-          </div>
+                    <span
+                      className="
+                        inline-block
+                        uppercase
+                        tracking-[0.25em]
+                        text-xs
+                        border-b
+                        border-[#C7A77A]
+                        pb-2
+                        transition-all
+                        group-hover:text-[#C7A77A]
+                      "
+                    >
+                      Read Article →
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
 
-        )}
+          {/* ======================================================
+              BLOG CTA
+          ====================================================== */}
 
-      </Link>
+          <section className="py-32 border-t border-[#C7A77A]/15">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+              <div className="w-20 h-px bg-[#C7A77A] mx-auto mb-12" />
 
-      <p className="uppercase tracking-[0.25em] text-xs text-[#A08E7C] mb-4">
-        {post.category}
-      </p>
+              <h2
+                className="
+                  editorial-heading
+                  text-[#2E2A26]
+                  text-[clamp(3rem,8vw,6rem)]
+                  leading-[0.92]
+                "
+              >
+                Stay Inspired
+              </h2>
 
-      <h3
-        className="
-          editorial-heading
-          text-3xl
-          text-[#2E2A26]
-          mb-4
-        "
-      >
-        {post.title}
-      </h3>
-
-      <p className="text-[#8B7E74] leading-relaxed mb-6">
-        {post.excerpt}
-      </p>
-
-      <div className="flex items-center justify-between text-sm text-[#8B7E74] mb-8">
-
-        <span>{post.publishDate}</span>
-
-        <span>{post.readingTime} min read</span>
-
-      </div>
-
-      <Link
-        to={`/blog/${post.slug}`}
-        className="
-          uppercase
-          tracking-[0.25em]
-          text-xs
-          border-b
-          border-[#C7A77A]
-          pb-2
-          transition-all
-          hover:text-[#C7A77A]
-        "
-      >
-        Read Article →
-      </Link>
-
-    </article>
-
-  ))}
-
-</div>
-
-</section>
-
-
-{/*cta*/}
-<section className="py-32 border-t border-[#C7A77A]/15">
-
-  <div className="max-w-4xl mx-auto px-6 text-center">
-
-    <div className="w-20 h-px bg-[#C7A77A] mx-auto mb-12" />
-
-    <h2
-      className="
-        editorial-heading
-        text-[#2E2A26]
-        text-[clamp(3rem,8vw,6rem)]
-        leading-[0.92]
-      "
-    >
-      Stay Inspired
-    </h2>
-
-    <p
-      className="
-        mt-8
-        text-[#8B7E74]
-        text-lg
-        max-w-2xl
-        mx-auto
-      "
-    >
-      Receive design inspiration, project stories and practical
-      insights delivered directly to your inbox.
-    </p>
-
-  </div>
-
-</section>
-
-      </>
-
-    )}
-
-  </div>
-);
+              <p
+                className="
+                  mt-8
+                  text-[#8B7E74]
+                  text-lg
+                  max-w-2xl
+                  mx-auto
+                "
+              >
+                Receive design inspiration, project stories and practical
+                insights delivered directly to your inbox.
+              </p>
+            </div>
+          </section>
+        </>
+      )}
+    </div>
+  );
 }

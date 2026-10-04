@@ -323,10 +323,10 @@ const handleSubmit = async (
 
   return (
     <div>
-      <SEO
-    title="Contact Us | Backyard Nest"
-    description="Ready to start your project? Contact Backyard Nest for a free, no-obligation quote on backyard pods, studios & granny flats across Melbourne & Victoria."
-    url="https://backyardnest.com.au/gallery"
+ <SEO
+  title="Contact Us | Backyard Nest"
+  description="Ready to start your project? Contact Backyard Nest for a free, no-obligation quote on backyard pods, studios & granny flats across Melbourne & Victoria."
+  url="https://backyardnest.com.au/contact"
 />
       {/* HERO */}
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../SEO";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function GrannyFlats() {
   const navigate = useNavigate();
@@ -131,11 +132,11 @@ export default function GrannyFlats() {
 
   return (
     <div>
-       <SEO
-                title="Granny Flat Builders Melbourne, Victoria | Backyard Nest"
-                description="Looking for trusted granny flat builders in Melbourne, Victoria? Backyard Nest designs and builds custom granny flats. Enquire today for a free quote."
-                url="https://backyardnest.com.au/granny"
-            />
+<SEO
+  title="Granny Flat Builders Melbourne, Victoria | Backyard Nest"
+  description="Looking for trusted granny flat builders in Melbourne, Victoria? Backyard Nest designs and builds custom granny flats. Enquire today for a free quote."
+  url="https://backyardnest.com.au/products/granny"
+/>
 
 {/* LUXURY COLLECTION GRID */}
 
@@ -710,6 +711,137 @@ py-4
   </div>
 </section>
 
+{/* FAQ SECTION */}
+<section className="bg-[#F5F0EB] py-24 lg:py-32">
+  <div className="max-w-5xl mx-auto px-6 lg:px-12">
+
+    {/* Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-14"
+    >
+      <p className="text-sm uppercase tracking-[0.2em] text-[#8A7665] mb-4">
+        Frequently Asked Questions
+      </p>
+
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-[#2F2A26]">
+        Granny Flat FAQs
+      </h2>
+
+      <p className="mt-5 max-w-2xl mx-auto text-[#6F665F] leading-relaxed">
+        Everything you need to know about designing and building a
+        granny flat with Backyard Nest.
+      </p>
+    </motion.div>
+
+    {/* FAQ Items */}
+    <div className="space-y-4">
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>Do I need council approval for a granny flat in Melbourne?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Approval requirements can vary depending on your property,
+          the size and location of the granny flat, its intended use
+          and other site conditions. Backyard Nest can help you
+          understand the requirements for your project.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>What can I use a granny flat for?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          A granny flat can provide additional space for independent
+          living, family accommodation, guests or other suitable
+          uses depending on your property and project requirements.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>How much does a granny flat cost?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          The cost depends on factors such as the size, design,
+          finishes, site conditions, services and level of
+          customisation. Contact Backyard Nest for a tailored quote
+          based on your requirements.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>How long does it take to build a granny flat?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Construction timelines vary depending on the design,
+          approvals, site preparation and construction requirements.
+          Your expected timeline can be discussed during your
+          consultation.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>Can you build a granny flat on a small backyard?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Granny flats can be designed around different backyard
+          sizes and site conditions. Our collection includes compact
+          options designed to make efficient use of available space.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>Can I customise my granny flat?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Yes. Granny flat designs can be tailored to suit your
+          space, lifestyle and requirements, including layout,
+          finishes, glazing and functionality.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
 
 {/* CONSULTATION CTA */}
 <section className="relative bg-[#2E2A26] text-white overflow-hidden">

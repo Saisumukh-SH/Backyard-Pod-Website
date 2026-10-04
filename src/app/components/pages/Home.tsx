@@ -120,7 +120,7 @@ export function Home() {
     <>
       <SEO
         title="Backyard Nest | Premium Backyard studios, Studios & Granny Flats Melbourne"
-        description="Premium backyard studios, home studios and granny flats designed and built across Melbourne and Victoria."
+        description="We design and build backyard pods, studios & granny flats across Melbourne & Victoria. Council compliant, custom built, delivered by our own team."
         url="https://backyardnest.com.au/"
       />
 
@@ -267,7 +267,7 @@ export function Home() {
       hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)]
     "
   >
-    Plan Your Backyard Space
+    Get a Free Quote
     <span
       className="
         ml-3

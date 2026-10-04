@@ -123,9 +123,10 @@ export default function PrivacyPolicy() {
   return (
     <>
       <SEO
-        title="Privacy Policy | Backyard Nest"
-        description="Learn how Backyard Nest collects, stores and protects your personal information."
-      />
+  title="Privacy Policy | Backyard Nest"
+  description="Learn how Backyard Nest collects, stores and protects your personal information."
+  url="https://backyardnest.com.au/privacy-policy"
+/>
 
       <main className="bg-[#FCFAF7] text-[#1C1B19]">
 

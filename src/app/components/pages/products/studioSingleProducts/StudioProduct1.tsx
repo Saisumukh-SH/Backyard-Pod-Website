@@ -1,6 +1,7 @@
 import SingleStudioPage from "../singleStudioPage";
 import RelatedProducts from "../../../RelatedProducts";
 import DesignInspiration from "../DesignInspiration";
+import React from "react";
 
 export default function StudioProduct1() {
 

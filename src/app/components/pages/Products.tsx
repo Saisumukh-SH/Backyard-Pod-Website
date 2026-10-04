@@ -55,10 +55,10 @@ export default function Products() {
   return (
     <main className="bg-[#F5F0EB]">
       <SEO
-        title="Our Products | Backyard Nest"
-        description="Explore our full range of backyard pods, home studios & granny flats — custom designed and built across Melbourne & Victoria. Find your perfect fit."
-        url="https://backyardnest.com.au/gallery"
-      />
+  title="Our Products | Backyard Nest"
+  description="Explore our full range of backyard pods, home studios & granny flats — custom designed and built across Melbourne & Victoria. Find your perfect fit."
+  url="https://backyardnest.com.au/products"
+/>
 
       {/* HERO */}
 

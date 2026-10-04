@@ -4,6 +4,7 @@ import { useState } from "react";
 import ImageWithWatermark from "../../ImageWithWatermark";
 import SEO from "../../SEO";
 import React from "react";
+import { motion } from "framer-motion";
 
 
 export default function StudioCategory() {
@@ -87,8 +88,7 @@ export default function StudioCategory() {
     <div>
          <SEO
           title="Backyard Studios Melbourne | Custom Studio Builders"
-          description="From home office to art studio, Backyard Nest builds custom backyard studios across Melbourne & Victoria — made to fit your space, style and budget.
-      "
+          description="From home office to art studio, Backyard Nest builds custom backyard studios across Melbourne & Victoria — made to fit your space, style and budget."
           url="https://backyardnest.com.au/studio"
       />
 
@@ -661,6 +661,137 @@ py-4
       Book Consultation
     </button>
 
+  </div>
+</section>
+
+{/* FAQ SECTION */}
+<section className="bg-[#F5F0EB] py-24 lg:py-32">
+  <div className="max-w-5xl mx-auto px-6 lg:px-12">
+
+    {/* Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-14"
+    >
+      <p className="text-sm uppercase tracking-[0.2em] text-[#8A7665] mb-4">
+        Frequently Asked Questions
+      </p>
+
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-[#2F2A26]">
+        Backyard Studio FAQs
+      </h2>
+
+      <p className="mt-5 max-w-2xl mx-auto text-[#6F665F] leading-relaxed">
+        Everything you need to know about designing and building a
+        backyard studio with Backyard Nest.
+      </p>
+    </motion.div>
+
+    {/* FAQ Items */}
+    <div className="space-y-4">
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>Do I need council approval for a backyard studio in Melbourne?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Approval requirements can vary depending on the size, location,
+          intended use and site conditions of your property. Backyard Nest
+          can help you understand the requirements for your project and
+          guide you through the process.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>What can I use a backyard studio for?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          A backyard studio can be designed for a wide range of purposes,
+          including a home office, creative studio, gym, hobby space,
+          retreat or flexible workspace.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>How much does a backyard studio cost?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          The cost of a backyard studio depends on factors such as the
+          size, design, finishes, site conditions and level of
+          customisation. Contact Backyard Nest for a tailored quote based
+          on your requirements.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>How long does it take to build a backyard studio?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Project timelines vary depending on the studio design, approvals,
+          site preparation and construction requirements. Your project
+          timeline can be discussed during the consultation process.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>Can you build a studio on a small or difficult block?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Yes. Backyard studios can be designed to work with different
+          block sizes and site conditions. The design can be tailored to
+          make the most of the available space.
+        </div>
+      </details>
+
+      <details className="group bg-white border border-[#E5DED7] rounded-2xl overflow-hidden">
+        <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-lg font-medium text-[#2F2A26] list-none">
+          <span>Can I customise my backyard studio?</span>
+
+          <span className="ml-4 text-2xl font-light text-[#8A7665] transition-transform duration-300 group-open:rotate-45">
+            +
+          </span>
+        </summary>
+
+        <div className="px-6 pb-6 text-[#6F665F] leading-relaxed">
+          Yes. Your backyard studio can be customised to suit your needs,
+          including layout, finishes, glazing, functionality and overall
+          design.
+        </div>
+      </details>
+
+    </div>
   </div>
 </section>
 
