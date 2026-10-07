@@ -86,7 +86,7 @@ export default function GrannyProduct1() {
 
       seoTitle="The Wattle 60 | 60m² Granny Flat Melbourne"
       seoDescription="Explore The Wattle 60 by Backyard Nest, a spacious 60m² granny flat designed for independent living, family accommodation, guests or rental potential in Melbourne."
-      seoUrl="https://backyardnest.com.au/products/GrannyflatProductWattle"
+      seoUrl="https://backyardnest.com.au/products/TheWattle"
       seoImage="/images/grannyflat/wattle_60/wattle_1.webp"
 
       finishes={finishes}

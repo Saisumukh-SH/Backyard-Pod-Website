@@ -125,244 +125,313 @@ export function Home() {
       />
 
       <div className="bg-white">
-{/* HERO */}
-<section className="relative h-[85vh] min-h-[620px] lg:h-screen overflow-hidden">
 
-  {/* Background Slideshow */}
-  {images.map((img, i) => (
-    <div
-      key={i}
-      onContextMenu={(e) => e.preventDefault()}
-      className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
-        i === index
-          ? "opacity-100 scale-105"
-          : "opacity-0 scale-100"
-      }`}
-    >
-      <div
-        className="w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${img})`,
-        }}
-      />
-    </div>
-  ))}
+        {/* HERO */}
+        <section className="relative h-[92svh] min-h-[680px] lg:h-screen lg:min-h-[620px] overflow-hidden">
 
-  {/* Minimal Dark Overlay */}
-  <div className="absolute inset-0 bg-black/45" />
-
-  {/* Hero Content */}
-  <div className="absolute inset-0 flex items-end">
-    <div className="w-full pb-24 md:pb-24 lg:pb-28">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-
-        {/* UPDATED: Wider content area */}
-        <div className="max-w-6xl">
-
-          {/* Eyebrow */}
-          <p
-            className="
-              uppercase
-              tracking-[0.35em]
-              text-white/70
-              text-[10px]
-              sm:text-xs
-              md:text-sm
-              mb-6
-            "
-          >
-            Backyard Studios & Granny Flats Melbourne
-          </p>
-
-          {/* Heading */}
-          <h1
-            className="
-              editorial-heading
-              text-white
-              text-[clamp(3rem,6.5vw,7rem)]
-              leading-[0.9]
-              tracking-[-0.045em]
-            "
-          >
-            BACKYARD LIVING.
-            <br />
-            BUILT FOR MELBOURNE.
-          </h1>
-
-          {/* SEO Subheading */}
-          <p
-            className="
-              mt-6
-              text-[#D6B88C]
-              uppercase
-              tracking-[0.25em]
-              text-xs
-              md:text-sm
-              font-medium
-            "
-          >
-            Beautifully Designed Spaces Made For The Way You Live.
-          </p>
-
-          {/* Divider */}
-          <div className="w-20 h-px bg-[#C7A77A] mt-6 mb-6" />
-
-          {/* Paragraph */}
-          <p
-            className="
-              max-w-3xl
-              text-white/85
-              text-base
-              md:text-lg
-              leading-relaxed
-            "
-          >
-            Create extra space without moving. Backyard Nest designs and
-            builds premium backyard studios, granny flats, home offices
-            and garden retreats across Melbourne and Victoria.
-          </p>
-
-          {/* CTA BUTTONS */}
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-
-            {/* Explore Projects */}
-            <button
-              onClick={() => navigate("/products")}
-              className="
-                inline-flex
-                items-center
-                justify-center
-                min-w-[190px]
-                rounded-full
-                border
-                border-white/80
-                bg-white/10
-                backdrop-blur-sm
-                px-7
-                py-4
-                text-white
-                uppercase
-                text-xs
-                font-medium
-                tracking-[0.2em]
-                transition-all
-                duration-300
-                hover:bg-white
-                hover:text-[#2E2A26]
-                hover:border-white
-                hover:scale-[1.03]
-              "
+          {/* Background Slideshow */}
+          {images.map((img, i) => (
+            <div
+              key={i}
+              onContextMenu={(e) => e.preventDefault()}
+              className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
+                i === index
+                  ? "opacity-100 scale-105"
+                  : "opacity-0 scale-100"
+              }`}
             >
-              Explore Projects
+              <div
+                className="w-full h-full bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${img})`,
+                }}
+              />
+            </div>
+          ))}
 
-              <span className="ml-3">
-                →
-              </span>
-            </button>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/45" />
 
-            {/* Get a Free Quote */}
-            <button
-              onClick={() => navigate("/contact")}
-              className="
-                group
-                inline-flex
-                items-center
-                justify-center
-                min-w-[170px]
-                rounded-full
-                bg-[#C7A77A]
-                px-7
-                py-4
-                text-[#2E2A26]
-                uppercase
-                text-xs
-                font-semibold
-                tracking-[0.2em]
-                shadow-[0_8px_25px_rgba(0,0,0,0.25)]
-                transition-all
-                duration-300
-                hover:bg-[#F5F0EB]
-                hover:scale-[1.05]
-                hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)]
-              "
-            >
-              Get a Free Quote
+          {/* Extra Mobile Readability Overlay */}
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-black/65
+              via-black/20
+              to-black/20
+              lg:hidden
+            "
+          />
 
-              <span
-                className="
-                  ml-3
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              >
-                →
-              </span>
-            </button>
+          {/* Hero Content */}
+          <div className="absolute inset-0 flex items-end">
 
+            <div className="w-full pb-24 sm:pb-24 md:pb-24 lg:pb-28">
+
+              <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 lg:px-12">
+
+                <div className="max-w-6xl">
+
+                  {/* Eyebrow */}
+                  <p
+                    className="
+                      uppercase
+                      tracking-[0.22em]
+                      sm:tracking-[0.3em]
+                      text-white/75
+                      text-[9px]
+                      sm:text-xs
+                      md:text-sm
+                      mb-4
+                      sm:mb-5
+                      md:mb-6
+                    "
+                  >
+                    Backyard Studios & Granny Flats Melbourne
+                  </p>
+
+                  {/* Heading */}
+                  <h1
+                    className="
+                      editorial-heading
+                      text-white
+                      text-[clamp(2.8rem,13vw,7rem)]
+                      sm:text-[clamp(3.2rem,10vw,7rem)]
+                      md:text-[clamp(3.5rem,8vw,7rem)]
+                      lg:text-[clamp(3.5rem,6.5vw,7rem)]
+                      leading-[0.88]
+                      tracking-[-0.045em]
+                    "
+                  >
+                    BACKYARD LIVING.
+                    <br />
+                    BUILT FOR MELBOURNE.
+                  </h1>
+
+                  {/* SEO Subheading */}
+                  <p
+                    className="
+                      mt-5
+                      sm:mt-6
+                      text-[#D6B88C]
+                      uppercase
+                      tracking-[0.16em]
+                      sm:tracking-[0.22em]
+                      md:tracking-[0.25em]
+                      text-[9px]
+                      sm:text-xs
+                      md:text-sm
+                      leading-relaxed
+                      font-medium
+                      max-w-md
+                    "
+                  >
+                    Beautifully Designed Spaces Made For The Way You Live.
+                  </p>
+
+                  {/* Divider */}
+                  <div
+                    className="
+                      w-14
+                      sm:w-16
+                      md:w-20
+                      h-px
+                      bg-[#C7A77A]
+                      mt-5
+                      sm:mt-6
+                      mb-5
+                      sm:mb-6
+                    "
+                  />
+
+                  {/* Description */}
+                  <p
+                    className="
+                      max-w-2xl
+                      text-white/85
+                      text-sm
+                      sm:text-base
+                      md:text-lg
+                      leading-relaxed
+                    "
+                  >
+                    Create extra space without moving. Backyard Nest designs and
+                    builds premium backyard studios, granny flats, home offices
+                    and garden retreats across Melbourne and Victoria.
+                  </p>
+
+                  {/* CTA BUTTONS */}
+                  <div
+                    className="
+                      mt-6
+                      sm:mt-8
+                      flex
+                      flex-col
+                      sm:flex-row
+                      items-stretch
+                      sm:items-center
+                      gap-3
+                      sm:gap-4
+                    "
+                  >
+
+                    {/* Explore Projects */}
+                    <button
+                      onClick={() => navigate("/products")}
+                      className="
+                        inline-flex
+                        items-center
+                        justify-center
+                        w-full
+                        sm:w-auto
+                        min-w-[190px]
+                        rounded-full
+                        border
+                        border-white/80
+                        bg-white/10
+                        backdrop-blur-sm
+                        px-6
+                        sm:px-7
+                        py-3.5
+                        sm:py-4
+                        text-white
+                        uppercase
+                        text-[10px]
+                        sm:text-xs
+                        font-medium
+                        tracking-[0.18em]
+                        sm:tracking-[0.2em]
+                        transition-all
+                        duration-300
+                        hover:bg-white
+                        hover:text-[#2E2A26]
+                        hover:border-white
+                        hover:scale-[1.03]
+                      "
+                    >
+                      Explore Projects
+
+                      <span className="ml-3">
+                        →
+                      </span>
+                    </button>
+
+                    {/* Get a Free Quote */}
+                    <button
+                      onClick={() => navigate("/contact")}
+                      className="
+                        group
+                        inline-flex
+                        items-center
+                        justify-center
+                        w-full
+                        sm:w-auto
+                        min-w-[190px]
+                        rounded-full
+                        bg-[#C7A77A]
+                        px-6
+                        sm:px-7
+                        py-3.5
+                        sm:py-4
+                        text-[#2E2A26]
+                        uppercase
+                        text-[10px]
+                        sm:text-xs
+                        font-semibold
+                        tracking-[0.18em]
+                        sm:tracking-[0.2em]
+                        shadow-[0_8px_25px_rgba(0,0,0,0.25)]
+                        transition-all
+                        duration-300
+                        hover:bg-[#F5F0EB]
+                        hover:scale-[1.05]
+                        hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)]
+                      "
+                    >
+                      Get a Free Quote
+
+                      <span
+                        className="
+                          ml-3
+                          transition-transform
+                          duration-300
+                          group-hover:translate-x-1
+                        "
+                      >
+                        →
+                      </span>
+                    </button>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
 
-        </div>
-      </div>
-    </div>
-  </div>
+          {/* Bottom Indicator */}
+          <div
+            className="
+              absolute
+              bottom-0
+              left-0
+              right-0
+              border-t
+              border-white/10
+              bg-black/20
+              backdrop-blur-sm
+            "
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 md:py-5">
 
-  {/* Bottom Indicator */}
-  <div
-    className="
-      absolute
-      bottom-0
-      left-0
-      right-0
-      border-t
-      border-white/10
-      bg-black/10
-      backdrop-blur-sm
-    "
-  >
-    <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-5">
-      <div
-        className="
-          grid
-          grid-cols-2
-          md:flex
-          md:flex-wrap
-          justify-center
-          gap-y-6
-          gap-x-4
-          md:gap-12
-          text-[10px]
-          md:text-xs
-          uppercase
-          tracking-[0.25em]
-          text-white/70
-          text-center
-        "
-      >
-        <span>Architecturally Designed</span>
+              <div
+                className="
+                  grid
+                  grid-cols-2
+                  md:flex
+                  md:flex-wrap
+                  justify-center
+                  gap-y-3
+                  gap-x-3
+                  md:gap-12
+                  text-[8px]
+                  sm:text-[9px]
+                  md:text-xs
+                  uppercase
+                  tracking-[0.16em]
+                  sm:tracking-[0.2em]
+                  md:tracking-[0.25em]
+                  text-white/70
+                  text-center
+                "
+              >
+                <span>Architecturally Designed</span>
 
-        <span className="hidden md:block">
-          •
-        </span>
+                <span className="hidden md:block">
+                  •
+                </span>
 
-        <span>Council Compliant</span>
+                <span>Council Compliant</span>
 
-        <span className="hidden md:block">
-          •
-        </span>
+                <span className="hidden md:block">
+                  •
+                </span>
 
-        <span>Built In Victoria</span>
+                <span>Built In Victoria</span>
 
-        <span className="hidden md:block">
-          •
-        </span>
+                <span className="hidden md:block">
+                  •
+                </span>
 
-        <span>Premium Materials</span>
-      </div>
-    </div>
-  </div>
+                <span>Premium Materials</span>
+              </div>
 
-</section>
+            </div>
+          </div>
+
+        </section>
 
         {/* PROJECT EXPLORER */}
         <section className="bg-[#F5F0EB] py-20 lg:py-32 overflow-hidden">

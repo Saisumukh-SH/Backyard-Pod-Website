@@ -89,7 +89,7 @@ export default function StudioCategory() {
          <SEO
           title="Backyard Studios Melbourne | Custom Studio Builders"
           description="From home office to art studio, Backyard Nest builds custom backyard studios across Melbourne & Victoria — made to fit your space, style and budget."
-          url="https://backyardnest.com.au/studio"
+          url="https://backyardnest.com.au/products/studio"
       />
 
 
