@@ -56,7 +56,7 @@ return (
 
   seoTitle="The Nest 15 | Custom Backyard Studio Melbourne, Victoria"   
   seoDescription="Discover The Nest 15 by Backyard Nest, a compact backyard studio designed and built for work, creativity and relaxation. View the floor plan and get started today."
-  seoUrl="https://backyardnest.com.au/products/studio/TheNest"
+  seoUrl="https://backyardnest.com.au/products/TheNest"
   seoImage="/images/studio/studio3/studio3.2.webp"
 
   finishes={finishes}

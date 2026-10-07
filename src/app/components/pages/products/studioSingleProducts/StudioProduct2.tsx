@@ -54,7 +54,7 @@ return (
 
   seoTitle="The Brighton 32 | Custom Garden Studio Melbourne"
   seoDescription="Bring your vision to life with The Brighton 32 by Backyard Nest. We design and build spacious backyard studios filled with natural light. Explore the design today."
-  seoUrl="https://backyardnest.com.au/products/studio/TheBrighton"
+  seoUrl="https://backyardnest.com.au/products/TheBrighton"
   seoImage="/images/studio/studio1/studio1.1.webp"
 
   finishes={finishes}

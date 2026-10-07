@@ -76,7 +76,7 @@ export default function StudioProduct1() {
 
       seoTitle="The Vista 26 | Modern Backyard Studio Melbourne VIC"
       seoDescription="The Vista 26 by Backyard Nest is purpose-built for sloping blocks. We design and build modern backyard studios across Melbourne. Enquire today."
-      seoUrl="https://backyardnest.com.au/products/studio/TheVista"
+      seoUrl="https://backyardnest.com.au/products/TheVista"
       seoImage="/images/studio/studio4/studio4.1.webp"
 
 

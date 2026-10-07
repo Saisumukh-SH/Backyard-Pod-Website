@@ -74,7 +74,7 @@ return (
 
  seoTitle="The Aspen 20 | Premium Backyard Studio Melbourne"
   seoDescription="Discover The Aspen 20 by Backyard Nest. We design and build premium 20m² backyard studios across Melbourne. Enquire today for a free consultation."
-  seoUrl="https://backyardnest.com.au/products/studio/TheAspen"
+  seoUrl="https://backyardnest.com.au/products/TheAspen"
   seoImage="/images/studio/studio2/studio2.1.webp"
 
 
