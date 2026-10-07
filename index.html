@@ -2,22 +2,34 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18311039639"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18311039639"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-  gtag('config', 'AW-18311039639');
-</script>
+    gtag("config", "AW-18311039639");
+  </script>
 
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "xoaap9avp1");
-</script>
+  </script>
 
   <meta charset="UTF-8" />
 
@@ -27,13 +39,14 @@
   />
 
   <!-- Primary SEO -->
-  <title>Backyard Nest | Premium Pods, Studios & Granny Flats Melbourne</title>
+  <title>
+    Backyard Nest | Premium Pods, Studios & Granny Flats Melbourne
+  </title>
 
- <meta
-  name="description"
-  content="We design and build backyard pods, studios & granny flats across Melbourne & Victoria. Council compliant, custom built, delivered by our own team.
-"
-/>
+  <meta
+    name="description"
+    content="We design and build backyard pods, studios & granny flats across Melbourne & Victoria. Council compliant, custom built, delivered by our own team."
+  />
 
   <meta
     name="keywords"
@@ -44,19 +57,26 @@
 
   <meta name="robots" content="index, follow" />
 
-  <link rel="canonical" href="https://backyardnest.com.au/" />
-
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/public/images/logo/favicon.png" />
-  <link rel="apple-touch-icon" href="/public/images/logo/apple-touch-icon.png" />
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/logo/favicon.png"
+  />
+
+  <link
+    rel="apple-touch-icon"
+    href="/images/logo/apple-touch-icon.png"
+  />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://backyardnest.com.au/" />
+
   <meta
     property="og:title"
     content="Backyard Nest | Premium Backyard Pods, Studios & Granny Flats"
   />
+
   <meta
     property="og:description"
     content="Premium backyard pods, studios and granny flats designed for modern Australian living."
@@ -68,7 +88,10 @@
   />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  />
 
   <meta
     name="twitter:title"
@@ -86,10 +109,14 @@
   />
 
   <!-- Theme -->
-  <meta name="theme-color" content="#F5F0EB" />
+  <meta
+    name="theme-color"
+    content="#F5F0EB"
+  />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+
   <link
     rel="preconnect"
     href="https://fonts.gstatic.com"
@@ -101,69 +128,120 @@
     rel="stylesheet"
   />
 
-<!-- Organization Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "Backyard Nest",
-  "url": "https://backyardnest.com.au",
-  "logo": "https://backyardnest.com.au/images/logo/final_logo.webp",
-  "image": "https://backyardnest.com.au/images/seo/og-image.jpg",
-  "description": "Premium backyard pods, studios and granny flats across Melbourne and Victoria.",
-  "telephone": "+61 466 333 438",
-  "email": "build@backyardnest.com.au",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Melbourne",
-    "addressRegion": "VIC",
-    "addressCountry": "AU"
-  }
-}
-</script>
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Backyard Nest",
+      "url": "https://backyardnest.com.au",
+      "logo": "https://backyardnest.com.au/images/logo/final_logo.webp",
+      "image": "https://backyardnest.com.au/images/seo/og-image.jpg",
+      "description": "Premium backyard pods, studios and granny flats across Melbourne and Victoria.",
+      "telephone": "+61 466 333 438",
+      "email": "build@backyardnest.com.au",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Melbourne",
+        "addressRegion": "VIC",
+        "addressCountry": "AU"
+      }
+    }
+  </script>
 </head>
 
-  <body>
+<body>
 
-    <!-- Netlify Hidden Forms -->
+  <!-- Netlify Hidden Forms -->
 
-<form
-  name="booking"
-  netlify
-  netlify-honeypot="bot-field"
-  hidden
->
-  <input type="hidden" name="form-name" value="booking" />
+  <form
+    name="booking"
+    netlify
+    netlify-honeypot="bot-field"
+    hidden
+  >
+    <input
+      type="hidden"
+      name="form-name"
+      value="booking"
+    />
 
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <input type="tel" name="phone" />
-  <textarea name="message"></textarea>
+    <input
+      type="text"
+      name="name"
+    />
 
-  <input name="bot-field" />
-</form>
+    <input
+      type="email"
+      name="email"
+    />
 
-<form
-  name="consultation"
-  netlify
-  netlify-honeypot="bot-field"
-  hidden
->
-  <input type="hidden" name="form-name" value="consultation" />
+    <input
+      type="tel"
+      name="phone"
+    />
 
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <input type="tel" name="phone" />
-  <input type="text" name="suburb" />
-  <input type="text" name="projectType" />
-  <textarea name="message"></textarea>
+    <textarea
+      name="message"
+    ></textarea>
 
-  <input name="bot-field" />
-</form>
+    <input
+      name="bot-field"
+    />
+  </form>
 
-    <div id="root"></div>
+  <form
+    name="consultation"
+    netlify
+    netlify-honeypot="bot-field"
+    hidden
+  >
+    <input
+      type="hidden"
+      name="form-name"
+      value="consultation"
+    />
 
-    <script type="module" src="/src/main.tsx"></script>
+    <input
+      type="text"
+      name="name"
+    />
 
-  </body>
+    <input
+      type="email"
+      name="email"
+    />
+
+    <input
+      type="tel"
+      name="phone"
+    />
+
+    <input
+      type="text"
+      name="suburb"
+    />
+
+    <input
+      type="text"
+      name="projectType"
+    />
+
+    <textarea
+      name="message"
+    ></textarea>
+
+    <input
+      name="bot-field"
+    />
+  </form>
+
+  <div id="root"></div>
+
+  <script
+    type="module"
+    src="/src/main.tsx"
+  ></script>
+
+</body>
 </html>
