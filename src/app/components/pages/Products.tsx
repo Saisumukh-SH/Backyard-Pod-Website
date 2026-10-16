@@ -40,7 +40,7 @@ const categories = [
     description:
       "Fully self contained living spaces designed for family, guests and rental income. A smart way to add flexibility and value to your property.",
     image: "/images/granny_flats_hero.webp",
-    from: "$169,998",
+    from: "$135,900",
   },
 ];
 
