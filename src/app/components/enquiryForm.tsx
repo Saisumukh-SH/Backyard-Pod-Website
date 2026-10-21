@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { MessageCircle, Loader2, CheckCircle2 } from "lucide-react";
+import React from "react";
+
+
 
 interface EnquiryFormProps {
   className?: string;
@@ -297,13 +300,23 @@ const response = await fetch("/", {
   }),
 });
 
+
 if (!response.ok) {
   throw new Error("Submission failed");
 }
 
-    setSuccess(true);
+// Track the conversion only after Netlify accepts the submission.
+if (typeof window.gtag === "function") {
+  window.gtag("event", "conversion", {
+    send_to: "AW-18311039639/aaTpCPPFrs8cEJeVsZtE",
+    value: 1.0,
+    currency: "AUD",
+  });
+}
 
-    resetForm();
+setSuccess(true);
+resetForm();
+
   } catch (err) {
     setError(
       "Something went wrong. Please try again."

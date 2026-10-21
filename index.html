@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,39 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18311039639"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
 
-    gtag("config", "AW-18311039639");
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'AW-18311039639');
+  </script>
+
+  <!-- Google Ads Conversion Tracking -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof url !== 'undefined' && url) {
+          window.location.href = url;
+        }
+      };
+
+      if (typeof window.gtag !== 'function') {
+        callback();
+        return false;
+      }
+
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18311039639/aaTpCPPFrs8cEJeVsZtE',
+        value: 1.0,
+        currency: 'AUD',
+        event_callback: callback,
+        event_timeout: 2000
+      });
+
+      return false;
+    }
   </script>
 
   <!-- Microsoft Clarity -->
@@ -151,7 +179,6 @@
 </head>
 
 <body>
-
   <!-- Netlify Hidden Forms -->
 
   <form
@@ -181,11 +208,10 @@
       name="phone"
     />
 
-    <textarea
-      name="message"
-    ></textarea>
+    <textarea name="message"></textarea>
 
     <input
+      type="text"
       name="bot-field"
     />
   </form>
@@ -227,21 +253,20 @@
       name="projectType"
     />
 
-    <textarea
-      name="message"
-    ></textarea>
+    <textarea name="message"></textarea>
 
     <input
+      type="text"
       name="bot-field"
     />
   </form>
 
+  <!-- React Application -->
   <div id="root"></div>
 
   <script
     type="module"
     src="/src/main.tsx"
   ></script>
-
 </body>
 </html>

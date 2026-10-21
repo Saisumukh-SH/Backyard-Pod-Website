@@ -4,6 +4,12 @@ import SEO from "../SEO";
 import { Loader2 } from "lucide-react";
 import React from "react";
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -277,6 +283,7 @@ const resetForm = () => {
   });
 };
 
+
 const handleSubmit = async (
   e: React.FormEvent<HTMLFormElement>
 ) => {
@@ -290,8 +297,7 @@ const handleSubmit = async (
     const response = await fetch("/", {
       method: "POST",
       headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: encode({
         "form-name": "contact",
@@ -303,23 +309,40 @@ const handleSubmit = async (
       throw new Error("Submission failed");
     }
 
+    // Clear the form after successful submission.
     resetForm();
 
-    setSuccess(true);
+    // Navigate to the thank-you page after recording the conversion.
+    const goToThankYou = () => {
+      navigate("/thank-you", {
+        state: {
+          formSubmitted: true,
+        },
+      });
+    };
 
-    navigate("/thank-you", {
-  state: {
-    formSubmitted: true,
-  },
-});
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-18311039639/aaTpCPPFrs8cEJeVsZtE",
+        value: 1.0,
+        currency: "AUD",
+        event_callback: goToThankYou,
+        event_timeout: 2000,
+      });
+
+      // Fallback if Google's callback does not run.
+      window.setTimeout(goToThankYou, 2200);
+    } else {
+      // Keep the user flow working if the Google tag is unavailable.
+      goToThankYou();
+    }
   } catch (err) {
-    setError(
-      "Something went wrong. Please try again."
-    );
+    setError("Something went wrong. Please try again.");
   } finally {
     setLoading(false);
   }
 };
+
 
   return (
     <div>
